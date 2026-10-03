@@ -31,7 +31,8 @@ read saves; they never write to them.
 
 ## Quick start
 
-1. Open the viewer: `viewer/index.html` in any modern browser (a hosted copy will follow).
+1. Open the viewer: **[binsento-netizen.github.io/ds2-peko-check](https://binsento-netizen.github.io/ds2-peko-check/)**
+   (or download the repository and open `viewer/index.html`; it works offline).
 2. Click **Open save** and pick a file from
    ```
    Documents\DEATH STRANDING 2 - ON THE BEACH\<your Steam ID>\
