@@ -12,6 +12,10 @@ from ds2lib import load
 args = sys.argv[1:]
 SAMPLE = args[args.index("--sample") + 1] if "--sample" in args else None
 OUT = Path(args[args.index("--out") + 1]) if "--out" in args else ROOT / "viewer/viewer_data.json"
+# public build: an example save the visitor can open on request (`--example JSON`, made with `--sample SAVE --write-example JSON`;
+# the example has no thumbnail and only the short file name)
+EXAMPLE = args[args.index("--example") + 1] if "--example" in args else None
+WRITE_EXAMPLE = args[args.index("--write-example") + 1] if "--write-example" in args else None
 # optional map (private build only, game-derived): `--map assets_private/map` (made by tools/build_map.py)
 MAP = Path(args[args.index("--map") + 1]) if "--map" in args else None
 # optional item pictures (private build only, game-derived): `--icons assets_private/icons` (tools/odradek/build_icons.py)
@@ -103,6 +107,10 @@ def read_sample(path):
 
 
 sample, missions = read_sample(SAMPLE) if SAMPLE else (None, [])
+if WRITE_EXAMPLE and sample:
+    Path(WRITE_EXAMPLE).write_text(json.dumps(dict(sample, thumb=None), ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print("example written:", WRITE_EXAMPLE)
+example = json.load(open(EXAMPLE, encoding="utf-8")) if EXAMPLE else None
 observed = set(json.load(open(ROOT / "catalog/unlock_observed.json")))   # keys with the unlock bit in any corpus save
 tracked = sorted({f"{r[5]}|{r[6] or ''}" for r in recipes if r[5] and r[0] in observed})
 g8fac = json.load(open(ROOT / "catalog/game8_facility_pages.json", encoding="utf-8"))   # verified Game8 prepper pages
@@ -177,7 +185,7 @@ if ICONS:
             im = Image.open(ROOT / r["icon"]).convert("RGBA"); im.thumbnail((80, 80))
             b = BytesIO(); im.save(b, "WEBP", quality=80)
             apas_icons[int(r["hash"], 16)] = "data:image/webp;base64," + base64.b64encode(b.getvalue()).decode()
-out = json.dumps(dict(orders=orders, recipes=recipes, about=ABOUT, tracked=tracked, g8fac=g8fac, wiki=wiki, sample=sample, map=map_data, links=links, icons=icons, apas=apas_cat, apas_icons=apas_icons, bags=bags, lockers=lockers), ensure_ascii=False, separators=(",", ":"))
+out = json.dumps(dict(orders=orders, recipes=recipes, about=ABOUT, tracked=tracked, g8fac=g8fac, wiki=wiki, sample=sample, example=example, map=map_data, links=links, icons=icons, apas=apas_cat, apas_icons=apas_icons, bags=bags, lockers=lockers), ensure_ascii=False, separators=(",", ":"))
 OUT.write_text(out, encoding="utf-8")
 print(f"orders {len(orders)}, recipes {len(recipes)} (" + ", ".join(f"{k}={sum(x[4].startswith(k) for x in recipes)}" for k in ("e", "g", "x")) + "), "
       f"sample missions {len(missions)}, bytes {len(out):,}")

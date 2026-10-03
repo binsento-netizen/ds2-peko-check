@@ -1,6 +1,18 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Peko-Check</title>
 <link rel="icon" type="image/svg+xml" href="__FAVICON__">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="description" content="See your Death Stranding 2 progress straight from your save: orders, unlocks, private lockers, APAS and routes. Runs in your browser; your save is never uploaded.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Peko-Check Lv1: your Death Stranding 2 save, at a glance">
+<meta property="og:description" content="Orders, unlocks, private lockers, APAS and routes from your own save. Free, runs in your browser, your save is never uploaded.">
+<meta property="og:url" content="https://binsento-netizen.github.io/ds2-peko-check/">
+<meta property="og:image" content="https://binsento-netizen.github.io/ds2-peko-check/assets/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://binsento-netizen.github.io/ds2-peko-check/assets/social-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&family=Michroma&display=swap">
@@ -86,7 +98,10 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .drop .hint{font-size:13px;color:var(--muted)}
 .drop.alt{border-style:solid;border-color:var(--line)}
 .drop.alt .btn{background:var(--ink);color:var(--surface)}
-.err{color:var(--orange-ink);font-size:13px}
+.ex-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:4px}
+.ex-btn{font:600 15px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--surface);border:0;padding:9px 20px 8px 12px;cursor:pointer;clip-path:var(--slant)}
+.ex-btn:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.err{color:var(--orange-ink);font-size:14px;border:1px solid var(--orange);background:var(--surface);padding:10px 14px;margin:10px 0}
 
 /* ---------- cargo-label panels ---------- */
 .save,.stat,.group,.recipes{background:var(--surface);border:1px solid var(--line);clip-path:var(--chamfer);
@@ -98,6 +113,7 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .save img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:var(--sunk);border:1px solid var(--line-strong);
   clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)}
 .save .meta{display:flex;flex-direction:column;gap:8px;min-width:0}
+.save.welcome{grid-template-columns:1fr} .save .steps{margin:2px 0;padding-left:22px;display:grid;gap:6px;max-width:75ch} .save .steps code{overflow-wrap:anywhere}
 .save .label{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
 .save .current{font-size:17px;font-weight:600;line-height:1.35}
 .save .goal{color:var(--muted);font-size:14px}
@@ -162,6 +178,7 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .group>summary .count{grid-column:2;grid-row:1;position:relative;font:400 13px var(--mono);color:var(--on-banner);font-variant-numeric:tabular-nums;padding-right:40px;white-space:nowrap;opacity:.95}
 .group>summary .bar{grid-column:1/-1;margin:0 14px}
 .group>summary:focus-visible{outline-offset:-3px}
+@media (max-width:700px){.tabs{flex-wrap:wrap;overflow-x:visible} .group>summary h3{min-width:0;overflow-wrap:anywhere} .group>summary .count{grid-column:1/-1;grid-row:2;color:var(--muted);padding:0 14px} .group>summary::before{grid-row:1}}
 /* facilities: teal banner, entity name in Barlow Condensed (long names) */
 .group.fac>summary::before{background:var(--teal-banner)}
 .group.fac>summary h3{font:600 18px/1.15 var(--display);letter-spacing:.03em;text-transform:none;padding-block:7px 6px}
@@ -387,12 +404,12 @@ footer b{color:var(--ink)}
 
 <div class="wrap">
   <div class="top">
-    <h1><span class="brand-logo" aria-hidden="true">__LOGO__</span><span class="brand-name">Peko-Check <span class="lv">Lv1</span><small>Death Stranding 2 save progress: orders and fabrication unlocks. Your save is decoded in this browser and never uploaded.</small></span></h1>
+    <h1><span class="brand-logo" aria-hidden="true">__LOGO__</span><span class="brand-name">Peko-Check <span class="lv">Lv1</span><small>See your Death Stranding 2 progress straight from your save. It is read in this browser, never uploaded and never changed.</small></span></h1>
     <div class="opens">
       <label class="drop" id="drop" for="file">
         <input type="file" id="file" accept=".dat" multiple>
         <span class="btn">Open save</span>
-        <span class="hint">or drop a <code>…save.dat</code> here; drop two to compare them</span>
+        <span class="hint">or drop a save file here; drop two to compare them</span>
       </label>
       <label class="drop alt" id="drop2" for="file2" title="Compare the save shown with another save (before/after)">
         <input type="file" id="file2" accept=".dat">
@@ -423,8 +440,8 @@ footer b{color:var(--ink)}
   <div id="view"></div>
 
   <footer>
-    <div><b>How to read this.</b> Status comes from the save's mission records: <i>Done</i> = order state Completed, <i>In progress</i> = accepted, <i>Available</i> = listed at a terminal, <i>Locked</i> = not yet offered. Order numbers and names come from the game's own mission lists. <b>Compare with…</b> shows what changed between two saves (earlier play time = before): orders, unlocks, new route segments and, for research, every data section whose bytes differ, plus a text report to paste into the chat.</div>
-    <div>Orders (numbers, names, clients, destinations, cargo) and unlocks (names, categories, what unlocks them) come from the game's own data, read from a local installation with ShadelessFox's Odradek; every English name is the game's own text. Guide links: Game8's walkthrough for main orders 1-48, Game8's prepper page where Game8 has one, otherwise the Death Stranding Fandom wiki. Source code and format notes: github.com/binsento-netizen/ds2-peko-check. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
+    <div><b>How to read the orders.</b> <i>Done</i>: delivered. <i>In progress</i>: accepted, not delivered yet. <i>Available</i>: you can take it at a terminal. <i>Locked</i>: not offered yet. <b>Compare with…</b> shows what changed between two saves, with a report you can copy, for example to send a test result (see “How you can help” on GitHub).</div>
+    <div>Order and item names are the game's own English text, read from the game files with ShadelessFox's Odradek. Guide links go to Game8 or the Death Stranding Wiki. Source code, how to help and the roadmap: <a href="https://github.com/binsento-netizen/ds2-peko-check" target="_blank" rel="noopener">github.com/binsento-netizen/ds2-peko-check</a>. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
   </footer>
 </div>
 
@@ -445,14 +462,14 @@ footer b{color:var(--ink)}
     while (s < src.length) {
       const tok = src[s++]; let lit = tok >> 4;
       if (lit === 15) { let b; do { b = src[s++]; lit += b; } while (b === 255); }
-      if (d + lit > max || s + lit > src.length) throw new Error("lz4 literal overrun");
+      if (d + lit > max || s + lit > src.length) throw new Error("The file seems damaged (it could not be unpacked). Copy the save again and retry.");
       dst.set(src.subarray(s, s + lit), d); s += lit; d += lit;
       if (s >= src.length) break;
       const off = src[s] | (src[s + 1] << 8); s += 2;
       let ml = tok & 15;
       if (ml === 15) { let b; do { b = src[s++]; ml += b; } while (b === 255); }
       ml += 4; let m = d - off;
-      if (off === 0 || m < 0 || d + ml > max) throw new Error("lz4 bad match");
+      if (off === 0 || m < 0 || d + ml > max) throw new Error("The file seems damaged (it could not be unpacked). Copy the save again and retry.");
       for (let i = 0; i < ml; i++) dst[d++] = dst[m++];
     }
     return dst.subarray(0, d);
@@ -497,7 +514,7 @@ footer b{color:var(--ink)}
     if (!f.length) throw new Error("The file is empty (0 bytes). Copy or download it again.");
     const head = new TextDecoder().decode(f.subarray(0, 64)).trimStart().toLowerCase();
     if (head.startsWith("<") || head.startsWith("{")) throw new Error("This is a web page or text file, not a save. A Steam Cloud download sometimes saves the page instead of the file: download the save again.");
-    if (f.length < 0x40 || f[0] !== 0x49 || f[1] !== 0xf6 || f[2] !== 0x0e || f[3] !== 0xc1) throw new Error("This is not a Death Stranding 2 PC save (unknown header).");
+    if (f.length < 0x40 || f[0] !== 0x49 || f[1] !== 0xf6 || f[2] !== 0x0e || f[3] !== 0xc1) throw new Error("This is not a Death Stranding 2 PC save. Pick a manualsave, autosave or checkpointsave file from the game's save folder.");
     const body = f.subarray(0x20);
     const count = body[0x12] ^ body[0x02];
     const key = body.slice(0, 16); key[2] ^= count;
@@ -505,7 +522,7 @@ footer b{color:var(--ink)}
     const tbl = new DataView(xor(body.subarray(0x10, 0x10 + 4 * count)).buffer);
     let off = 0x10 + 4 * count; const chunks = [];
     for (let i = 0; i < count; i++) { const n = tbl.getUint32(4 * i, true); chunks.push(xor(body.subarray(off, off + n))); off += n; }
-    if (off !== body.length) throw new Error("Chunk table does not match the file size; the file may be truncated.");
+    if (off !== body.length) throw new Error("The file seems incomplete (cut off while copying). Copy the save again and retry.");
     let meta = null, thumb = null; const parts = [];
     chunks.forEach((c, i) => {
       if (i === 0) { meta = lz4(c, 1 << 16); return; }
@@ -544,7 +561,7 @@ footer b{color:var(--ink)}
     for (let w = r.vint(); w > 0; w--) { const len = r.vint(); r.pos += len * 2; }
     for (let g = 0; g < 256; g++) { const c = r.vint(); r.pos += c * 16; }
     const magic = [0x05, 0xa0, 0x0e, 0x53, 0xff, 0xff, 0xee, 0xee];
-    if (!magic.every((b, k) => data[r.pos + k] === b)) throw new Error("Section directory not found; this game version may use a different layout.");
+    if (!magic.every((b, k) => data[r.pos + k] === b)) throw new Error("Peko-Check doesn't recognise the layout of this save. It may come from a newer game version: please report it on GitHub.");
     r.pos += 8;
     const dir = []; for (let k = r.vint(); k > 0; k--) dir.push({ id: r.vint() >>> 0, off: r.vint(), ver: r.vint() });
     const sorted = [...dir].sort((a, b) => a.off - b.off);
@@ -555,7 +572,7 @@ footer b{color:var(--ink)}
 
   function parseMissions(s) {
     const dv = new DataView(s.buffer, s.byteOffset, s.byteLength);
-    if (dv.getUint32(0, true) !== 0x1fd6b79b) throw new Error("Mission table not recognised.");
+    if (dv.getUint32(0, true) !== 0x1fd6b79b) throw new Error("The order list in this save has an unexpected layout. It may come from a newer game version: please report it on GitHub.");
     const out = []; let pos = 8;
     for (let n = dv.getUint32(4, true); n > 0; n--) {
       out.push([dv.getUint32(pos + 12, true), dv.getUint32(pos + 16, true) & 63, s[pos + 4], s[pos + 5], dv.getUint16(pos + 6, true)]);
@@ -566,7 +583,7 @@ footer b{color:var(--ink)}
 
   function parseRecipes(s) {
     const dv = new DataView(s.buffer, s.byteOffset, s.byteLength);
-    if (dv.getUint32(0, true) !== 0x8b3f7cc3) throw new Error("Fabrication table not recognised.");
+    if (dv.getUint32(0, true) !== 0x8b3f7cc3) throw new Error("The unlock list in this save has an unexpected layout. It may come from a newer game version: please report it on GitHub.");
     const r = reader(s, 4); const n = r.vint(); r.vint();
     const out = []; for (let i = 0; i < n; i++) out.push([dv.getUint32(r.pos + 8 * i, true), dv.getUint32(r.pos + 8 * i + 4, true)]);
     return out;
@@ -822,10 +839,11 @@ footer b{color:var(--ink)}
     const current = lines.find((l) => /No\.|№/.test(l)) || lines[0] || "";
     const kind = lines.find((l) => /DEATH STRANDING/.test(l)) || "";
     const goal = lines.find((l) => l !== current && l !== kind && !/ID\.|Difficulty/.test(l)) || "";
+    $("save").classList.toggle("welcome", !s.thumb);   // no picture (example save, or none in the file): one column
     $("save").innerHTML = `
-      ${s.thumb ? `<img src="${s.thumb}" alt="Save thumbnail">` : `<div></div>`}
+      ${s.thumb ? `<img src="${s.thumb}" alt="Save thumbnail">` : ""}
       <div class="meta">
-        <div class="label">${esc(kind.replace(/^DEATH STRANDING 2 - ON THE BEACH - /, "") || "Save")} ${s.sample ? '<span class="chip">Example: latest save</span>' : ""} ${s.verified === true ? '<span class="chip ok" title="The save matches its own MD5 integrity check">Save verified</span>' : s.verified === false ? '<span class="chip bad" title="The data does not match the save’s own integrity check">Checksum mismatch: the file may be damaged</span>' : ""} ${prev ? `<span class="chip">Compared with ${esc(prev.name)}</span>` : ""}</div>
+        <div class="label">${esc(kind.replace(/^DEATH STRANDING 2 - ON THE BEACH - /, "") || "Save")} ${s.sample ? '<span class="chip">Example save</span>' : ""} ${s.verified === true ? '<span class="chip ok" title="The save matches its own MD5 integrity check">Save verified</span>' : s.verified === false ? '<span class="chip bad" title="The data does not match the save’s own integrity check">Checksum mismatch: the file may be damaged</span>' : ""} ${prev ? `<span class="chip">Compared with ${esc(prev.name)}</span>` : ""}</div>
         <div class="current">${esc(current)}</div>
         ${goal ? `<div class="goal">Objective: ${esc(goal)}</div>` : ""}
         <div class="kv"><span>File <b>${esc(s.name)}</b></span><span>Play time <b>${hms(s.playtime)}</b></span>${s.clock ? `<span>In game <b>${clockText(s.clock)}</b></span>` : ""}<span>Game <b>${esc(s.version || "unknown")}</b></span></div>
@@ -839,11 +857,11 @@ footer b{color:var(--ink)}
     $("stats").innerHTML =
       tile("Main orders", main, `${count(main, "prog")} in progress`) +
       tile("Standard orders", std, `${count(std, "avail")} available now`) +
-      tile("Sub orders", sub, `${sub.filter((o) => o.id).length} of ${sub.length} matched`) +
+      tile("Sub orders", sub, `${count(sub, "avail")} available now`) +
       (state.likes ? `<div class="stat"><div class="label">Likes</div><div class="num">${(state.likes[0] + state.likes[1]).toLocaleString()}</div><div class="note">${state.likes[0].toLocaleString()} from NPCs · ${state.likes[1].toLocaleString()} from other porters · ${state.likes[2].toLocaleString()} given</div></div>` : "") +
-      (() => { const t = mergedRows().filter((m) => m.tracked); return `<div class="stat"><div class="label">Unlocks</div><div class="num">${t.filter((m) => m.k > 0).length}<span> / ${t.length}</span></div>${bar(t.map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}<div class="note">weapons, gear, outfits and vehicle parts</div></div>`; })();
+      (() => { const t = mergedRows().filter((m) => m.tracked); return `<div class="stat"><div class="label">Unlocks</div><div class="num">${t.filter((m) => m.k > 0).length}<span> / ${t.length}</span></div>${bar(t.map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}<div class="note">items whose status the save shows</div></div>`; })();
     $("tab-changes").hidden = !diff;
-    ["changes", "standard", "main", "sub", "craft", "routes"].forEach((t) => {
+    ["changes", "standard", "main", "sub", "craft", "cargo", "routes"].forEach((t) => {
       const b = $("tab-" + t); b.setAttribute("aria-selected", String(t === tab));
     });
   }
@@ -865,7 +883,7 @@ footer b{color:var(--ink)}
   const labelOf = (key) => (REC_BY_KEY.get(Number(key) >>> 0) || {}).label;
   const ITEMS_BY_MISSION = new Map(), ITEMS_BY_FAC = new Map();
   for (const [key, [mids, fac, lvl]] of Object.entries(LINKS)) {
-    const label = labelOf(key); if (!label) continue;
+    const label = labelOf(key); if (!label || label === "Unnamed entry") continue;
     for (const m of mids) { if (!ITEMS_BY_MISSION.has(m)) ITEMS_BY_MISSION.set(m, new Set()); ITEMS_BY_MISSION.get(m).add(label); }
     if (fac && lvl) { if (!ITEMS_BY_FAC.has(fac)) ITEMS_BY_FAC.set(fac, new Map()); const f = ITEMS_BY_FAC.get(fac); if (!f.has(lvl)) f.set(lvl, new Set()); f.get(lvl).add(label); }
   }
@@ -961,6 +979,13 @@ footer b{color:var(--ink)}
       m.tracked = TRACKED.has(`${m.cat}|${m.sub}`);
       const hs = state && state.apas ? m.keys.filter((k) => apasOf.has(k)).map((k) => apasOf.get(k)) : [];
       if (hs.length) { m.tracked = true; m.inSave = m.n; m.k = hs.some((h) => apasHave.has(h)) ? m.n : 0; }
+      else if (!m.tracked && state) {   // no unlock flag for this kind: use the order or facility level that gives it
+        const srcs = m.keys.map((k) => LINKS[k]).filter(Boolean);
+        if (srcs.length) {
+          const got = srcs.some(([mids, fac, lvl]) => mids.some((id) => (ORD_BY_ID.get(id) || {}).st === "done") || (fac && lvl && (levelOf(fac) ?? -1) >= lvl));
+          m.tracked = true; m.derived = true; m.inSave = m.n; m.k = got ? m.n : 0;
+        }
+      }
       m.st = !m.tracked ? "na" : m.inSave === 0 ? "none" : m.k === m.n ? "done" : m.k > 0 ? "part" : "lock";
     }
     return [...map.values()];
@@ -970,7 +995,7 @@ footer b{color:var(--ink)}
     if (m.st === "done") return pill("done", m.n > 1 ? `Unlocked ×${m.n}` : "Unlocked");
     if (m.st === "part") return pill("prog", `${m.k} of ${m.n} unlocked`);
     if (m.st === "none") return pill("none", "Not in save");
-    if (m.st === "na") return pill("none", "Status not available yet");
+    if (m.st === "na") return pill("none", "Status unknown");
     return pill("lock", m.n > 1 ? `Locked ×${m.n}` : "Locked");
   }
 
@@ -1018,7 +1043,7 @@ footer b{color:var(--ink)}
       if (!shown.length) continue;
       const subs = [...new Set(inCat.map((m) => m.sub))];
       const bars = { length: inCat.length, filter: (f) => inCat.map((m) => ({ st: m.k > 0 ? "done" : "lock" })).filter(f) };
-      html += `<details class="group" ${craftCat !== "all" || q || cats.length < 3 ? "open" : ""}><summary><h3>${esc(c)}</h3><span class="count">${tally(inCat) === "—" ? "status not available yet" : tally(inCat) + " unlocked"}</span>${bar(inCat.filter((m) => m.tracked).map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}</summary>`;
+      html += `<details class="group" ${craftCat !== "all" || q || cats.length < 3 ? "open" : ""}><summary><h3>${esc(c)}</h3><span class="count">${tally(inCat) === "—" ? "status not readable yet" : tally(inCat) + " unlocked"}</span>${bar(inCat.filter((m) => m.tracked).map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}</summary>`;
       if (ABOUT[c]) html += `<p class="about">${esc(ABOUT[c])}</p>`;
       for (const s of subs) {
         const rows = shown.filter((m) => m.sub === s).sort((x, y) => (y.k > 0) - (x.k > 0) || x.label.localeCompare(y.label));
@@ -1030,7 +1055,7 @@ footer b{color:var(--ink)}
     }
     if (craftCat === "all" || craftCat === "APAS enhancements") html += apasGroup(q);
     if (!/class="group"/.test(html)) html += `<p class="note">Nothing matches this filter.</p>`;
-    return html + `<p class="note">Materials are left out: you can withdraw them at any facility. Entries without a name in the game data (${REC.filter((r) => r.src === "x").length}) are hidden. “Status not available yet”: for these kinds (structures, holograms, music, colour schemes and more) the save keeps its unlock state somewhere that hasn't been decoded yet.</p>`;
+    return html + `<p class="note">Materials aren't listed here: you can withdraw them at any facility. “Status unknown” means Peko-Check can't read yet whether you have these (structures, holograms, music, colour schemes and some others); help finding them is welcome, see “How you can help” on GitHub.</p>`;
   }
 
   function routeLen(segs) {
@@ -1094,7 +1119,7 @@ footer b{color:var(--ink)}
     if (a.version && b.version && a.version !== b.version) html += `<p class="note">These saves come from different game versions (${esc(a.version)} and ${esc(b.version)}); some changes may come from the update itself.</p>`;
     const statOf = (lab, n, note) => `<div class="stat"><div class="label">${lab}</div><div class="num">${n}</div><div class="note">${note}</div></div>`;
     const done = d.orders.filter((c) => c.to === "done" && c.from !== "done").length, real = d.orders.filter((c) => c.id < TMP).length;
-    html += `<section class="stats">${statOf("Orders changed", real, `${done} completed`)}${statOf("New unlocks", d.unlocked.length, `${d.flagged.length} other flag changes`)}${statOf("New route segments", r.after - r.kept, r.cleared ? "history was cleared in between" : `${r.extended ? "1 extended · " : ""}${r.after} in total now`)}${statOf("Sections changed", d.secs ? d.secs.length : "—", d.secs ? "of the save's data sections" : "open both files to compare")}</section>`;
+    html += `<section class="stats">${statOf("Orders changed", real, `${done} completed`)}${statOf("New unlocks", d.unlocked.length, "weapons, gear, outfits and vehicle parts")}${statOf("New route segments", r.after - r.kept, r.cleared ? "history was cleared in between" : `${r.extended ? "1 extended · " : ""}${r.after} in total now`)}${statOf("Sections changed", d.secs ? d.secs.length : "—", d.secs ? "of the save's data sections" : "open both files to compare")}</section>`;
 
     // orders
     html += `<details class="group" open><summary><h3>Orders</h3><span class="count">${real} changed</span></summary>`;
@@ -1102,17 +1127,17 @@ footer b{color:var(--ink)}
     for (const [g, title] of CHANGE_GROUPS) {
       const list = d.orders.filter((c) => groupOf(c) === g); if (!list.length) continue;
       const rows = `<div class="rows">${list.map(changeRow).join("")}</div>`;
-      html += g === "tmp" ? `<details class="sub-more"><summary class="subhead">${title} <span>${list.length}</span></summary>${rows}</details>`
+      html += g === "tmp" || g === "*" ? `<details class="sub-more"><summary class="subhead">${title}, for researchers <span>${list.length}</span></summary>${rows}</details>`
         : `<h4 class="subhead">${title} <span>${list.length}</span></h4>${rows}`;
     }
     html += `</details>`;
 
     // unlocks
-    const recRows = (list, sign) => list.map((e) => `<div class="rec"><div><div class="nm">${sign} ${esc(e.r ? e.r.label : "Unknown entry")}</div><div class="de">${esc(e.r && e.r.cat ? e.r.cat + (e.r.sub ? " / " + e.r.sub : "") : "not shown in the Unlocks tab")} · key 0x${hex8(e.key)}</div></div><div class="rt"><span class="use">${fhex(e.from)} → ${fhex(e.to)}</span></div></div>`).join("");
+    const recRows = (list, sign) => list.map((e) => `<div class="rec"><div><div class="nm">${sign} ${esc(e.r ? e.r.label : "Unknown entry")}</div><div class="de">${esc(e.r && e.r.cat ? e.r.cat + (e.r.sub ? " / " + e.r.sub : "") : "not shown in the Unlocks tab")}</div></div><div class="rt"><span class="use" title="key 0x${hex8(e.key)}, flags ${fhex(e.from)} → ${fhex(e.to)}">${sign === "+" ? "new" : sign === "−" ? "removed" : "changed"}</span></div></div>`).join("");
     html += `<details class="group" ${d.unlocked.length ? "open" : ""}><summary><h3>Unlocks</h3><span class="count">${d.unlocked.length} new</span></summary>`;
     html += d.unlocked.length ? `<div class="rows">${recRows(d.unlocked, "+")}</div>` : `<div class="more">Nothing new unlocked in the tracked kinds (weapons, gear, outfits, vehicle parts).</div>`;
-    if (d.relocked.length) html += `<h4 class="subhead">Unlock bit cleared <span>${d.relocked.length}</span></h4><div class="rows">${recRows(d.relocked, "−")}</div>`;
-    if (d.flagged.length) html += `<h4 class="subhead">Other flag changes <span>${d.flagged.length}</span></h4><p class="about">Bits other than the unlock bit changed. Meaning not known yet; useful for the save tests.</p><div class="rows">${recRows(d.flagged, "~")}</div>`;
+    if (d.relocked.length) html += `<h4 class="subhead">No longer unlocked <span>${d.relocked.length}</span></h4><div class="rows">${recRows(d.relocked, "−")}</div>`;
+    if (d.flagged.length) html += `<details class="sub-more"><summary class="subhead">Other catalogue changes, for researchers <span>${d.flagged.length}</span></summary><p class="about">Something else changed for these entries; what it means isn't known yet.</p><div class="rows">${recRows(d.flagged, "~")}</div></details>`;
     html += `</details>`;
 
     // routes
@@ -1130,7 +1155,7 @@ footer b{color:var(--ink)}
       const rows = d.secs.map((s) => `<tr><td>${hex8(s.id)}</td><td class="known">${esc(SEC_NAME[s.id] || "")}</td><td class="n">${s.la.toLocaleString()} → ${s.lb.toLocaleString()}</td><td class="n">${s.n === null ? "added/removed" : s.n.toLocaleString()}</td><td>${s.n === null ? "" : "+0x" + s.first.toString(16)}</td></tr>`).join("");
       html += `<details class="group"><summary><h3>Changed sections (research)</h3><span class="count">${d.secs.length} of ${b.sec.size}</span></summary><p class="about">Every data section whose bytes differ. Named sections first, then the smallest changes: small changes after one action are the best leads.</p><div class="scroll"><table class="secs"><thead><tr><th>Section</th><th>Meaning</th><th>Size</th><th>Bytes differ</th><th>First</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
     }
-    html += `<details class="group"><summary><h3>Text report</h3><span class="count">plain text to copy</span></summary><div class="report"><textarea id="report" readonly>${esc(changeReport())}</textarea><button type="button" id="copyReport">Copy report</button></div></details>`;
+    html += `<details class="group"><summary><h3>Report to copy</h3><span class="count">for a test result or bug report</span></summary><div class="report"><textarea id="report" readonly>${esc(changeReport())}</textarea><button type="button" id="copyReport">Copy report</button></div></details>`;
     return html;
   }
 
@@ -1251,14 +1276,14 @@ footer b{color:var(--ink)}
       .sort((a, b) => a.name.localeCompare(b.name))
       .map((r) => `<div class="rec"><div class="rec-main"><div><div class="nm">${esc(r.name)}</div>${r.amt ? `<div class="de">${r.amt.toLocaleString()} in total</div>` : ""}</div></div><div class="rt"><span class="cnt">×${r.n}</span></div></div>`).join("");
     const box = (title, g, note, open) => `<details class="group"${open ? " open" : ""}><summary><h3>${esc(title)}</h3><span class="count">${total(g)} item${total(g) === 1 ? "" : "s"}${note ? " · " + esc(note) : ""}</span></summary><div class="rows">${rows(g)}</div></details>`;
-    let html = `<p class="about">What Sam carries and what is in your private lockers. Sam's gear, the backpack and the lockers at West Fort Knot (F1), The Musician and F2 South Distribution Center are confirmed in game. Which facility the other lockers belong to is worked out from order records, so those are marked “inferred” until checked in game.</p>`;
+    let html = `<p class="about">What Sam carries and what is in your private lockers. Sam's gear, the backpack and the lockers at West Fort Knot (F1), The Musician and F2 South Distribution Center are confirmed in game. Which facility the other lockers belong to is worked out from order records, so those are marked “facility not yet confirmed” until someone checks them in game.</p>`;
     if (groups.has("eq")) html += box("Sam: equipped", groups.get("eq"), "", true);
     if (groups.has("bp")) html += box("Sam: backpack", groups.get("bp"), "", true);
     const lk = [...groups].filter(([w]) => w.startsWith("L:")).sort((a, b) => total(b[1]) - total(a[1]));
     if (lk.length) html += `<h4 class="subhead">Private lockers <span>${lk.length}</span></h4>`;
     for (const [w, g] of lk) {
       const f = LOCKERS[w.slice(2)];
-      html += box(f ? f[1] : "Unidentified facility", g, f ? (CONFIRMED_LOCKERS.has(f[0]) ? "" : "inferred") : `locker ${w.slice(2)}`, false);
+      html += box(f ? f[1] : "Unknown location", g, f ? (CONFIRMED_LOCKERS.has(f[0]) ? "" : "facility not yet confirmed") : "a store Peko-Check can't place yet", false);
     }
     if (!groups.size) html += `<p class="note">No cargo found in this save.</p>`;
     return html;
@@ -1315,7 +1340,7 @@ footer b{color:var(--ink)}
     const { meta, thumb, payload } = decodeContainer(buf);
     const p = parsePayload(payload);
     const mis = p.sec.get(0x4afa625b), rec = p.sec.get(0x3ef4dc4d);
-    if (!mis) throw new Error("No mission table in this save.");
+    if (!mis) throw new Error("This save has no order list, so it can't be shown. Try another save file.");
     const url = thumb && typeof Blob !== "undefined" && URL.createObjectURL ? URL.createObjectURL(new Blob([thumb], { type: "image/png" })) : null;
     return { name: fileName.split("_").pop(), version: p.version, playtime: p.playtime, meta: metaLines(meta || new Uint8Array()),
       missions: parseMissions(mis), recipes: rec ? parseRecipes(rec) : [], routes: p.sec.get(0x48ea52a4) ? parseRoutes(p.sec.get(0x48ea52a4)) : [], verified: verifySave(payload), levels: parseLevels(p.sec.get(0x73dacf23)), likes: parseLikes(p.sec.get(0x202659d5)), apas: parseApas(p.sec.get(0x69049449)), clock: parseClock(p.sec.get(0x3926c2c4)), cargo: parseCargo(p.sec.get(0x0aa0d44e)),
@@ -1323,7 +1348,11 @@ footer b{color:var(--ink)}
   }
   async function readSave(file) {
     try { return decodeSave(await file.arrayBuffer(), file.name); }
-    catch (e) { throw new Error(`${file.name.split("_").pop()}: ${e.message}`); }
+    catch (e) {
+      const msg = e instanceof RangeError || /DataView|bounds|undefined/.test(e.message)
+        ? "It isn't a readable Death Stranding 2 save. Pick a manualsave, autosave or checkpointsave file from the game's save folder." : e.message;
+      throw new Error(`${file.name.split("_").pop()}: ${msg}`);
+    }
   }
   // one file opens it; two files (or "Compare with…") compare them, earlier play time = before
   async function openFiles(files, withCurrent) {
@@ -1331,6 +1360,9 @@ footer b{color:var(--ink)}
     try {
       files = [...files].slice(0, 2);
       if (!files.length) return;
+      $("save").classList.add("welcome");
+      $("save").innerHTML = `<div class="meta"><div class="label">Reading save…</div><div class="current">One moment: the save is being read in your browser.</div></div>`;
+      await new Promise((r) => setTimeout(r, 30));   // let the message paint before decoding blocks the page
       const saves = [];
       for (const f of files) saves.push(await readSave(f));
       if (withCurrent && state) saves.push(state);
@@ -1338,7 +1370,8 @@ footer b{color:var(--ink)}
       saves.sort((x, y) => x.playtime - y.playtime);
       load(saves[1], saves[0]);
     } catch (e) {
-      $("err").textContent = "Could not read this file: " + e.message; $("err").hidden = false;
+      $("err").textContent = "Could not read this file. " + e.message; $("err").hidden = false;
+      if (state) render(); else renderEmpty();
     }
   }
   $("file").addEventListener("change", (e) => { openFiles(e.target.files, false); e.target.value = ""; });
@@ -1355,9 +1388,19 @@ footer b{color:var(--ink)}
   if (typeof globalThis.__plTest === "function") globalThis.__plTest({ decodeSave, decodeContainer, verifySave, diffSaves, load, changeReport: () => changeReport(), renderChanges: () => renderChanges() });
   // the public build ships without an example save: start on an empty "open your save" card
   function renderEmpty() {
-    $("save").innerHTML = `<div></div><div class="meta"><div class="label">No save loaded</div>
-      <div class="current">Open one of your Death Stranding 2 PC saves to see your orders, unlocks and routes.</div>
-      <div class="goal">Saves are in <code>Documents&#92;DEATH STRANDING 2 - ON THE BEACH&#92;&lt;your Steam ID&gt;&#92;</code>: pick an <code>autosave</code>, <code>checkpointsave</code> or <code>manualsave</code> file. It is decoded in this browser and never uploaded.</div></div>`;
+    $("save").classList.add("welcome");
+    $("save").innerHTML = `<div class="meta"><div class="label">Get started</div>
+      <div class="current">Open one of your Death Stranding 2 saves (PC, Steam) to see your progress.</div>
+      <ol class="steps">
+        <li>Click <b>Open save</b> above, or drop a save file onto this page.</li>
+        <li>Go to <code>Documents&#92;DEATH STRANDING 2 - ON THE BEACH&#92;</code> and open the folder with the long number (your Steam ID). If Windows syncs your Documents folder to the cloud, it is in that synced Documents folder.</li>
+        <li>Pick any <code>manualsave</code>, <code>autosave</code> or <code>checkpointsave</code> file. Your newest one shows your current progress.</li>
+      </ol>
+      <div class="goal">You'll see your main orders as a story timeline, standard orders per facility with stars and stock, every unlock and what unlocks it, what's in your private lockers, your APAS and your recent routes.</div>
+      <div class="goal"><b>Your save stays on your computer:</b> it is read in this browser, never uploaded, and never changed.</div>
+      ${DATA.example ? `<div class="ex-row"><button type="button" class="ex-btn" id="example">View an example save</button><span class="goal">Look around first with a real save from about 30 hours into the game.</span></div>` : ""}</div>`;
+    const ex = $("example");
+    if (ex) ex.addEventListener("click", () => load(Object.assign({}, DATA.example, { sample: true })));
     ["stats", "tabs", "filters", "view"].forEach((id) => ($(id).hidden = true));
   }
   if (DATA.sample) load(Object.assign({}, DATA.sample, { sample: true })); else renderEmpty();

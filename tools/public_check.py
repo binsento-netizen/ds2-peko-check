@@ -21,7 +21,7 @@ BLOCKED_PATHS = [
     (r"(^|/)(saves|ext|evidence|out|decoded)/", "save corpus / reference checkouts / research output"),
     # images are blocked except our own artwork: the logo renders and screenshots of the viewer's own UI
     # (taken without the save thumbnail, map or item pictures; decided 2026-10-01)
-    (r"^(?!assets/(logo-\d+\.png|screenshots/[\w-]+\.png)$).*\.(dat|sav|bin|pkl|npy|zip|7z|rar|png|jpe?g|webp|gif|dds|tex|core|stream)$", "save, binary or image file (game assets need explicit review)"),
+    (r"^(?!assets/(logo-\d+\.png|screenshots/[\w-]+\.png|social-card\.png|apple-touch-icon\.png)$).*\.(dat|sav|bin|pkl|npy|zip|7z|rar|png|jpe?g|webp|gif|dds|tex|core|stream)$", "save, binary or image file (game assets need explicit review)"),
     (r"(^|/)catalog/game_text/", "full game text dump (downloaded by setup.sh, not redistributed)"),
     (r"localization[^/]*\.json$", "game text dump"),
     (r"steam_guide\.txt$", "copied Steam guide text"),

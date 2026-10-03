@@ -5,7 +5,7 @@ const html = fs.readFileSync(process.argv[2], "utf8");
 const data = html.match(/<script type="application\/json" id="data">([\s\S]*?)<\/script>/)[1];
 const code = html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
 const els = {};
-const mk = (id) => els[id] || (els[id] = { id, innerHTML: "", textContent: id === "data" ? data : "", value: "", hidden: false, dataset: {}, setAttribute() {}, addEventListener() {}, classList: { add() {}, remove() {} }, scrollIntoView() {} });
+const mk = (id) => els[id] || (els[id] = { id, innerHTML: "", textContent: id === "data" ? data : "", value: "", hidden: false, dataset: {}, setAttribute() {}, addEventListener() {}, classList: { add() {}, remove() {}, toggle() {} }, scrollIntoView() {} });
 global.document = { getElementById: mk, addEventListener() {} };
 let T; global.__plTest = (t) => (T = t); eval(code);
 const buf = fs.readFileSync(process.argv[3]);

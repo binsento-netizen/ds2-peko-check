@@ -31,7 +31,8 @@ changes your save.
 ## Quick start
 
 1. Open **[binsento-netizen.github.io/ds2-peko-check](https://binsento-netizen.github.io/ds2-peko-check/)**.
-   No install needed. (You can also download this repository and open `viewer/index.html`; it works offline.)
+   No install needed. Want to look around first? Click **View an example save**. (You can also download this
+   repository and open `viewer/index.html`; it works offline.)
 2. Click **Open save** and pick a save file. They are in
    ```
    Documents\DEATH STRANDING 2 - ON THE BEACH\<a long number>\

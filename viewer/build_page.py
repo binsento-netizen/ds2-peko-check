@@ -8,7 +8,7 @@ dst = Path(sys.argv[2]) if len(sys.argv) > 2 else here / "index.html"
 data = src.read_text(encoding="utf-8").replace("</", "<\\/")  # keep "</script>" out of the inline JSON
 assets = here.parent / "assets"
 logo = (assets / "logo.svg").read_text(encoding="utf-8").strip()             # animated header logo (design/build_logo.js)
-favicon = "data:image/svg+xml," + quote((assets / "logo-static.svg").read_text(encoding="utf-8").strip(), safe=" =:/")   # quotes, <, > and # stay escaped inside the href
+favicon = "data:image/svg+xml," + quote((assets / "logo-kit/logo-minimal-color.svg").read_text(encoding="utf-8").strip(), safe=" =:/")   # tab icon: the minimal mark (made for 16-32 px); quotes, <, > and # stay escaped
 html = (here / "template.html").read_text(encoding="utf-8").replace("__LOGO__", logo).replace("__FAVICON__", favicon).replace("__DATA__", data)
 if '"sample":null' in data:   # public build (opened as a local file): standards mode. The private build is published
     html = "<!doctype html>\n" + html   # as an artifact, whose host adds the doctype and page skeleton itself.

@@ -6,7 +6,7 @@ const data = html.match(/<script type="application\/json" id="data">([\s\S]*?)<\
 const code = html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
 const els = {};
 const mk = (id) => els[id] || (els[id] = { id, innerHTML: "", textContent: id === "data" ? data : "", value: "", hidden: false, dataset: {},
-  setAttribute() {}, addEventListener() {}, classList: { add() {}, remove() {} }, scrollIntoView() {} });
+  setAttribute() {}, addEventListener() {}, classList: { add() {}, remove() {}, toggle() {} }, scrollIntoView() {} });
 global.document = { getElementById: mk, addEventListener() {} };
 let T; global.__plTest = (t) => (T = t);
 eval(code);
