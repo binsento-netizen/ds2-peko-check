@@ -25,6 +25,14 @@ images, models or other assets are included.
 | [mi5hmash/DeathStrandingSaveDataResigner](https://github.com/mi5hmash/DeathStrandingSaveDataResigner) | MIT | The container's XOR key derivation (MurmurHash3 of the seed in the file header), shared with Death Stranding 1. |
 | [ShadelessFox/odradek](https://github.com/ShadelessFox/odradek) | GPL-3.0 | DS2 type dump and asset reader, used to research the save format and to read the game data above. |
 
+## Item icons
+
+The item icons in the viewer are from [game-icons.net](https://game-icons.net) by Delapouite, Lorc, Skoll, Sbed,
+Lucas, HeavenlyDog and Lord Berandas, licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+They were recoloured and simplified (background removed, paths rounded). The full list, per icon with its author, is in
+[assets/icons-generic/CREDITS.md](assets/icons-generic/CREDITS.md). They are generic icons for each kind of item, not
+the game's own pictures.
+
 ## Guide links
 
 | Source | What we use |

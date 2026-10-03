@@ -86,10 +86,14 @@ code{font-family:var(--mono);font-size:.95em}
 .brand-logo{flex:none;width:64px;height:64px}
 .brand-logo svg{display:block;width:100%;height:100%}
 .brand-name{min-width:0;font:400 clamp(19px,5.2vw,30px)/1.1 var(--head);letter-spacing:.04em;text-transform:uppercase}
+.brand-name{white-space:nowrap} .brand-name small{white-space:normal}
+@media (max-width:1240px){.top{grid-template-columns:minmax(0,1fr)} .opens{justify-content:start}}   /* buttons go under the title instead of squeezing it */
 h1 .lv{font-size:.5em;letter-spacing:.08em;color:var(--orange-ink);vertical-align:.4em;margin-left:4px}
 h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-spacing:0;color:var(--muted);margin-top:8px;max-width:46ch}
 
-.opens{display:flex;flex-wrap:wrap;gap:8px;justify-content:end}
+.opens{display:flex;flex-wrap:wrap;gap:8px;justify-content:end;align-items:stretch}
+.ex-top{font:600 15px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:var(--teal-banner);color:#fff;border:0;padding:0 24px 0 16px;min-height:44px;cursor:pointer;clip-path:var(--slant)}
+.ex-top:hover{filter:brightness(1.15)} .ex-top:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 .drop{border:1.5px dashed var(--line-strong);background:var(--surface);padding:12px 14px;display:flex;gap:12px;align-items:center;cursor:pointer;min-width:0;position:relative}
 .drop.over{border-color:var(--orange);background:var(--orange-soft)}
 .drop:has(input:focus-visible){outline:2px solid var(--focus);outline-offset:2px}
@@ -256,6 +260,7 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .rec .by{font-size:13px;color:var(--muted);margin-top:2px}
 .rec-main{display:flex;gap:12px;align-items:center;min-width:0}
 .rec-main>div{min-width:0}
+.rec-gen{display:flex;align-items:center;justify-content:center;color:var(--map-ink)} .rec-gen svg{width:38px;height:38px}
 .rec-img{width:96px;height:60px;object-fit:cover;flex:none;padding:3px;border:1px solid var(--line-strong);background:linear-gradient(160deg,var(--map-solid),var(--map-bg));   /* dark in both themes: some game pictures are white glyphs */
   clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
 .rows:has(.rec-img) .rec-main:not(:has(.rec-img))::before{content:"";flex:none;width:96px;height:60px;border:1px solid var(--line);background:repeating-linear-gradient(135deg,var(--line) 0 1px,transparent 1px 7px);
@@ -415,6 +420,7 @@ footer b{color:var(--ink)}
         <input type="file" id="file2" accept=".dat">
         <span class="btn">Compare with…</span>
       </label>
+      <button type="button" class="ex-top" id="exampleTop" hidden>View an example save</button>
     </div>
   </div>
   <div class="err" id="err" hidden></div>
@@ -441,7 +447,7 @@ footer b{color:var(--ink)}
 
   <footer>
     <div><b>How to read the orders.</b> <i>Done</i>: delivered. <i>In progress</i>: accepted, not delivered yet. <i>Available</i>: you can take it at a terminal. <i>Locked</i>: not offered yet. <b>Compare with…</b> shows what changed between two saves, with a report you can copy, for example to send a test result (see “How you can help” on GitHub).</div>
-    <div>Order and item names are the game's own English text, read from the game files with ShadelessFox's Odradek. Guide links go to Game8 or the Death Stranding Wiki. Source code, how to help and the roadmap: <a href="https://github.com/binsento-netizen/ds2-peko-check" target="_blank" rel="noopener">github.com/binsento-netizen/ds2-peko-check</a>. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
+    <div>Order and item names are the game's own English text, read from the game files with ShadelessFox's Odradek. Item icons from game-icons.net (CC BY 3.0). Guide links go to Game8 or the Death Stranding Wiki. Source code, how to help and the roadmap: <a href="https://github.com/binsento-netizen/ds2-peko-check" target="_blank" rel="noopener">github.com/binsento-netizen/ds2-peko-check</a>. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
   </footer>
 </div>
 
@@ -999,7 +1005,14 @@ footer b{color:var(--ink)}
     return pill("lock", m.n > 1 ? `Locked ×${m.n}` : "Locked");
   }
 
-  const recImg = (m) => { const k = m.keys.find((x) => ICONS[x]); return k ? `<img class="rec-img" src="${ICONS[k]}" alt="" loading="lazy">` : ""; };
+  // the game's own picture where the build has it (private build), otherwise a generic icon for the item's kind (game-icons.net, CC BY 3.0)
+  const GEN = DATA.generic || { icons: {}, map: {} };
+  const recImg = (m) => {
+    const k = m.keys.find((x) => ICONS[x]);
+    if (k) return `<img class="rec-img" src="${ICONS[k]}" alt="" loading="lazy">`;
+    const g = m.keys.map((x) => GEN.map[(x >>> 0).toString(16).padStart(8, "0")]).find(Boolean);
+    return g && GEN.icons[g] ? `<span class="rec-img rec-gen" aria-hidden="true">${GEN.icons[g]}</span>` : "";
+  };
   function unlockedBy(m) {
     const parts = new Set();
     for (const k of m.keys) {
@@ -1398,10 +1411,12 @@ footer b{color:var(--ink)}
       </ol>
       <div class="goal">You'll see your main orders as a story timeline, standard orders per facility with stars and stock, every unlock and what unlocks it, what's in your private lockers, your APAS and your recent routes.</div>
       <div class="goal"><b>Your save stays on your computer:</b> it is read in this browser, never uploaded, and never changed.</div>
-      ${DATA.example ? `<div class="ex-row"><button type="button" class="ex-btn" id="example">View an example save</button><span class="goal">Look around first with a real save from about 30 hours into the game.</span></div>` : ""}</div>`;
-    const ex = $("example");
-    if (ex) ex.addEventListener("click", () => load(Object.assign({}, DATA.example, { sample: true })));
+      ${DATA.example ? `<div class="goal"><b>Just looking?</b> Click <b>View an example save</b> at the top to look around with a real save from about 30 hours into the game.</div>` : ""}</div>`;
     ["stats", "tabs", "filters", "view"].forEach((id) => ($(id).hidden = true));
+  }
+  if (DATA.example) {
+    $("exampleTop").hidden = false;
+    $("exampleTop").addEventListener("click", () => load(Object.assign({}, DATA.example, { sample: true })));
   }
   if (DATA.sample) load(Object.assign({}, DATA.sample, { sample: true })); else renderEmpty();
 })();
