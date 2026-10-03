@@ -949,7 +949,7 @@ footer b{color:var(--ink)}
       main: [`${count(main, "done")} / ${main.length}`, pct(count(main, "done"), main.length), `${count(main, "prog")} in progress`],
       sub: [`${count(sub, "done")} / ${sub.length}`, pct(count(sub, "done"), sub.length), `${count(sub, "avail")} available now`],
       craft: [`${unl} / ${tracked.length}`, pct(unl, tracked.length), "unlocked"],
-      cargo: [`${(state.cargo || []).length} items`, null, "what you carry and your private lockers"],
+      cargo: [`${(state.cargo || []).length} items`, null, "carried + lockers"],
       routes: r && hwN ? [`${r.hw.length} / ${hwN} roads`, pct(r.hw.length, hwN), "highway built"] : ["", null, "facilities and routes"],
       changes: ["", null, "between two saves"],
     };
@@ -959,7 +959,7 @@ footer b{color:var(--ink)}
       const b = $("tab-" + t); if (!b.dataset.l) b.dataset.l = b.textContent.trim();
       const [n, p, note] = info[t];
       b.innerHTML = `<span class="tl">${esc(b.dataset.l)}</span>${n ? `<span class="tn">${esc(n)}</span>` : ""}`
-        + (p !== null ? `<span class="tb"><i style="width:${p}%"></i></span>` : "") + `<span class="tx">${esc(note)}</span>`;
+        + (p !== null ? `<span class="tb"><i style="width:${p}%"></i></span>` : `<span class="tb" style="visibility:hidden"></span>`) + `<span class="tx">${esc(note)}</span>`;
       b.setAttribute("aria-selected", String(t === tab));
     });
   }

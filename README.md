@@ -60,7 +60,8 @@ Steam Deck are untested, so reports are welcome. Console saves are not supported
 - **Cargo & lockers**: what Sam has equipped and in the backpack, and what is in your **private locker at each facility**,
   including how much of each material.
 - **APAS** (in the Unlocks tab): every enhancement, marked developed, available to develop, or not available yet.
-- **Map**: every facility with its order progress, and your routes, on our own blocky map (see [The map](#the-map)).
+- **Map**: every facility with its order progress, the **highway and monorail with the sections you've built**, and
+  your routes, on our own blocky map (see [The map](#the-map)).
 - **Likes** from NPCs, from other porters and given, and the **in-game day and time** of the save.
 - **Save check**: each save is checked against its own built-in checksum, so a damaged file is spotted.
 - **Compare two saves** (opens a **Changes** tab): which orders changed, what got unlocked and where you travelled in between, with a report
@@ -70,17 +71,21 @@ Steam Deck are untested, so reports are welcome. Console saves are not supported
   **light and dark look**.
 
 <p align="center">
-  <img src="assets/screenshots/weapons.png" width="49%" alt="Weapon unlocks with generic icons, level and weapon-type badges, unlocked and locked state, and the order or facility level that unlocks each">
+  <img src="assets/screenshots/weapons.png" width="49%" alt="Weapon unlocks with item icons, unlocked items readable and locked ones blurred behind Show spoiler buttons">
   <img src="assets/screenshots/standard-orders.png" width="49%" alt="Standard orders for Ciudad Nudo del Norte: connection level, material stock, level rewards and each order's state">
 </p>
 
 ### The map
 
-The **Map** tab shows your progress on a blocky map of Australia or Mexico: every facility, ringed by how many of its
-standard orders you've done, and the routes you travelled since your last main order (on foot or by vehicle). Click
-a facility to jump to its orders.
+The **Map** tab shows your progress on a blocky map of Australia or Mexico:
+- every facility, ringed by how many of its standard orders you've done (click one to jump to its orders);
+- the **highway**: sections you've built are solid, the rest dashed, with a count (for example 19 / 57);
+- the **monorail** lines and stations, with a filled marker for each track section you've rebuilt;
+- the routes you travelled since your last main order, on foot or by vehicle.
 
-<p align="center"><img src="assets/screenshots/map.png" width="820" alt="Blocky map of Australia with surface types, facilities ringed by order progress and routes by vehicle"></p>
+Each layer can be switched on and off.
+
+<p align="center"><img src="assets/screenshots/map.png" width="820" alt="Blocky map of Australia with surface types, facilities ringed by order progress, the highway (built sections solid), the monorail and routes by vehicle"></p>
 
 The map and the item icons are our own drawings: the terrain is simplified from the game's map into blocks and
 surface types in our own colours, and every item gets a generic icon for its kind. The game's own map image and item
@@ -96,11 +101,12 @@ pictures are copyrighted, so they aren't included.
 | Cargo: equipped, backpack, private lockers, material amounts | ✅ Which facility a locker belongs to is confirmed in game for 3 facilities so far |
 | APAS enhancements | ✅ |
 | Route history | ✅ |
+| Highway and monorail: which sections you've built | ✅ Matches the game's own statistics |
 | Likes, chiral bandwidth, in-game day and time | ✅ |
 | Signs placed in the world | 🟡 Where and which type; not yet whose |
 | Progress toward the next star | ❌ Not found yet |
 | Music, holograms, structures and colour schemes | 🟡 Worked out from the orders and connection levels that give them where possible; not read from the save directly |
-| Built structures, route planner, auto-paver progress | ❌ Not found yet |
+| Built structures, route planner, donations to unfinished pavers | ❌ Not found yet |
 
 How the file works, for the curious: [docs/FORMAT.md](docs/FORMAT.md).
 

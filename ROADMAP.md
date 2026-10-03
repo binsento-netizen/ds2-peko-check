@@ -43,6 +43,10 @@ one game action at a time.
 - Generic item icons with level and weapon-type badges, instead of the game's own pictures.
 - A blocky map of our own (voxel terrain simplified from the game's map) with facilities and your routes.
 - The in-game day and time on the save card.
+- The highway and monorail on the map, showing which sections you've built (read from the save; it matches the
+  game's statistics screen).
+- Spoiler protection: orders, items and rewards you haven't reached are blurred until you choose to see them.
+- Tabs that show your totals at a glance, and a new set of item icons drawn in the style of the game's menus.
 
 ## What is still to do
 
@@ -56,8 +60,8 @@ one game action at a time.
       facilities that weren't visited in the test saves.
 - [ ] **Built structures** and the **route planner:** leads only.
 - [ ] **Collectibles** (memory chips and the like).
-- [ ] **Auto-pavers:** donations show up as facility stock going down; the paver's own progress seems to be kept on
-      the server.
+- [ ] **Auto-pavers:** finished sections are read from the save; donations to an unfinished paver only show up as
+      facility stock going down, and the paver's own progress seems to be kept on the server.
 - [ ] **More players and patches:** everything so far comes from one player's saves, mostly on 1.10.89.0 (older
       1.0.45 and 1.1.53 saves also open).
 

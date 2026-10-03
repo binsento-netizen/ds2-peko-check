@@ -89,6 +89,8 @@ bit cleared.
 | `69049449` | Chiral bandwidth: `vint` at `+4` = the sum over facilities of [0, 20, 35, 50, 65, 95][level]. Then the APAS list: per enhancement the player has access to, `u32` hash of its id, `u8` developed (1) / available (0), more bytes not decoded; then a `u8` count and the hashes of the developed ones. |
 | `0aa0d44e` | Cargo: a pool of 464-byte item slots (from `+253`): `+7` container kind, `+48` 12-byte container id (`w0 w1 w2`), `+60` baggage name code, `+172` `f32` remaining amount of a material stack. Kind `0x00` = equipped, `0x34` = backpack, `0x1f` with `w2 = 36a83550` = a private locker, whose `w0` identifies the facility. |
 | `3926c2c4` | In-game clock: `f32` hour of the day at `+4` (6.0 = 06:00), `u32` day number at `+8`. |
+| `7fe13267` | Highway: near the end, a table of 58 records of 28 bytes sorted by road id (the game's `RoadInfo.Id`): `+0` `i32` id, `+4` `f32` condition %, `+8` `f32` 1.0 = built, `+16` `u8` flags. Road geometry comes from the game's `DSResidentAreaRoadInfoResource` (`catalog/roads_game.json`). |
+| `1953aea5` | World entity states: each auto-paver and monorail rebuilder's locator GUID (Microsoft byte order) followed by an `f32` durability (0 = not built; exactly 360000 in early saves, meaning unknown). Used for which monorail sections are rebuilt. |
 | `129ec9ee` | Signs (lead): a count near the start, then records of about 72-78 bytes with the sign type's hash and its `f64 x, y, z` (world metres) 36, 28 and 20 bytes before the hash. Whose sign it is is not known yet. |
 
 ## 4. Leads (not confirmed)
