@@ -151,6 +151,18 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .tab:hover{color:var(--ink)}
 .tab[aria-selected="true"]{background:var(--orange);color:var(--on-banner)}
 .tab .n{font:400 12px var(--mono);opacity:.8;margin-left:4px}
+.stats:empty{display:none}
+.row.spoil{cursor:pointer} .row.spoil .name,.row.spoil .desc,.row.spoil .sub,.row.spoil .rewards{filter:blur(6px);user-select:none;pointer-events:none}
+.row.spoil:hover .name{filter:blur(4px)} .spoil-mo>.mm,.spoil-mo>.nomap{filter:blur(6px)} .blur{filter:blur(4px);user-select:none}
+.spoil-toggle{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 10px;font:600 14px var(--body);cursor:pointer} .spoil-toggle input{accent-color:var(--orange);width:16px;height:16px} .spoil-toggle span{font-weight:400;color:var(--muted);font-size:13px}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--ground);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:6px;padding:8px 0 10px;overflow:visible}
+.tabs .tab{display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:10px 14px 10px 12px;text-align:left;white-space:normal;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%);border-left:4px solid var(--tan)}
+.tabs .tab[hidden]{display:none}
+.tab .tl{font-size:14px;letter-spacing:.08em} .tab .tn{font:400 20px/1 var(--mono);letter-spacing:0;color:var(--ink);text-transform:none}
+.tab .tx{font:400 12px/1.3 var(--body);letter-spacing:0;text-transform:none;color:var(--muted)}
+.tab .tb{display:block;align-self:stretch;height:4px;background:var(--line)} .tab .tb i{display:block;height:100%;background:var(--green,#3fb27f)}
+.tab[aria-selected="true"]{border-left-color:var(--ink)} .tab[aria-selected="true"] .tn,.tab[aria-selected="true"] .tx{color:var(--on-banner)} .tab[aria-selected="true"] .tb{background:rgba(0,0,0,.25)} .tab[aria-selected="true"] .tb i{background:var(--on-banner)}
+@media (max-width:700px){.tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:4px} .tabs .tab{padding:8px 8px 8px 9px} .tab .tl{font-size:12px} .tab .tn{font-size:15px} .tab .tx{display:none}}
 
 /* ---------- filters ---------- */
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -268,7 +280,10 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .rec .by{font-size:13px;color:var(--muted);margin-top:2px}
 .rec-main{display:flex;gap:12px;align-items:center;min-width:0}
 .rec-main>div{min-width:0}
-.rec-gen{position:relative;display:flex;align-items:center;justify-content:center;color:var(--map-ink)} .rec-gen svg{width:38px;height:38px}
+.rec-gen{position:relative;display:flex;align-items:center;justify-content:center;color:#e8eef2;--tint:#8a96a0;border-color:var(--tint)!important;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px))}
+.rec-gen::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--tint),transparent 60%);opacity:.14;pointer-events:none}
+.rec-gen svg{width:48px;height:48px;stroke-width:1.7;overflow:visible} .rec-gen svg *{vector-effect:non-scaling-stroke}
+.rec-gen[data-tint=orange]{--tint:#f08a4b} .rec-gen[data-tint=cyan]{--tint:#5cc8ff} .rec-gen[data-tint=teal]{--tint:#3fbfae} .rec-gen[data-tint=violet]{--tint:#b48cff} .rec-gen[data-tint=gold]{--tint:#e0b44c} .rec-gen[data-tint=rose]{--tint:#ff7aa2} .rec-gen[data-tint=green]{--tint:#6fd08c}
 .bdg{position:absolute;font:600 10px/1 var(--mono);padding:2px 4px;letter-spacing:.02em} .bdg-lv{right:2px;bottom:2px;background:var(--orange);color:#fff} .bdg-tag{left:2px;top:2px;background:#5cc8ff;color:#06121b}
 .rec-img{width:96px;height:60px;object-fit:cover;flex:none;padding:3px;border:1px solid var(--line-strong);background:linear-gradient(160deg,var(--map-solid),var(--map-bg));   /* dark in both themes: some game pictures are white glyphs */
   clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
@@ -332,6 +347,21 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 
 .note{font-size:13px;color:var(--muted);max-width:75ch}
 .note b{color:var(--ink);font-weight:600}
+
+/* tab attached to the content panel; variant chosen on <html data-tabstyle>: folder (default) | rail | pointer */
+.panel{position:relative;margin-top:-20px}   /* cancels the .wrap gap so the selected tab touches the panel */
+:root:not([data-tabstyle]) .tabs,[data-tabstyle=folder] .tabs{padding-bottom:0;border-bottom:0;align-items:end}
+:root:not([data-tabstyle]) .panel,[data-tabstyle=folder] .panel{border:2px solid var(--orange);padding:14px 14px 18px;background:var(--surface)}
+:root:not([data-tabstyle]) .tabs .tab[aria-selected="true"],[data-tabstyle=folder] .tabs .tab[aria-selected="true"]{clip-path:none;padding-bottom:16px;margin-bottom:-2px;position:relative;z-index:2;border-left-color:var(--orange)}
+[data-tabstyle=rail] .tabs{padding-bottom:0;border-bottom:0;align-items:end}
+[data-tabstyle=rail] .panel{border-top:8px solid var(--orange);padding-top:14px}
+[data-tabstyle=rail] .tabs .tab[aria-selected="true"]{clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%);padding-bottom:18px;margin-bottom:0}
+[data-tabstyle=pointer] .tabs{padding-bottom:14px;border-bottom:0}
+[data-tabstyle=pointer] .panel{border:1px solid var(--orange);border-top-width:3px;padding:14px;background:color-mix(in srgb,var(--orange) 4%,var(--surface))}
+[data-tabstyle=pointer] .tabs .tab[aria-selected="true"]{clip-path:none;overflow:visible}
+[data-tabstyle=pointer] .tabs .tab[aria-selected="true"]::after{content:"";position:absolute;left:50%;bottom:-13px;transform:translateX(-50%);border:12px solid transparent;border-top-color:var(--orange);border-bottom:0}
+.tabs .tab{position:relative}
+.panel[hidden]{display:none}
 footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line-strong);padding-top:14px;display:flex;flex-direction:column;gap:6px;max-width:80ch}
 footer b{color:var(--ink)}
 
@@ -449,16 +479,18 @@ footer b{color:var(--ink)}
     <button class="tab" role="tab" id="tab-routes" data-tab="routes" aria-selected="false">Map</button>
   </nav>
 
+  <div class="panel" id="panel">
   <div class="filters" id="filters">
     <input type="search" id="q" placeholder="Search name, facility or number" aria-label="Search">
     <div class="seg" id="statusSeg" role="group" aria-label="Status filter"></div>
   </div>
 
   <div id="view"></div>
+  </div>
 
   <footer>
     <div><b>How to read the orders.</b> <i>Done</i>: delivered. <i>In progress</i>: accepted, not delivered yet. <i>Available</i>: you can take it at a terminal. <i>Locked</i>: not offered yet. <b>Compare with…</b> shows what changed between two saves, with a report you can copy, for example to send a test result (see <a href="https://github.com/binsento-netizen/ds2-peko-check#how-you-can-help" target="_blank" rel="noopener">How you can help</a>).</div>
-    <div>Order and item names are the game's own English text, read from the game files with ShadelessFox's Odradek. Item icons from <a href="https://game-icons.net" target="_blank" rel="noopener">game-icons.net</a> (CC BY 3.0; authors in the <a href="https://github.com/binsento-netizen/ds2-peko-check/blob/main/THIRD_PARTY_NOTICES.md" target="_blank" rel="noopener">third-party notices</a>). Guide links go to Game8 or the Death Stranding Wiki. Source code, how to help and the roadmap: <a href="https://github.com/binsento-netizen/ds2-peko-check" target="_blank" rel="noopener">github.com/binsento-netizen/ds2-peko-check</a>. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
+    <div>Order and item names are the game's own English text, read from the game files with ShadelessFox's Odradek. Item icons: <a href="https://tabler.io/icons" target="_blank" rel="noopener">Tabler Icons</a> (MIT) and our own drawings (see the <a href="https://github.com/binsento-netizen/ds2-peko-check/blob/main/THIRD_PARTY_NOTICES.md" target="_blank" rel="noopener">third-party notices</a>). Guide links go to Game8 or the Death Stranding Wiki. Source code, how to help and the roadmap: <a href="https://github.com/binsento-netizen/ds2-peko-check" target="_blank" rel="noopener">github.com/binsento-netizen/ds2-peko-check</a>. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
   </footer>
 </div>
 
@@ -908,23 +940,34 @@ footer b{color:var(--ink)}
         <div class="label">${esc(kind.replace(/^DEATH STRANDING 2 - ON THE BEACH - /, "") || "Save")} ${s.sample ? '<span class="chip">Example save</span>' : ""} ${s.verified === true ? '<span class="chip ok" title="The save matches its own MD5 integrity check">Save verified</span>' : s.verified === false ? '<span class="chip bad" title="The data does not match the save’s own integrity check">Checksum mismatch: the file may be damaged</span>' : ""} ${prev ? `<span class="chip">Compared with ${esc(prev.name)}</span>` : ""}</div>
         <div class="current">${esc(current)}</div>
         ${goal ? `<div class="goal">Objective: ${esc(goal)}</div>` : ""}
-        <div class="kv"><span>File <b>${esc(s.name)}</b></span><span>Play time <b>${hms(s.playtime)}</b></span>${s.clock ? `<span>In game <b>${clockText(s.clock)}</b></span>` : ""}<span>Game <b>${esc(s.version || "unknown")}</b></span></div>
+        <div class="kv"><span>File <b>${esc(s.name)}</b></span><span>Play time <b>${hms(s.playtime)}</b></span>${s.likes ? `<span title="${s.likes[0].toLocaleString()} from NPCs · ${s.likes[1].toLocaleString()} from other porters · ${s.likes[2].toLocaleString()} given">Likes <b>${(s.likes[0] + s.likes[1]).toLocaleString()}</b></span>` : ""}${s.clock ? `<span>In game <b>${clockText(s.clock)}</b></span>` : ""}<span>Game <b>${esc(s.version || "unknown")}</b></span></div>
       </div>`;
   }
 
+  // the tabs carry the summary: each tab is a card with its count and a progress bar
   function renderStats() {
     const by = (sec) => ORD.filter((o) => o.sec === sec);
-    const tile = (label, list, extra) => `<div class="stat"><div class="label">${label}</div><div class="num">${count(list, "done")}<span> / ${list.length}</span></div>${bar(list)}<div class="note">${extra}</div></div>`;
+    const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
     const std = by("S"), main = by("M"), sub = by("U");
-    $("stats").innerHTML =
-      tile("Standard orders", std, `${count(std, "avail")} available now`) +
-      tile("Main orders", main, `${count(main, "prog")} in progress`) +
-      tile("Sub orders", sub, `${count(sub, "avail")} available now`) +
-      (state.likes ? `<div class="stat"><div class="label">Likes</div><div class="num">${(state.likes[0] + state.likes[1]).toLocaleString()}</div><div class="note">${state.likes[0].toLocaleString()} from NPCs · ${state.likes[1].toLocaleString()} from other porters · ${state.likes[2].toLocaleString()} given</div></div>` : "") +
-      (() => { const t = mergedRows().filter((m) => m.tracked); return `<div class="stat"><div class="label">Unlocks</div><div class="num">${t.filter((m) => m.k > 0).length}<span> / ${t.length}</span></div>${bar(t.map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}<div class="note">unlocked, of the items Peko-Check can track</div></div>`; })();
+    const tracked = mergedRows().filter((m) => m.tracked), unl = tracked.filter((m) => m.k > 0).length;
+    const r = (state && state.roads) || null, hwN = ROADS ? ROADS.highway.length : 0;
+    const info = {
+      standard: [`${count(std, "done")} / ${std.length}`, pct(count(std, "done"), std.length), `${count(std, "avail")} available now`],
+      main: [`${count(main, "done")} / ${main.length}`, pct(count(main, "done"), main.length), `${count(main, "prog")} in progress`],
+      sub: [`${count(sub, "done")} / ${sub.length}`, pct(count(sub, "done"), sub.length), `${count(sub, "avail")} available now`],
+      craft: [`${unl} / ${tracked.length}`, pct(unl, tracked.length), "unlocked"],
+      cargo: [`${(state.cargo || []).length} items`, null, "gear, backpack and lockers"],
+      routes: r && hwN ? [`${r.hw.length} / ${hwN} roads`, pct(r.hw.length, hwN), "highway built"] : ["", null, "facilities and routes"],
+      changes: ["", null, "between two saves"],
+    };
+    $("stats").innerHTML = "";
     $("tab-changes").hidden = !diff;
     ["changes", "standard", "main", "sub", "craft", "cargo", "routes"].forEach((t) => {
-      const b = $("tab-" + t); b.setAttribute("aria-selected", String(t === tab));
+      const b = $("tab-" + t); if (!b.dataset.l) b.dataset.l = b.textContent.trim();
+      const [n, p, note] = info[t];
+      b.innerHTML = `<span class="tl">${esc(b.dataset.l)}</span>${n ? `<span class="tn">${esc(n)}</span>` : ""}`
+        + (p !== null ? `<span class="tb"><i style="width:${p}%"></i></span>` : "") + `<span class="tx">${esc(note)}</span>`;
+      b.setAttribute("aria-selected", String(t === tab));
     });
   }
 
@@ -981,8 +1024,14 @@ footer b{color:var(--ink)}
       `<div><span class="lv">Level ${l}</span> ${[...items].map((x) => rewardChip(x, lvl !== null && lvl >= l)).join(" ")}</div>`).join("") + `</div>`;
   }
 
+  // spoiler guard: main and sub orders you haven't reached yet are blurred until clicked or "Show spoilers" is on
+  let showSpoilers = false; try { showSpoilers = localStorage.getItem("pl-spoilers") === "1"; } catch (e) {}
+  const revealed = new Set();
+  const isSpoiler = (o) => !showSpoilers && (o.sec === "M" || o.sec === "U") && (o.st === "lock" || o.st === "none") && !revealed.has(String(o.id || o.no));
+  const spoilBar = () => `<label class="spoil-toggle"><input type="checkbox" id="spoilToggle"${showSpoilers ? " checked" : ""}> Show spoilers <span>Orders you haven't reached are blurred; click one to reveal it.</span></label>`;
   function orderRow(o) {
-    return `<div class="row ${o.st === "none" ? "dim" : ""}">
+    const sp = isSpoiler(o);
+    return `<div class="row ${o.st === "none" ? "dim" : ""}${sp ? " spoil" : ""}"${sp ? ` data-reveal="${esc(String(o.id || o.no))}" title="Spoiler: click to reveal"` : ""}>
       <div class="no">${zpad(o.no)}</div>
       <div class="name">${esc(o.name)}</div>
       <div class="right">${pill(o.st)}</div>
@@ -998,6 +1047,7 @@ footer b{color:var(--ink)}
     const list = ORD.filter((o) => o.sec === sec).sort((a, b) => a.no - b.no);
     const vis = list.filter((o) => (status === "all" || o.st === status) && match(o, q));
     if (!vis.length) return `<p class="note">No orders match this filter.</p>`;
+    const bar0 = sec === "S" ? "" : spoilBar();
     if (sec === "S") {
       const groups = new Map();
       list.forEach((o) => { if (!groups.has(o.from)) groups.set(o.from, []); groups.get(o.from).push(o); });
@@ -1015,13 +1065,13 @@ footer b{color:var(--ink)}
     if (sec === "M") {
       const eps = new Map();
       vis.forEach((o) => { const k = o.ep || "?"; if (!eps.has(k)) eps.set(k, []); eps.get(k).push(o); });
-      const card = (o) => { if (!DATA.map) return orderRow(o); const m = miniMap(o.to) || miniMap(o.from); return `<div class="mo">${m || `<div class="nomap">${esc(o.to || "")}</div>`}${orderRow(o)}</div>`; };
-      return `<div class="tl">` + [...eps].map(([ep, os]) => {
+      const card = (o) => { if (!DATA.map) return orderRow(o); const m = miniMap(o.to) || miniMap(o.from); return `<div class="mo${isSpoiler(o) ? " spoil-mo" : ""}">${m || `<div class="nomap">${esc(o.to || "")}</div>`}${orderRow(o)}</div>`; };
+      return bar0 + `<div class="tl">` + [...eps].map(([ep, os]) => {
         const cls = os.every((o) => o.st === "done") ? "done" : os.some((o) => o.st === "done" || o.st === "prog") ? "prog" : "";
         return `<details class="group tl-ep ${cls}" open><summary><h3>Episode ${esc(ep)}</h3><span class="count">${count(os, "done")} / ${os.length} done</span>${bar(os)}</summary>${os.map(card).join("")}</details>`;
       }).join("") + `</div>`;
     }
-    return `<div class="group"><div class="rows">${vis.map(orderRow).join("")}</div></div>`;
+    return bar0 + `<div class="group"><div class="rows">${vis.map(orderRow).join("")}</div></div>`;
   }
 
   // one row per (category, subcategory, name): duplicate catalogue entries are merged
@@ -1060,21 +1110,23 @@ footer b{color:var(--ink)}
     return pill("lock", "Locked");
   }
 
-  // the game's own picture where the build has it (private build), otherwise a generic icon for the item's kind (game-icons.net, CC BY 3.0)
-  const GEN = DATA.generic || { icons: {}, map: {} };
+  // the game's own picture where the build has it (private build), otherwise a generic icon for the item's kind (catalog/build_icons_d.py: Tabler Icons MIT + own drawings)
+  const GEN = DATA.generic || { icons: {}, map: {}, tint: {} };
+  const TAG_HINT = { MP: "Multi-Purpose", RP: "Riot Pellets", RB: "Rubber Bullets" };   // the game's own meanings
   const recImg = (m) => {
     const k = m.keys.find((x) => ICONS[x]);
     if (k) return `<img class="rec-img" src="${ICONS[k]}" alt="" loading="lazy">`;
     const g = m.keys.map((x) => GEN.map[(x >>> 0).toString(16).padStart(8, "0")]).find(Boolean);
     if (!g || !GEN.icons[g]) return "";
     const lv = (m.label.match(/\bLv\s*(\d+)/i) || [])[1], tag = (m.label.match(/\[([A-Z]{1,3})\]/) || [])[1];
-    return `<span class="rec-img rec-gen" aria-hidden="true">${GEN.icons[g]}${tag ? `<b class="bdg bdg-tag">${tag}</b>` : ""}${lv ? `<b class="bdg bdg-lv">Lv${lv}</b>` : ""}</span>`;
+    const tint = (GEN.tint || {})[g] || "neutral";
+    return `<span class="rec-img rec-gen" data-tint="${tint}">${GEN.icons[g]}${tag ? `<b class="bdg bdg-tag" title="${esc(TAG_HINT[tag] || tag)}">${tag}</b>` : ""}${lv ? `<b class="bdg bdg-lv" title="Level ${lv}">Lv${lv}</b>` : ""}</span>`;
   };
   function unlockedBy(m) {
     const parts = new Set(), facs = new Map();   // facility code -> connection level
     for (const k of m.keys) {
       const l = LINKS[k]; if (!l) continue;
-      for (const mid of l[0]) { const o = ORD_BY_ID.get(mid); if (o) parts.add(`<button type="button" class="loc" data-goto-order="${o.id}">No. ${o.no} ${esc(o.name)}</button>`); }
+      for (const mid of l[0]) { const o = ORD_BY_ID.get(mid); if (o) parts.add(`<button type="button" class="loc" data-goto-order="${o.id}">No. ${o.no} ${isSpoiler(o) ? `<span class="blur" title="Spoiler">${esc(o.name)}</span>` : esc(o.name)}</button>`); }
       if (l[1] && l[2]) facs.set(l[1], l[2]);
     }
     if (facs.size > 3) {   // one entry per facility (e.g. resting at a facility): one line instead of a wall of links
@@ -1428,7 +1480,7 @@ footer b{color:var(--ink)}
 
   const renderView = () => tab === "changes" ? renderChanges() : tab === "craft" ? renderCraft() : tab === "routes" ? renderRoutes() : tab === "cargo" ? renderCargo() : renderOrders();
   function render() {
-    ["stats", "tabs", "view", "drop2"].forEach((id) => ($(id).hidden = false));
+    ["stats", "tabs", "panel", "view", "drop2"].forEach((id) => ($(id).hidden = false));
     renderSave(); renderStats(); renderSeg();
     $("filters").hidden = tab === "routes" || tab === "changes" || tab === "cargo";
     $("view").innerHTML = renderView();
@@ -1436,6 +1488,11 @@ footer b{color:var(--ink)}
   }
 
   /* ---------- events ---------- */
+  $("view").addEventListener("change", (e) => {
+    if (e.target.id !== "spoilToggle") return;
+    showSpoilers = e.target.checked; try { localStorage.setItem("pl-spoilers", showSpoilers ? "1" : "0"); } catch (err) {}
+    $("view").innerHTML = renderView();
+  });
   $("tabs").addEventListener("click", (e) => {
     const b = e.target.closest("[data-tab]"); if (!b) return;
     tab = b.dataset.tab; try { localStorage.setItem("pl-tab", tab); } catch (err) {}
@@ -1457,6 +1514,8 @@ footer b{color:var(--ink)}
       else { tab = "standard"; $("q").value = FAC_NAME.get(Number(gf.dataset.gotoFac)) || ""; }
       status = "all"; render(); $("tabs").scrollIntoView && $("tabs").scrollIntoView({ block: "start" }); return;
     }
+    const spr = e.target.closest(".row.spoil");
+    if (spr) { e.preventDefault(); revealed.add(spr.dataset.reveal); $("view").innerHTML = renderView(); return; }
     const ly = e.target.closest("[data-layer]");
     if (ly) { const k = ly.dataset.layer; hiddenLayers.has(k) ? hiddenLayers.delete(k) : hiddenLayers.add(k); $("view").innerHTML = renderView(); return; }
     const rg = e.target.closest("[data-region]");
@@ -1538,7 +1597,7 @@ footer b{color:var(--ink)}
       <div class="goal">You'll see your main orders as a story timeline, standard orders per facility with stars and stock, every unlock and what unlocks it, what's in your private lockers, your APAS and your recent routes.</div>
       <div class="goal"><b>Your save stays on your computer:</b> it is read in this browser, never uploaded, and never changed.</div>
       ${DATA.example ? `<div class="goal"><b>Just looking?</b> Click <b>View an example save</b> at the top to look around with a real save from about 30 hours into the game.</div>` : ""}</div>`;
-    ["stats", "tabs", "filters", "view", "drop2"].forEach((id) => ($(id).hidden = true));
+    ["stats", "tabs", "panel", "filters", "view", "drop2"].forEach((id) => ($(id).hidden = true));
   }
   if (DATA.example) {
     $("exampleTop").hidden = false;

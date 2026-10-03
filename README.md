@@ -46,7 +46,7 @@ changes your save.
 Works with the PC version of Death Stranding 2. Tested with the Steam version on Windows; the Epic version and
 Steam Deck are untested, so reports are welcome. Console saves are not supported.
 
-**Spoilers:** Peko-Check lists every order and unlock in the game, including ones you haven't reached yet.
+**Spoilers:** main and sub orders you haven't reached yet are blurred; click one to reveal it, or tick **Show spoilers**. The Unlocks tab still lists every item in the game.
 
 ## What you can see
 
@@ -155,7 +155,7 @@ node viewer/test_compare.js viewer/index.html <save folder> <older save.dat> <ne
 The repository never contains save files, personal data, game asset files (map images, icons, item pictures) or
 copied third-party text. `tools/public_check.py` enforces that before every commit and push (once the hooks are
 on) and again on GitHub. The only images in the repository are the logo (and its link-preview and app-icon
-versions) and screenshots of the app; the item icons are game-icons.net drawings (CC BY 3.0) stored as data in
+versions) and screenshots of the app; the item icons are outline drawings (Tabler Icons, MIT, and our own) stored as data in
 `catalog/generic_icons.json`.
 
 ## Credits
@@ -163,7 +163,7 @@ versions) and screenshots of the app; the item icons are game-icons.net drawings
 - Game data (orders, unlocks, names): read from the game itself with [ShadelessFox/odradek](https://github.com/ShadelessFox/odradek).
 - Decima save framework: [Nukem9/HZDCoreEditor](https://github.com/Nukem9/HZDCoreEditor).
 - Save encryption key: [mi5hmash/DeathStrandingSaveDataResigner](https://github.com/mi5hmash/DeathStrandingSaveDataResigner).
-- Item icons: [game-icons.net](https://game-icons.net) (CC BY 3.0), see [the icon credits](assets/icons-generic/CREDITS.md).
+- Item icons: [Tabler Icons](https://tabler.io/icons) (MIT) and our own drawings, see [the icon credits](assets/icons-generic/CREDITS.md).
 - Guide links: [Game8](https://game8.co/games/Death-Stranding-2-On-the-Beach) and the [Death Stranding Wiki](https://deathstranding.fandom.com/).
 
 Details and licences: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Code: MIT, see [LICENSE](LICENSE).

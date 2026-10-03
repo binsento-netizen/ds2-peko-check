@@ -29,11 +29,10 @@ data. No game images, models or other assets are included.
 
 ## Item icons
 
-The item icons in the viewer are from [game-icons.net](https://game-icons.net) by Delapouite, Lorc, Skoll, Sbed,
-Lucas, HeavenlyDog and Lord Berandas, licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
-They were recoloured and simplified (background removed, paths rounded). The full list, per icon with its author, is in
-[assets/icons-generic/CREDITS.md](assets/icons-generic/CREDITS.md). They are generic icons for each kind of item, not
-the game's own pictures.
+The item icons in the viewer are outline drawings: some from [Tabler Icons](https://tabler.io/icons) (MIT licence,
+copyright (c) 2020-2024 Paweł Kuna), the rest drawn for Peko-Check in the same style. The full list, per icon with its
+source, and the MIT licence text are in [assets/icons-generic/CREDITS.md](assets/icons-generic/CREDITS.md). The game's
+item pictures were looked at only as a shape reference; none of them is included.
 
 ## Leaflet
 
