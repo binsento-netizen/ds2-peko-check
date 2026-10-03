@@ -1,8 +1,8 @@
-"""Read-only DS2 mission-table review/extractor. Requires lz4 and tools/ds2_decode.py + ds2_savestate.py (pass their folder as --work).
+"""Read-only DS2 mission-table review/extractor. Requires lz4 and tools/ds2_decode.py + ds2_savestate.py (--work: their folder, default: this script's folder).
 
 Example:
-  python -B review_missions.py --work path/to/tools save.dat --out missions.json
-  python -B review_missions.py --work path/to/tools saves_dir extra_dir --summary-only
+  python -B tools/review_missions.py save.dat --out missions.json
+  python -B tools/review_missions.py saves_dir extra_dir --summary-only
 
 Record boundaries verified on 93 saves (63,821 records). Enum labels are
 matched to the DS2 RTTI type dump; repeat-order history/ranks remain unverified.
@@ -126,7 +126,7 @@ def inspect(path, decode, block, png, save_state, summary_only):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--work", type=Path, required=True, help="Directory containing ds2_decode.py and ds2_savestate.py")
+    parser.add_argument("--work", type=Path, default=Path(__file__).parent, help="Directory containing ds2_decode.py and ds2_savestate.py")
     parser.add_argument("inputs", nargs="+", type=Path, help="Raw .dat, decoded payload.bin, or raw-save directories")
     parser.add_argument("--summary-only", action="store_true")
     parser.add_argument("--out", type=Path)

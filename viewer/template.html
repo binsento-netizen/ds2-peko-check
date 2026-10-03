@@ -1,12 +1,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Peko-Check</title>
+<title>Peko-Check Lv1</title>
 <link rel="icon" type="image/svg+xml" href="__FAVICON__">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<meta name="description" content="See your Death Stranding 2 progress straight from your save: orders, unlocks, private lockers, APAS and routes. Runs in your browser; your save is never uploaded.">
+<meta name="description" content="See your Death Stranding 2 progress straight from your save: orders, unlocks, private lockers, APAS, map and routes. Runs in your browser; your save is never uploaded.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Peko-Check Lv1: your Death Stranding 2 save, at a glance">
-<meta property="og:description" content="Orders, unlocks, private lockers, APAS and routes from your own save. Free, runs in your browser, your save is never uploaded.">
+<meta property="og:description" content="Orders, unlocks, private lockers, APAS, map and routes from your own save. Free, runs in your browser, your save is never uploaded.">
 <meta property="og:url" content="https://binsento-netizen.github.io/ds2-peko-check/">
 <meta property="og:image" content="https://binsento-netizen.github.io/ds2-peko-check/assets/social-card.png">
 <meta property="og:image:width" content="1200">
@@ -370,6 +370,7 @@ footer b{color:var(--ink)}
 [hidden]{display:none!important}
 .rec .cnt{font:500 15px var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
 </style>
+<!--MAP-CSS-->
 <style>/* Leaflet 1.9.4 (c) Volodymyr Agafonkin, BSD-2-Clause; inlined because the page may not load external stylesheets */
 .leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{background-image:none;width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-image:none;background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{background-image:none}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
@@ -412,6 +413,7 @@ footer b{color:var(--ink)}
 .lmap .leaflet-tooltip-right::before{border-right-color:var(--map-line)}
 @media (max-width:420px){.lmap .leaflet-control-layers{min-width:0}.lmap .leaflet-control-layers-overlays label{font-size:13px;padding:7px 10px 7px 8px}}
 </style>
+<!--/MAP-CSS-->
 
 <div class="wrap">
   <div class="top">
@@ -422,7 +424,7 @@ footer b{color:var(--ink)}
         <span class="btn">Open save</span>
         <span class="hint">or drop a save file here; drop two to compare them</span>
       </label>
-      <label class="drop alt" id="drop2" for="file2" title="Compare the save shown with another save (before/after)">
+      <label class="drop alt" id="drop2" for="file2" title="Compare the save shown with another save (before/after)" hidden>
         <input type="file" id="file2" accept=".dat">
         <span class="btn">Compare with…</span>
       </label>
@@ -441,7 +443,7 @@ footer b{color:var(--ink)}
     <button class="tab" role="tab" id="tab-sub" data-tab="sub" aria-selected="false">Sub orders</button>
     <button class="tab" role="tab" id="tab-craft" data-tab="craft" aria-selected="false">Unlocks</button>
     <button class="tab" role="tab" id="tab-cargo" data-tab="cargo" aria-selected="false">Cargo</button>
-    <button class="tab" role="tab" id="tab-routes" data-tab="routes" aria-selected="false">Routes</button>
+    <button class="tab" role="tab" id="tab-routes" data-tab="routes" aria-selected="false">Map</button>
   </nav>
 
   <div class="filters" id="filters">
@@ -452,8 +454,8 @@ footer b{color:var(--ink)}
   <div id="view"></div>
 
   <footer>
-    <div><b>How to read the orders.</b> <i>Done</i>: delivered. <i>In progress</i>: accepted, not delivered yet. <i>Available</i>: you can take it at a terminal. <i>Locked</i>: not offered yet. <b>Compare with…</b> shows what changed between two saves, with a report you can copy, for example to send a test result (see “How you can help” on GitHub).</div>
-    <div>Order and item names are the game's own English text, read from the game files with ShadelessFox's Odradek. Item icons from game-icons.net (CC BY 3.0). Guide links go to Game8 or the Death Stranding Wiki. Source code, how to help and the roadmap: <a href="https://github.com/binsento-netizen/ds2-peko-check" target="_blank" rel="noopener">github.com/binsento-netizen/ds2-peko-check</a>. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
+    <div><b>How to read the orders.</b> <i>Done</i>: delivered. <i>In progress</i>: accepted, not delivered yet. <i>Available</i>: you can take it at a terminal. <i>Locked</i>: not offered yet. <b>Compare with…</b> shows what changed between two saves, with a report you can copy, for example to send a test result (see <a href="https://github.com/binsento-netizen/ds2-peko-check#how-you-can-help" target="_blank" rel="noopener">How you can help</a>).</div>
+    <div>Order and item names are the game's own English text, read from the game files with ShadelessFox's Odradek. Item icons from <a href="https://game-icons.net" target="_blank" rel="noopener">game-icons.net</a> (CC BY 3.0; authors in the <a href="https://github.com/binsento-netizen/ds2-peko-check/blob/main/THIRD_PARTY_NOTICES.md" target="_blank" rel="noopener">third-party notices</a>). Guide links go to Game8 or the Death Stranding Wiki. Source code, how to help and the roadmap: <a href="https://github.com/binsento-netizen/ds2-peko-check" target="_blank" rel="noopener">github.com/binsento-netizen/ds2-peko-check</a>. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
   </footer>
 </div>
 
@@ -573,7 +575,7 @@ footer b{color:var(--ink)}
     for (let w = r.vint(); w > 0; w--) { const len = r.vint(); r.pos += len * 2; }
     for (let g = 0; g < 256; g++) { const c = r.vint(); r.pos += c * 16; }
     const magic = [0x05, 0xa0, 0x0e, 0x53, 0xff, 0xff, 0xee, 0xee];
-    if (!magic.every((b, k) => data[r.pos + k] === b)) throw new Error("Peko-Check doesn't recognise the layout of this save. It may come from a newer game version: please report it on GitHub.");
+    if (!magic.every((b, k) => data[r.pos + k] === b)) throw new Error("Peko-Check doesn't recognise the layout of this save. It may come from a newer game version: please report it at https://github.com/binsento-netizen/ds2-peko-check/issues");
     r.pos += 8;
     const dir = []; for (let k = r.vint(); k > 0; k--) dir.push({ id: r.vint() >>> 0, off: r.vint(), ver: r.vint() });
     const sorted = [...dir].sort((a, b) => a.off - b.off);
@@ -584,7 +586,7 @@ footer b{color:var(--ink)}
 
   function parseMissions(s) {
     const dv = new DataView(s.buffer, s.byteOffset, s.byteLength);
-    if (dv.getUint32(0, true) !== 0x1fd6b79b) throw new Error("The order list in this save has an unexpected layout. It may come from a newer game version: please report it on GitHub.");
+    if (dv.getUint32(0, true) !== 0x1fd6b79b) throw new Error("The order list in this save has an unexpected layout. It may come from a newer game version: please report it at https://github.com/binsento-netizen/ds2-peko-check/issues");
     const out = []; let pos = 8;
     for (let n = dv.getUint32(4, true); n > 0; n--) {
       out.push([dv.getUint32(pos + 12, true), dv.getUint32(pos + 16, true) & 63, s[pos + 4], s[pos + 5], dv.getUint16(pos + 6, true)]);
@@ -595,7 +597,7 @@ footer b{color:var(--ink)}
 
   function parseRecipes(s) {
     const dv = new DataView(s.buffer, s.byteOffset, s.byteLength);
-    if (dv.getUint32(0, true) !== 0x8b3f7cc3) throw new Error("The unlock list in this save has an unexpected layout. It may come from a newer game version: please report it on GitHub.");
+    if (dv.getUint32(0, true) !== 0x8b3f7cc3) throw new Error("The unlock list in this save has an unexpected layout. It may come from a newer game version: please report it at https://github.com/binsento-netizen/ds2-peko-check/issues");
     const r = reader(s, 4); const n = r.vint(); r.vint();
     const out = []; for (let i = 0; i < n; i++) out.push([dv.getUint32(r.pos + 8 * i, true), dv.getUint32(r.pos + 8 * i + 4, true)]);
     return out;
@@ -711,7 +713,7 @@ footer b{color:var(--ink)}
   const ABOUT = DATA.about || {};
   const TRACKED = new Set(DATA.tracked || []);   // subcategories whose unlock state this save section records
   const CAT_ORDER = ["Weapons", "Skeletons", "Boots", "Equipment", "Backpack Attachments", "Patches", "Outfits", "Vehicles", "Structures",
-    "APAS enhancements", "Melee techniques", "Holograms", "Character rewards", "Music", "Hot springs", "Collectibles", "Features", "Other"];
+    "APAS rewards from facilities", "Melee techniques", "Holograms", "Character rewards", "Music", "Hot springs", "Collectibles", "Features", "Other"];
   let craftCat = "all";
   try { craftCat = localStorage.getItem("pl-cat") || "all"; } catch (e) {}
   const USE = { All: "Fabrication", BackPackCustomize: "Backpack", CostumeCustomize: "Outfit", VehicleCustomize: "Vehicle part", Vehicle: "Vehicle", None: "Other" };
@@ -721,7 +723,6 @@ footer b{color:var(--ink)}
 
   let state = null, prev = null, diff = null, tab = "standard", status = "all";
   try { tab = localStorage.getItem("pl-tab") || tab; } catch (e) {}
-  if (DATA.map || DATA.vmap) $("tab-routes").textContent = "Map";
   if (tab === "changes") tab = "standard";
 
   // status of one mission record [id, type, open, order, state]
@@ -749,10 +750,10 @@ footer b{color:var(--ink)}
   const ORD_BY_ID = new Map(ORD.filter((o) => o.id).map((o) => [o.id, o]));
   const REC_BY_KEY = new Map(REC.map((r) => [r.key >>> 0, r]));
   const KIND = { 3: "delivery", 4: "recover lost cargo", 17: "elimination", 18: "recover stolen cargo", 19: "destroy cargo" };
-  // sections with a known or suspected meaning (docs/FINDINGS.md)
+  // sections with a known or suspected meaning (docs/FORMAT.md)
   const SEC_NAME = { 0x4afa625b: "mission records", 0x3ef4dc4d: "unlock catalogue", 0x48ea52a4: "route history", 0x0b8cfaf0: "objective/progress records",
-    0x5cef9b34: "story table", 0x6727b031: "play / world clocks", 0x73dacf23: "facilities: levels, material stock", 0x69049449: "chiral bandwidth, APAS", 0x202659d5: "likes", 0x0aa0d44e: "cargo / item records", 0x129ec9ee: "signs (lead)", 0x01b35e1e: "facility lead (u32 @32)", 0x2cf918ee: "facility counter lead (@624)",
-    0x4d4b4d42: "active order markers", 0x5b95d3ae: "road lead (weak)" };
+    0x5cef9b34: "story table", 0x6727b031: "play / world clocks", 0x73dacf23: "facilities: levels, material stock", 0x69049449: "chiral bandwidth, APAS", 0x202659d5: "likes", 0x0aa0d44e: "cargo / item records", 0x129ec9ee: "signs", 0x3926c2c4: "in-game clock", 0x01b35e1e: "changes when a facility connects", 0x2cf918ee: "story event counter",
+    0x4d4b4d42: "active order markers", 0x5b95d3ae: "possibly roads" };
   const hex8 = (k) => (k >>> 0).toString(16).padStart(8, "0");
   const sameSeg = (a, b) => a[0] === b[0] && a[1].length === b[1].length && a[1].every((v, i) => v === b[1][i]);
 
@@ -840,10 +841,19 @@ footer b{color:var(--ink)}
       }
       case 17: d = o.to === o.from ? `Combat order for ${o.from}.` : `Clear ${lc(o.to)} for ${o.from}.`; break;
       case 19: d = `Destroy the cargo at ${lc(o.to)} for ${o.from}.`; break;
-      default: d = o.from && o.from !== "N/A" ? `From ${o.from} to ${o.to}${cargo ? ", cargo " + cargo : ""}.` : `Go to ${o.to}.`;
+      default: {
+        const hasFrom = o.from && o.from !== "N/A", hasTo = o.to && o.to !== "N/A";
+        d = !hasTo ? (hasFrom ? `Story order at ${o.from}.` : "Story order.")
+          : !hasFrom ? `Go to ${o.to}.`
+          : o.from === o.to ? `At ${o.to}${cargo ? ", cargo " + cargo : ""}.`
+          : `From ${o.from} to ${o.to}${cargo ? ", cargo " + cargo : ""}.`;
+      }
     }
     return d + (tags.length ? ` Conditions: ${[...new Set(tags)].join(", ")}.` : "");
   }
+  // "A → B" for an order; the N/A half (story orders without a start or goal) is left out
+  const route = (o) => { const a = o.from && o.from !== "N/A", b = o.to && o.to !== "N/A";
+    return a && b ? `${loc(o.from)} → ${loc(o.to)}` : a ? loc(o.from) : b ? loc(o.to) : ""; };
   const loc = (name) => name && name !== "N/A" ? `<button type="button" class="loc" data-loc="${esc(name.replace(/^(Near |Enemy Camp Near )/, ""))}">${esc(name)}</button>` : esc(name);
 
   function renderSave() {
@@ -867,11 +877,11 @@ footer b{color:var(--ink)}
     const tile = (label, list, extra) => `<div class="stat"><div class="label">${label}</div><div class="num">${count(list, "done")}<span> / ${list.length}</span></div>${bar(list)}<div class="note">${extra}</div></div>`;
     const std = by("S"), main = by("M"), sub = by("U");
     $("stats").innerHTML =
-      tile("Main orders", main, `${count(main, "prog")} in progress`) +
       tile("Standard orders", std, `${count(std, "avail")} available now`) +
+      tile("Main orders", main, `${count(main, "prog")} in progress`) +
       tile("Sub orders", sub, `${count(sub, "avail")} available now`) +
       (state.likes ? `<div class="stat"><div class="label">Likes</div><div class="num">${(state.likes[0] + state.likes[1]).toLocaleString()}</div><div class="note">${state.likes[0].toLocaleString()} from NPCs · ${state.likes[1].toLocaleString()} from other porters · ${state.likes[2].toLocaleString()} given</div></div>` : "") +
-      (() => { const t = mergedRows().filter((m) => m.tracked); return `<div class="stat"><div class="label">Unlocks</div><div class="num">${t.filter((m) => m.k > 0).length}<span> / ${t.length}</span></div>${bar(t.map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}<div class="note">items whose status the save shows</div></div>`; })();
+      (() => { const t = mergedRows().filter((m) => m.tracked); return `<div class="stat"><div class="label">Unlocks</div><div class="num">${t.filter((m) => m.k > 0).length}<span> / ${t.length}</span></div>${bar(t.map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}<div class="note">unlocked, of the items Peko-Check can track</div></div>`; })();
     $("tab-changes").hidden = !diff;
     ["changes", "standard", "main", "sub", "craft", "cargo", "routes"].forEach((t) => {
       const b = $("tab-" + t); b.setAttribute("aria-selected", String(t === tab));
@@ -907,7 +917,7 @@ footer b{color:var(--ink)}
     return `<div class="stock" title="Materials stored at this facility (bars: compared with its largest stock)">${st.map((v, i) => `<span class="mat"><i class="mi" aria-hidden="true">${MAT_AB[i]}</i><span class="mn">${MATERIALS[i]}</span><b class="mq">${zpad(v, 4)}</b><i class="mb" aria-hidden="true"><i style="width:${(100 * v / mx).toFixed(1)}%"></i></i></span>`).join("")}</div>`; };
   const levelOf = (code) => { const l = ((state && state.levels) || []).find((x) => x[0] === code); return l ? l[1] : null; };
   const stars = (lvl) => lvl === null ? "" : lvl === 0 ? `<div class="stars off">Not connected</div>`
-    : `<div class="stars" title="Connection level ${lvl} of 5">${"★".repeat(lvl)}${"☆".repeat(5 - lvl)}<span>Level ${lvl}</span></div>`;
+    : `<div class="stars" title="Connection level ${lvl} of 5">${"★".repeat(lvl)}${"☆".repeat(5 - lvl)}<span>Connection level ${lvl}</span></div>`;
   // facility lookup by name: guide and game spell some names differently ("The Government’s Base", "F8 Terminal Fort Knot")
   const normName = (n) => (n || "").replace(/’/g, "'").toLowerCase().replace(/^(near |enemy camp near |a bt area near |river near )/, "")
     .replace(/^the /, "").replace(/\s*\([^)]*\)$/, "").replace(/^f\d+ /, "").trim();
@@ -932,14 +942,13 @@ footer b{color:var(--ink)}
   }
 
   function orderRow(o) {
-    const conf = o.conf === "p" ? ` <span class="conf" title="Probable match">≈</span>` : o.conf === "l" ? ` <span class="conf" title="Low confidence">?</span>` : "";
     return `<div class="row ${o.st === "none" ? "dim" : ""}">
       <div class="no">${zpad(o.no)}</div>
-      <div class="name">${esc(o.name)}${conf}</div>
+      <div class="name">${esc(o.name)}</div>
       <div class="right">${pill(o.st)}</div>
       <div class="desc">${esc(describe(o))}</div>
-      <div class="sub"><span>${loc(o.from)} → ${loc(o.to)}</span><span>Cargo ${esc(o.cargo)}</span><a href="${guide(o).url}" target="_blank" rel="noopener">${esc(guide(o).text)} ↗</a></div>
-      ${o.id && ITEMS_BY_MISSION.has(o.id) ? `<div class="rewards">Unlocks ${[...ITEMS_BY_MISSION.get(o.id)].map((l) => rewardChip(l, o.st === "done")).join("")}</div>` : ""}
+      <div class="sub">${route(o) ? `<span>${route(o)}</span>` : ""}${o.cargo && o.cargo !== "None" ? `<span title="Cargo size × count">Cargo ${esc(o.cargo)}</span>` : ""}<a href="${guide(o).url}" target="_blank" rel="noopener">${esc(guide(o).text)} ↗</a></div>
+      ${o.id && ITEMS_BY_MISSION.has(o.id) ? `<div class="rewards">Rewards ${[...ITEMS_BY_MISSION.get(o.id)].map((l) => rewardChip(l, o.st === "done")).join("")}</div>` : ""}
     </div>`;
   }
 
@@ -1004,11 +1013,11 @@ footer b{color:var(--ink)}
   }
 
   function craftPill(m) {
-    if (m.st === "done") return pill("done", m.n > 1 ? `Unlocked ×${m.n}` : "Unlocked");
-    if (m.st === "part") return pill("prog", `${m.k} of ${m.n} unlocked`);
+    if (m.st === "done") return pill("done", "Unlocked");
+    if (m.st === "part") return `<span class="pill ${CLS.prog}" title="The game lists this item ${m.n} times; ${m.k} are unlocked">${m.k} of ${m.n} unlocked</span>`;
     if (m.st === "none") return pill("none", "Not in save");
     if (m.st === "na") return pill("none", "Status unknown");
-    return pill("lock", m.n > 1 ? `Locked ×${m.n}` : "Locked");
+    return pill("lock", "Locked");
   }
 
   // the game's own picture where the build has it (private build), otherwise a generic icon for the item's kind (game-icons.net, CC BY 3.0)
@@ -1022,13 +1031,17 @@ footer b{color:var(--ink)}
     return `<span class="rec-img rec-gen" aria-hidden="true">${GEN.icons[g]}${tag ? `<b class="bdg bdg-tag">${tag}</b>` : ""}${lv ? `<b class="bdg bdg-lv">Lv${lv}</b>` : ""}</span>`;
   };
   function unlockedBy(m) {
-    const parts = new Set();
+    const parts = new Set(), facs = new Map();   // facility code -> connection level
     for (const k of m.keys) {
       const l = LINKS[k]; if (!l) continue;
       for (const mid of l[0]) { const o = ORD_BY_ID.get(mid); if (o) parts.add(`<button type="button" class="loc" data-goto-order="${o.id}">No. ${o.no} ${esc(o.name)}</button>`); }
-      if (l[1] && l[2]) parts.add(`<button type="button" class="loc" data-goto-fac="${l[1]}">${esc(FAC_NAME.get(l[1]) || "Facility " + l[1])}, connection level ${l[2]}</button>`);
+      if (l[1] && l[2]) facs.set(l[1], l[2]);
     }
-    return parts.size ? `<div class="by">Unlocked by ${[...parts].join(" · ")}</div>` : "";
+    if (facs.size > 3) {   // one entry per facility (e.g. resting at a facility): one line instead of a wall of links
+      const lv = [...new Set(facs.values())].sort((a, b) => a - b);
+      parts.add(`${lv.length === 1 ? `connection level ${lv[0]}` : `a connection level (${lv.join(", ")})`} at any of ${facs.size} facilities`);
+    } else for (const [f, lvl] of facs) parts.add(`<button type="button" class="loc" data-goto-fac="${f}">${esc(FAC_NAME.get(f) || "Facility " + f)}, connection level ${lvl}</button>`);
+    return parts.size ? `<div class="by">Unlocks via ${[...parts].join(" · ")}</div>` : "";
   }
 
   // the APAS list itself, from the save: developed / available / not yet available
@@ -1044,8 +1057,8 @@ footer b{color:var(--ink)}
     const AI = DATA.apas_icons || {};
     const img = (r) => { const src = AI[r.h] || ICONS[r.keys.find((x) => ICONS[x])]; return src ? `<img class="rec-img" src="${src}" alt="" loading="lazy">` : ""; };
     const label = { done: "Developed", avail: "Available", lock: "Not available yet" };
-    return `<details class="group" ${craftCat !== "all" || q ? "open" : ""}><summary><h3>APAS in this save</h3><span class="count">${dev} / ${all.length} developed · ${av} available</span>${bar(all.map((r) => ({ st: r.st === "done" ? "done" : "lock" })))}</summary>
-      <p class="about">Every APAS enhancement in the game, with its state in this save: developed, available to develop (enhancement points needed shown), or not available yet.</p>
+    return `<details class="group" ${craftCat !== "all" || q ? "open" : ""}><summary><h3>Your APAS enhancements</h3><span class="count">${dev} / ${all.length} developed · ${av} available</span>${bar(all.map((r) => ({ st: r.st === "done" ? "done" : "lock" })))}</summary>
+      <p class="about">APAS enhancements are upgrades you develop through APAS, each for a number of points. This is every enhancement in the game, with its state in this save: developed, available to develop, or not available yet.</p>
       <div class="rows">${rows.map((r) => `<div class="rec"><div class="rec-main">${img(r)}<div><div class="nm">${esc(r.name)}</div><div class="de">${dup.has(r.name) ? `Step ${r.step} · ` : ""}${r.pts} points</div></div></div><div class="rt">${pill(r.st, label[r.st])}</div></div>`).join("")}</div></details>`;
   }
 
@@ -1070,13 +1083,13 @@ footer b{color:var(--ink)}
         const rows = shown.filter((m) => m.sub === s).sort((x, y) => (y.k > 0) - (x.k > 0) || x.label.localeCompare(y.label));
         if (!rows.length) continue;
         if (s) html += `<h4 class="subhead">${esc(s)} <span>${tally(inCat.filter((m) => m.sub === s))}</span></h4>`;
-        html += `<div class="rows">` + rows.map((m) => `<div class="rec" data-item="${esc(m.label)}"><div class="rec-main">${recImg(m)}<div><div class="nm">${esc(m.label)}${m.tag ? ` <span class="chip" data-tag="${esc(m.tag)}">${esc(m.tag)}</span>` : ""}</div>${m.src === "g" ? `<div class="de"><span class="tr">English name not confirmed yet</span></div>` : ""}${unlockedBy(m)}</div></div><div class="rt">${craftPill(m)}</div></div>`).join("") + `</div>`;
+        html += `<div class="rows">` + rows.map((m) => `<div class="rec" data-item="${esc(m.label)}"><div class="rec-main">${recImg(m)}<div><div class="nm">${esc(m.label)}${m.tag ? ` <span class="chip" data-tag="${esc(m.tag)}">${esc(m.tag)}</span>` : ""}</div>${unlockedBy(m)}</div></div><div class="rt">${craftPill(m)}</div></div>`).join("") + `</div>`;
       }
       html += `</details>`;
     }
-    if (craftCat === "all" || craftCat === "APAS enhancements") html += apasGroup(q);
+    if (craftCat === "all" || craftCat === "APAS rewards from facilities") html += apasGroup(q);
     if (!/class="group"/.test(html)) html += `<p class="note">Nothing matches this filter.</p>`;
-    return html + `<p class="note">Materials aren't listed here: you can withdraw them at any facility. “Status unknown” means Peko-Check can't read yet whether you have these (structures, holograms, music, colour schemes and some others); help finding them is welcome, see “How you can help” on GitHub.</p>`;
+    return html + `<p class="note">Materials aren't listed here: you can withdraw them at any facility. “Status unknown” means Peko-Check can't read yet whether you have that item (most structures, BT crystals, colour and paint schemes, support weapons, some music and features); help finding them is welcome, see <a href="https://github.com/binsento-netizen/ds2-peko-check#how-you-can-help" target="_blank" rel="noopener">How you can help</a>.</p>`;
   }
 
   function routeLen(segs) {
@@ -1091,10 +1104,10 @@ footer b{color:var(--ink)}
   const SECN = { S: "Standard", M: "Main", U: "Sub" };
   const TMP = 0x10000000;   // mission IDs from here on come and go between saves (temporary records, meaning unknown)
   const orderTitle = (c) => c.o ? c.o.name : c.id >= TMP ? `Temporary record 0x${hex8(c.id)}` : `Unidentified order, ID ${c.id}${KIND[c.kind] ? " (" + KIND[c.kind] + ")" : ""}`;
-  const recTitle = (e) => e.r ? `${e.r.label}${e.r.cat ? ` · ${e.r.cat}${e.r.sub ? " / " + e.r.sub : ""}` : ""}` : "Unknown entry";
+  const recTitle = (e) => e.r ? `${e.r.label}${e.r.cat ? ` · ${e.r.cat}${e.r.sub ? " / " + e.r.sub : ""}` : ""}` : "Unnamed catalogue entry";
   const fhex = (f) => f === undefined ? "absent" : "0x" + (f >>> 0).toString(16).padStart(4, "0");
   const CHANGE_GROUPS = [["done", "Completed"], ["prog", "Accepted / in progress"], ["avail", "Newly available"], ["*", "Other changes"], ["tmp", "Temporary records"]];
-  const groupOf = (c) => c.id >= TMP ? "tmp" : c.from !== c.to && ["done", "prog", "avail"].includes(c.to) ? c.to : "*";
+  const groupOf = (c) => c.id >= TMP ? "tmp" : c.o && c.from !== c.to && ["done", "prog", "avail"].includes(c.to) ? c.to : "*";   // unidentified orders: researchers
 
   function changeRow(c) {
     const o = c.o, same = c.from === c.to;
@@ -1102,7 +1115,7 @@ footer b{color:var(--ink)}
       <div class="no">${o ? zpad(o.no) : "—"}</div>
       <div class="name">${esc(orderTitle(c))}${o ? ` <span class="chip">${SECN[o.sec]}</span>` : ""}</div>
       <div class="right">${same ? `<b>${esc(c.rawFrom)} → ${esc(c.rawTo)}</b>` : `${pill(c.from)}<b>→</b>${pill(c.to)}`}</div>
-      ${o ? `<div class="sub"><span>${loc(o.from)} → ${loc(o.to)}</span><span>ID ${c.id}</span><a href="${guide(o).url}" target="_blank" rel="noopener">${esc(guide(o).text)} ↗</a></div>` : `<div class="sub"><span>${esc(c.rawFrom)} → ${esc(c.rawTo)}</span></div>`}
+      ${o ? `<div class="sub">${route(o) ? `<span>${route(o)}</span>` : ""}<span>ID ${c.id}</span><a href="${guide(o).url}" target="_blank" rel="noopener">${esc(guide(o).text)} ↗</a></div>` : `<div class="sub"><span>${esc(c.rawFrom)} → ${esc(c.rawTo)}</span></div>`}
     </div>`;
   }
 
@@ -1140,7 +1153,7 @@ footer b{color:var(--ink)}
     if (a.version && b.version && a.version !== b.version) html += `<p class="note">These saves come from different game versions (${esc(a.version)} and ${esc(b.version)}); some changes may come from the update itself.</p>`;
     const statOf = (lab, n, note) => `<div class="stat"><div class="label">${lab}</div><div class="num">${n}</div><div class="note">${note}</div></div>`;
     const done = d.orders.filter((c) => c.to === "done" && c.from !== "done").length, real = d.orders.filter((c) => c.id < TMP).length;
-    html += `<section class="stats">${statOf("Orders changed", real, `${done} completed`)}${statOf("New unlocks", d.unlocked.length, "weapons, gear, outfits and vehicle parts")}${statOf("New route segments", r.after - r.kept, r.cleared ? "history was cleared in between" : `${r.extended ? "1 extended · " : ""}${r.after} in total now`)}${statOf("Sections changed", d.secs ? d.secs.length : "—", d.secs ? "of the save's data sections" : "open both files to compare")}</section>`;
+    html += `<section class="stats">${statOf("Orders changed", real, `${done} completed`)}${statOf("New unlocks", d.unlocked.length, "items Peko-Check can track")}${statOf("New route segments", r.after - r.kept, r.cleared ? "history was cleared in between" : `${r.extended ? "1 extended · " : ""}${r.after} in total now`)}${statOf("Sections changed", d.secs ? d.secs.length : "—", d.secs ? "of the save's data sections" : "open both files to compare")}</section>`;
 
     // orders
     html += `<details class="group" open><summary><h3>Orders</h3><span class="count">${real} changed</span></summary>`;
@@ -1154,9 +1167,9 @@ footer b{color:var(--ink)}
     html += `</details>`;
 
     // unlocks
-    const recRows = (list, sign) => list.map((e) => `<div class="rec"><div><div class="nm">${sign} ${esc(e.r ? e.r.label : "Unknown entry")}</div><div class="de">${esc(e.r && e.r.cat ? e.r.cat + (e.r.sub ? " / " + e.r.sub : "") : "not shown in the Unlocks tab")}</div></div><div class="rt"><span class="use" title="key 0x${hex8(e.key)}, flags ${fhex(e.from)} → ${fhex(e.to)}">${sign === "+" ? "new" : sign === "−" ? "removed" : "changed"}</span></div></div>`).join("");
+    const recRows = (list, sign) => list.map((e) => `<div class="rec"><div><div class="nm">${sign} ${esc(e.r ? e.r.label : "Unnamed catalogue entry")}</div><div class="de">${esc(e.r && e.r.cat ? e.r.cat + (e.r.sub ? " / " + e.r.sub : "") : "not shown in the Unlocks tab")}</div></div><div class="rt"><span class="use" title="key 0x${hex8(e.key)}, flags ${fhex(e.from)} → ${fhex(e.to)}">${sign === "+" ? "new" : sign === "−" ? "removed" : "changed"}</span></div></div>`).join("");
     html += `<details class="group" ${d.unlocked.length ? "open" : ""}><summary><h3>Unlocks</h3><span class="count">${d.unlocked.length} new</span></summary>`;
-    html += d.unlocked.length ? `<div class="rows">${recRows(d.unlocked, "+")}</div>` : `<div class="more">Nothing new unlocked in the tracked kinds (weapons, gear, outfits, vehicle parts).</div>`;
+    html += d.unlocked.length ? `<div class="rows">${recRows(d.unlocked, "+")}</div>` : `<div class="more">Nothing new unlocked among the items Peko-Check can track.</div>`;
     if (d.relocked.length) html += `<h4 class="subhead">No longer unlocked <span>${d.relocked.length}</span></h4><div class="rows">${recRows(d.relocked, "−")}</div>`;
     if (d.flagged.length) html += `<details class="sub-more"><summary class="subhead">Other catalogue changes, for researchers <span>${d.flagged.length}</span></summary><p class="about">Something else changed for these entries; what it means isn't known yet.</p><div class="rows">${recRows(d.flagged, "~")}</div></details>`;
     html += `</details>`;
@@ -1174,7 +1187,7 @@ footer b{color:var(--ink)}
     // sections (research)
     if (d.secs) {
       const rows = d.secs.map((s) => `<tr><td>${hex8(s.id)}</td><td class="known">${esc(SEC_NAME[s.id] || "")}</td><td class="n">${s.la.toLocaleString()} → ${s.lb.toLocaleString()}</td><td class="n">${s.n === null ? "added/removed" : s.n.toLocaleString()}</td><td>${s.n === null ? "" : "+0x" + s.first.toString(16)}</td></tr>`).join("");
-      html += `<details class="group"><summary><h3>Changed sections (research)</h3><span class="count">${d.secs.length} of ${b.sec.size}</span></summary><p class="about">Every data section whose bytes differ. Named sections first, then the smallest changes: small changes after one action are the best leads.</p><div class="scroll"><table class="secs"><thead><tr><th>Section</th><th>Meaning</th><th>Size</th><th>Bytes differ</th><th>First</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+      html += `<details class="group"><summary><h3>Raw data sections, for researchers</h3><span class="count">${d.secs.length} of ${b.sec.size}</span></summary><p class="about">Every data section whose bytes differ. Named sections first, then the smallest changes: small changes after one action are the best leads.</p><div class="scroll"><table class="secs"><thead><tr><th>Section</th><th>Meaning</th><th>Size</th><th>Bytes differ</th><th>First</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
     }
     html += `<details class="group"><summary><h3>Report to copy</h3><span class="count">for a test result or bug report</span></summary><div class="report"><textarea id="report" readonly>${esc(changeReport())}</textarea><button type="button" id="copyReport">Copy report</button></div></details>`;
     return html;
@@ -1200,7 +1213,7 @@ footer b{color:var(--ink)}
     return `<div class="rt-canvas"><svg viewBox="0 0 ${W.toFixed(0)} ${H.toFixed(0)}" role="img" aria-label="Route history">${lines}${dots}</svg></div>`;
   }
 
-  /* ---------- map (private build: relief image from the game's own 3D-map data, see tools/build_map.py) ---------- */
+  /* ---------- map (private build: relief image from the game's own 3D-map data; not in the public build) ---------- */
   let mapRegion = null, lmap = null, leafletP = null;
   function defaultRegion() {
     const ms = (state && state.missions) || [];
@@ -1245,19 +1258,20 @@ footer b{color:var(--ink)}
     const piers = VFAC.filter((f) => f[3] === area && PIERS[f[0]]).map(([code, , , , x, y]) =>
       `<line x1="${U(x).toFixed(1)}" y1="${V(y).toFixed(1)}" x2="${U(PIERS[code][0]).toFixed(1)}" y2="${V(PIERS[code][1]).toFixed(1)}" class="vm-pier"/>`).join("");
     const end = last ? `<circle cx="${U(last[0]).toFixed(1)}" cy="${V(last[1]).toFixed(1)}" r="6" fill="#3fb27f" stroke="#fff" stroke-width="2"><title>Latest route point</title></circle>` : "";
-    const note = mapRegion !== defaultRegion() ? `Your routes are on the ${VREG[defaultRegion()]} map (where this save is)` : segs.length ? `${segs.length} route segments · about ${routeLen(segs).km.toFixed(1)} km since the last clear` : "No route history in this save";
+    const note = mapRegion !== defaultRegion() ? `Your routes are on the ${VREG[defaultRegion()]} map (where this save is)` : segs.length ? `${segs.length} route segments · about ${routeLen(segs).km.toFixed(1)} km since your last main order` : "No route history in this save";
     const legend = (R.legend || []).map(([n, c]) => `<span><i style="background:${c}"></i>${esc(n)}</span>`).join("");
     return `<div class="group routes"><div class="map-bar"><div class="catbar" style="margin:0">${btns}</div><div class="note">${note}</div></div>
       <div class="vmap"><svg viewBox="0 0 1000 1000" role="img" aria-label="${VREG[mapRegion]} map with facilities and your routes">${R.svg}${piers}<g class="vm-routes">${lines}${end}</g><g class="vm-facs">${marks}</g></svg></div>
-      <div class="vm-legend">${legend}<span><i class="sq" style="border-color:#3fb27f"></i>All orders done</span><span><i class="sq" style="border-color:#e0b44c"></i>Some done</span><span><i class="sq" style="border-color:#8a94a3"></i>None yet</span><span><i class="ln" style="background:#ff9b2f"></i>By vehicle</span><span><i class="ln" style="background:#5cc8ff"></i>On foot</span></div>
-      <p class="about">${esc(R.label || "Terrain simplified from the game map")}: our own blocky drawing in our own colours, not the game's map image. Diamonds are distribution centers and knots, circles preppers; the ring shows how many of their standard orders you've done. Click a facility to see its orders. Routes are the in-game “previous routes” since your last main order.</p></div>`;
+      <div class="vm-legend">${legend}<span><i class="sq" style="border-color:#3fb27f"></i>All orders done</span><span><i class="sq" style="border-color:#e0b44c"></i>Some done</span><span><i class="sq" style="border-color:#8a94a3"></i>None yet</span><span><i class="sq" style="border-color:#9fb3c8"></i>No standard orders</span><span><i class="sq" style="border-color:#8a94a3;border-style:dashed"></i>Not connected</span><span><i class="ln" style="background:#ff9b2f"></i>By vehicle</span><span><i class="ln" style="background:#5cc8ff"></i>On foot</span></div>
+      <p class="about">${esc(R.label || "Terrain simplified from the game map")}: our own blocky drawing in our own colours, not the game's map image. Diamonds are distribution centers and knots, circles preppers; the ring shows how many of their standard orders you've done, and a dashed ring means not connected yet. Click a facility to see its standard orders. Routes are the in-game “previous routes” since your last main order.</p></div>`;
   }
 
+  /*MAP-JS*/
   function renderMapView() {
     if (!mapRegion) mapRegion = defaultRegion();
     const btns = Object.entries(DATA.map.regions).map(([id, r]) => `<button type="button" class="chip-btn" data-region="${id}" aria-pressed="${id === mapRegion}">${esc(r.name)}</button>`).join("");
     const segs = mapRegion === defaultRegion() ? ((state && state.routes) || []).filter((s) => s[1].length >= 4) : [];
-    const note = mapRegion !== defaultRegion() ? `Routes are shown on the ${esc(DATA.map.regions[defaultRegion()].name)} map (where this save is)` : segs.length ? `${segs.length} route segments · about ${routeLen(segs).km.toFixed(1)} km since the last clear` : "No route history in this save";
+    const note = mapRegion !== defaultRegion() ? `Routes are shown on the ${esc(DATA.map.regions[defaultRegion()].name)} map (where this save is)` : segs.length ? `${segs.length} route segments · about ${routeLen(segs).km.toFixed(1)} km since your last main order` : "No route history in this save";
     return `<div class="group routes"><div class="map-bar"><div class="catbar" style="margin:0">${btns}</div><div class="note">${note}</div></div>
       <div id="lmap" class="lmap"></div>
       <p class="about">Relief map rendered from the game's own 3D-map data, with each facility's own map icon. Ring colours: green = all its standard orders done, gold = some done, grey = none done yet; click one for its open orders. Routes are the in-game “previous routes” (cleared when you complete a main order); on foot / vehicle is a strong hypothesis. Switch layers with the control at the top right.</p></div>`;
@@ -1317,6 +1331,7 @@ footer b{color:var(--ink)}
     if (last) L.circleMarker(last, { radius: 6, color: "#fff", weight: 2, fillColor: "#3fb27f", fillOpacity: 1 }).bindTooltip("Latest route point").addTo(lmap);
     L.control.layers(null, { "Facilities": fac, "Routes on foot": foot, "Routes by vehicle": veh }, { collapsed: false }).addTo(lmap);
   }
+  /*/MAP-JS*/
 
   function renderRoutes() {
     if (DATA.map) return renderMapView();
@@ -1329,7 +1344,7 @@ footer b{color:var(--ink)}
       <div class="rt-head"><div><h3>Route history</h3><div class="note">${segs.length} segments · ${pts.toLocaleString()} points · about ${km.toFixed(1)} km</div></div>
         <div class="rt-legend"><span><i class="lg rt-veh"></i>Vehicle (${veh})</span><span><i class="lg rt-foot"></i>On foot (${foot})</span><span><i class="lg dot rt-start"></i>Oldest</span><span><i class="lg dot rt-end"></i>Latest</span></div></div>
       ${routeSvg(segs, 0)}
-      <p class="about">The routes the in-game map shows as “previous routes”, north up, on a plain background (the game's map image isn't included). One point roughly every 10 m. The game clears this history when you complete a main order, so it shows your travels since then; fast travel starts a new segment.</p>
+      <p class="about">The routes the in-game map shows as “previous routes”, north up, on a plain background. One point roughly every 10 m. The game clears this history when you complete a main order, so it shows your travels since then; fast travel starts a new segment.</p>
     </div>`;
   }
 
@@ -1348,11 +1363,11 @@ footer b{color:var(--ink)}
     let html = `<p class="about">What Sam carries and what is in your private lockers. Sam's gear, the backpack and the lockers at West Fort Knot (F1), The Musician and F2 South Distribution Center are confirmed in game. Which facility the other lockers belong to is worked out from order records, so those are marked “facility not yet confirmed” until someone checks them in game.</p>`;
     if (groups.has("eq")) html += box("Sam: equipped", groups.get("eq"), "", true);
     if (groups.has("bp")) html += box("Sam: backpack", groups.get("bp"), "", true);
-    const lk = [...groups].filter(([w]) => w.startsWith("L:")).sort((a, b) => total(b[1]) - total(a[1]));
+    const lk = [...groups].filter(([w]) => w.startsWith("L:")).sort((a, b) => !LOCKERS[a[0].slice(2)] - !LOCKERS[b[0].slice(2)] || total(b[1]) - total(a[1]));
     if (lk.length) html += `<h4 class="subhead">Private lockers <span>${lk.length}</span></h4>`;
     for (const [w, g] of lk) {
       const f = LOCKERS[w.slice(2)];
-      html += box(f ? f[1] : "Unknown location", g, f ? (CONFIRMED_LOCKERS.has(f[0]) ? "" : "facility not yet confirmed") : "a store Peko-Check can't place yet", false);
+      html += box(f ? f[1] : "Unidentified storage", g, f ? (CONFIRMED_LOCKERS.has(f[0]) ? "" : "facility not yet confirmed") : "location not identified yet", false);
     }
     if (!groups.size) html += `<p class="note">No cargo found in this save.</p>`;
     return html;
@@ -1360,7 +1375,7 @@ footer b{color:var(--ink)}
 
   const renderView = () => tab === "changes" ? renderChanges() : tab === "craft" ? renderCraft() : tab === "routes" ? renderRoutes() : tab === "cargo" ? renderCargo() : renderOrders();
   function render() {
-    ["stats", "tabs", "view"].forEach((id) => ($(id).hidden = false));
+    ["stats", "tabs", "view", "drop2"].forEach((id) => ($(id).hidden = false));
     renderSave(); renderStats(); renderSeg();
     $("filters").hidden = tab === "routes" || tab === "changes" || tab === "cargo";
     $("view").innerHTML = renderView();
@@ -1439,7 +1454,7 @@ footer b{color:var(--ink)}
       saves.sort((x, y) => x.playtime - y.playtime);
       load(saves[1], saves[0]);
     } catch (e) {
-      $("err").textContent = "Could not read this file. " + e.message; $("err").hidden = false;
+      $("err").innerHTML = esc("Could not read this file. " + e.message).replace(/https:\/\/\S+/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`); $("err").hidden = false;
       if (state) render(); else renderEmpty();
     }
   }
@@ -1455,20 +1470,20 @@ footer b{color:var(--ink)}
   document.addEventListener("drop", (e) => { e.preventDefault(); if (e.dataTransfer?.files?.length) openFiles(e.dataTransfer.files, false); });
 
   if (typeof globalThis.__plTest === "function") globalThis.__plTest({ decodeSave, decodeContainer, verifySave, diffSaves, load, changeReport: () => changeReport(), renderChanges: () => renderChanges() });
-  // the public build ships without an example save: start on an empty "open your save" card
+  // without an embedded sample save (public build): start on an empty "open your save" card
   function renderEmpty() {
     $("save").classList.add("welcome");
     $("save").innerHTML = `<div class="meta"><div class="label">Get started</div>
       <div class="current">Open one of your Death Stranding 2 saves (PC, Steam) to see your progress.</div>
       <ol class="steps">
         <li>Click <b>Open save</b> above, or drop a save file onto this page.</li>
-        <li>Go to <code>Documents&#92;DEATH STRANDING 2 - ON THE BEACH&#92;</code> and open the folder with the long number (your Steam ID). If Windows syncs your Documents folder to the cloud, it is in that synced Documents folder.</li>
+        <li>Go to <code>Documents&#92;DEATH STRANDING 2 - ON THE BEACH&#92;</code> and open the folder with the long number (your Steam ID). Tip: paste <code>%USERPROFILE%&#92;Documents&#92;DEATH STRANDING 2 - ON THE BEACH</code> into the file dialog's address bar. If your Documents folder is synced to the cloud, look in that synced Documents folder instead.</li>
         <li>Pick any <code>manualsave</code>, <code>autosave</code> or <code>checkpointsave</code> file. Your newest one shows your current progress.</li>
       </ol>
       <div class="goal">You'll see your main orders as a story timeline, standard orders per facility with stars and stock, every unlock and what unlocks it, what's in your private lockers, your APAS and your recent routes.</div>
       <div class="goal"><b>Your save stays on your computer:</b> it is read in this browser, never uploaded, and never changed.</div>
       ${DATA.example ? `<div class="goal"><b>Just looking?</b> Click <b>View an example save</b> at the top to look around with a real save from about 30 hours into the game.</div>` : ""}</div>`;
-    ["stats", "tabs", "filters", "view"].forEach((id) => ($(id).hidden = true));
+    ["stats", "tabs", "filters", "view", "drop2"].forEach((id) => ($(id).hidden = true));
   }
   if (DATA.example) {
     $("exampleTop").hidden = false;

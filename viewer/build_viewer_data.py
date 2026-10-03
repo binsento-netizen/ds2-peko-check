@@ -16,9 +16,9 @@ OUT = Path(args[args.index("--out") + 1]) if "--out" in args else ROOT / "viewer
 # the example has no thumbnail and only the short file name)
 EXAMPLE = args[args.index("--example") + 1] if "--example" in args else None
 WRITE_EXAMPLE = args[args.index("--write-example") + 1] if "--write-example" in args else None
-# optional map (private build only, game-derived): `--map assets_private/map` (made by tools/build_map.py)
+# optional map (private build only, game-derived): `--map assets_private/map` (research checkout only)
 MAP = Path(args[args.index("--map") + 1]) if "--map" in args else None
-# optional item pictures (private build only, game-derived): `--icons assets_private/icons` (tools/odradek/build_icons.py)
+# optional item pictures (private build only, game-derived): `--icons assets_private/icons` (research checkout only)
 ICONS = Path(args[args.index("--icons") + 1]) if "--icons" in args else None
 
 # order catalogue: every field from the game's own data (catalog/build_catalog.py <- catalog/missions_game.csv);
@@ -31,7 +31,7 @@ SECTION = {"Main": "M", "Standard": "S", "Sub": "U"}
 orders = [[int(k), v["no"], SECTION[v["section"]], v["Order"], v["From"], v["To"], v["Cargo"], v["confidence"][0], v.get("Episode", ""),
            kind_of.get(int(k), 0), game8.get(v["no"]) if v["section"] == "Main" else None] for k, v in cat.items()]
 
-# unlock catalogue: game data only (catalog/unlock_items.json from catalog/build_unlock_items.py; docs/UNLOCKS_GAME.md).
+# unlock catalogue: game data only (catalog/unlock_items.json from catalog/build_unlock_items.py).
 # Names are the game's own English text; categories come from the game's fields (catalog/fabrication_categories.py).
 sys.path.insert(0, str(ROOT / "catalog"))
 from fabrication_categories import ABOUT
@@ -49,7 +49,7 @@ apas_cat = [[int(r["hash"], 16), r["name"], r["points"], r["category"], [int(k, 
 import review_cargo
 _bag = json.load(open(ROOT / "catalog/baggage_names.json", encoding="utf-8"))
 bags = {int(k, 16): [b["name"], 1 if b["contents_type"] == "RawMaterial" else 0] for k, b in _bag.items() if b["name"]}   # 1 = material (amount per item)
-_facn = {int(r["code"]): r["name"] for r in csv.DictReader(open(ROOT / "catalog/facilities_game.csv", encoding="utf-8"))}
+_facn = {r[0]: r[1] for r in json.load(open(ROOT / "catalog/facility_positions.json", encoding="utf-8"))}   # [code, name, type, area, x, y]
 _facn[300] = "DHV Magellan"
 lockers = {w0: [code, _facn.get(code, f"Facility {code}")] for w0, code in review_cargo.FACILITY_LOCKERS.items()}
 
@@ -87,17 +87,20 @@ def read_sample(path):
     from review_routes import parse_routes  # section 48ea52a4: map route history, [mode, x0, y0, x1, y1, ...] per segment
     routes = [[seg["mode"] or 0, [c for p in seg["points"] for c in p[:2]]] for seg in parse_routes(sb[0x48EA52A4])]
     lv = sb.get(0x73DACF23, b"")   # facility connection levels: 112-byte records from +106 (u32 code, u16 index, u16 level)
-    # per facility: code, connection level, six material stocks (stored 96 bytes before the code; tools/review_facilities.py)
+    # per facility: code, connection level, six material stocks (stored 96 bytes before the code)
     levels = [list(struct.unpack_from("<I2xH", lv, o)) + [list(struct.unpack_from("<12I", lv, o - 96)[0::2])]
               for o in range(106, min(len(lv) - 7, 106 + 49 * 112), 112)]
     import hashlib
     n = struct.unpack_from("<I", payload, 0x1FC)[0]
     dg = bytearray(hashlib.md5(payload[0x200:0x200 + n]).digest()); dg[0] ^= 0x06
     verified = bytes(dg) == payload[0x1EC:0x1FC]   # the save's own integrity check (same as the viewer's)
-    st = sb.get(0x202659D5, b"")   # likes: +4 from NPCs, +12 from other porters, +44 given (FINDINGS "Test session 2026-10-01")
+    st = sb.get(0x202659D5, b"")   # likes: +4 from NPCs, +12 from other porters, +44 given
     likes = list(struct.unpack_from("<I", st, o)[0] for o in (4, 12, 44)) if len(st) >= 48 else None
-    from review_apas import parse_apas   # section 69049449: APAS enhancements the player has, [hash, developed]
-    apas_recs = parse_apas(sb.get(0x69049449, b""), APAS)[0] if APAS else []
+    try:   # section 69049449: APAS enhancements the player has, [hash, developed] (tools/review_apas.py, research checkout only)
+        from review_apas import parse_apas
+        apas_recs = parse_apas(sb.get(0x69049449, b""), APAS)[0] if APAS else []
+    except ImportError:
+        apas_recs = []
     apas = [[int(r["hash"], 16), int(r["developed"])] for r in apas_recs if r["points"] > 0]
     ck = sb.get(0x3926C2C4, b"")   # in-game clock: +4 f32 hour of day, +8 u32 day (same rule as the viewer)
     clock = [struct.unpack_from("<I", ck, 8)[0], struct.unpack_from("<f", ck, 4)[0]] if len(ck) >= 12 else None
@@ -114,7 +117,7 @@ example = json.load(open(EXAMPLE, encoding="utf-8")) if EXAMPLE else None
 observed = set(json.load(open(ROOT / "catalog/unlock_observed.json")))   # keys with the unlock bit in any corpus save
 tracked = sorted({f"{r[5]}|{r[6] or ''}" for r in recipes if r[5] and r[0] in observed})
 g8fac = json.load(open(ROOT / "catalog/game8_facility_pages.json", encoding="utf-8"))   # verified Game8 prepper pages
-wiki = json.load(open(ROOT / "catalog/wiki_pages.json", encoding="utf-8"))   # exact wiki article titles (catalog/build_wiki_links.py)
+wiki = json.load(open(ROOT / "catalog/wiki_pages.json", encoding="utf-8"))   # exact wiki article titles
 def fac_icon(code):
     """The facility's own map icon from the game (private build, --icons), as a 32 px PNG data URI; None without it."""
     f = ICONS / "facilities" / f"{code}.png" if ICONS else None
@@ -130,7 +133,7 @@ def fac_icon(code):
 def read_map(d):
     meta = json.load(open(d / "map.json", encoding="utf-8"))
     names = {"aus": "Australia", "mex": "Mexico"}
-    # colour maps (tools/build_map_colour.py: the game's per-voxel colours over the relief) when built, else the relief
+    # colour maps (the game's per-voxel colours over the relief; research checkout only) when built, else the relief
     pic = lambda rid: d / f"{rid}_colour.jpg" if (d / f"{rid}_colour.jpg").exists() else d / f"{rid}.jpg"
     regions = {rid: dict(name=names.get(rid, rid), area=m["area"], size=m["size"], x0=m["x0"], y0=m["y0"],
                          img="data:image/jpeg;base64," + base64.b64encode(pic(rid).read_bytes()).decode())
@@ -190,6 +193,6 @@ if ICONS:
             apas_icons[int(r["hash"], 16)] = "data:image/webp;base64," + base64.b64encode(b.getvalue()).decode()
 out = json.dumps(dict(orders=orders, recipes=recipes, about=ABOUT, tracked=tracked, g8fac=g8fac, wiki=wiki, sample=sample, example=example, map=map_data, links=links, icons=icons, vmap=vmap, vfac=vfac, generic=json.load(open(ROOT / "catalog/generic_icons.json", encoding="utf-8")), apas=apas_cat, apas_icons=apas_icons, bags=bags, lockers=lockers), ensure_ascii=False, separators=(",", ":"))
 OUT.write_text(out, encoding="utf-8")
-print(f"orders {len(orders)}, recipes {len(recipes)} (" + ", ".join(f"{k}={sum(x[4].startswith(k) for x in recipes)}" for k in ("e", "g", "x")) + "), "
+print(f"orders {len(orders)}, recipes {len(recipes)} (" + ", ".join(f"{k}={sum(x[4].startswith(k) for x in recipes)}" for k in ("e", "x")) + "), "
       f"sample missions {len(missions)}, bytes {len(out):,}")
 

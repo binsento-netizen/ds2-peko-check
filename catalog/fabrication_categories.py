@@ -77,7 +77,7 @@ def categorise(it):
     if use == "All" or ucat in ("Gear Data", "Item Data") or rig == "Cant":
         return "Equipment", "Gear"                          # blood bags, canteens, floating carriers, coffin board ...
     if ucat == "APAS Enhancement":
-        return "APAS enhancements", None
+        return "APAS rewards from facilities", None
     if rig == "Karate":
         return "Melee techniques", None
     if ucat == "FIRMWARE UPDATE" or rig in ("Camera", "Odra"):
@@ -92,8 +92,11 @@ ABOUT = {
     "Music": "Tracks for the music player. Many songs have two or three entries in the game's catalogue; they are shown once here.",
     "Hot springs": "Items you can add to hot springs.",
     "Features": "Firmware updates: facility services and game features, for example resting at a facility (one entry per facility).",
-    "APAS enhancements": "Enhancements for the APAS.",
+    "APAS rewards from facilities": "APAS enhancements that a facility gives you when you reach a connection level with it. "
+                                    "Your full APAS list (developed / available) is in “Your APAS enhancements” below.",
     "Melee techniques": "Pizza-Do fighting techniques.",
-    "Collectibles": "BT crystals.",
-    "Structures": "Structures you can build with the PCC.",
+    "Collectibles": "BT crystals. Peko-Check can't read yet which ones you have.",
+    "Structures": "Structures you can build with the PCC (Portable Chiral Constructor).",
+    "Other": "Everything that doesn't fit a category above: cryptobiotes, actions such as Strand and Urination, "
+             "the Dollman Cam, the Harmonica and more.",
 }

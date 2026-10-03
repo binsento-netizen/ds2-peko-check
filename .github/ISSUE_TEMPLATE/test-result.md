@@ -2,7 +2,7 @@
 name: Test result
 about: Share a save-pair test (see "How you can help" in the README)
 title: "Test: "
-labels: test-result
+labels: help wanted
 ---
 
 **Which test** (from the README table, or describe your own):
@@ -11,7 +11,7 @@ labels: test-result
 
 **What the game showed** (numbers, names; a photo of the screen helps):
 
-**Game version** (title screen or Steam):
+**Game version** (shown on the save card in Peko-Check as "Game v1.x…"):
 
 **Compare report** (open the later save, click "Compare with…", pick the earlier save, click "Copy report", paste below):
 

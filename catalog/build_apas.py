@@ -7,6 +7,7 @@ Decima hash as the catalogue picture names (tools/odradek/build_icons.py name_ha
 Input: the JSON closure that tools/odradek/build_icons.py exports to decoded/icons_work/json (git-ignored cache;
 rebuild it with that script). Names are the game's English text (LocalizedTextResource.Texts[0]).
   python -B catalog/build_apas.py
+Needs the private research checkout (game export); the public repo ships the output.
 """
 import csv, glob, json, re, shutil
 from pathlib import Path

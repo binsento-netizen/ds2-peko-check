@@ -6,7 +6,7 @@
 <i>"Commencing peko-check at once!"</i></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Death%20Stranding%202-PC%20(Steam)%201.10.89-f08a2c" alt="Death Stranding 2, PC (Steam), game version 1.10.89">
+  <img src="https://img.shields.io/badge/Death%20Stranding%202-PC%20(Steam)%2C%20tested%20on%201.10.89-f08a2c" alt="Death Stranding 2, PC (Steam), tested on game version 1.10.89">
   <img src="https://img.shields.io/badge/runs%20in-your%20browser-1f7a55" alt="runs in your browser">
   <img src="https://img.shields.io/badge/your%20save-never%20uploaded-1f7a55" alt="your save is never uploaded">
   <img src="https://img.shields.io/badge/saves-read--only-5fc9f2" alt="read-only">
@@ -37,34 +37,40 @@ changes your save.
    ```
    Documents\DEATH STRANDING 2 - ON THE BEACH\<a long number>\
    ```
-   If Windows syncs your Documents folder to Microsoft's cloud storage, the folder is in that synced Documents
-   folder instead. The long number is your Steam ID. Any `manualsave`, `autosave` or `checkpointsave` file works.
+   The long number is your Steam ID. Tip: paste `%USERPROFILE%\Documents\DEATH STRANDING 2 - ON THE BEACH` into the
+   file dialog's address bar. If your Documents folder is synced to the cloud, look in that synced Documents folder
+   instead. Any `manualsave…`, `autosave…` or `checkpointsave….dat` file works.
 3. Browse the tabs. To see what a play session changed, open your newest save, click **Compare with…** and pick an
    older one.
 
-Works with the PC (Steam) version of Death Stranding 2. Console saves are not supported.
+Works with the PC version of Death Stranding 2. Tested with the Steam version on Windows; the Epic version and
+Steam Deck are untested, so reports are welcome. Console saves are not supported.
+
+**Spoilers:** Peko-Check lists every order and unlock in the game, including ones you haven't reached yet.
 
 ## What you can see
 
 - **Main orders as a story timeline**, episode by episode: where you are in the story, what's done and what's still
   locked, and what each order unlocks.
+- **Sub orders**: the side orders, done or still open.
 - **Standard orders per facility**, with the facility's connection level (stars), its material stock and what every
   level unlocks, ticked once you have it.
 - **Unlocks**: weapons, gear, outfits, vehicles and more, by category. Each one links to the order or facility level
   that unlocks it. Collab items, event items and firmware updates are marked.
 - **Cargo**: what Sam has equipped and in the backpack, and what is in your **private locker at each facility**,
   including how much of each material.
-- **APAS**: every enhancement, marked developed, available to develop, or not available yet.
+- **APAS** (in the Unlocks tab): every enhancement, marked developed, available to develop, or not available yet.
 - **Map**: every facility with its order progress, and your routes, on our own blocky map (see [The map](#the-map)).
 - **Likes** from NPCs, from other porters and given, and the **in-game day and time** of the save.
 - **Save check**: each save is checked against its own built-in checksum, so a damaged file is spotted.
-- **Compare two saves**: which orders changed, what got unlocked and where you travelled in between, with a report
+- **Compare two saves** (opens a **Changes** tab): which orders changed, what got unlocked and where you travelled in between, with a report
   you can copy (useful for [helping out](#how-you-can-help)).
 - Order names and numbers come from the **game's own data**, so they match what you see in the game.
-- Guide links for every order (Game8 or the Death Stranding Wiki), and a **light and dark look**.
+- Guide links for every order (Game8 or the Death Stranding Wiki; a wiki search where there's no page), and a
+  **light and dark look**.
 
 <p align="center">
-  <img src="assets/screenshots/weapons.png" width="49%" alt="Weapon unlocks with item pictures, unlocked and locked state, and the order or facility level that unlocks each">
+  <img src="assets/screenshots/weapons.png" width="49%" alt="Weapon unlocks with generic icons, level and weapon-type badges, unlocked and locked state, and the order or facility level that unlocks each">
   <img src="assets/screenshots/standard-orders.png" width="49%" alt="Standard orders for Ciudad Nudo del Norte: connection level, material stock, level rewards and each order's state">
 </p>
 
@@ -93,7 +99,7 @@ pictures are copyrighted, so they aren't included.
 | Likes, chiral bandwidth, in-game day and time | ✅ |
 | Signs placed in the world | 🟡 Where and which type; not yet whose |
 | Progress toward the next star | ❌ Not found yet |
-| Music, holograms, structures and colour schemes | ❌ Not found yet |
+| Music, holograms, structures and colour schemes | 🟡 Worked out from the orders and connection levels that give them where possible; not read from the save directly |
 | Built structures, route planner, auto-paver progress | ❌ Not found yet |
 
 How the file works, for the curious: [docs/FORMAT.md](docs/FORMAT.md).
@@ -131,17 +137,26 @@ project got here and what's next.
 ## For developers
 
 ```bash
-pip install lz4
-./setup.sh                                        # enables the publication check hooks
-python catalog/build_catalog.py                   # order catalogue from the game data in catalog/
-python viewer/build_viewer_data.py --no-sample    # -> viewer/viewer_data.json
-python viewer/build_page.py                       # -> viewer/index.html, one self-contained page
+python -m pip install lz4
+git config core.hooksPath .githooks                # enables the publication check hooks (or: sh setup.sh)
+python catalog/build_catalog.py                    # order catalogue from the game data in catalog/
+python viewer/build_viewer_data.py --example catalog/example_save.json   # -> viewer/viewer_data.json
+python viewer/build_page.py                        # -> viewer/index.html, one self-contained page
 python tools/ds2_savestate.py path/to/manualsave0.dat   # list a save's sections
 ```
 
+The tests need [Node.js](https://nodejs.org) and your own saves (there are none in the repository):
+
+```bash
+node viewer/test_verify.js viewer/index.html <your save.dat> README.md
+node viewer/test_compare.js viewer/index.html <save folder> <older save.dat> <newer save.dat>
+```
+
 The repository never contains save files, personal data, game asset files (map images, icons, item pictures) or
-copied third-party text. `tools/public_check.py` enforces that before every commit and push (`setup.sh` turns the
-hooks on) and again on GitHub. The only images in the repository are the logo and screenshots of the app.
+copied third-party text. `tools/public_check.py` enforces that before every commit and push (once the hooks are
+on) and again on GitHub. The only images in the repository are the logo (and its link-preview and app-icon
+versions) and screenshots of the app; the item icons are game-icons.net drawings (CC BY 3.0) stored as data in
+`catalog/generic_icons.json`.
 
 ## Credits
 

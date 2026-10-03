@@ -9,7 +9,7 @@ labels: bug
 
 **What you expected:**
 
-**Browser and game version:**
+**Browser and game version** (the game version is shown on the save card in Peko-Check as "Game v1.x…"):
 
 **Screenshot of the page** (crop out anything personal):
 

@@ -1,7 +1,7 @@
 """Map internal mission IDs (from saves) to order numbers and names. Writes mission_catalog.json/.csv.
 
-Everything comes from the game's own data, via catalog/missions_game.csv (build_missions_game.py, Odradek export);
-see docs/MISSIONS_GAME.md and docs/ORDERS_GAME_TEXT.md. No community guide is read.
+Everything comes from the game's own data, via catalog/missions_game.csv (exported from the game files with Odradek;
+the export script is not part of the public repo). No community guide is read.
   * Number: position in the game's DSMissionContentsDataResource lists (standard No. = 200 + index, main = index + 1,
     sub = 100 + index). Name: the game's English MissionName.
   * From: the order's StartConstruction (facility); story orders without one: the game's OrderPerson
@@ -47,9 +47,9 @@ bad = [(k, v, cat.get(k, {}).get("no")) for k, v in ANCHORS.items() if cat.get(k
 assert not bad, f"save metadata disagrees: {bad}"
 assert len({v["no"] for v in cat.values()}) == len(cat), "duplicate order numbers"
 print("catalogue:", len(cat), dict(collections.Counter(v["section"] + "/" + v["confidence"] for v in cat.values())))
-json.dump({str(k): v for k, v in sorted(cat.items())}, open("catalog/mission_catalog.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+json.dump({str(k): v for k, v in sorted(cat.items())}, open("catalog/mission_catalog.json", "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 with open("catalog/mission_catalog.csv", "w", newline="", encoding="utf-8-sig") as f:
-    w = csv.writer(f)
+    w = csv.writer(f, lineterminator="\n")
     w.writerow(["mission_id", "order_no", "section", "episode", "order", "from", "to", "cargo", "confidence"])
     for k, v in sorted(cat.items(), key=lambda kv: kv[1]["no"]):
         w.writerow([k, v["no"], v["section"], v.get("Episode", ""), v["Order"], v["From"], v["To"], v["Cargo"], v["confidence"]])

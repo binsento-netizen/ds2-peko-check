@@ -3,4 +3,4 @@
 # committed in this repository (game data read with Odradek, see THIRD_PARTY_NOTICES.md); nothing is downloaded.
 set -e
 git config core.hooksPath .githooks
-echo "ready: python viewer/build_viewer_data.py --no-sample && python viewer/build_page.py"
+echo "ready: python viewer/build_viewer_data.py --example catalog/example_save.json && python viewer/build_page.py"

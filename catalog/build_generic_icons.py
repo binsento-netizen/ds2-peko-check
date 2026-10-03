@@ -196,7 +196,7 @@ RULES_CAT = {
     ("Vehicles", "Vehicles"): "truck",
     ("Vehicles", "Vehicle parts"): "truck",
     ("Structures", None): "structure",
-    ("APAS enhancements", None): "apas",
+    ("APAS rewards from facilities", None): "apas",
     ("Melee techniques", None): "martial-arts",
     ("Holograms", None): "hologram",
     ("Character rewards", None): "character",
@@ -330,17 +330,19 @@ def minify_svg(svg):
 def write_credits(used):
     lines = ["# Generic unlock icons: credits", "",
              "The public viewer shows these generic icons instead of the game's own item pictures (which are copyrighted",
-             "and stay private). All icons come from [game-icons.net](https://game-icons.net)",
+             "and are not included). All icons come from [game-icons.net](https://game-icons.net)",
              "([source repo](https://github.com/game-icons/icons)) and are licensed under",
              f"[CC BY 3.0]({LICENCE}).", "",
              "Changes made: black background square removed, colour set to `currentColor` (tinted by the viewer),",
-             "path coordinates snapped to a 1-unit grid (of 512) in `catalog/generic_icons.json`. Files here are renamed by meaning.", "",
-             "One-line attribution (README / THIRD_PARTY_NOTICES):", "",
+             "path coordinates snapped to a 1-unit grid (of 512). The icons are stored in `catalog/generic_icons.json`; the first",
+             "column is the name used there. Icons are renamed by meaning; the SVGs are fetched with",
+             "`catalog/build_generic_icons.py --fetch` and are not part of the public repository.", "",
+             "Short attribution:", "",
              "> Unlock icons by " + ", ".join(sorted({AUTHOR_NAMES[a] for a, _ in SOURCES.values()}))
              + " from [game-icons.net](https://game-icons.net), licensed under [CC BY 3.0](" + LICENCE + "); recoloured.",
-             "", "| File | Original icon | Author | Licence |", "|---|---|---|---|"]
+             "", "| Icon | Original icon | Author | Licence |", "|---|---|---|---|"]
     for name, (author, icon) in sorted(SOURCES.items()):
-        lines.append(f"| `{name}.svg` | [{icon}](https://game-icons.net/1x1/{author}/{icon}.html) | "
+        lines.append(f"| `{name}` | [{icon}](https://game-icons.net/1x1/{author}/{icon}.html) | "
                      f"{AUTHOR_NAMES[author]} | [CC BY 3.0]({LICENCE}) |")
     unused = sorted(set(SOURCES) - used)
     if unused:
@@ -408,7 +410,8 @@ def main():
     OUT.write_text(json.dumps({"icons": icons, "map": dict(sorted(mapping.items()))}, ensure_ascii=False,
                               separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
     write_credits(used)
-    write_preview(rows, mapping, icons)
+    if (ROOT / "design").is_dir():   # research checkout only; the public repo has no design/ folder
+        write_preview(rows, mapping, icons)
 
     visible = sum(1 for r in rows if r["cat"])
     print(f"{len(mapping)}/{visible} visible unlocks mapped ({len(rows) - visible} hidden skipped); "

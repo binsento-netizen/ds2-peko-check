@@ -22,9 +22,9 @@ BLOCKED_PATHS = [
     # images are blocked except our own artwork: the logo renders and screenshots of the viewer's own UI
     # (taken without the save thumbnail, map or item pictures; decided 2026-10-01)
     (r"^(?!assets/(logo-\d+\.png|screenshots/[\w-]+\.png|social-card\.png|apple-touch-icon\.png)$).*\.(dat|sav|bin|pkl|npy|zip|7z|rar|png|jpe?g|webp|gif|dds|tex|core|stream)$", "save, binary or image file (game assets need explicit review)"),
-    (r"(^|/)catalog/game_text/", "full game text dump (downloaded by setup.sh, not redistributed)"),
+    (r"(^|/)catalog/game_text/", "full game text dump (not redistributed)"),
     (r"localization[^/]*\.json$", "game text dump"),
-    (r"steam_guide\.txt$", "copied Steam guide text"),
+    (r"steam_guide\.txt$", "copied guide text"),
     (r"(^|/)catalog/sources/", "copied web articles"),
     (r"(^|/)(CLAUDE|HANDOFF|SESSION_TODO|SPOTCHECK|FINDINGS|DS2_SAVE_PROJECT)\.md$", "private research notes"),
     (r"viewer_data\.json$", "build output (embedded in viewer/index.html)"),
@@ -40,7 +40,7 @@ BLOCKED_CONTENT = [
     (r"/c/users/|\\appdata\\|/appdata/|onedrive", "local path"),
     (r"data:image/[a-z]+;base64,[A-Za-z0-9+/]{200}", "embedded image (an example save thumbnail?)"),
     (r"claude\.ai/(code/)?artifact", "private artifact link"),
-    (r"\"sample\"\s*:\s*\{", "example save embedded in the viewer (build with --no-sample)"),
+    (r"\"sample\"\s*:\s*\{", "example save embedded in the viewer (build without --sample)"),
 ]
 ALLOWED_EMAIL = re.compile(r"(@users\.noreply\.github\.com|^noreply@anthropic\.com)$", re.I)
 

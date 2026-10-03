@@ -24,25 +24,32 @@ one game action at a time.
 
 ### 3. Controlled tests (1–2 October)
 - Ran save pairs for one action each: a delivery, a structure, a locker deposit, a material withdrawal, fabrication,
-  swapping boots, an APAS enhancement, fast travel, the route planner, sleeping, placing a sign and more. A phone
-  checklist logged what happened in the game next to each save pair.
+  swapping boots, an APAS enhancement, fast travel, the route planner, sleeping, placing a sign and more.
 - Results: the facility stock layout, fast travel starting a new route segment, the APAS list, the in-game clock,
   and the cargo pool that tells where every item is (equipped, backpack or a facility's private locker).
-- Found the hash the game uses for many references (CRC32C with the top bit cleared), which unlocked item pictures,
-  APAS ids and sign types in one go.
+- Found the hash the game uses for many references (CRC32C with the top bit cleared), which linked items, APAS ids
+  and sign types to the game's data in one go.
 
 ### 4. The app (1–2 October)
 - Story timeline for main orders, standard orders per facility, unlocks with "unlocked by" links, Cargo, APAS,
   Map and a compare mode with a copyable report.
-- A game-inspired look (light and dark), chosen from three design directions.
+- A game-inspired look (light and dark).
 - A public version with a publication check that keeps save data, personal data and game asset files out of the
   repository.
+
+### 5. Public release (3 October)
+- A hosted copy on GitHub Pages, so the viewer runs without downloading the repository.
+- An example save to look around without your own.
+- Generic item icons with level and weapon-type badges, instead of the game's own pictures.
+- A blocky map of our own (voxel terrain simplified from the game's map) with facilities and your routes.
+- The in-game day and time on the save card.
 
 ## What is still to do
 
 ### Research (help wanted)
 - [ ] **Music, holograms, structures and colour schemes:** their unlock state is not in the unlock catalogue. A song
-      unlocks through a persistent game flag; how the save stores those flags is open.
+      unlocks through a persistent game flag; how the save stores those flags is open. The viewer works them out
+      from orders and connection levels for now.
 - [ ] **Partial stars:** the points needed per level are known; the counter that fills the next star is not.
 - [ ] **Signs:** positions and types are read; which signs are your own is not.
 - [ ] **Lockers:** confirm the facility of each private locker (three are confirmed in game), and map the lockers of
@@ -51,10 +58,10 @@ one game action at a time.
 - [ ] **Collectibles** (memory chips and the like).
 - [ ] **Auto-pavers:** donations show up as facility stock going down; the paver's own progress seems to be kept on
       the server.
-- [ ] **More players and patches:** everything so far comes from one player's saves on game version 1.10.89.0.
+- [ ] **More players and patches:** everything so far comes from one player's saves, mostly on 1.10.89.0 (older
+      1.0.45 and 1.1.53 saves also open).
 
 ### App
-- [ ] A hosted copy, so the viewer runs without downloading the repository.
 - [ ] Partial stars and music/hologram status in the viewer once the research above is done.
 - [ ] A "your signs" map layer.
 - [ ] Split the single-file viewer into smaller modules as it grows.

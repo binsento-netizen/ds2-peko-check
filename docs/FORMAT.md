@@ -77,14 +77,29 @@ Mode 200 is most likely a vehicle and 100 on foot (strong hypothesis). The histo
 and is cleared when a main order is completed (and on some other events not yet identified). The newest segment
 keeps growing while you travel.
 
+### More decoded sections
+
+Hashes below are the game's masked name hash: CRC32C (init 0, no final xor) of the resource's name, with the top
+bit cleared.
+
+| Section | Content |
+|---|---|
+| `73dacf23` | Facilities: 49 records of 112 bytes from `+106`: `u32` facility code, `u16` index, `u16` connection level 0-5. The six material stocks (`u32`, 8 bytes apart: Chiral Crystals, Resins, Metals, Ceramics, Chemicals, Special Alloys) start 96 bytes before the code. |
+| `202659d5` | Likes: `u32` at `+4` from NPCs, `+12` from other porters, `+44` given. |
+| `69049449` | Chiral bandwidth: `vint` at `+4` = the sum over facilities of [0, 20, 35, 50, 65, 95][level]. Then the APAS list: per enhancement the player has access to, `u32` hash of its id, `u8` developed (1) / available (0), more bytes not decoded; then a `u8` count and the hashes of the developed ones. |
+| `0aa0d44e` | Cargo: a pool of 464-byte item slots (from `+253`): `+7` container kind, `+48` 12-byte container id (`w0 w1 w2`), `+60` baggage name code, `+172` `f32` remaining amount of a material stack. Kind `0x00` = equipped, `0x34` = backpack, `0x1f` with `w2 = 36a83550` = a private locker, whose `w0` identifies the facility. |
+| `3926c2c4` | In-game clock: `f32` hour of the day at `+4` (6.0 = 06:00), `u32` day number at `+8`. |
+| `129ec9ee` | Signs (lead): a count near the start, then records of about 72-78 bytes with the sign type's hash and its `f64 x, y, z` (world metres) 36, 28 and 20 bytes before the hash. Whose sign it is is not known yet. |
+
 ## 4. Leads (not confirmed)
 
 | Section | Observation |
 |---|---|
 | `0b8cfaf0` | 606 objective/progress records |
 | `5cef9b34` | story table |
-| `6727b031` | 24 bytes of cumulative counters; probably total likes |
-| `01b35e1e`, `2cf918ee` | change when a facility is connected (`u32 @32` 0→3; counter `@624` with an `f64` timestamp `@616`) |
+| `6727b031` | 24 bytes of clocks: `+16` grows about 29.97 per second of play; the other fields are open |
+| `01b35e1e` | changes when a facility is connected (`u32 @32` 0→3) |
+| `2cf918ee` | a counter `@624` (with an `f64` timestamp `@616`) that steps at certain main orders |
 | `4d4b4d42` | active order markers (`f32 x, y, z` records) |
 
 The viewer's **Compare with…** mode lists every section whose bytes differ between two saves; a save pair around

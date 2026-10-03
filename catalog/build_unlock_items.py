@@ -1,12 +1,13 @@
 """Unlock catalogue for the viewer, from the game's own data: catalog/unlock_items.json.
 
 One row per DSGameCatalogueListItem (903; NameCode = the key in save section 3ef4dc4d), with the exact English name
-and the viewer category, so the viewer build needs neither DS2-Mods nor the full game-text dump.
+and the viewer category, so the viewer build needs no game files.
+Step 1 needs the private research checkout (game install + Odradek); the public repo ships the output.
 Read-only against the game install. Two steps:
 
   1. Export (once per game version, ~2 min, ~10 MB of JSON in out/unlocks_export, git-ignored). Needs the ext/
      folder of the main checkout (Odradek + runtime) and the helper classes compiled into tools/odradek/out:
-       DS2_EXT=".../ds2-save-viewer/ext" python -B catalog/build_unlock_items.py --export
+       DS2_EXT=".../ext" python -B catalog/build_unlock_items.py --export
      FindObjects DSGameCatalogueListItem, then ExportBatch json, following only the refs in FOLLOW
      (catalogue item -> Baggage -> Contents -> LocalizedName / LocalizedUnlockCategoryText, RewardResource -> texts).
   2. Build (pure Python): python -B catalog/build_unlock_items.py  -> catalog/unlock_items.json
@@ -14,7 +15,7 @@ Read-only against the game install. Two steps:
 Name = DSGameBaggageListItem.LocalizedName (falls back to Contents.LocalizedName when the baggage has no name
 resource), LocalizedTextResource.Texts[0] (English), with the <letter case=default> branch kept and the
 runtime-filled " [{0}]" suffix dropped. A blank name or the literal placeholder "null" = no name (the viewer shows
-"Unnamed entry" and hides the row). Categories: catalog/fabrication_categories.py. See docs/UNLOCKS_GAME.md.
+"Unnamed entry" and hides the row). Categories: catalog/fabrication_categories.py.
 """
 import glob, json, os, re, subprocess, sys
 from pathlib import Path
@@ -33,7 +34,7 @@ SUB_ORDER = ["Attachments", "Charms", "Gloves", "Gear", "Tools", "Vehicles", "Ve
              "Heavy & special", "Grenades, bombs & traps", "Guns", "Melee", "Support weapons"]
 # Four "FIRMWARE UPDATE" entries are listed next to what they upgrade (decided 2026-10-02) and tagged instead of
 # being filed under Features with the facility services.
-FIRMWARE_HOME = {"64098529": ("APAS enhancements", None),       # Motion Scanner
+FIRMWARE_HOME = {"64098529": ("APAS rewards from facilities", None),   # Motion Scanner
                  "0532f5de": ("Vehicles", "Vehicle parts"),     # Pickup Off-Roader Improved
                  "42a862c1": ("Melee techniques", None),        # Improved Rubber Pizza
                  "1895a4e5": ("Outfits", "BB Pod patterns")}    # BB Pod Patterns
@@ -139,7 +140,7 @@ def build():
             it["cat"], it["sub"] = FIRMWARE_HOME[it["key"]]
             it["tag"] = "Firmware update"
     cats =["Weapons", "Skeletons", "Boots", "Equipment", "Backpack Attachments", "Patches", "Outfits", "Vehicles",
-            "Structures", "APAS enhancements", "Melee techniques", "Holograms", "Character rewards", "Music",
+            "Structures", "APAS rewards from facilities", "Melee techniques", "Holograms", "Character rewards", "Music",
             "Hot springs", "Collectibles", "Features", "Other"]
     items.sort(key=lambda it: (cats.index(it["cat"]) if it["cat"] else 99,
                                SUB_ORDER.index(it["sub"]) if it["sub"] in SUB_ORDER else -1, it["sort_index"], it["key"]))
