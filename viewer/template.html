@@ -152,7 +152,9 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .tab[aria-selected="true"]{background:var(--orange);color:var(--on-banner)}
 .tab .n{font:400 12px var(--mono);opacity:.8;margin-left:4px}
 .stats:empty{display:none}
-.row.spoil{cursor:pointer} .row.spoil .name,.row.spoil .desc,.row.spoil .sub,.row.spoil .rewards{filter:blur(6px);user-select:none;pointer-events:none}
+.row.spoil,.rec.spoil{cursor:pointer;position:relative}
+.reveal-btn{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);font:600 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);padding:7px 14px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.reveal-btn:hover{border-color:var(--orange);color:var(--orange)} .reveal-btn:focus-visible{outline:2px solid var(--orange);outline-offset:2px} .rec.spoil .nm,.rec.spoil .rec-img,.rec.spoil .by,.rec.spoil .de{filter:blur(6px);user-select:none;pointer-events:none} .row.spoil .name,.row.spoil .desc,.row.spoil .sub,.row.spoil .rewards{filter:blur(6px);user-select:none;pointer-events:none}
 .row.spoil:hover .name{filter:blur(4px)} .spoil-mo>.mm,.spoil-mo>.nomap{filter:blur(6px)} .blur{filter:blur(4px);user-select:none}
 .spoil-toggle{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 10px;font:600 14px var(--body);cursor:pointer} .spoil-toggle input{accent-color:var(--orange);width:16px;height:16px} .spoil-toggle span{font-weight:400;color:var(--muted);font-size:13px}
 .tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--ground);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:6px;padding:8px 0 10px;overflow:visible}
@@ -993,7 +995,7 @@ footer b{color:var(--ink)}
     if (fac && lvl) { if (!ITEMS_BY_FAC.has(fac)) ITEMS_BY_FAC.set(fac, new Map()); const f = ITEMS_BY_FAC.get(fac); if (!f.has(lvl)) f.set(lvl, new Set()); f.get(lvl).add(label); }
   }
   const FAC_NAME = new Map(); ORD.forEach((o) => { if (o.sec === "S" && o.id) FAC_NAME.set(Math.floor(o.id / 1000), o.from); });
-  const rewardChip = (label, got) => `<button type="button" class="chip-rw${got ? " got" : ""}" data-goto-item="${esc(label)}">${esc(label)}</button>`;
+  const rewardChip = (label, got) => `<button type="button" class="chip-rw${got ? " got" : ""}" data-goto-item="${esc(label)}">${!got && !showSpoilers ? `<span class="blur" title="Spoiler">${esc(label)}</span>` : esc(label)}</button>`;
   const MATERIALS = ["Chiral Crystals", "Resins", "Metals", "Ceramics", "Chemicals", "Special Alloys"], MAT_AB = ["CC", "Re", "Me", "Ce", "Ch", "SA"];
   const stockOf = (code) => { const l = ((state && state.levels) || []).find((x) => x[0] === code); return l && l[2] && l[2].some((v) => v) ? l[2] : null; };
   const stockLine = (code) => { const st = code ? stockOf(code) : null; if (!st) return ""; const mx = Math.max(...st) || 1;
@@ -1028,10 +1030,10 @@ footer b{color:var(--ink)}
   let showSpoilers = false; try { showSpoilers = localStorage.getItem("pl-spoilers") === "1"; } catch (e) {}
   const revealed = new Set();
   const isSpoiler = (o) => !showSpoilers && (o.sec === "M" || o.sec === "U") && (o.st === "lock" || o.st === "none") && !revealed.has(String(o.id || o.no));
-  const spoilBar = () => `<label class="spoil-toggle"><input type="checkbox" id="spoilToggle"${showSpoilers ? " checked" : ""}> Show spoilers <span>Orders you haven't reached are blurred; click one to reveal it.</span></label>`;
+  const spoilBar = () => `<label class="spoil-toggle"><input type="checkbox" id="spoilToggle"${showSpoilers ? " checked" : ""}> Show spoilers <span>Orders, items and rewards you haven't reached are blurred; click one to reveal it.</span></label>`;
   function orderRow(o) {
     const sp = isSpoiler(o);
-    return `<div class="row ${o.st === "none" ? "dim" : ""}${sp ? " spoil" : ""}"${sp ? ` data-reveal="${esc(String(o.id || o.no))}" title="Spoiler: click to reveal"` : ""}>
+    return `<div class="row ${o.st === "none" ? "dim" : ""}${sp ? " spoil" : ""}"${sp ? ` data-reveal="${esc(String(o.id || o.no))}"` : ""}>${sp ? `<button type="button" class="reveal-btn">Show spoiler</button>` : ""}
       <div class="no">${zpad(o.no)}</div>
       <div class="name">${esc(o.name)}</div>
       <div class="right">${pill(o.st)}</div>
@@ -1151,7 +1153,7 @@ footer b{color:var(--ink)}
     const label = { done: "Developed", avail: "Available", lock: "Not available yet" };
     return `<details class="group" ${craftCat !== "all" || q ? "open" : ""}><summary><h3>Your APAS enhancements</h3><span class="count">${dev} / ${all.length} developed · ${av} available</span>${bar(all.map((r) => ({ st: r.st === "done" ? "done" : "lock" })))}</summary>
       <p class="about">APAS enhancements are upgrades you develop through APAS, each for a number of points. This is every enhancement in the game, with its state in this save: developed, available to develop, or not available yet.</p>
-      <div class="rows">${rows.map((r) => `<div class="rec"><div class="rec-main">${img(r)}<div><div class="nm">${esc(r.name)}</div><div class="de">${dup.has(r.name) ? `Step ${r.step} · ` : ""}${r.pts} points</div></div></div><div class="rt">${pill(r.st, label[r.st])}</div></div>`).join("")}</div></details>`;
+      <div class="rows">${rows.map((r) => `<div class="rec${r.st === "lock" && !showSpoilers && !revealed.has("a:" + r.name) ? " spoil" : ""}" data-reveal="a:${esc(r.name)}">${r.st === "lock" && !showSpoilers && !revealed.has("a:" + r.name) ? `<button type="button" class="reveal-btn">Show spoiler</button>` : ""}<div class="rec-main">${img(r)}<div><div class="nm">${esc(r.name)}</div><div class="de">${dup.has(r.name) ? `Step ${r.step} · ` : ""}${r.pts} points</div></div></div><div class="rt">${pill(r.st, label[r.st])}</div></div>`).join("")}</div></details>`;
   }
 
   function renderCraft() {
@@ -1162,7 +1164,8 @@ footer b{color:var(--ink)}
     const chips = [`<button type="button" class="chip-btn" id="cat-all" data-cat="all" aria-pressed="${craftCat === "all"}">All <span>${tally(all)}</span></button>`]
       .concat(cats.map((c) => `<button type="button" class="chip-btn" id="cat-${c.replace(/\W+/g, "-")}" data-cat="${esc(c)}" aria-pressed="${craftCat === c}">${esc(c)} <span>${tally(all.filter((m) => m.cat === c))}</span></button>`)).join("");
     const keep = (m) => (status === "all" || (m.tracked && (status === "done" ? m.k > 0 : m.k < m.n))) && (!q || `${m.label} ${m.cat} ${m.sub} ${m.tag}`.toLowerCase().includes(q));
-    let html = `<div class="catbar" id="catbar">${chips}</div>`;
+    const uSpoil = (m) => !showSpoilers && !q && !(m.k > 0) && !revealed.has("u:" + m.label);
+    let html = spoilBar() + `<div class="catbar" id="catbar">${chips}</div>`;
     for (const c of cats) {
       if (craftCat !== "all" && craftCat !== c) continue;
       const inCat = all.filter((m) => m.cat === c), shown = inCat.filter(keep);
@@ -1175,7 +1178,7 @@ footer b{color:var(--ink)}
         const rows = shown.filter((m) => m.sub === s).sort((x, y) => (y.k > 0) - (x.k > 0) || x.label.localeCompare(y.label));
         if (!rows.length) continue;
         if (s) html += `<h4 class="subhead">${esc(s)} <span>${tally(inCat.filter((m) => m.sub === s))}</span></h4>`;
-        html += `<div class="rows">` + rows.map((m) => `<div class="rec" data-item="${esc(m.label)}"><div class="rec-main">${recImg(m)}<div><div class="nm">${esc(m.label)}${m.tag ? ` <span class="chip" data-tag="${esc(m.tag)}">${esc(m.tag)}</span>` : ""}</div>${unlockedBy(m)}</div></div><div class="rt">${craftPill(m)}</div></div>`).join("") + `</div>`;
+        html += `<div class="rows">` + rows.map((m) => `<div class="rec${uSpoil(m) ? " spoil" : ""}" data-item="${esc(m.label)}"${uSpoil(m) ? ` data-reveal="u:${esc(m.label)}"` : ""}>${uSpoil(m) ? `<button type="button" class="reveal-btn">Show spoiler</button>` : ""}<div class="rec-main">${recImg(m)}<div><div class="nm">${esc(m.label)}${m.tag ? ` <span class="chip" data-tag="${esc(m.tag)}">${esc(m.tag)}</span>` : ""}</div>${unlockedBy(m)}</div></div><div class="rt">${craftPill(m)}</div></div>`).join("") + `</div>`;
       }
       html += `</details>`;
     }
@@ -1514,7 +1517,7 @@ footer b{color:var(--ink)}
       else { tab = "standard"; $("q").value = FAC_NAME.get(Number(gf.dataset.gotoFac)) || ""; }
       status = "all"; render(); $("tabs").scrollIntoView && $("tabs").scrollIntoView({ block: "start" }); return;
     }
-    const spr = e.target.closest(".row.spoil");
+    const spr = e.target.closest(".spoil[data-reveal]");
     if (spr) { e.preventDefault(); revealed.add(spr.dataset.reveal); $("view").innerHTML = renderView(); return; }
     const ly = e.target.closest("[data-layer]");
     if (ly) { const k = ly.dataset.layer; hiddenLayers.has(k) ? hiddenLayers.delete(k) : hiddenLayers.add(k); $("view").innerHTML = renderView(); return; }

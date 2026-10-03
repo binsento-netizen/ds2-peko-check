@@ -46,7 +46,7 @@ changes your save.
 Works with the PC version of Death Stranding 2. Tested with the Steam version on Windows; the Epic version and
 Steam Deck are untested, so reports are welcome. Console saves are not supported.
 
-**Spoilers:** main and sub orders you haven't reached yet are blurred; click one to reveal it, or tick **Show spoilers**. The Unlocks tab still lists every item in the game.
+**Spoilers:** orders you haven't reached, items you don't have yet and rewards still ahead of you are blurred. Click **Show spoiler** on one to reveal it, or tick **Show spoilers** to see everything.
 
 ## What you can see
 
