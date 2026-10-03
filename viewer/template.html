@@ -1,0 +1,1365 @@
+<meta charset="utf-8">
+<title>Peko-Check</title>
+<link rel="icon" type="image/svg+xml" href="__FAVICON__">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&family=Michroma&display=swap">
+<style>
+/* Theme "Field kit": cargo-label stock, porter tans, signal-orange banners, chiral teal for facilities.
+   Michroma only for headings/banners; Barlow / Barlow Condensed / Share Tech Mono for everything else.
+   The map panel stays dark in both modes. Every colour is a token here; dark mode only redefines tokens. */
+:root{
+  color-scheme:light;
+  --ground:#e9e2d4; --surface:#f8f5ee; --sunk:#efe9dc; --line:#c8bca6; --line-strong:#8f8370;
+  --ink:#1d1b17; --muted:#5b5447; --tan:#b89d72; --tan-soft:#e3d6bd;
+  --orange:#c2470f; --orange-ink:#a83c0b; --orange-soft:#f6dfcd; --orange-fade:rgba(194,71,15,.55);
+  --teal:#17687e; --teal-soft:#d7e9ec; --teal-banner:#17687e;
+  --gold:#a77408; --gold-ink:#85600a; --gold-soft:#f1e3c2;
+  --done:#2e6b3c; --done-soft:#dbe9d8; --lock:#625b4f; --lock-soft:#e4ded2;
+  --on-banner:#ffffff; --focus:#17687e; --weave:rgba(120,100,60,.035);
+  /* older names still used by a few rules */
+  --blue:var(--teal); --blue-soft:var(--teal-soft); --prog:var(--orange-ink); --prog-soft:var(--orange-soft);
+  /* map panel: dark in both modes */
+  --map-bg:#0e1420; --map-panel:rgba(14,18,21,.9); --map-solid:#171c20; --map-ink:#e8edef; --map-muted:#9fb0b7; --map-line:#33414a;
+  --map-accent:#f08a4b; --map-mk:rgba(14,20,32,.82); --map-pin:#f8f5ee; --map-shadow:rgba(0,0,0,.45);
+  --map-casing:rgba(0,0,0,.85); --map-foot:#5cc8ff; --map-veh:#ff9b2f; --map-ring:#e0b44c;   /* same colours the map code draws with */
+  --head:"Michroma","Eurostile","Arial",sans-serif;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Share Tech Mono",ui-monospace,Consolas,monospace;
+  --cut:12px;
+  --chamfer:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)));
+  --slant:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  --para:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#13120f; --surface:#1d1b17; --sunk:#181713; --line:#3a352c; --line-strong:#6d6555;
+    --ink:#ece5d6; --muted:#aaa08e; --tan:#9c8460; --tan-soft:#2e281e;
+    --orange-ink:#f08a4b; --orange-soft:#3a2214;
+    --teal:#5fb6c9; --teal-soft:#15303a;
+    --gold:#e3b23c; --gold-ink:#e3b23c; --gold-soft:#3a3016;
+    --done:#7cc68c; --done-soft:#1b3121; --lock:#9c9483; --lock-soft:#26231d;
+    --focus:#5fb6c9; --weave:rgba(255,235,200,.018);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#13120f; --surface:#1d1b17; --sunk:#181713; --line:#3a352c; --line-strong:#6d6555;
+  --ink:#ece5d6; --muted:#aaa08e; --tan:#9c8460; --tan-soft:#2e281e;
+  --orange-ink:#f08a4b; --orange-soft:#3a2214;
+  --teal:#5fb6c9; --teal-soft:#15303a;
+  --gold:#e3b23c; --gold-ink:#e3b23c; --gold-soft:#3a3016;
+  --done:#7cc68c; --done-soft:#1b3121; --lock:#9c9483; --lock-soft:#26231d;
+  --focus:#5fb6c9; --weave:rgba(255,235,200,.018);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background-color:var(--ground);color:var(--ink);font:400 15px/1.5 var(--body);padding-inline:16px;padding-block:20px 48px;
+  background-image:repeating-linear-gradient(0deg,transparent 0 3px,var(--weave) 3px 4px),repeating-linear-gradient(90deg,transparent 0 3px,var(--weave) 3px 4px)}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:20px;min-width:0}
+h1,h2,h3,h4{margin:0}
+h3,.tab{font-family:var(--display)}
+.z{opacity:.38}                                  /* dimmed leading zeros, like the in-game counters */
+.label{font:400 12px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+a{color:var(--teal);text-underline-offset:2px}
+code{font-family:var(--mono);font-size:.95em}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* ---------- header ---------- */
+.top{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;padding-bottom:14px;border-bottom:1px solid var(--line-strong);position:relative}
+.top::after{content:"";position:absolute;left:0;bottom:-4px;width:120px;height:3px;background:var(--orange)}
+.top h1{display:flex;align-items:center;gap:14px;min-width:0}
+.brand-logo{flex:none;width:64px;height:64px}
+.brand-logo svg{display:block;width:100%;height:100%}
+.brand-name{min-width:0;font:400 clamp(19px,5.2vw,30px)/1.1 var(--head);letter-spacing:.04em;text-transform:uppercase}
+h1 .lv{font-size:.5em;letter-spacing:.08em;color:var(--orange-ink);vertical-align:.4em;margin-left:4px}
+h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-spacing:0;color:var(--muted);margin-top:8px;max-width:46ch}
+
+.opens{display:flex;flex-wrap:wrap;gap:8px;justify-content:end}
+.drop{border:1.5px dashed var(--line-strong);background:var(--surface);padding:12px 14px;display:flex;gap:12px;align-items:center;cursor:pointer;min-width:0;position:relative}
+.drop.over{border-color:var(--orange);background:var(--orange-soft)}
+.drop:has(input:focus-visible){outline:2px solid var(--focus);outline-offset:2px}
+.drop input{position:absolute;width:1px;height:1px;opacity:0}
+.drop .btn{font:600 15px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;background:var(--orange);color:var(--on-banner);padding:8px 20px 7px 12px;white-space:nowrap;clip-path:var(--slant)}
+.drop .hint{font-size:13px;color:var(--muted)}
+.drop.alt{border-style:solid;border-color:var(--line)}
+.drop.alt .btn{background:var(--ink);color:var(--surface)}
+.err{color:var(--orange-ink);font-size:13px}
+
+/* ---------- cargo-label panels ---------- */
+.save,.stat,.group,.recipes{background:var(--surface);border:1px solid var(--line);clip-path:var(--chamfer);
+  background-image:linear-gradient(to top right,transparent calc(50% - .7px),var(--line) calc(50% - .7px) calc(50% + .7px),transparent calc(50% + .7px)),
+                   linear-gradient(to top right,transparent calc(50% - .7px),var(--line) calc(50% - .7px) calc(50% + .7px),transparent calc(50% + .7px));
+  background-size:var(--cut) var(--cut);background-position:top right,bottom left;background-repeat:no-repeat}
+
+.save{display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:18px;padding:14px}
+.save img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:var(--sunk);border:1px solid var(--line-strong);
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)}
+.save .meta{display:flex;flex-direction:column;gap:8px;min-width:0}
+.save .label{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
+.save .current{font-size:17px;font-weight:600;line-height:1.35}
+.save .goal{color:var(--muted);font-size:14px}
+.kv{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted)}
+.kv b{font:400 14px var(--mono);color:var(--ink)}
+
+/* tags: square, mono, uppercase */
+.chip{display:inline-block;font:400 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 6px 3px;border:1px solid var(--line-strong);color:var(--muted);background:transparent;vertical-align:.1em;white-space:nowrap}
+.chip[data-tag="Collab"]{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
+.chip[data-tag="Firmware update"]{border-color:var(--orange-ink);color:var(--orange-ink);background:var(--orange-soft)}
+.chip[data-tag="Event"]{border-color:var(--gold-ink);color:var(--gold-ink);background:var(--gold-soft)}
+.save .chip:not(.ok):not(.bad){border-color:var(--tan);background:var(--tan-soft);color:var(--ink)}
+/* "Save verified" badge */
+.chip.ok,.chip.bad{display:inline-flex;align-items:center;gap:6px;border:0;padding:4px 12px 3px 8px;font:600 13px/1.1 var(--display);letter-spacing:.08em;clip-path:var(--slant)}
+.chip.ok::before,.chip.bad::before{content:"";width:7px;height:7px;background:currentColor;transform:rotate(45deg)}
+.chip.ok{background:var(--done-soft);color:var(--done)} .chip.bad{background:var(--orange-soft);color:var(--orange-ink)}
+
+/* ---------- summary tiles ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px}
+.stat{padding:10px 12px 12px 14px;border-left:4px solid var(--tan);display:flex;flex-direction:column;gap:6px;min-width:0}
+.stat .num{font:400 28px/1 var(--mono);font-variant-numeric:tabular-nums;margin-top:2px}
+.stat .num span{font-size:15px;color:var(--muted)}
+.stat .note{font-size:13px;line-height:1.4}
+.bar{height:6px;background:repeating-linear-gradient(135deg,var(--line) 0 2px,transparent 2px 5px);overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.bar .d{background:var(--done)} .bar .p{background:var(--orange)} .bar .a{background:var(--teal)}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin;padding-bottom:6px;border-bottom:1px solid var(--line-strong)}
+.tab{flex:none;font-size:16px;font-weight:600;line-height:1;letter-spacing:.06em;text-transform:uppercase;background:var(--tan-soft);border:0;color:var(--muted);padding:8px 18px 7px;cursor:pointer;white-space:nowrap;clip-path:var(--para)}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--orange);color:var(--on-banner)}
+.tab .n{font:400 12px var(--mono);opacity:.8;margin-left:4px}
+
+/* ---------- filters ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters input[type=search]{flex:1 1 220px;min-width:0;font:15px var(--body);padding:8px 10px;border:1px solid var(--line-strong);border-radius:0;background:var(--surface);color:var(--ink)}
+.filters input[type=search]::placeholder{color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:3px}
+.seg button,.chip-btn{font:600 14px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:8px 16px 7px 12px;border:0;background:var(--tan-soft);color:var(--ink);cursor:pointer;clip-path:var(--slant)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.chip-btn{font-size:13.5px;padding:6px 14px 5px 10px}
+.chip-btn span{font:400 12px var(--mono);letter-spacing:0;color:var(--muted);margin-left:3px}
+.chip-btn[aria-pressed="true"]{background:var(--teal-banner);color:var(--on-banner)}
+.chip-btn[aria-pressed="true"] span{color:var(--on-banner);opacity:.85}
+.catbar{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+/* clip-path cuts outlines: inner rings for the slanted shapes */
+.tab:focus-visible,.seg button:focus-visible,.chip-btn:focus-visible,.report button:focus-visible,.cmpbtn:focus-visible{outline:2px solid currentColor;outline-offset:-5px}
+
+/* ---------- section headers: banner bars with slanted ends ---------- */
+.region{display:flex;align-items:center;gap:12px;font:400 17px/1.2 var(--head);letter-spacing:.1em;text-transform:uppercase;margin:10px 0 0;color:var(--ink)}
+.region::after{content:"";flex:1;height:1px;background:var(--line-strong)}
+.group{overflow:hidden;min-width:0}
+#view>.group,#view>.stats{margin-bottom:10px}
+.group>summary{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:0 0 12px;cursor:pointer}
+.group>summary::-webkit-details-marker{display:none}
+.group>summary::before{content:"";grid-column:1/-1;grid-row:1;align-self:stretch;background:var(--orange);clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%);margin-right:20px}
+.group>summary h3{grid-column:1;grid-row:1;position:relative;display:flex;align-items:center;gap:10px;padding:8px 0 7px 14px;color:var(--on-banner);
+  font:400 14px/1.25 var(--head);letter-spacing:.08em;text-transform:uppercase;min-width:0}
+.group>summary h3::before{content:"";flex:none;width:0;height:0;border:5px solid transparent;border-left:7px solid currentColor;border-right:0}
+.group[open]>summary h3::before{transform:rotate(90deg)}
+.group>summary .count{grid-column:2;grid-row:1;position:relative;font:400 13px var(--mono);color:var(--on-banner);font-variant-numeric:tabular-nums;padding-right:40px;white-space:nowrap;opacity:.95}
+.group>summary .bar{grid-column:1/-1;margin:0 14px}
+.group>summary:focus-visible{outline-offset:-3px}
+/* facilities: teal banner, entity name in Barlow Condensed (long names) */
+.group.fac>summary::before{background:var(--teal-banner)}
+.group.fac>summary h3{font:600 18px/1.15 var(--display);letter-spacing:.03em;text-transform:none;padding-block:7px 6px}
+.fac-head{grid-column:1/-1;display:flex;gap:14px;align-items:flex-start;min-width:0;padding:2px 14px 0}
+.fac-info{min-width:0;flex:1;display:flex;flex-direction:column;gap:6px}
+.stars{font-size:16px;letter-spacing:2px;color:var(--gold);white-space:nowrap;line-height:1.2}
+.stars span{font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-left:8px;vertical-align:.1em}
+.stars.off{font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--lock)}
+
+/* material stock: round icons, numbers framed by rules, dashed bars */
+.stock{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 16px;max-width:620px}
+.mat{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:2px 8px;align-items:center;min-width:0}
+.mat .mi{grid-row:1/3;width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center;font:400 10px/1 var(--mono);font-style:normal;letter-spacing:0}
+.mat .mn{font-size:13px;line-height:1.1;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mat .mq{font:400 14px/1 var(--mono);font-weight:400;color:var(--ink);border-left:1px solid var(--line-strong);border-right:1px solid var(--line-strong);padding:1px 5px;font-variant-numeric:tabular-nums}
+.mat .mb{grid-column:2/4;height:4px;position:relative;background:repeating-linear-gradient(90deg,var(--line) 0 3px,transparent 3px 6px)}
+.mat .mb i{position:absolute;inset:0 auto 0 0;background:repeating-linear-gradient(90deg,var(--teal) 0 3px,transparent 3px 6px)}
+
+/* ---------- order rows ---------- */
+.rows{border-top:1px solid var(--line)}
+.group>summary+.rows,.group>summary+.mo,.group>summary+.fac-rewards{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 12px;padding:10px 14px;border-top:1px solid var(--line);align-items:start}
+.row:first-child{border-top:0}
+.row .no,.chg .no{font:400 15px/1.3 var(--mono);color:var(--orange-ink);padding-top:1px;font-variant-numeric:tabular-nums}
+.row .name{font-weight:500;font-size:15.5px;line-height:1.35}
+.row .sub{grid-column:2;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 12px}
+.row .sub a{font-size:13px}
+.row .right{display:flex;flex-direction:column;align-items:end;gap:4px}
+.row .desc{grid-column:2;font-size:13.5px;color:var(--ink);opacity:.88;line-height:1.4}
+.row.dim .name{color:var(--muted)}
+.conf{font:400 12px var(--mono);color:var(--gold-ink)}
+.pill{display:inline-block;font:600 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:5px 14px 4px 9px;white-space:nowrap;clip-path:var(--slant)}
+.s-done{background:var(--done-soft);color:var(--done)}
+.s-prog{background:var(--orange-soft);color:var(--orange-ink)}
+.s-avail{background:var(--teal-soft);color:var(--teal)}
+.s-lock{background:var(--lock-soft);color:var(--lock)}
+.s-none{background:transparent;color:var(--lock);border:1px dashed var(--lock);clip-path:none;padding:4px 8px 3px}
+.loc{font:inherit;color:var(--teal);background:none;border:0;padding:0;cursor:pointer;text-align:left;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--teal) 40%,transparent);text-underline-offset:2px}
+.loc:hover{text-decoration-color:var(--teal)}
+
+/* reward chips (buttons): square icon box + slanted end */
+.rewards{grid-column:2/-1;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-top:2px}
+.chip-rw{display:inline-flex;align-items:center;gap:6px;font:500 13px/1.2 var(--body);padding:2px 14px 2px 2px;border:1px solid var(--gold);border-right:0;background:var(--gold-soft);color:var(--ink);cursor:pointer;
+  clip-path:polygon(0 0,100% 0,calc(100% - 7px) 100%,0 100%);text-align:left}
+.chip-rw::before{content:"★";flex:none;width:18px;height:18px;display:grid;place-items:center;background:var(--gold);color:var(--surface);font-size:11px}
+.chip-rw.got{border-color:var(--done);background:var(--done-soft)}
+.chip-rw.got::before{content:"✓";background:var(--done)}
+.chip-rw:focus-visible{outline:2px solid var(--focus);outline-offset:-4px}
+.fac-rewards{padding:8px 14px 10px;display:flex;flex-direction:column;gap:6px}
+.fac-rewards>div{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fac-rewards .lv{font:400 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:64px;display:inline-block}
+
+/* main orders: episode timeline */
+.tl{position:relative;padding-left:26px;display:flex;flex-direction:column;gap:12px}
+.tl::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;background:repeating-linear-gradient(180deg,var(--line-strong) 0 4px,transparent 4px 8px)}
+.tl-ep{position:relative;clip-path:polygon(-40px 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,-40px 100%);overflow:visible}
+.tl-ep::before{content:"";position:absolute;left:-23px;top:12px;width:12px;height:12px;transform:rotate(45deg);background:var(--surface);border:2px solid var(--lock)}
+.tl-ep.done::before{background:var(--done);border-color:var(--done)} .tl-ep.prog::before{background:var(--orange-soft);border-color:var(--orange)}
+.mo{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;padding:10px 14px;border-top:1px solid var(--line)}
+.mo .row{border-top:0;padding:0;grid-template-columns:44px minmax(0,1fr) auto}
+.mo .nomap{width:128px;height:80px;border:1px dashed var(--line-strong);display:grid;place-items:center;font-size:11px;color:var(--muted);text-align:center;padding:4px}
+
+/* ---------- unlock rows: item image box, tag chips, status pill on the right ---------- */
+.recipes{overflow:hidden}
+.rec{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:10px 14px;border-top:1px solid var(--line);align-items:center}
+.rec:first-child{border-top:0}
+.rec .nm{font:600 17px/1.2 var(--display);letter-spacing:.02em}
+.rec .nm .chip{margin-left:4px}
+.rec .de{font-size:13px;color:var(--muted)}
+.rec .use{font:400 12px var(--mono);color:var(--muted)}
+.rec .rt{display:flex;flex-direction:column;align-items:end;gap:4px}
+.rec .tr{color:var(--gold-ink)}
+.rec .via{color:var(--muted);font-style:italic}
+.rec.dim .nm{color:var(--muted)}
+.rec .by{font-size:13px;color:var(--muted);margin-top:2px}
+.rec-main{display:flex;gap:12px;align-items:center;min-width:0}
+.rec-main>div{min-width:0}
+.rec-img{width:96px;height:60px;object-fit:cover;flex:none;padding:3px;border:1px solid var(--line-strong);background:linear-gradient(160deg,var(--map-solid),var(--map-bg));   /* dark in both themes: some game pictures are white glyphs */
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
+.rows:has(.rec-img) .rec-main:not(:has(.rec-img))::before{content:"";flex:none;width:96px;height:60px;border:1px solid var(--line);background:repeating-linear-gradient(135deg,var(--line) 0 1px,transparent 1px 7px);
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
+.subhead{display:flex;align-items:center;gap:8px;font:400 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;padding:10px 14px 6px;border-top:1px solid var(--line)}
+.subhead span{letter-spacing:0;color:var(--ink)}
+.sub-more>summary{cursor:pointer;list-style:none}
+.sub-more>summary::-webkit-details-marker{display:none}
+.sub-more>summary::before{content:"";flex:none;border:4px solid transparent;border-left:6px solid currentColor;border-right:0}
+.sub-more[open]>summary::before{transform:rotate(90deg)}
+.sub-more>summary:focus-visible{outline-offset:-3px}
+.about{margin:0;padding:0 14px 10px;font-size:13px;color:var(--muted);max-width:80ch}
+.group>summary+.about{padding-top:2px}
+.more{padding:10px 14px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+/* ---------- routes (SVG fallback) + map ---------- */
+.routes{padding:14px}
+.routes>summary{margin:-14px -14px 0}
+.rt-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:end;margin-bottom:10px}
+.rt-head h3{font:400 15px/1.2 var(--head);letter-spacing:.08em;text-transform:uppercase}
+.rt-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted)}
+.lg{display:inline-block;width:18px;height:4px;margin-right:6px;vertical-align:middle}
+.lg.dot{width:10px;height:10px;border-radius:50%}
+.rt-canvas{background:var(--sunk);border:1px solid var(--line)}
+.rt-canvas svg{display:block;width:100%;height:auto;max-height:70vh}
+.rt-canvas path{fill:none;stroke-linejoin:round;stroke-linecap:round}
+.rt-veh{stroke:var(--map-veh);background:var(--map-veh)} .rt-foot{stroke:var(--map-foot);background:var(--map-foot)} .rt-unk{stroke:var(--lock);background:var(--lock)}
+.rt-start{fill:var(--lock);background:var(--lock)} .rt-end{fill:var(--done);background:var(--done)}
+.routes .about{padding:10px 0 0}
+.map-bar{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;margin-bottom:10px}
+.lmap{height:72vh;min-height:420px;background:var(--map-bg);border:1px solid var(--map-line);clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.fmk{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--map-mk);box-shadow:0 0 0 2px var(--ring),0 1px 4px var(--map-shadow)}
+.fmk img{width:22px;height:22px;display:block}
+.mm{flex:none;width:128px;height:80px;border:1px solid var(--line-strong);background-color:var(--map-bg);background-repeat:no-repeat;position:relative;overflow:hidden}
+.mm::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;transform:rotate(45deg);background:var(--map-pin);box-shadow:0 0 0 2px var(--orange),0 0 6px var(--map-shadow)}
+
+/* ---------- compare ---------- */
+.cmp{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;padding:14px}
+.cmp .side{display:flex;flex-direction:column;gap:6px;min-width:0}
+.cmp img{width:100%;max-width:260px;aspect-ratio:16/9;object-fit:cover;background:var(--sunk);border:1px solid var(--line-strong)}
+.cmp .cur{font-weight:600;line-height:1.35}
+.cmp .arrow{font:400 22px var(--head);color:var(--orange-ink);text-align:center}
+.cmp .arrow .ar{display:inline-block}
+.cmp .delta{font:400 13px var(--mono);color:var(--muted)}
+.chg{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 12px;padding:9px 14px;border-top:1px solid var(--line);align-items:start}
+.chg:first-child{border-top:0}
+.chg .name{font-weight:500}
+.chg .sub{grid-column:2;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 12px}
+.chg .right{display:flex;gap:4px;align-items:center;white-space:nowrap}
+.chg .right b{color:var(--muted);font-weight:500}
+.secs{width:100%;border-collapse:collapse;font:13px var(--mono)}
+.secs th,.secs td{text-align:left;padding:5px 14px;border-top:1px solid var(--line);vertical-align:top}
+.secs th{font:400 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.secs td.n{text-align:right;font-variant-numeric:tabular-nums}
+.secs .known{color:var(--ink);font-family:var(--body)}
+.report{padding:0 14px 14px;display:flex;flex-direction:column;gap:8px}
+.report textarea{width:100%;min-height:180px;font:12px/1.45 var(--mono);background:var(--sunk);color:var(--ink);border:1px solid var(--line-strong);border-radius:0;padding:8px}
+.report button,.cmpbtn{align-self:start;font:600 14px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:8px 20px 7px 12px;border:0;background:var(--orange);color:var(--on-banner);cursor:pointer;clip-path:var(--slant)}
+.scroll{overflow-x:auto}
+
+.note{font-size:13px;color:var(--muted);max-width:75ch}
+.note b{color:var(--ink);font-weight:600}
+footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line-strong);padding-top:14px;display:flex;flex-direction:column;gap:6px;max-width:80ch}
+footer b{color:var(--ink)}
+
+@media (max-width:720px){
+  .top{grid-template-columns:minmax(0,1fr)}
+  .brand-logo{width:48px;height:48px}
+  .top h1{gap:12px}
+  .save{grid-template-columns:minmax(0,1fr)}
+  .opens{justify-content:start}
+  .cmp{grid-template-columns:minmax(0,1fr)}
+  .cmp .arrow{display:flex;align-items:center;gap:10px;text-align:left}
+  .cmp .arrow .ar{transform:rotate(90deg)}
+  .chg{grid-template-columns:36px minmax(0,1fr)}
+  .chg .right{grid-column:2;flex-wrap:wrap;white-space:normal}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .row{grid-template-columns:36px minmax(0,1fr)}
+  .row .right{grid-column:2;flex-direction:row;align-items:center}
+  .stock{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px}
+  .mm,.mo .nomap{width:96px;height:60px}
+  .mo{grid-template-columns:minmax(0,1fr)}
+  .mo .mm,.mo .nomap{display:none}
+  .fac-head .mm{display:none}
+  .rec{grid-template-columns:minmax(0,1fr)}
+  .rec .rt{align-items:start;flex-direction:row;flex-wrap:wrap}
+  .rec-img,.rows:has(.rec-img) .rec-main:not(:has(.rec-img))::before{width:72px;height:45px}
+}
+@media (max-width:420px){
+  .brand-name{letter-spacing:.02em}
+  .group>summary h3{font-size:12.5px;letter-spacing:.05em}
+  .group.fac>summary h3{font-size:17px}
+  .region{font-size:15px;letter-spacing:.06em}
+  .stat .num{font-size:24px}
+  .tab{font-size:15px;padding-inline:15px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .tab,.seg button,.chip-btn,.drop,.chip-rw{transition:background-color .15s,border-color .15s,color .15s}
+  .group>summary h3::before{transition:transform .15s}
+}
+[hidden]{display:none!important}
+.rec .cnt{font:500 15px var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+</style>
+<style>/* Leaflet 1.9.4 (c) Volodymyr Agafonkin, BSD-2-Clause; inlined because the page may not load external stylesheets */
+.leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{background-image:none;width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-image:none;background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{background-image:none}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+<style>/* Leaflet controls, popups and tooltips in the dark map-panel style (same in light and dark mode) */
+.lmap.leaflet-container{background:var(--map-bg);font:14px/1.4 var(--body);color:var(--map-ink)}
+.lmap .leaflet-bar,.leaflet-touch .lmap .leaflet-bar{border:1px solid var(--map-line);border-radius:0;box-shadow:none;background-clip:border-box}
+.lmap .leaflet-bar a,.leaflet-touch .lmap .leaflet-bar a{width:32px;height:32px;line-height:30px;background:var(--map-panel);color:var(--map-ink);border-bottom:1px solid var(--map-line);border-radius:0;font:400 20px/30px var(--mono);text-indent:0}
+.lmap .leaflet-bar a:last-child{border-bottom:0}
+.lmap .leaflet-bar a:hover,.lmap .leaflet-bar a:focus-visible{background:var(--orange);color:var(--on-banner)}
+.lmap .leaflet-bar a:focus-visible{outline:2px solid var(--on-banner);outline-offset:-4px}
+.lmap .leaflet-bar a.leaflet-disabled{background:var(--map-panel);color:var(--map-muted);opacity:.55}
+/* layer box: title bar, square checkboxes, a line/marker sample per layer */
+.lmap .leaflet-control-layers,.leaflet-touch .lmap .leaflet-control-layers{min-width:212px;padding:0;border:1px solid var(--map-line);border-radius:0;box-shadow:0 2px 10px var(--map-shadow);background:var(--map-panel);color:var(--map-ink);backdrop-filter:blur(3px)}
+.lmap .leaflet-control-layers-list::before{content:"Layers";display:block;padding:6px 26px 5px 10px;background:linear-gradient(90deg,var(--orange),var(--orange-fade));color:var(--on-banner);
+  font:400 11px/1.3 var(--head);letter-spacing:.14em;text-transform:uppercase;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+.lmap .leaflet-control-layers-overlays label{display:block;margin:0;padding:8px 12px 8px 10px;border-top:1px solid var(--map-line);font:500 14px/1.2 var(--body);cursor:pointer}
+.lmap .leaflet-control-layers-overlays label:first-child{border-top:0}
+.lmap .leaflet-control-layers-overlays label>span{display:flex;align-items:center;gap:10px}
+.lmap .leaflet-control-layers-overlays label>span::after{content:"";flex:none;margin-left:auto;width:22px;height:0;border-top:3px solid var(--map-foot)}
+.lmap .leaflet-control-layers-overlays label:nth-child(1)>span::after{width:11px;height:11px;border:0;border-radius:50%;background:var(--map-mk);box-shadow:0 0 0 2px var(--map-ring);margin-right:5px}
+.lmap .leaflet-control-layers-overlays label:nth-child(3)>span::after{border-top-color:var(--map-veh)}
+.lmap .leaflet-control-layers-selector{-webkit-appearance:none;appearance:none;flex:none;width:16px;height:16px;margin:0;position:static;top:auto;border:1.5px solid var(--map-muted);border-radius:0;background:transparent;cursor:pointer}
+.lmap .leaflet-control-layers-selector:checked{border-color:var(--map-accent);background:var(--map-accent);box-shadow:inset 0 0 0 3px var(--map-solid)}
+.lmap .leaflet-control-layers-selector:focus-visible{outline:2px solid var(--map-accent);outline-offset:2px}
+.lmap .leaflet-control-layers-separator{border-top-color:var(--map-line)}
+/* dark casing so the route lines stay readable on the orange desert and white snow of the coloured map */
+.lmap .leaflet-overlay-pane svg{filter:drop-shadow(0 0 1px var(--map-casing)) drop-shadow(0 0 1.5px var(--map-casing))}
+/* popups + tooltips */
+.lmap .leaflet-popup-content-wrapper{background:var(--map-solid);color:var(--map-ink);border:1px solid var(--map-line);border-left:3px solid var(--orange);border-radius:0;box-shadow:0 4px 16px var(--map-shadow)}
+.lmap .leaflet-popup-tip{background:var(--map-solid);box-shadow:none;border:1px solid var(--map-line)}
+.lmap .leaflet-popup-content{margin:12px 18px 12px 12px;font:14px/1.4 var(--body);color:var(--map-ink)}
+.lmap .leaflet-popup-content b{font:600 17px/1.2 var(--display);letter-spacing:.02em}
+.lmap .leaflet-popup-content small{font:400 12px var(--mono);color:var(--map-muted)}
+.lmap.leaflet-container a.leaflet-popup-close-button{color:var(--map-muted);font:400 18px/24px var(--mono)}
+.lmap.leaflet-container a.leaflet-popup-close-button:hover{color:var(--map-accent)}
+.lmap .leaflet-tooltip{background:var(--map-solid);color:var(--map-ink);border:1px solid var(--map-line);border-radius:0;box-shadow:0 2px 8px var(--map-shadow);font:600 14px/1.2 var(--display);letter-spacing:.02em;padding:4px 8px 3px}
+.lmap .leaflet-tooltip-top::before{border-top-color:var(--map-line)}
+.lmap .leaflet-tooltip-bottom::before{border-bottom-color:var(--map-line)}
+.lmap .leaflet-tooltip-left::before{border-left-color:var(--map-line)}
+.lmap .leaflet-tooltip-right::before{border-right-color:var(--map-line)}
+@media (max-width:420px){.lmap .leaflet-control-layers{min-width:0}.lmap .leaflet-control-layers-overlays label{font-size:13px;padding:7px 10px 7px 8px}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <h1><span class="brand-logo" aria-hidden="true">__LOGO__</span><span class="brand-name">Peko-Check <span class="lv">Lv1</span><small>Death Stranding 2 save progress: orders and fabrication unlocks. Your save is decoded in this browser and never uploaded.</small></span></h1>
+    <div class="opens">
+      <label class="drop" id="drop" for="file">
+        <input type="file" id="file" accept=".dat" multiple>
+        <span class="btn">Open save</span>
+        <span class="hint">or drop a <code>…save.dat</code> here; drop two to compare them</span>
+      </label>
+      <label class="drop alt" id="drop2" for="file2" title="Compare the save shown with another save (before/after)">
+        <input type="file" id="file2" accept=".dat">
+        <span class="btn">Compare with…</span>
+      </label>
+    </div>
+  </div>
+  <div class="err" id="err" hidden></div>
+
+  <section class="save" id="save" aria-label="Loaded save"></section>
+  <section class="stats" id="stats" aria-label="Summary"></section>
+
+  <nav class="tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" id="tab-changes" data-tab="changes" aria-selected="false" hidden>Changes</button>
+    <button class="tab" role="tab" id="tab-standard" data-tab="standard" aria-selected="true">Standard orders</button>
+    <button class="tab" role="tab" id="tab-main" data-tab="main" aria-selected="false">Main orders</button>
+    <button class="tab" role="tab" id="tab-sub" data-tab="sub" aria-selected="false">Sub orders</button>
+    <button class="tab" role="tab" id="tab-craft" data-tab="craft" aria-selected="false">Unlocks</button>
+    <button class="tab" role="tab" id="tab-cargo" data-tab="cargo" aria-selected="false">Cargo</button>
+    <button class="tab" role="tab" id="tab-routes" data-tab="routes" aria-selected="false">Routes</button>
+  </nav>
+
+  <div class="filters" id="filters">
+    <input type="search" id="q" placeholder="Search name, facility or number" aria-label="Search">
+    <div class="seg" id="statusSeg" role="group" aria-label="Status filter"></div>
+  </div>
+
+  <div id="view"></div>
+
+  <footer>
+    <div><b>How to read this.</b> Status comes from the save's mission records: <i>Done</i> = order state Completed, <i>In progress</i> = accepted, <i>Available</i> = listed at a terminal, <i>Locked</i> = not yet offered. Order numbers and names come from the game's own mission lists. <b>Compare with…</b> shows what changed between two saves (earlier play time = before): orders, unlocks, new route segments and, for research, every data section whose bytes differ, plus a text report to paste into the chat.</div>
+    <div>Orders (numbers, names, clients, destinations, cargo) and unlocks (names, categories, what unlocks them) come from the game's own data, read from a local installation with ShadelessFox's Odradek; every English name is the game's own text. Guide links: Game8's walkthrough for main orders 1-48, Game8's prepper page where Game8 has one, otherwise the Death Stranding Fandom wiki. Source code and format notes: github.com/binsento-netizen/ds2-peko-check. Fan project, not affiliated with Kojima Productions, Sony Interactive Entertainment, hololive production or COVER Corporation.</div>
+  </footer>
+</div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script>
+(() => {
+  "use strict";
+  const DATA = JSON.parse(document.getElementById("data").textContent);
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+  /* ---------- save decoding (container -> payload -> sections) ---------- */
+  const BLOCK = 262144;
+  const PNG = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
+
+  function lz4(src, max) {
+    const dst = new Uint8Array(max); let s = 0, d = 0;
+    while (s < src.length) {
+      const tok = src[s++]; let lit = tok >> 4;
+      if (lit === 15) { let b; do { b = src[s++]; lit += b; } while (b === 255); }
+      if (d + lit > max || s + lit > src.length) throw new Error("lz4 literal overrun");
+      dst.set(src.subarray(s, s + lit), d); s += lit; d += lit;
+      if (s >= src.length) break;
+      const off = src[s] | (src[s + 1] << 8); s += 2;
+      let ml = tok & 15;
+      if (ml === 15) { let b; do { b = src[s++]; ml += b; } while (b === 255); }
+      ml += 4; let m = d - off;
+      if (off === 0 || m < 0 || d + ml > max) throw new Error("lz4 bad match");
+      for (let i = 0; i < ml; i++) dst[d++] = dst[m++];
+    }
+    return dst.subarray(0, d);
+  }
+
+  // MD5 (RFC 1321), used only to check a save's own integrity digest; the browser's WebCrypto has no MD5
+  function md5(u8) {
+    const K = new Uint32Array(64), S = [7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15, 21];
+    for (let i = 0; i < 64; i++) K[i] = Math.floor(Math.abs(Math.sin(i + 1)) * 2 ** 32) >>> 0;
+    const n = u8.length, blocks = ((n + 8) >>> 6) + 1, w = new Uint32Array(blocks * 16);
+    for (let i = 0; i < n; i++) w[i >> 2] |= u8[i] << ((i & 3) * 8);
+    w[n >> 2] |= 0x80 << ((n & 3) * 8);
+    w[blocks * 16 - 2] = (n * 8) >>> 0; w[blocks * 16 - 1] = Math.floor(n / 0x20000000);
+    let a0 = 0x67452301, b0 = 0xefcdab89, c0 = 0x98badcfe, d0 = 0x10325476;
+    for (let j = 0; j < w.length; j += 16) {
+      let a = a0, b = b0, c = c0, d = d0;
+      for (let i = 0; i < 64; i++) {
+        let f, g;
+        if (i < 16) { f = (b & c) | (~b & d); g = i; } else if (i < 32) { f = (d & b) | (~d & c); g = (5 * i + 1) & 15; }
+        else if (i < 48) { f = b ^ c ^ d; g = (3 * i + 5) & 15; } else { f = c ^ (b | ~d); g = (7 * i) & 15; }
+        const t = d; d = c; c = b;
+        const x = (a + f + K[i] + w[j + g]) >>> 0, s = S[(i >> 4) * 4 + (i & 3)];
+        b = (b + ((x << s) | (x >>> (32 - s)))) >>> 0; a = t;
+      }
+      a0 = (a0 + a) >>> 0; b0 = (b0 + b) >>> 0; c0 = (c0 + c) >>> 0; d0 = (d0 + d) >>> 0;
+    }
+    const out = new Uint8Array(16), dv = new DataView(out.buffer);
+    [a0, b0, c0, d0].forEach((v, i) => dv.setUint32(4 * i, v, true));
+    return out;
+  }
+
+  // the save's own integrity check: payload[0x1EC..0x1FC] = MD5(data) with the first byte XOR 0x06
+  function verifySave(pl) {
+    const n = new DataView(pl.buffer, pl.byteOffset, pl.byteLength).getUint32(0x1fc, true);
+    if (n < 8 || 0x200 + n > pl.length) return false;
+    const d = md5(pl.subarray(0x200, 0x200 + n)); d[0] ^= 0x06;
+    return d.every((b, i) => b === pl[0x1ec + i]);
+  }
+
+  function decodeContainer(buf) {
+    const f = new Uint8Array(buf);
+    if (!f.length) throw new Error("The file is empty (0 bytes). Copy or download it again.");
+    const head = new TextDecoder().decode(f.subarray(0, 64)).trimStart().toLowerCase();
+    if (head.startsWith("<") || head.startsWith("{")) throw new Error("This is a web page or text file, not a save. A Steam Cloud download sometimes saves the page instead of the file: download the save again.");
+    if (f.length < 0x40 || f[0] !== 0x49 || f[1] !== 0xf6 || f[2] !== 0x0e || f[3] !== 0xc1) throw new Error("This is not a Death Stranding 2 PC save (unknown header).");
+    const body = f.subarray(0x20);
+    const count = body[0x12] ^ body[0x02];
+    const key = body.slice(0, 16); key[2] ^= count;
+    const xor = (a) => { const o = new Uint8Array(a.length); for (let i = 0; i < a.length; i++) o[i] = a[i] ^ key[i & 15]; return o; };
+    const tbl = new DataView(xor(body.subarray(0x10, 0x10 + 4 * count)).buffer);
+    let off = 0x10 + 4 * count; const chunks = [];
+    for (let i = 0; i < count; i++) { const n = tbl.getUint32(4 * i, true); chunks.push(xor(body.subarray(off, off + n))); off += n; }
+    if (off !== body.length) throw new Error("Chunk table does not match the file size; the file may be truncated.");
+    let meta = null, thumb = null; const parts = [];
+    chunks.forEach((c, i) => {
+      if (i === 0) { meta = lz4(c, 1 << 16); return; }
+      if (PNG.every((b, k) => c[k] === b)) { thumb = c; return; }
+      parts.push(c.length === BLOCK ? c : lz4(c, BLOCK));
+    });
+    const payload = new Uint8Array(parts.reduce((a, p) => a + p.length, 0));
+    let p = 0; for (const x of parts) { payload.set(x, p); p += x.length; }
+    return { meta, thumb, payload };
+  }
+
+  function reader(u8, pos) {
+    const dv = new DataView(u8.buffer, u8.byteOffset, u8.byteLength);
+    const r = { pos };
+    r.i32 = () => { const v = dv.getInt32(r.pos, true); r.pos += 4; return v; };
+    r.vint = () => {
+      const v = dv.getInt8(r.pos); r.pos += 1;
+      if (v === -128) return r.i32();
+      if (v === -127) { const w = dv.getInt16(r.pos, true); r.pos += 2; return w; }
+      return v;
+    };
+    return r;
+  }
+
+  function parsePayload(pl) {
+    const dv = new DataView(pl.buffer, pl.byteOffset, pl.byteLength);
+    const version = new TextDecoder().decode(pl.subarray(0, 32)).replace(/\0.*$/s, "");
+    const playtime = dv.getFloat64(0x178, true);
+    const n = dv.getUint32(0x1fc, true);
+    const data = pl.subarray(0x200, 0x200 + n);
+    const ddv = new DataView(data.buffer, data.byteOffset, data.byteLength);
+    const typeOff = ddv.getUint32(n - 8, true), rawOff = ddv.getUint32(n - 4, true);
+    const r = reader(data, rawOff);
+    for (let t = r.vint(); t > 0; t--) { const c = r.i32(), s = r.i32(); r.pos += c * s; const u = r.i32(); r.pos += u * 8; }
+    // read the count into a variable first: `r.pos += r.vint()` would lose vint's own advance
+    for (let w = r.vint(); w > 0; w--) { const len = r.vint(); r.pos += len * 2; }
+    for (let g = 0; g < 256; g++) { const c = r.vint(); r.pos += c * 16; }
+    const magic = [0x05, 0xa0, 0x0e, 0x53, 0xff, 0xff, 0xee, 0xee];
+    if (!magic.every((b, k) => data[r.pos + k] === b)) throw new Error("Section directory not found; this game version may use a different layout.");
+    r.pos += 8;
+    const dir = []; for (let k = r.vint(); k > 0; k--) dir.push({ id: r.vint() >>> 0, off: r.vint(), ver: r.vint() });
+    const sorted = [...dir].sort((a, b) => a.off - b.off);
+    const sec = new Map();
+    sorted.forEach((e, i) => sec.set(e.id, data.subarray(e.off, i + 1 < sorted.length ? sorted[i + 1].off : typeOff)));
+    return { version, playtime, sec };
+  }
+
+  function parseMissions(s) {
+    const dv = new DataView(s.buffer, s.byteOffset, s.byteLength);
+    if (dv.getUint32(0, true) !== 0x1fd6b79b) throw new Error("Mission table not recognised.");
+    const out = []; let pos = 8;
+    for (let n = dv.getUint32(4, true); n > 0; n--) {
+      out.push([dv.getUint32(pos + 12, true), dv.getUint32(pos + 16, true) & 63, s[pos + 4], s[pos + 5], dv.getUint16(pos + 6, true)]);
+      pos += 84 + dv.getUint32(pos + 0x4e, true);
+    }
+    return out;
+  }
+
+  function parseRecipes(s) {
+    const dv = new DataView(s.buffer, s.byteOffset, s.byteLength);
+    if (dv.getUint32(0, true) !== 0x8b3f7cc3) throw new Error("Fabrication table not recognised.");
+    const r = reader(s, 4); const n = r.vint(); r.vint();
+    const out = []; for (let i = 0; i < n; i++) out.push([dv.getUint32(r.pos + 8 * i, true), dv.getUint32(r.pos + 8 * i + 4, true)]);
+    return out;
+  }
+
+  // section 48ea52a4: map route history. Segments of 6-byte (i16 x, y, z) points, each closed by a trailer
+  // 02 00 <u16 mode 100|200> 00*8 <u32 anchors> anchors*6 ... 00 00 ff ff  (port of tools/review_routes.py)
+  // 73dacf23: facility connection levels, 49 records of 112 bytes from +106 (u32 code, u16 index, u16 level 0-5)
+  function parseLevels(s) {
+    if (!s) return [];
+    const dv = new DataView(s.buffer, s.byteOffset, s.byteLength), out = [];
+    for (let o = 106; o + 8 <= s.length && o < 106 + 49 * 112; o += 112) {
+      const stock = []; for (let k = 0; k < 6; k++) stock.push(dv.getUint32(o - 96 + 8 * k, true));
+      out.push([dv.getUint32(o, true), dv.getUint16(o + 6, true), stock]);
+    }
+    return out;
+  }
+
+  // 202659d5: likes counters (+4 from NPCs, +12 from other porters, +44 given)
+  // APAS enhancements (section 69049449, tools/review_apas.py): [hash, developed 0/1] for each one the player has access to.
+  // Stored as CRC32C(EnhancementId) & 0x7fffffff; the first occurrence is the record (developed flag 4 bytes on).
+  function parseApas(s) {
+    if (!s || !APAS.length) return null;
+    const known = new Set(APAS.map((a) => a[0])), dv = new DataView(s.buffer, s.byteOffset, s.byteLength), out = new Map();
+    for (let i = 0; i + 8 <= s.length; i++) { const h = dv.getUint32(i, true); if (known.has(h) && !out.has(h)) out.set(h, s[i + 4] === 1 ? 1 : 0); }
+    return [...out];
+  }
+  // cargo (section 0aa0d44e, tools/review_cargo.py): a pool of 464-byte item slots. Per slot: +7 container kind,
+  // +48 container id (three words w0 w1 w2), +60 baggage NameCode, +172 f32 material amount. Returns [where, key]: "eq" = Sam equipped,
+  // "bp" = backpack, "L:<w0>" = a private locker (w0 says which facility).
+  function parseCargo(s) {
+    if (!s || !Object.keys(BAGS).length) return null;
+    const S = 464, dv = new DataView(s.buffer, s.byteOffset, s.byteLength), known = (o) => BAGS[dv.getUint32(o + 60, true)] !== undefined;
+    let start = 0, best = -1;
+    for (let st = 0; st < S; st++) {   // the slot grid: the offset whose +60 words are most often known items
+      let c = 0;
+      for (let o = st; o + S <= s.length; o += S) if (known(o)) c++;
+      if (c > best) { best = c; start = st; }
+    }
+    const hx = (o) => Array.from(s.subarray(o, o + 4), (b) => b.toString(16).padStart(2, "0")).join("");
+    const out = [];
+    for (let o = start; o + S <= s.length; o += S) {
+      if (!known(o)) continue;
+      const kind = s[o + 7], w0 = hx(o + 48), w1 = hx(o + 52), w2 = hx(o + 56);
+      const where = kind === 0x00 && w0 === "ffa46565" && w1 === "72b29160" ? "eq" : kind === 0x34 && w1 === "72b29160" ? "bp"
+        : kind === 0x1f && w2 === "36a83550" && w1 !== "b770fe15" && w1 !== "5b215037" ? "L:" + w0 : null;
+      if (where) out.push([where, dv.getUint32(o + 60, true), BAGS[dv.getUint32(o + 60, true)][1] ? Math.round(dv.getFloat32(o + 172, true)) : 0]);   // +172: remaining material amount
+    }
+    return out;
+  }
+  // private-locker item counts per facility code (for the map popups)
+  function lockerCounts() {
+    const m = new Map();
+    for (const [w] of (state && state.cargo) || []) {
+      const f = w.startsWith("L:") && LOCKERS[w.slice(2)];
+      if (f) m.set(f[0], (m.get(f[0]) || 0) + 1);
+    }
+    return m;
+  }
+
+  // in-game clock (section 3926c2c4): +4 f32 hour of day (6.0 = 06:00), +8 u32 day number. Sleeping "till morning"
+  // moved it from day 64 07:30 to day 65 06:00 (test 2026-10-02).
+  function parseClock(s) {
+    if (!s || s.length < 12) return null;
+    const dv = new DataView(s.buffer, s.byteOffset, s.byteLength), h = dv.getFloat32(4, true), d = dv.getUint32(8, true);
+    return h >= 0 && h < 24.01 && d < 100000 ? [d, h] : null;
+  }
+  const clockText = (c) => c ? `Day ${c[0]}, ${String(Math.floor(c[1]) % 24).padStart(2, "0")}:${String(Math.floor((c[1] % 1) * 60)).padStart(2, "0")}` : "";
+
+  function parseLikes(s) {
+    if (!s || s.length < 48) return null;
+    const dv = new DataView(s.buffer, s.byteOffset, s.byteLength);
+    return [4, 12, 44].map((o) => dv.getUint32(o, true));
+  }
+
+  function parseRoutes(s) {
+    const dv = new DataView(s.buffer, s.byteOffset, s.byteLength);
+    if (s.length < 40 || dv.getUint32(0, true) !== 0x7cf9113d) return [];
+    let end = s.length, run = 0;
+    for (let i = 33; i < s.length; i++) { if (s[i] === 0) { if (++run >= 64) { end = i - 63; break; } } else run = 0; }
+    // a segment starts with a count header (0, n, 0), n = points that follow; drop it (tools/review_routes.py)
+    const pts = (a, b) => {
+      const o = [], zs = [];
+      for (let i = a; i + 6 <= b; i += 6) { const x = dv.getInt16(i, true), y = dv.getInt16(i + 2, true), z = dv.getInt16(i + 4, true); if (x || y || z) { o.push(x, y); zs.push(z); } }
+      return o.length >= 2 && o[0] === 0 && zs[0] === 0 && o[1] === zs.length - 1 ? o.slice(2) : o;
+    };
+    const segs = []; let pos = 33;
+    while (pos < end) {
+      let f = -1;
+      for (let t = pos; t < end - 4; t++) {
+        if (s[t] === 2 && s[t + 1] === 0) { const m = dv.getUint16(t + 2, true); if ((m === 100 || m === 200) && s.subarray(t + 4, t + 12).every((b) => b === 0)) { f = t; break; } }
+      }
+      if (f < 0) { const p = pts(pos, end); if (p.length >= 4) segs.push([0, p]); break; }
+      const mode = dv.getUint16(f + 2, true), anchors = dv.getUint32(f + 12, true);
+      const p = pts(pos, f); if (p.length >= 4) segs.push([mode, p]);
+      let next = f + 16 + anchors * 6;
+      for (let k = f + 16; k < Math.min(end, f + 16 + anchors * 6 + 8); k++) if (s[k] === 0 && s[k + 1] === 0 && s[k + 2] === 255 && s[k + 3] === 255) { next = k + 4; break; }
+      pos = next;
+    }
+    return segs;
+  }
+
+  function metaLines(meta) {
+    const t = new TextDecoder("utf-8", { fatal: false }).decode(meta);
+    return (t.match(/[^\u0000-\u001f\uFFFD]{4,}/g) || []).map((x) => x.trim()).filter(Boolean);
+  }
+
+  /* ---------- model ---------- */
+  const ORD = DATA.orders.map(([id, no, sec, name, from, to, cargo, conf, ep, kind, g8]) => ({ id, no, sec, name, from, to, cargo, conf, ep, kind, g8 }));
+  const REC = DATA.recipes.map(([key, label, de, use, src, cat, sub, tag]) => ({ key, label: label || "Unnamed entry", de, use, src, cat, sub, tag: tag || "" }));
+  const APAS = DATA.apas || [];
+  const BAGS = DATA.bags || {}, LOCKERS = DATA.lockers || {};   // baggage NameCode -> [name, 1 = raw material]; locker w0 -> [facility code, name]   // [hash, name, points, category, unlock keys, step] (catalog/apas_game.json)
+  const ABOUT = DATA.about || {};
+  const TRACKED = new Set(DATA.tracked || []);   // subcategories whose unlock state this save section records
+  const CAT_ORDER = ["Weapons", "Skeletons", "Boots", "Equipment", "Backpack Attachments", "Patches", "Outfits", "Vehicles", "Structures",
+    "APAS enhancements", "Melee techniques", "Holograms", "Character rewards", "Music", "Hot springs", "Collectibles", "Features", "Other"];
+  let craftCat = "all";
+  try { craftCat = localStorage.getItem("pl-cat") || "all"; } catch (e) {}
+  const USE = { All: "Fabrication", BackPackCustomize: "Backpack", CostumeCustomize: "Outfit", VehicleCustomize: "Vehicle part", Vehicle: "Vehicle", None: "Other" };
+  const hex = (k) => "0x" + (k >>> 0).toString(16).toUpperCase().padStart(8, "0");
+  const regionOf = {};
+  ORD.forEach((o) => { if (o.sec === "S" && o.id) regionOf[o.from] = Math.floor(o.id / 1000) < 200 ? "Mexico" : "Australia"; });
+
+  let state = null, prev = null, diff = null, tab = "standard", status = "all";
+  try { tab = localStorage.getItem("pl-tab") || tab; } catch (e) {}
+  if (DATA.map) $("tab-routes").textContent = "Map";
+  if (tab === "changes") tab = "standard";
+
+  // status of one mission record [id, type, open, order, state]
+  const missionSt = (m) => {
+    if (!m) return "none";
+    const [, , open, order, st] = m;
+    if (order === 4) return "done";
+    if (st === 20 || order === 2) return "prog";
+    if (open === 1) return "avail";
+    return "lock";
+  };
+
+  // after = the save shown everywhere; before (optional) = the save it is compared with
+  function load(save, before) {
+    const mis = new Map(save.missions.map((m) => [m[0], m]));
+    const flags = new Map(save.recipes.map(([k, f]) => [k >>> 0, f]));
+    ORD.forEach((o) => (o.st = o.id ? missionSt(mis.get(o.id)) : "none"));
+    REC.forEach((r) => { const f = flags.get(r.key >>> 0); r.flags = f; r.st = f === undefined ? "none" : (f & 0x8000 ? "done" : "lock"); });
+    state = save; prev = before || null; diff = prev ? diffSaves(prev, state) : null;
+    if (diff) tab = "changes"; else if (tab === "changes") tab = "standard";
+    render();
+  }
+
+  /* ---------- compare two saves ---------- */
+  const ORD_BY_ID = new Map(ORD.filter((o) => o.id).map((o) => [o.id, o]));
+  const REC_BY_KEY = new Map(REC.map((r) => [r.key >>> 0, r]));
+  const KIND = { 3: "delivery", 4: "recover lost cargo", 17: "elimination", 18: "recover stolen cargo", 19: "destroy cargo" };
+  // sections with a known or suspected meaning (docs/FINDINGS.md)
+  const SEC_NAME = { 0x4afa625b: "mission records", 0x3ef4dc4d: "unlock catalogue", 0x48ea52a4: "route history", 0x0b8cfaf0: "objective/progress records",
+    0x5cef9b34: "story table", 0x6727b031: "play / world clocks", 0x73dacf23: "facilities: levels, material stock", 0x69049449: "chiral bandwidth, APAS", 0x202659d5: "likes", 0x0aa0d44e: "cargo / item records", 0x129ec9ee: "signs (lead)", 0x01b35e1e: "facility lead (u32 @32)", 0x2cf918ee: "facility counter lead (@624)",
+    0x4d4b4d42: "active order markers", 0x5b95d3ae: "road lead (weak)" };
+  const hex8 = (k) => (k >>> 0).toString(16).padStart(8, "0");
+  const sameSeg = (a, b) => a[0] === b[0] && a[1].length === b[1].length && a[1].every((v, i) => v === b[1][i]);
+
+  function diffSaves(a, b) {
+    // orders: every mission ID whose status differs
+    const ma = new Map(a.missions.map((m) => [m[0], m])), mb = new Map(b.missions.map((m) => [m[0], m]));
+    const orders = [];
+    for (const id of new Set([...ma.keys(), ...mb.keys()])) {
+      const x = ma.get(id), y = mb.get(id), from = missionSt(x), to = missionSt(y);
+      const raw = (m) => m ? `open ${m[2]} order ${m[3]} state ${m[4]}` : "absent";
+      if (from !== to || raw(x) !== raw(y)) orders.push({ id, kind: (y || x)[1], from, to, rawFrom: raw(x), rawTo: raw(y), o: ORD_BY_ID.get(id) });
+    }
+    orders.sort((p, q) => (p.o ? p.o.no : 1e9 + p.id) - (q.o ? q.o.no : 1e9 + q.id));
+    // unlocks: the 0x8000 bit, plus any other flag change (research)
+    const fa = new Map(a.recipes.map(([k, f]) => [k >>> 0, f])), fb = new Map(b.recipes.map(([k, f]) => [k >>> 0, f]));
+    const unlocked = [], relocked = [], flagged = [];
+    for (const k of new Set([...fa.keys(), ...fb.keys()])) {
+      const x = fa.get(k), y = fb.get(k); if (x === y) continue;
+      const r = REC_BY_KEY.get(k), e = { key: k, from: x, to: y, r };
+      if (!(x & 0x8000) && (y & 0x8000)) unlocked.push(e); else if ((x & 0x8000) && !(y & 0x8000)) relocked.push(e); else flagged.push(e);
+    }
+    // routes: segments the later save adds on top of the earlier history
+    const ra = (a.routes || []).filter((s) => s[1].length >= 4), rb = (b.routes || []).filter((s) => s[1].length >= 4);
+    let k = 0; while (k < ra.length && k < rb.length && sameSeg(ra[k], rb[k])) k++;
+    // the newest segment usually just grew: split it so only the added points count (and draw) as new
+    const ext = k < ra.length && k < rb.length && ra[k][0] === rb[k][0] && rb[k][1].length > ra[k][1].length && ra[k][1].every((v, i) => v === rb[k][1][i]);
+    const segsB = ext ? [...rb.slice(0, k), ra[k], [rb[k][0], rb[k][1].slice(ra[k][1].length - 2)], ...rb.slice(k + 1)] : rb;
+    const cleared = ra.length > 0 && k === 0 && !ext;
+    // sections: byte-level, only when both files were opened here (the example has no raw sections)
+    let secs = null;
+    if (a.sec && b.sec) {
+      secs = [];
+      for (const id of new Set([...a.sec.keys(), ...b.sec.keys()])) {
+        const x = a.sec.get(id), y = b.sec.get(id);
+        if (!x || !y) { secs.push({ id, la: x ? x.length : 0, lb: y ? y.length : 0, n: null, first: null }); continue; }
+        let n = 0, first = -1; const L = Math.min(x.length, y.length);
+        for (let i = 0; i < L; i++) if (x[i] !== y[i]) { n++; if (first < 0) first = i; }
+        if (n || x.length !== y.length) secs.push({ id, la: x.length, lb: y.length, n, first: first < 0 ? L : first });
+      }
+      secs.sort((p, q) => (SEC_NAME[q.id] ? 1 : 0) - (SEC_NAME[p.id] ? 1 : 0) || (p.n ?? 1e9) - (q.n ?? 1e9));
+    }
+    return { orders, unlocked, relocked, flagged, routes: { before: ra.length, after: rb.length, kept: ext ? k + 1 : k, fresh: ext ? k + 1 : k, extended: ext ? (rb[k][1].length - ra[k][1].length) / 2 : 0, cleared, segs: segsB }, secs };
+  }
+
+  /* ---------- rendering ---------- */
+  const LABEL = { done: "Done", prog: "In progress", avail: "Available", lock: "Locked", none: "Not in save" };
+  const CLS = { done: "s-done", prog: "s-prog", avail: "s-avail", lock: "s-lock", none: "s-none" };
+  const zpad = (n, w = 3) => { const t = String(n), k = Math.max(0, w - t.length); return k ? `<span class="z">${"0".repeat(k)}</span>${t}` : t; };   // leading zeros dimmed
+  const pill = (st, text) => `<span class="pill ${CLS[st]}">${esc(text || LABEL[st])}</span>`;
+  const count = (list, st) => list.filter((x) => x.st === st).length;
+  const bar = (list) => {
+    const n = list.length || 1, pct = (st) => (100 * count(list, st) / n).toFixed(2) + "%";
+    return `<div class="bar" aria-hidden="true"><i class="d" style="width:${pct("done")}"></i><i class="p" style="width:${pct("prog")}"></i><i class="a" style="width:${pct("avail")}"></i></div>`;
+  };
+  const hms = (s) => { const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60); return `${h} h ${String(m).padStart(2, "0")} min`; };
+  const G8 = "https://game8.co/games/Death-Stranding-2-On-the-Beach";
+  const G8FAC = DATA.g8fac || {};   // facility name -> verified Game8 prepper/location page
+  // Guide link: Game8 walkthrough for main orders 1-48; Game8 prepper page where one exists (verified list);
+  // otherwise the Death Stranding wiki (Fandom) article, or its search where the wiki has no article of that name.
+  const facOf = (o) => o.sec === "S" ? o.from : (o.to || "").replace(/^(Near |Enemy Camp Near |A BT Area Near |River Near )/, "");
+  const WIKI = DATA.wiki || {};   // name -> exact wiki article title, checked against the wiki (catalog/build_wiki_links.py)
+  const wiki = (name) => WIKI[name] ? `https://deathstranding.fandom.com/wiki/${encodeURIComponent(WIKI[name].replace(/ /g, "_")).replace(/%2F/g, "/")}`
+    : `https://deathstranding.fandom.com/wiki/Special:Search?search=${encodeURIComponent(name.replace(/’/g, "'"))}&go=Go`;
+  function guide(o) {
+    if (o.g8) return { url: `${G8}/archives/${o.g8}`, text: "Game8 walkthrough" };
+    const f = facOf(o);
+    if (G8FAC[f]) return { url: `${G8}/archives/${G8FAC[f]}`, text: `Game8: ${f}` };
+    return { url: wiki(f), text: `Wiki: ${f}` };
+  }
+  const CONDITIONS = { "Breakable Cargo": "breakable cargo", "Express": "time limit", "Hazardous": "hazardous cargo", "Chilled": "keep chilled",
+    "Keep Flat": "keep flat", "Do Not Submerge": "keep out of water", "Elimination": "combat" };
+  const lc = (s) => s.replace(/^Enemy Camp Near /, "the enemy camp near ").replace(/^Near /, "near ");
+  // short description generated from the order's own data (type from the save, client, destination, cargo)
+  function describe(o) {
+    const cargo = o.cargo && o.cargo !== "None" ? o.cargo : "";
+    const tags = [...o.name.matchAll(/\[([^\]]+)\]/g)].flatMap((m) => m[1].split("/")).map((x) => CONDITIONS[x.trim()]).filter(Boolean);
+    let d;
+    switch (o.kind) {
+      case 3: d = `Deliver ${cargo ? cargo + " " : ""}cargo from ${o.from} to ${o.to}.`; break;
+      case 4: case 18: {
+        // the order's own wording decides lost vs stolen; the save type only says "recover"
+        const how = /stolen|seized|bandit|brigand|survivalist/i.test(o.name) ? "stolen" : /lost|misplaced|missing|stranded/i.test(o.name) ? "lost" : (o.kind === 18 ? "stolen" : "lost");
+        const where = o.to === o.from ? "" : (how === "stolen" ? ` from ${lc(o.to)}` : ` ${lc(o.to)}`);
+        d = `Recover ${how} cargo${cargo ? " (" + cargo + ")" : ""}${where} and bring it to ${o.from}.`; break;
+      }
+      case 17: d = o.to === o.from ? `Combat order for ${o.from}.` : `Clear ${lc(o.to)} for ${o.from}.`; break;
+      case 19: d = `Destroy the cargo at ${lc(o.to)} for ${o.from}.`; break;
+      default: d = o.from && o.from !== "N/A" ? `From ${o.from} to ${o.to}${cargo ? ", cargo " + cargo : ""}.` : `Go to ${o.to}.`;
+    }
+    return d + (tags.length ? ` Conditions: ${[...new Set(tags)].join(", ")}.` : "");
+  }
+  const loc = (name) => name && name !== "N/A" ? `<button type="button" class="loc" data-loc="${esc(name.replace(/^(Near |Enemy Camp Near )/, ""))}">${esc(name)}</button>` : esc(name);
+
+  function renderSave() {
+    const s = state, lines = s.meta || [];
+    const current = lines.find((l) => /No\.|№/.test(l)) || lines[0] || "";
+    const kind = lines.find((l) => /DEATH STRANDING/.test(l)) || "";
+    const goal = lines.find((l) => l !== current && l !== kind && !/ID\.|Difficulty/.test(l)) || "";
+    $("save").innerHTML = `
+      ${s.thumb ? `<img src="${s.thumb}" alt="Save thumbnail">` : `<div></div>`}
+      <div class="meta">
+        <div class="label">${esc(kind.replace(/^DEATH STRANDING 2 - ON THE BEACH - /, "") || "Save")} ${s.sample ? '<span class="chip">Example: latest save</span>' : ""} ${s.verified === true ? '<span class="chip ok" title="The save matches its own MD5 integrity check">Save verified</span>' : s.verified === false ? '<span class="chip bad" title="The data does not match the save’s own integrity check">Checksum mismatch: the file may be damaged</span>' : ""} ${prev ? `<span class="chip">Compared with ${esc(prev.name)}</span>` : ""}</div>
+        <div class="current">${esc(current)}</div>
+        ${goal ? `<div class="goal">Objective: ${esc(goal)}</div>` : ""}
+        <div class="kv"><span>File <b>${esc(s.name)}</b></span><span>Play time <b>${hms(s.playtime)}</b></span>${s.clock ? `<span>In game <b>${clockText(s.clock)}</b></span>` : ""}<span>Game <b>${esc(s.version || "unknown")}</b></span></div>
+      </div>`;
+  }
+
+  function renderStats() {
+    const by = (sec) => ORD.filter((o) => o.sec === sec);
+    const tile = (label, list, extra) => `<div class="stat"><div class="label">${label}</div><div class="num">${count(list, "done")}<span> / ${list.length}</span></div>${bar(list)}<div class="note">${extra}</div></div>`;
+    const std = by("S"), main = by("M"), sub = by("U");
+    $("stats").innerHTML =
+      tile("Main orders", main, `${count(main, "prog")} in progress`) +
+      tile("Standard orders", std, `${count(std, "avail")} available now`) +
+      tile("Sub orders", sub, `${sub.filter((o) => o.id).length} of ${sub.length} matched`) +
+      (state.likes ? `<div class="stat"><div class="label">Likes</div><div class="num">${(state.likes[0] + state.likes[1]).toLocaleString()}</div><div class="note">${state.likes[0].toLocaleString()} from NPCs · ${state.likes[1].toLocaleString()} from other porters · ${state.likes[2].toLocaleString()} given</div></div>` : "") +
+      (() => { const t = mergedRows().filter((m) => m.tracked); return `<div class="stat"><div class="label">Unlocks</div><div class="num">${t.filter((m) => m.k > 0).length}<span> / ${t.length}</span></div>${bar(t.map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}<div class="note">weapons, gear, outfits and vehicle parts</div></div>`; })();
+    $("tab-changes").hidden = !diff;
+    ["changes", "standard", "main", "sub", "craft", "routes"].forEach((t) => {
+      const b = $("tab-" + t); b.setAttribute("aria-selected", String(t === tab));
+    });
+  }
+
+  function renderSeg() {
+    const opts = tab === "craft" ? ["all", "done", "lock"] : ["all", "done", "prog", "avail", "lock"];
+    if (!opts.includes(status)) status = "all";
+    const name = (k) => k === "all" ? "All" : tab === "craft" ? (k === "done" ? "Unlocked" : "Locked") : LABEL[k];
+    $("statusSeg").innerHTML = opts.map((k) => `<button type="button" id="st-${k}" data-st="${k}" aria-pressed="${k === status}">${name(k)}</button>`).join("");
+  }
+
+  function match(o, q) {
+    if (!q) return true;
+    return `${o.no} ${o.name} ${o.from} ${o.to}`.toLowerCase().includes(q);
+  }
+
+  // unlock sources from the game catalogue: key -> [mission ids, facility code, connection level]
+  const LINKS = DATA.links || {}, ICONS = DATA.icons || {};
+  const labelOf = (key) => (REC_BY_KEY.get(Number(key) >>> 0) || {}).label;
+  const ITEMS_BY_MISSION = new Map(), ITEMS_BY_FAC = new Map();
+  for (const [key, [mids, fac, lvl]] of Object.entries(LINKS)) {
+    const label = labelOf(key); if (!label) continue;
+    for (const m of mids) { if (!ITEMS_BY_MISSION.has(m)) ITEMS_BY_MISSION.set(m, new Set()); ITEMS_BY_MISSION.get(m).add(label); }
+    if (fac && lvl) { if (!ITEMS_BY_FAC.has(fac)) ITEMS_BY_FAC.set(fac, new Map()); const f = ITEMS_BY_FAC.get(fac); if (!f.has(lvl)) f.set(lvl, new Set()); f.get(lvl).add(label); }
+  }
+  const FAC_NAME = new Map(); ORD.forEach((o) => { if (o.sec === "S" && o.id) FAC_NAME.set(Math.floor(o.id / 1000), o.from); });
+  const rewardChip = (label, got) => `<button type="button" class="chip-rw${got ? " got" : ""}" data-goto-item="${esc(label)}">${esc(label)}</button>`;
+  const MATERIALS = ["Chiral Crystals", "Resins", "Metals", "Ceramics", "Chemicals", "Special Alloys"], MAT_AB = ["CC", "Re", "Me", "Ce", "Ch", "SA"];
+  const stockOf = (code) => { const l = ((state && state.levels) || []).find((x) => x[0] === code); return l && l[2] && l[2].some((v) => v) ? l[2] : null; };
+  const stockLine = (code) => { const st = code ? stockOf(code) : null; if (!st) return ""; const mx = Math.max(...st) || 1;
+    return `<div class="stock" title="Materials stored at this facility (bars: compared with its largest stock)">${st.map((v, i) => `<span class="mat"><i class="mi" aria-hidden="true">${MAT_AB[i]}</i><span class="mn">${MATERIALS[i]}</span><b class="mq">${zpad(v, 4)}</b><i class="mb" aria-hidden="true"><i style="width:${(100 * v / mx).toFixed(1)}%"></i></i></span>`).join("")}</div>`; };
+  const levelOf = (code) => { const l = ((state && state.levels) || []).find((x) => x[0] === code); return l ? l[1] : null; };
+  const stars = (lvl) => lvl === null ? "" : lvl === 0 ? `<div class="stars off">Not connected</div>`
+    : `<div class="stars" title="Connection level ${lvl} of 5">${"★".repeat(lvl)}${"☆".repeat(5 - lvl)}<span>Level ${lvl}</span></div>`;
+  // facility lookup by name: guide and game spell some names differently ("The Government’s Base", "F8 Terminal Fort Knot")
+  const normName = (n) => (n || "").replace(/’/g, "'").toLowerCase().replace(/^(near |enemy camp near |a bt area near |river near )/, "")
+    .replace(/^the /, "").replace(/\s*\([^)]*\)$/, "").replace(/^f\d+ /, "").trim();
+  const FAC = new Map(((DATA.map && DATA.map.facilities) || []).map(([code, name, type, area, x, y]) => [normName(name), { code, name, area, x, y }]));
+  const MAP_REG = {}; Object.entries((DATA.map && DATA.map.regions) || {}).forEach(([id, r]) => (MAP_REG[r.area] = { id, ...r }));
+  if (DATA.map && document.createElement) {   // one stylesheet rule per region holds the relief image, so thumbnails don't repeat the image data
+    const st = document.createElement("style");
+    st.textContent = Object.values(MAP_REG).map((r) => `.mm-${r.id}{background-image:url(${r.img})}`).join("\n");
+    document.head && document.head.appendChild(st);
+  }
+  function miniMap(name, view = 1600) {
+    const f = FAC.get(normName(name)), R = f && MAP_REG[f.area];
+    if (!R) return "";
+    const W = 128, H = 80, bg = W * R.size / view, u = (f.x - R.x0) / R.size, v = 1 - (f.y - R.y0) / R.size;
+    return `<div class="mm mm-${R.id}" title="${esc(f.name)} on the map" style="background-size:${bg.toFixed(0)}px;background-position:${(W / 2 - u * bg).toFixed(1)}px ${(H / 2 - v * bg).toFixed(1)}px"></div>`;
+  }
+
+  function facRewards(code, lvl) {
+    const f = ITEMS_BY_FAC.get(code); if (!f) return "";
+    return `<div class="fac-rewards">` + [...f].sort((a, b) => a[0] - b[0]).map(([l, items]) =>
+      `<div><span class="lv">Level ${l}</span> ${[...items].map((x) => rewardChip(x, lvl !== null && lvl >= l)).join(" ")}</div>`).join("") + `</div>`;
+  }
+
+  function orderRow(o) {
+    const conf = o.conf === "p" ? ` <span class="conf" title="Probable match">≈</span>` : o.conf === "l" ? ` <span class="conf" title="Low confidence">?</span>` : "";
+    return `<div class="row ${o.st === "none" ? "dim" : ""}">
+      <div class="no">${zpad(o.no)}</div>
+      <div class="name">${esc(o.name)}${conf}</div>
+      <div class="right">${pill(o.st)}</div>
+      <div class="desc">${esc(describe(o))}</div>
+      <div class="sub"><span>${loc(o.from)} → ${loc(o.to)}</span><span>Cargo ${esc(o.cargo)}</span><a href="${guide(o).url}" target="_blank" rel="noopener">${esc(guide(o).text)} ↗</a></div>
+      ${o.id && ITEMS_BY_MISSION.has(o.id) ? `<div class="rewards">Unlocks ${[...ITEMS_BY_MISSION.get(o.id)].map((l) => rewardChip(l, o.st === "done")).join("")}</div>` : ""}
+    </div>`;
+  }
+
+  function renderOrders() {
+    const q = $("q").value.trim().toLowerCase();
+    const sec = { standard: "S", main: "M", sub: "U" }[tab];
+    const list = ORD.filter((o) => o.sec === sec).sort((a, b) => a.no - b.no);
+    const vis = list.filter((o) => (status === "all" || o.st === status) && match(o, q));
+    if (!vis.length) return `<p class="note">No orders match this filter.</p>`;
+    if (sec === "S") {
+      const groups = new Map();
+      list.forEach((o) => { if (!groups.has(o.from)) groups.set(o.from, []); groups.get(o.from).push(o); });
+      let html = "", lastRegion = "";
+      for (const [fac, all] of groups) {
+        const shown = all.filter((o) => vis.includes(o)); if (!shown.length) continue;
+        const reg = regionOf[fac] || "Australia";
+        if (reg !== lastRegion) { html += `<h2 class="region">${reg}</h2>`; lastRegion = reg; }
+        const open = q || status !== "all" || all.some((o) => o.st === "avail" || o.st === "prog");
+        const code = (all.find((o) => o.id) || {}).id; const lvl = code ? levelOf(Math.floor(code / 1000)) : null;
+        html += `<details class="group fac" ${open ? "open" : ""}><summary><h3>${esc(fac)}</h3><div class="fac-head">${miniMap(fac)}<div class="fac-info">${stars(lvl)}${stockLine(code ? Math.floor(code / 1000) : 0)}</div></div><span class="count">${count(all, "done")} / ${all.length} done</span>${bar(all)}</summary>${facRewards(code ? Math.floor(code / 1000) : 0, lvl)}<div class="rows">${shown.map(orderRow).join("")}</div></details>`;
+      }
+      return html;
+    }
+    if (sec === "M") {
+      const eps = new Map();
+      vis.forEach((o) => { const k = o.ep || "?"; if (!eps.has(k)) eps.set(k, []); eps.get(k).push(o); });
+      const card = (o) => { if (!DATA.map) return orderRow(o); const m = miniMap(o.to) || miniMap(o.from); return `<div class="mo">${m || `<div class="nomap">${esc(o.to || "")}</div>`}${orderRow(o)}</div>`; };
+      return `<div class="tl">` + [...eps].map(([ep, os]) => {
+        const cls = os.every((o) => o.st === "done") ? "done" : os.some((o) => o.st === "done" || o.st === "prog") ? "prog" : "";
+        return `<details class="group tl-ep ${cls}" open><summary><h3>Episode ${esc(ep)}</h3><span class="count">${count(os, "done")} / ${os.length} done</span>${bar(os)}</summary>${os.map(card).join("")}</details>`;
+      }).join("") + `</div>`;
+    }
+    return `<div class="group"><div class="rows">${vis.map(orderRow).join("")}</div></div>`;
+  }
+
+  // one row per (category, subcategory, name): duplicate catalogue entries are merged
+  function mergedRows() {
+    const map = new Map();
+    for (const r of REC) {
+      if (!r.cat) continue;
+      const k = `${r.cat}|${r.sub || ""}|${r.label}`;
+      if (!map.has(k)) map.set(k, { cat: r.cat, sub: r.sub || "", label: r.label, src: r.src, tag: r.tag, n: 0, k: 0, inSave: 0, keys: [] });
+      const m = map.get(k); m.keys.push(r.key >>> 0); m.n++; if (r.st !== "none") m.inSave++; if (r.st === "done") m.k++;
+    }
+    // APAS catalogue entries: unlocked = the matching enhancement is in the save's APAS list (available or developed)
+    const apasHave = new Set(((state && state.apas) || []).map((x) => x[0])), apasOf = new Map();
+    for (const [h, , , , keys] of APAS) for (const k of keys) apasOf.set(k >>> 0, h);
+    for (const m of map.values()) {
+      m.tracked = TRACKED.has(`${m.cat}|${m.sub}`);
+      const hs = state && state.apas ? m.keys.filter((k) => apasOf.has(k)).map((k) => apasOf.get(k)) : [];
+      if (hs.length) { m.tracked = true; m.inSave = m.n; m.k = hs.some((h) => apasHave.has(h)) ? m.n : 0; }
+      m.st = !m.tracked ? "na" : m.inSave === 0 ? "none" : m.k === m.n ? "done" : m.k > 0 ? "part" : "lock";
+    }
+    return [...map.values()];
+  }
+
+  function craftPill(m) {
+    if (m.st === "done") return pill("done", m.n > 1 ? `Unlocked ×${m.n}` : "Unlocked");
+    if (m.st === "part") return pill("prog", `${m.k} of ${m.n} unlocked`);
+    if (m.st === "none") return pill("none", "Not in save");
+    if (m.st === "na") return pill("none", "Status not available yet");
+    return pill("lock", m.n > 1 ? `Locked ×${m.n}` : "Locked");
+  }
+
+  const recImg = (m) => { const k = m.keys.find((x) => ICONS[x]); return k ? `<img class="rec-img" src="${ICONS[k]}" alt="" loading="lazy">` : ""; };
+  function unlockedBy(m) {
+    const parts = new Set();
+    for (const k of m.keys) {
+      const l = LINKS[k]; if (!l) continue;
+      for (const mid of l[0]) { const o = ORD_BY_ID.get(mid); if (o) parts.add(`<button type="button" class="loc" data-goto-order="${o.id}">No. ${o.no} ${esc(o.name)}</button>`); }
+      if (l[1] && l[2]) parts.add(`<button type="button" class="loc" data-goto-fac="${l[1]}">${esc(FAC_NAME.get(l[1]) || "Facility " + l[1])}, connection level ${l[2]}</button>`);
+    }
+    return parts.size ? `<div class="by">Unlocked by ${[...parts].join(" · ")}</div>` : "";
+  }
+
+  // the APAS list itself, from the save: developed / available / not yet available
+  function apasGroup(q) {
+    if (!APAS.length || !state || !state.apas) return "";
+    const have = new Map(state.apas), ORDER = ["done", "avail", "lock"];
+    const dup = new Set(APAS.map((a) => a[1]).filter((n, i, all) => all.indexOf(n) !== i));
+    const all = APAS.map(([h, name, pts, cat, keys, step]) => ({ h, name, pts, keys, step, st: have.get(h) === 1 ? "done" : have.has(h) ? "avail" : "lock" }));
+    const rows = all.filter((r) => (status === "all" || (status === "done" ? r.st === "done" : r.st !== "done")) && (!q || r.name.toLowerCase().includes(q)))
+      .sort((a, b) => ORDER.indexOf(a.st) - ORDER.indexOf(b.st) || a.name.localeCompare(b.name) || a.step - b.step);
+    if (!rows.length) return "";
+    const dev = all.filter((r) => r.st === "done").length, av = all.filter((r) => r.st === "avail").length;
+    const AI = DATA.apas_icons || {};
+    const img = (r) => { const src = AI[r.h] || ICONS[r.keys.find((x) => ICONS[x])]; return src ? `<img class="rec-img" src="${src}" alt="" loading="lazy">` : ""; };
+    const label = { done: "Developed", avail: "Available", lock: "Not available yet" };
+    return `<details class="group" ${craftCat !== "all" || q ? "open" : ""}><summary><h3>APAS in this save</h3><span class="count">${dev} / ${all.length} developed · ${av} available</span>${bar(all.map((r) => ({ st: r.st === "done" ? "done" : "lock" })))}</summary>
+      <p class="about">Every APAS enhancement in the game, with its state in this save: developed, available to develop (enhancement points needed shown), or not available yet.</p>
+      <div class="rows">${rows.map((r) => `<div class="rec"><div class="rec-main">${img(r)}<div><div class="nm">${esc(r.name)}</div><div class="de">${dup.has(r.name) ? `Step ${r.step} · ` : ""}${r.pts} points</div></div></div><div class="rt">${pill(r.st, label[r.st])}</div></div>`).join("")}</div></details>`;
+  }
+
+  function renderCraft() {
+    const q = $("q").value.trim().toLowerCase();
+    const all = mergedRows();
+    const cats = CAT_ORDER.filter((c) => all.some((m) => m.cat === c));
+    const tally = (list) => { const t = list.filter((m) => m.tracked); return t.length ? `${t.filter((m) => m.k > 0).length} / ${t.length}` : "—"; };
+    const chips = [`<button type="button" class="chip-btn" id="cat-all" data-cat="all" aria-pressed="${craftCat === "all"}">All <span>${tally(all)}</span></button>`]
+      .concat(cats.map((c) => `<button type="button" class="chip-btn" id="cat-${c.replace(/\W+/g, "-")}" data-cat="${esc(c)}" aria-pressed="${craftCat === c}">${esc(c)} <span>${tally(all.filter((m) => m.cat === c))}</span></button>`)).join("");
+    const keep = (m) => (status === "all" || (m.tracked && (status === "done" ? m.k > 0 : m.k < m.n))) && (!q || `${m.label} ${m.cat} ${m.sub} ${m.tag}`.toLowerCase().includes(q));
+    let html = `<div class="catbar" id="catbar">${chips}</div>`;
+    for (const c of cats) {
+      if (craftCat !== "all" && craftCat !== c) continue;
+      const inCat = all.filter((m) => m.cat === c), shown = inCat.filter(keep);
+      if (!shown.length) continue;
+      const subs = [...new Set(inCat.map((m) => m.sub))];
+      const bars = { length: inCat.length, filter: (f) => inCat.map((m) => ({ st: m.k > 0 ? "done" : "lock" })).filter(f) };
+      html += `<details class="group" ${craftCat !== "all" || q || cats.length < 3 ? "open" : ""}><summary><h3>${esc(c)}</h3><span class="count">${tally(inCat) === "—" ? "status not available yet" : tally(inCat) + " unlocked"}</span>${bar(inCat.filter((m) => m.tracked).map((m) => ({ st: m.k > 0 ? "done" : "lock" })))}</summary>`;
+      if (ABOUT[c]) html += `<p class="about">${esc(ABOUT[c])}</p>`;
+      for (const s of subs) {
+        const rows = shown.filter((m) => m.sub === s).sort((x, y) => (y.k > 0) - (x.k > 0) || x.label.localeCompare(y.label));
+        if (!rows.length) continue;
+        if (s) html += `<h4 class="subhead">${esc(s)} <span>${tally(inCat.filter((m) => m.sub === s))}</span></h4>`;
+        html += `<div class="rows">` + rows.map((m) => `<div class="rec" data-item="${esc(m.label)}"><div class="rec-main">${recImg(m)}<div><div class="nm">${esc(m.label)}${m.tag ? ` <span class="chip" data-tag="${esc(m.tag)}">${esc(m.tag)}</span>` : ""}</div>${m.src === "g" ? `<div class="de"><span class="tr">English name not confirmed yet</span></div>` : ""}${unlockedBy(m)}</div></div><div class="rt">${craftPill(m)}</div></div>`).join("") + `</div>`;
+      }
+      html += `</details>`;
+    }
+    if (craftCat === "all" || craftCat === "APAS enhancements") html += apasGroup(q);
+    if (!/class="group"/.test(html)) html += `<p class="note">Nothing matches this filter.</p>`;
+    return html + `<p class="note">Materials are left out: you can withdraw them at any facility. Entries without a name in the game data (${REC.filter((r) => r.src === "x").length}) are hidden. “Status not available yet”: for these kinds (structures, holograms, music, colour schemes and more) the save keeps its unlock state somewhere that hasn't been decoded yet.</p>`;
+  }
+
+  function routeLen(segs) {
+    let km = 0, pts = 0;
+    for (const [, p] of segs) for (let i = 0; i < p.length; i += 2) {
+      pts++;
+      if (i >= 2) { const d = Math.hypot(p[i] - p[i - 2], p[i + 1] - p[i - 1]); if (d < 500) km += d / 1000; }
+    }
+    return { km, pts };
+  }
+
+  const SECN = { S: "Standard", M: "Main", U: "Sub" };
+  const TMP = 0x10000000;   // mission IDs from here on come and go between saves (temporary records, meaning unknown)
+  const orderTitle = (c) => c.o ? c.o.name : c.id >= TMP ? `Temporary record 0x${hex8(c.id)}` : `Unidentified order, ID ${c.id}${KIND[c.kind] ? " (" + KIND[c.kind] + ")" : ""}`;
+  const recTitle = (e) => e.r ? `${e.r.label}${e.r.cat ? ` · ${e.r.cat}${e.r.sub ? " / " + e.r.sub : ""}` : ""}` : "Unknown entry";
+  const fhex = (f) => f === undefined ? "absent" : "0x" + (f >>> 0).toString(16).padStart(4, "0");
+  const CHANGE_GROUPS = [["done", "Completed"], ["prog", "Accepted / in progress"], ["avail", "Newly available"], ["*", "Other changes"], ["tmp", "Temporary records"]];
+  const groupOf = (c) => c.id >= TMP ? "tmp" : c.from !== c.to && ["done", "prog", "avail"].includes(c.to) ? c.to : "*";
+
+  function changeRow(c) {
+    const o = c.o, same = c.from === c.to;
+    return `<div class="chg">
+      <div class="no">${o ? zpad(o.no) : "—"}</div>
+      <div class="name">${esc(orderTitle(c))}${o ? ` <span class="chip">${SECN[o.sec]}</span>` : ""}</div>
+      <div class="right">${same ? `<b>${esc(c.rawFrom)} → ${esc(c.rawTo)}</b>` : `${pill(c.from)}<b>→</b>${pill(c.to)}`}</div>
+      ${o ? `<div class="sub"><span>${loc(o.from)} → ${loc(o.to)}</span><span>ID ${c.id}</span><a href="${guide(o).url}" target="_blank" rel="noopener">${esc(guide(o).text)} ↗</a></div>` : `<div class="sub"><span>${esc(c.rawFrom)} → ${esc(c.rawTo)}</span></div>`}
+    </div>`;
+  }
+
+  function changeReport() {
+    const d = diff, a = prev, b = state, L = [];
+    L.push("Peko-Check comparison");
+    L.push(`Before: ${a.name}, ${hms(a.playtime)}, game ${a.version || "?"}`);
+    L.push(`After:  ${b.name}, ${hms(b.playtime)}, game ${b.version || "?"}`);
+    L.push(`Objective before: ${(a.meta || []).find((l) => /No\.|№/.test(l)) || "?"}`);
+    L.push(`Objective after:  ${(b.meta || []).find((l) => /No\.|№/.test(l)) || "?"}`);
+    L.push("", `Orders (${d.orders.length} changed):`);
+    for (const c of d.orders) L.push(`  ${c.o ? "No. " + c.o.no + " [" + SECN[c.o.sec] + "] " : ""}${orderTitle(c)} | id ${c.id} | ${c.from} -> ${c.to} | ${c.rawFrom} -> ${c.rawTo}`);
+    L.push("", `Unlocked (${d.unlocked.length}):`);
+    for (const e of d.unlocked) L.push(`  + ${recTitle(e)} | key 0x${hex8(e.key)} | ${fhex(e.from)} -> ${fhex(e.to)}`);
+    if (d.relocked.length) { L.push(`Unlock bit cleared (${d.relocked.length}):`); for (const e of d.relocked) L.push(`  - ${recTitle(e)} | key 0x${hex8(e.key)} | ${fhex(e.from)} -> ${fhex(e.to)}`); }
+    L.push(`Other unlock-flag changes (${d.flagged.length}):`);
+    for (const e of d.flagged) L.push(`  ~ ${recTitle(e)} | key 0x${hex8(e.key)} | ${fhex(e.from)} -> ${fhex(e.to)}`);
+    const r = d.routes;
+    L.push("", `Routes: before ${r.before} segments, after ${r.after}, new ${r.after - r.kept}${r.extended ? `, 1 extended by ${r.extended} points` : ""}${r.cleared ? " (history was cleared in between)" : ""}`);
+    if (d.secs) {
+      L.push("", `Sections changed (${d.secs.length}):`);
+      for (const s of d.secs) L.push(`  ${hex8(s.id)} ${SEC_NAME[s.id] || ""} | size ${s.la} -> ${s.lb} | ${s.n === null ? "added/removed" : s.n + " bytes differ, first at +0x" + s.first.toString(16)}`);
+    } else L.push("", "Sections: not compared (the example save has no raw sections; open both files yourself).");
+    return L.join("\n");
+  }
+
+  function renderChanges() {
+    if (!diff) return `<p class="note">Open a save, then use <b>Compare with…</b> (or drop two saves at once) to see what changed between them.</p>`;
+    const d = diff, a = prev, b = state, r = d.routes;
+    const side = (s, label) => `<div class="side"><div class="label">${label}</div>${s.thumb ? `<img src="${s.thumb}" alt="${label} thumbnail">` : ""}
+      <div class="cur">${esc((s.meta || []).find((l) => /No\.|№/.test(l)) || s.name)}</div>
+      <div class="kv"><span>File <b>${esc(s.name)}</b></span><span>Play time <b>${hms(s.playtime)}</b></span></div></div>`;
+    const dt = b.playtime - a.playtime;
+    let html = `<div class="group cmp">${side(a, "Before")}<div class="arrow"><span class="ar" aria-hidden="true">→</span><div class="delta">${dt >= 0 ? "+" : "−"}${hms(Math.abs(dt))}</div></div>${side(b, "After")}</div>`;
+    if (a.version && b.version && a.version !== b.version) html += `<p class="note">These saves come from different game versions (${esc(a.version)} and ${esc(b.version)}); some changes may come from the update itself.</p>`;
+    const statOf = (lab, n, note) => `<div class="stat"><div class="label">${lab}</div><div class="num">${n}</div><div class="note">${note}</div></div>`;
+    const done = d.orders.filter((c) => c.to === "done" && c.from !== "done").length, real = d.orders.filter((c) => c.id < TMP).length;
+    html += `<section class="stats">${statOf("Orders changed", real, `${done} completed`)}${statOf("New unlocks", d.unlocked.length, `${d.flagged.length} other flag changes`)}${statOf("New route segments", r.after - r.kept, r.cleared ? "history was cleared in between" : `${r.extended ? "1 extended · " : ""}${r.after} in total now`)}${statOf("Sections changed", d.secs ? d.secs.length : "—", d.secs ? "of the save's data sections" : "open both files to compare")}</section>`;
+
+    // orders
+    html += `<details class="group" open><summary><h3>Orders</h3><span class="count">${real} changed</span></summary>`;
+    if (!d.orders.length) html += `<div class="more">No order changed.</div>`;
+    for (const [g, title] of CHANGE_GROUPS) {
+      const list = d.orders.filter((c) => groupOf(c) === g); if (!list.length) continue;
+      const rows = `<div class="rows">${list.map(changeRow).join("")}</div>`;
+      html += g === "tmp" ? `<details class="sub-more"><summary class="subhead">${title} <span>${list.length}</span></summary>${rows}</details>`
+        : `<h4 class="subhead">${title} <span>${list.length}</span></h4>${rows}`;
+    }
+    html += `</details>`;
+
+    // unlocks
+    const recRows = (list, sign) => list.map((e) => `<div class="rec"><div><div class="nm">${sign} ${esc(e.r ? e.r.label : "Unknown entry")}</div><div class="de">${esc(e.r && e.r.cat ? e.r.cat + (e.r.sub ? " / " + e.r.sub : "") : "not shown in the Unlocks tab")} · key 0x${hex8(e.key)}</div></div><div class="rt"><span class="use">${fhex(e.from)} → ${fhex(e.to)}</span></div></div>`).join("");
+    html += `<details class="group" ${d.unlocked.length ? "open" : ""}><summary><h3>Unlocks</h3><span class="count">${d.unlocked.length} new</span></summary>`;
+    html += d.unlocked.length ? `<div class="rows">${recRows(d.unlocked, "+")}</div>` : `<div class="more">Nothing new unlocked in the tracked kinds (weapons, gear, outfits, vehicle parts).</div>`;
+    if (d.relocked.length) html += `<h4 class="subhead">Unlock bit cleared <span>${d.relocked.length}</span></h4><div class="rows">${recRows(d.relocked, "−")}</div>`;
+    if (d.flagged.length) html += `<h4 class="subhead">Other flag changes <span>${d.flagged.length}</span></h4><p class="about">Bits other than the unlock bit changed. Meaning not known yet; useful for the save tests.</p><div class="rows">${recRows(d.flagged, "~")}</div>`;
+    html += `</details>`;
+
+    // routes
+    const segs = r.segs;
+    html += `<details class="group routes" ${r.after - r.kept || r.extended ? "open" : ""}><summary style="padding:0 0 10px"><h3>Routes</h3><span class="count">${r.after - r.kept} new segment${r.after - r.kept === 1 ? "" : "s"}${r.extended ? " · 1 extended" : ""}</span></summary>`;
+    if (segs.length) {
+      const { km } = routeLen(segs.slice(r.kept));
+      html += `<div class="rt-head"><div class="note">${r.cleared ? "The route history was cleared between these saves (usually a completed main order), so everything shown is new." : `Grey: already in the earlier save. Colour: new since then, about ${km.toFixed(1)} km.`}</div>
+        <div class="rt-legend"><span><i class="lg rt-veh"></i>Vehicle</span><span><i class="lg rt-foot"></i>On foot</span><span><i class="lg rt-unk"></i>Earlier</span><span><i class="lg dot rt-end"></i>Latest</span></div></div>${routeSvg(segs, r.kept)}`;
+    } else html += `<p class="note">The later save has no route history${r.before ? " (it was cleared, usually by a completed main order)" : ""}.</p>`;
+    html += `</details>`;
+
+    // sections (research)
+    if (d.secs) {
+      const rows = d.secs.map((s) => `<tr><td>${hex8(s.id)}</td><td class="known">${esc(SEC_NAME[s.id] || "")}</td><td class="n">${s.la.toLocaleString()} → ${s.lb.toLocaleString()}</td><td class="n">${s.n === null ? "added/removed" : s.n.toLocaleString()}</td><td>${s.n === null ? "" : "+0x" + s.first.toString(16)}</td></tr>`).join("");
+      html += `<details class="group"><summary><h3>Changed sections (research)</h3><span class="count">${d.secs.length} of ${b.sec.size}</span></summary><p class="about">Every data section whose bytes differ. Named sections first, then the smallest changes: small changes after one action are the best leads.</p><div class="scroll"><table class="secs"><thead><tr><th>Section</th><th>Meaning</th><th>Size</th><th>Bytes differ</th><th>First</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+    }
+    html += `<details class="group"><summary><h3>Text report</h3><span class="count">plain text to copy</span></summary><div class="report"><textarea id="report" readonly>${esc(changeReport())}</textarea><button type="button" id="copyReport">Copy report</button></div></details>`;
+    return html;
+  }
+
+  // segments from index `fresh` on are drawn in colour, older ones greyed (compare mode); fresh = 0 draws all in colour
+  function routeSvg(segs, fresh) {
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    for (const [, p] of segs) for (let i = 0; i < p.length; i += 2) { x0 = Math.min(x0, p[i]); x1 = Math.max(x1, p[i]); y0 = Math.min(y0, p[i + 1]); y1 = Math.max(y1, p[i + 1]); }
+    const pad = 200, W = x1 - x0 + 2 * pad, H = y1 - y0 + 2 * pad, sw = Math.max(W, H) / 350;
+    const X = (v) => (v - x0 + pad).toFixed(0), Y = (v) => (y1 - v + pad).toFixed(0);   // north up (assumed)
+    const lines = segs.map(([mode, p], n) => {
+      let d = "", last = null;
+      for (let i = 0; i < p.length; i += 2) {
+        const jump = last && Math.hypot(p[i] - last[0], p[i + 1] - last[1]) > 500;
+        d += `${!last || jump ? "M" : "L"}${X(p[i])} ${Y(p[i + 1])} `; last = [p[i], p[i + 1]];
+      }
+      const cls = n < fresh ? "rt-unk" : mode === 200 ? "rt-veh" : mode === 100 ? "rt-foot" : "rt-unk";
+      return `<path d="${d}" class="${cls}" stroke-width="${(n < fresh ? sw * 0.6 : sw).toFixed(1)}"${n < fresh ? ' opacity=".55"' : ""}/>`;
+    }).join("");
+    const first = segs[Math.min(fresh, segs.length - 1)][1], last = segs[segs.length - 1][1], r = (sw * 3).toFixed(0);
+    const dots = `<circle cx="${X(first[0])}" cy="${Y(first[1])}" r="${r}" class="rt-start"/><circle cx="${X(last[last.length - 2])}" cy="${Y(last[last.length - 1])}" r="${r}" class="rt-end"/>`;
+    return `<div class="rt-canvas"><svg viewBox="0 0 ${W.toFixed(0)} ${H.toFixed(0)}" role="img" aria-label="Route history">${lines}${dots}</svg></div>`;
+  }
+
+  /* ---------- map (private build: relief image from the game's own 3D-map data, see tools/build_map.py) ---------- */
+  let mapRegion = null, lmap = null, leafletP = null;
+  function defaultRegion() {
+    const ms = (state && state.missions) || [];
+    return !ms.length || ms.some((m) => { const c = Math.floor(m[0] / 1000); return c >= 201 && c <= 240; }) ? "aus" : "mex";
+  }
+  function renderMapView() {
+    if (!mapRegion) mapRegion = defaultRegion();
+    const btns = Object.entries(DATA.map.regions).map(([id, r]) => `<button type="button" class="chip-btn" data-region="${id}" aria-pressed="${id === mapRegion}">${esc(r.name)}</button>`).join("");
+    const segs = mapRegion === defaultRegion() ? ((state && state.routes) || []).filter((s) => s[1].length >= 4) : [];
+    const note = mapRegion !== defaultRegion() ? `Routes are shown on the ${esc(DATA.map.regions[defaultRegion()].name)} map (where this save is)` : segs.length ? `${segs.length} route segments · about ${routeLen(segs).km.toFixed(1)} km since the last clear` : "No route history in this save";
+    return `<div class="group routes"><div class="map-bar"><div class="catbar" style="margin:0">${btns}</div><div class="note">${note}</div></div>
+      <div id="lmap" class="lmap"></div>
+      <p class="about">Relief map rendered from the game's own 3D-map data, with each facility's own map icon. Ring colours: green = all its standard orders done, gold = some done, grey = none done yet; click one for its open orders. Routes are the in-game “previous routes” (cleared when you complete a main order); on foot / vehicle is a strong hypothesis. Switch layers with the control at the top right.</p></div>`;
+  }
+  function loadLeaflet() {
+    if (window.L) return Promise.resolve();
+    if (!leafletP) leafletP = new Promise((ok, fail) => {
+      const base = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/";
+      const js = document.createElement("script"); js.src = base + "leaflet.min.js"; js.onload = ok;
+      js.onerror = () => { leafletP = null; fail(new Error("Could not load the map library (offline?).")); };
+      document.head.appendChild(js);
+    });
+    return leafletP;
+  }
+  function initMap() {
+    const el = $("lmap"); if (!el) return;
+    loadLeaflet().then(() => drawMap(el), (e) => { el.innerHTML = `<p class="note" style="padding:14px">${esc(e.message)}</p>`; });
+  }
+  function drawMap(el) {
+    if (lmap) { lmap.remove(); lmap = null; }
+    const R = DATA.map.regions[mapRegion], bounds = [[R.y0, R.x0], [R.y0 + R.size, R.x0 + R.size]];   // lat = world y (north), lng = world x
+    lmap = L.map(el, { crs: L.CRS.Simple, minZoom: -4, maxZoom: 2, zoomSnap: 0.25, attributionControl: false });
+    L.imageOverlay(R.img, bounds).addTo(lmap);
+    lmap.fitBounds(bounds);
+    const st = new Map(((state && state.missions) || []).map((m) => [m[0], m[3]]));
+    const byCode = new Map();
+    for (const o of DATA.orders) { if (o[2] !== "S") continue; const c = Math.floor(o[0] / 1000); if (!byCode.has(c)) byCode.set(c, []); byCode.get(c).push(o); }
+    const fac = L.layerGroup(), lockers = lockerCounts();
+    for (const [code, name, type, area, x, y, icon] of DATA.map.facilities) {
+      if (area !== R.area) continue;
+      const os = byCode.get(code) || [], done = os.filter((o) => st.get(o[0]) === 4).length;
+      const col = !os.length ? "#9fb3c8" : done === os.length ? "#3fb27f" : done ? "#e0b44c" : "#8a94a3";
+      const open = os.filter((o) => st.get(o[0]) !== 4).slice(0, 15).map((o) => `<li>No. ${o[1]} ${esc(o[3])}</li>`).join("");
+      const html = `<b>${esc(name)}</b><br><small>${type === "DeliveryBase" ? "Distribution center / city" : "Prepper"} · code ${code}</small>` +
+        (lockers.get(code) ? `<br>Private locker: ${lockers.get(code)} item${lockers.get(code) === 1 ? "" : "s"}` : "") +
+        (os.length ? `<br>Standard orders done: ${done} / ${os.length}${open ? `<ul style="margin:6px 0 0;padding-left:18px;max-height:180px;overflow:auto">${open}</ul>` : ""}` : "");
+      const mk = icon ? L.marker([y, x], { icon: L.divIcon({ className: "", html: `<span class="fmk" style="--ring:${col}"><img src="${icon}" alt=""></span>`, iconSize: [30, 30], iconAnchor: [15, 15], popupAnchor: [0, -12] }) })
+        : L.circleMarker([y, x], { radius: type === "DeliveryBase" ? 8 : 6, color: "#0e1420", weight: 2, fillColor: col, fillOpacity: 1 });
+      mk.bindTooltip(name).bindPopup(html).addTo(fac);
+    }
+    fac.addTo(lmap);
+    // route points are world metres x 2; break the line at teleports (fast travel)
+    const foot = L.layerGroup(), veh = L.layerGroup();
+    let last = null;
+    const routes = mapRegion === defaultRegion() ? ((state && state.routes) || []) : [];
+    for (const [mode, p] of routes.filter((s) => s[1].length >= 4)) {
+      const parts = []; let line = [], prev = null;
+      for (let i = 0; i < p.length; i += 2) {
+        const q = [p[i + 1] / 2, p[i] / 2];
+        if (prev && Math.hypot(q[0] - prev[0], q[1] - prev[1]) > 100) { parts.push(line); line = []; }
+        line.push(q); prev = q;
+      }
+      parts.push(line); last = prev;
+      L.polyline(parts.filter((l) => l.length > 1), { color: mode === 200 ? "#ff9b2f" : "#5cc8ff", weight: 3, opacity: 0.9 }).addTo(mode === 200 ? veh : foot);
+    }
+    foot.addTo(lmap); veh.addTo(lmap);
+    if (last) L.circleMarker(last, { radius: 6, color: "#fff", weight: 2, fillColor: "#3fb27f", fillOpacity: 1 }).bindTooltip("Latest route point").addTo(lmap);
+    L.control.layers(null, { "Facilities": fac, "Routes on foot": foot, "Routes by vehicle": veh }, { collapsed: false }).addTo(lmap);
+  }
+
+  function renderRoutes() {
+    if (DATA.map) return renderMapView();
+    const segs = (state.routes || []).filter((s) => s[1].length >= 4);
+    if (!segs.length) return `<p class="note">This save has no route history. The game clears it when you complete a main order (and on some other events), so open a save from a while after your last main order.</p>`;
+    const { km, pts } = routeLen(segs);
+    const foot = segs.filter((s) => s[0] === 100).length, veh = segs.filter((s) => s[0] === 200).length;
+    return `<div class="group routes">
+      <div class="rt-head"><div><h3>Route history</h3><div class="note">${segs.length} segments · ${pts.toLocaleString()} points · about ${km.toFixed(1)} km</div></div>
+        <div class="rt-legend"><span><i class="lg rt-veh"></i>Vehicle (${veh})</span><span><i class="lg rt-foot"></i>On foot (${foot})</span><span><i class="lg dot rt-start"></i>Oldest</span><span><i class="lg dot rt-end"></i>Latest</span></div></div>
+      ${routeSvg(segs, 0)}
+      <p class="about">The routes the in-game map shows as “previous routes”, north up, on a plain background (the game's map image isn't included). One point roughly every 10 m. The game clears this history when you complete a main order, so it shows your travels since then; fast travel starts a new segment.</p>
+    </div>`;
+  }
+
+  // Cargo tab: what Sam carries and what is in each private locker
+  const CONFIRMED_LOCKERS = new Set([206, 205, 215]);   // checked in game: F1 (deposit test), The Musician and F2 (locker photos, 2026-10-02)
+  function renderCargo() {
+    const c = state && state.cargo;
+    if (!c) return `<p class="note">The cargo in this save couldn't be read.</p>`;
+    const groups = new Map();
+    for (const [w, k, a] of c) { if (!groups.has(w)) groups.set(w, new Map()); const g = groups.get(w), e = g.get(k) || [0, 0]; g.set(k, [e[0] + 1, e[1] + (a || 0)]); }
+    const total = (g) => [...g.values()].reduce((a, b) => a + b[0], 0);
+    const rows = (g) => [...g].map(([k, [n, amt]]) => ({ name: BAGS[k][0], n, amt }))
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((r) => `<div class="rec"><div class="rec-main"><div><div class="nm">${esc(r.name)}</div>${r.amt ? `<div class="de">${r.amt.toLocaleString()} in total</div>` : ""}</div></div><div class="rt"><span class="cnt">×${r.n}</span></div></div>`).join("");
+    const box = (title, g, note, open) => `<details class="group"${open ? " open" : ""}><summary><h3>${esc(title)}</h3><span class="count">${total(g)} item${total(g) === 1 ? "" : "s"}${note ? " · " + esc(note) : ""}</span></summary><div class="rows">${rows(g)}</div></details>`;
+    let html = `<p class="about">What Sam carries and what is in your private lockers. Sam's gear, the backpack and the lockers at West Fort Knot (F1), The Musician and F2 South Distribution Center are confirmed in game. Which facility the other lockers belong to is worked out from order records, so those are marked “inferred” until checked in game.</p>`;
+    if (groups.has("eq")) html += box("Sam: equipped", groups.get("eq"), "", true);
+    if (groups.has("bp")) html += box("Sam: backpack", groups.get("bp"), "", true);
+    const lk = [...groups].filter(([w]) => w.startsWith("L:")).sort((a, b) => total(b[1]) - total(a[1]));
+    if (lk.length) html += `<h4 class="subhead">Private lockers <span>${lk.length}</span></h4>`;
+    for (const [w, g] of lk) {
+      const f = LOCKERS[w.slice(2)];
+      html += box(f ? f[1] : "Unidentified facility", g, f ? (CONFIRMED_LOCKERS.has(f[0]) ? "" : "inferred") : `locker ${w.slice(2)}`, false);
+    }
+    if (!groups.size) html += `<p class="note">No cargo found in this save.</p>`;
+    return html;
+  }
+
+  const renderView = () => tab === "changes" ? renderChanges() : tab === "craft" ? renderCraft() : tab === "routes" ? renderRoutes() : tab === "cargo" ? renderCargo() : renderOrders();
+  function render() {
+    ["stats", "tabs", "view"].forEach((id) => ($(id).hidden = false));
+    renderSave(); renderStats(); renderSeg();
+    $("filters").hidden = tab === "routes" || tab === "changes" || tab === "cargo";
+    $("view").innerHTML = renderView();
+    if (tab === "routes" && DATA.map) initMap();
+  }
+
+  /* ---------- events ---------- */
+  $("tabs").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-tab]"); if (!b) return;
+    tab = b.dataset.tab; try { localStorage.setItem("pl-tab", tab); } catch (err) {}
+    render();
+  });
+  $("view").addEventListener("click", (e) => {
+    if (e.target.id === "copyReport") {
+      const t = $("report"); t.select();
+      const ok = () => { e.target.textContent = "Copied"; setTimeout(() => (e.target.textContent = "Copy report"), 1500); };
+      try { navigator.clipboard.writeText(t.value).then(ok, () => { try { document.execCommand("copy"); ok(); } catch (err) {} }); }
+      catch (err) { try { document.execCommand("copy"); ok(); } catch (err2) {} }
+      return;
+    }
+    const gi = e.target.closest("[data-goto-item]"), go = e.target.closest("[data-goto-order]"), gf = e.target.closest("[data-goto-fac]");
+    if (gi || go || gf) {
+      e.preventDefault();
+      if (gi) { tab = "craft"; craftCat = "all"; $("q").value = gi.dataset.gotoItem; }
+      else if (go) { const o = ORD_BY_ID.get(Number(go.dataset.gotoOrder)); tab = { M: "main", S: "standard", U: "sub" }[o.sec]; $("q").value = o.name; }
+      else { tab = "standard"; $("q").value = FAC_NAME.get(Number(gf.dataset.gotoFac)) || ""; }
+      status = "all"; render(); $("tabs").scrollIntoView && $("tabs").scrollIntoView({ block: "start" }); return;
+    }
+    const rg = e.target.closest("[data-region]");
+    if (rg) { mapRegion = rg.dataset.region; $("view").innerHTML = renderView(); initMap(); return; }
+    const l = e.target.closest("[data-loc]");
+    if (l) {
+      if (tab === "changes" || tab === "routes") tab = "standard";
+      $("q").value = l.dataset.loc; status = "all"; render(); $("q").scrollIntoView({ block: "nearest" }); return;
+    }
+    const b = e.target.closest("[data-cat]"); if (!b) return;
+    craftCat = b.dataset.cat; try { localStorage.setItem("pl-cat", craftCat); } catch (err) {}
+    $("view").innerHTML = renderCraft();
+  });
+  $("statusSeg").addEventListener("click", (e) => { const b = e.target.closest("[data-st]"); if (!b) return; status = b.dataset.st; render(); });
+  $("q").addEventListener("input", () => { $("view").innerHTML = renderView(); });
+
+  // decode one save file into the viewer's model (keeps the raw sections for compare mode)
+  function decodeSave(buf, fileName) {
+    if (/profile\.dat$/i.test(fileName)) throw new Error("That is profile.dat (settings). Open an autosave, checkpointsave or manualsave file instead.");
+    const { meta, thumb, payload } = decodeContainer(buf);
+    const p = parsePayload(payload);
+    const mis = p.sec.get(0x4afa625b), rec = p.sec.get(0x3ef4dc4d);
+    if (!mis) throw new Error("No mission table in this save.");
+    const url = thumb && typeof Blob !== "undefined" && URL.createObjectURL ? URL.createObjectURL(new Blob([thumb], { type: "image/png" })) : null;
+    return { name: fileName.split("_").pop(), version: p.version, playtime: p.playtime, meta: metaLines(meta || new Uint8Array()),
+      missions: parseMissions(mis), recipes: rec ? parseRecipes(rec) : [], routes: p.sec.get(0x48ea52a4) ? parseRoutes(p.sec.get(0x48ea52a4)) : [], verified: verifySave(payload), levels: parseLevels(p.sec.get(0x73dacf23)), likes: parseLikes(p.sec.get(0x202659d5)), apas: parseApas(p.sec.get(0x69049449)), clock: parseClock(p.sec.get(0x3926c2c4)), cargo: parseCargo(p.sec.get(0x0aa0d44e)),
+      thumb: url, sec: p.sec, sample: false };
+  }
+  async function readSave(file) {
+    try { return decodeSave(await file.arrayBuffer(), file.name); }
+    catch (e) { throw new Error(`${file.name.split("_").pop()}: ${e.message}`); }
+  }
+  // one file opens it; two files (or "Compare with…") compare them, earlier play time = before
+  async function openFiles(files, withCurrent) {
+    $("err").hidden = true;
+    try {
+      files = [...files].slice(0, 2);
+      if (!files.length) return;
+      const saves = [];
+      for (const f of files) saves.push(await readSave(f));
+      if (withCurrent && state) saves.push(state);
+      if (saves.length === 1) return load(saves[0]);
+      saves.sort((x, y) => x.playtime - y.playtime);
+      load(saves[1], saves[0]);
+    } catch (e) {
+      $("err").textContent = "Could not read this file: " + e.message; $("err").hidden = false;
+    }
+  }
+  $("file").addEventListener("change", (e) => { openFiles(e.target.files, false); e.target.value = ""; });
+  $("file2").addEventListener("change", (e) => { openFiles(e.target.files, true); e.target.value = ""; });
+  for (const [id, withCurrent] of [["drop", false], ["drop2", true]]) {
+    const z = $(id);
+    ["dragenter", "dragover"].forEach((t) => z.addEventListener(t, (e) => { e.preventDefault(); z.classList.add("over"); }));
+    ["dragleave", "drop"].forEach((t) => z.addEventListener(t, (e) => { e.preventDefault(); z.classList.remove("over"); }));
+    z.addEventListener("drop", (e) => { e.stopPropagation(); openFiles(e.dataTransfer.files, withCurrent && e.dataTransfer.files.length === 1); });
+  }
+  document.addEventListener("dragover", (e) => e.preventDefault());
+  document.addEventListener("drop", (e) => { e.preventDefault(); if (e.dataTransfer?.files?.length) openFiles(e.dataTransfer.files, false); });
+
+  if (typeof globalThis.__plTest === "function") globalThis.__plTest({ decodeSave, decodeContainer, verifySave, diffSaves, load, changeReport: () => changeReport(), renderChanges: () => renderChanges() });
+  // the public build ships without an example save: start on an empty "open your save" card
+  function renderEmpty() {
+    $("save").innerHTML = `<div></div><div class="meta"><div class="label">No save loaded</div>
+      <div class="current">Open one of your Death Stranding 2 PC saves to see your orders, unlocks and routes.</div>
+      <div class="goal">Saves are in <code>Documents&#92;DEATH STRANDING 2 - ON THE BEACH&#92;&lt;your Steam ID&gt;&#92;</code>: pick an <code>autosave</code>, <code>checkpointsave</code> or <code>manualsave</code> file. It is decoded in this browser and never uploaded.</div></div>`;
+    ["stats", "tabs", "filters", "view"].forEach((id) => ($(id).hidden = true));
+  }
+  if (DATA.sample) load(Object.assign({}, DATA.sample, { sample: true })); else renderEmpty();
+})();
+</script>

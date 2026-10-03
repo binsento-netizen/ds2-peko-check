@@ -1,0 +1,3 @@
+#!/bin/sh
+# Block commits that contain personal data, saves or third-party material (see tools/public_check.py).
+exec python tools/public_check.py --staged

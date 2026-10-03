@@ -1,0 +1,15 @@
+# never published: saves, reference checkouts, downloaded game text, build output
+saves/
+ext/
+out/
+decoded/
+catalog/game_text/
+catalog/sources/
+catalog/steam_guide.txt
+viewer/viewer_data.json
+*.dat
+*.bin
+*.pkl
+*.npy
+__pycache__/
+*.pyc

@@ -1,0 +1,475 @@
+﻿mission_id,order_no,section,episode,order,from,to,cargo,confidence
+10,1,Main,1,Return Home,N/A,Sam's Shelter,None,verified
+20,2,Main,1,Deliver the Chiral Network Gateway to C1,Sam's Shelter,Ciudad Nudo del Norte (C1),L×1,verified
+30,3,Main,1,Deliver One or More Remote Medical Units to Villa Libre,Ciudad Nudo del Norte (C1),Villa Libre,XL×2,verified
+40,4,Main,1,Recover All Chiral Density Gauges Stolen by Bandits,Villa Libre,C1 South Distribution Center,M×2,verified
+50,5,Main,1,Defeat the BTs Near the Former Geophysics Research Lab and Deliver the Prototype MP Bullets,C1 South Distribution Center,Former Geophysics Research Lab,S×1,verified
+60,6,Main,1,Defeat the Giant BT,Alex Weatherstone,Former Geophysics Research Lab,None,verified
+70,7,Main,1,Deliver the Present for Lou,Former Geophysics Research Lab,Near Sam's Shelter,S×1,verified
+80,8,Main,3,Connect the Australian Plate Gate Terminal to the Chiral Network,Drawbridge,Plate Gate,None,verified
+90,9,Main,3,Deliver the Chiral Decontaminator to the Government's Base,DHV Magellan,The Government's Base,L×1,verified
+100,10,Main,3,[Elimination] Liberate the Western Environmental Observatory from the Brigands,The Government's Base,Western Environmental Observatory,None,verified
+130,11,Main,3,Destroy the Communications Disruptor and Deliver the Mysterious Recording to the Musician,DHV Magellan,The Musician,L×1,verified
+135,12,Main,3,Investigate the Unusual Tar Currents near F1,The Musician,West Fort Knot (F1),None,verified
+160,13,Main,3,Restore the Monorail and Deliver Special Alloys [4800] to F1,DHV Magellan,West Fort Knot (F1),"XL×2, L×1",verified
+170,14,Main,3,Deliver All Terraforming Equipment to Rainbow Valley,West Fort Knot (F1),Rainbow Valley,L×6,verified
+180,15,Main,4,Deliver the Test Subject Kangaroo to the Animal Shelter,Rainbow Valley,Animal Shelter,Test Subject Kangaroo×1,verified
+190,16,Main,4,Deliver All Aid Packages to the Northern Environmental Observatory,West Fort Knot (F1),Northern Environmental Observatory,L×14,verified
+220,17,Main,5,Escape the Strange Realm,Drawbridge,N/A,None,verified
+230,18,Main,6,[Hazardous] Recover All Weapon Sets and Burrowing Bombs Stolen by the Brigands,DHV Magellan,Northern Environmental Observatory,L×3,verified
+240,19,Main,6,[Do Not Submerge] Deliver Necrobiotes to the F2 South Distribution Center,Northern Environmental Observatory,F2 South Distribution Center,L×1,verified
+245,20,Main,6,Deliver All Aid Packages and Chiral Printer Parts to F1,F2 South Distribution Center,West Fort Knot (F1),L×17,verified
+250,21,Main,6,Rescue the Dowser's Friend from the Armed Survivalists,F2 South Distribution Center,The Dowser,The Dowser's Friend×1,verified
+260,22,Main,6,Search for Tomorrow,DHV Magellan,Near Northern Environmental Observatory,None,verified
+270,23,Main,6,[Breakable Cargo] Deliver Tar Magnetite to Heartman's Lab,The Dowser,Heartman's Lab,L×1,verified
+280,24,Main,7,[Chilled] Deliver the Beach Yeast to the Pizza Chef,Heartman's Lab,The Pizza Chef,XL×1,verified
+290,25,Main,7,[Keep Flat/Express] Deliver a Piping Hot Pizza to the Data Scientist,The Pizza Chef,The Data Scientist,L×1,verified
+300,26,Main,7,Recover Old BB Pod from the Armed Survivalists' Base,The Data Scientist,The Motherhood,L×1,verified
+305,27,Main,7,Deliver All Tar Dissolvent to the DHV Magellan,F2 South Distribution Center,DHV Magellan,XL×4,verified
+310,28,Main,7,"Extract Data from the Weapons Fabricators and Destroy Them, Then Bring the Data Back to the DHV Magellan in the Ring Terminal Expansion Device",DHV Magellan,DHV Magellan,S×1,verified
+320,29,Main,7,Recover the Coffin from the Armed Survivalists' Base,The Motherhood,The Mechanic,Coffin×1,verified
+340,30,Main,7,Deliver All Prototype Life Support Systems to F4,West Fort Knot (F1),East Fort Knot (F4),XL×3,verified
+350,31,Main,8,Escape from the Strange Realm,Drawbridge,N/A,None,verified
+360,32,Main,8,[Do Not Submerge] Deliver the Cryptobiote Variants to the Chronobiologist,East Fort Knot (F4),The Chronobiologist,L×1,verified
+370,33,Main,8,Deliver Timefall-Resistant Emu to the Metagenomicist,The Chronobiologist,The Metagenomicist,Timefall-Resistant Emu×1,verified
+390,34,Main,8,Deliver All Chiral Microbes to the F5 East Distribution Center,The Metagenomicist,F5 East Distribution Center,XL×4,verified
+410,35,Main,8,"[Elimination] Extract Data from the Ghost Mech Fabricators and Destroy Them Along with Any Guards, Then Bring the Data Back to the DHV Magellan in the Ring Terminal Expansion Device",DHV Magellan,DHV Magellan,S×1,verified
+415,36,Main,8,[Hazardous] Cross Treacherous Snowy Peaks to Deliver a Meteorite to the Adventurer,F5 East Distribution Center,The Adventurer,XL×1,verified
+420,37,Main,8,Rescue the Adventurer from the Snowy Mountains,The Adventurer,The Adventurer,The Adventurer×1,verified
+430,38,Main,9,Deliver the Chiral Decontaminators and Sedatives to the Eastern Environmental Observatory,The Adventurer,Eastern Environmental Observatory,"L×2, S×4",verified
+440,39,Main,9,Destroy the Giant Ghost Mech,Drawbridge,N/A,None,verified
+450,40,Main,9,[Breakable Cargo] Recover All Stranded Cargo,DHV Magellan,The Phantom Smith,S×3,verified
+460,41,Main,9,[Hazardous] Deliver the Chiral Field Controller Prototypes to F6,The Phantom Smith,South Fort Knot (F6),L×5,verified
+500,42,Main,9,Deliver Chiral Cyclotron Parts and All Special Materials to the DHV Magellan,South Fort Knot (F6),DHV Magellan,"L×10, S×10",verified
+510,43,Main,9,Destroy All Chiral Jammers and Eliminate the Threat to the Southern Environmental Observatory,DHV Magellan,Southern Environmental Observatory,None,verified
+520,44,Main,10,Deliver the Network Stabilizer to the F7 North Distribution Center,Heartman's Lab,F7 North Distribution Center,L×1,verified
+530,45,Main,11,Return from the Strange Realm,Drawbridge,N/A,None,verified
+540,46,Main,12,Deliver the Drawbridge Terminal Unit to F8,DHV Magellan,Terminal Fort Knot (F8),L×1,verified
+550,47,Main,14,Find an Item with a Deep Connection to Higgs,Drawbridge,Near Sam's Shelter,None,verified
+560,48,Main,15,Defeat Higgs and Save Tomorrow,Drawbridge,Sam's Shelter,None,verified
+570,49,Main,16,Deliver the Present for Lou,Former Geophysics Research Lab,Sam's Shelter,S×1,high
+110,100,Sub,,[Breakable Cargo] Deliver the Dismantled Rifle to the Lone Commander,The Government's Base,The Lone Commander,L×1,verified
+115,101,Sub,,Recover the Mementos from the BT Area,The Lone Commander,The Lone Commander,M×1,verified
+120,102,Sub,,Recover All Brigands' Reconnaissance Equipment,The Lone Commander,The Government's Base,M×4,verified
+140,103,Sub,,[Breakable Cargo] Recover the Stolen Record Collection,The Musician,The Musician,L×1,verified
+150,104,Sub,,Restore Smoke Hill Mine,Western Environmental Observatory,Western Environmental Observatory,XL×1,verified
+295,105,Sub,,[Keep Flat/Express] Deliver a Piping Hot Pepperoni Pizza to the Architect,The Pizza Chef,The Architect,L×1,verified
+330,106,Sub,,Recover the Ghost Mech Cargo from the Weapons Factory,The Mechanic,The Data Scientist,M×1,verified
+335,107,Sub,,Recover One or More Empty Pizza Containers from the Armed Survivalists' Base,The Data Scientist,The Pizza Chef,L×3,verified
+337,108,Sub,,Deliver Dog Mech Sam Rescued to the Animal Shelter,The Data Scientist,Animal Shelter,M×1,verified
+380,109,Sub,,[Breakable Cargo] Deliver Proof of an Attack to the Ghost Hunter,The Chronobiologist,The Ghost Hunter,XL×1,verified
+381,110,Sub,,[Elimination] Uncover the Identity of the Headless Riders and Remove the Threat,The Ghost Hunter,The Ghost Hunter,None,verified
+383,111,Sub,,Rescue the Child Crying in the Bushfire Zone,The Ghost Hunter,The Ghost Hunter,L×1,verified
+384,112,Sub,,Deliver the Lyrebird Sam Rescued to the Animal Shelter,The Ghost Hunter,Animal Shelter,L×1,verified
+385,113,Sub,,[Breakable Cargo] Uncover the Mystery of the Moving House and Recover the Rusty Chiral Crystals,The Ghost Hunter,The Ghost Hunter,L×3,verified
+389,114,Sub,,Save F8 from a Voidout,The Ghost Hunter,The Ghost Hunter,None,verified
+395,115,Sub,,Deliver the Emu Sam Rescued to the Animal Shelter,The Metagenomicist,Animal Shelter,Emu Sam Rescued×1,verified
+400,116,Sub,,Deliver All Stranded Ship's Cargo to the Fisherman,F5 East Distribution Center,The Fisherman,L×6,verified
+405,117,Sub,,Defeat the Lord of the Tar Lake,The Fisherman,The Fisherman,None,verified
+422,118,Sub,,Rescue the Adventurer from the BT Area,The Adventurer,The Adventurer,The Adventurer×1,verified
+424,119,Sub,,Rescue the Adventurer from a Chiral Creature-Infested Region,The Adventurer,The Adventurer,The Adventurer×1,verified
+428,120,Sub,,Rescue the Adventurer from the Highest Reaches of the Snowy Mountains,The Adventurer,The Adventurer,The Adventurer×1,verified
+426,121,Sub,,Rescue the Adventurer Who Vanished into Thin Air,The Adventurer,The Adventurer,The Adventurer×1,verified
+470,122,Sub,,Deliver Ghost Mech Factory Cargo to the Aeronautical Engineer,Eastern Environmental Observatory,The Aeronautical Engineer,M×1,verified
+580,123,Sub,,[Breakable Cargo] Recover All the Chiral Sculptures from Their Inaccessible Locations,Mr. Impossible,Mr. Impossible,XL×3,verified
+620,124,Sub,,[Express/Hazardous] Recover All the Hazardous Chiral Sculptures from the Armed Hostiles,Mr. Impossible,Mr. Impossible,XL×7,verified
+102050,200,Standard,,Recover Anti-Chiralium Drugs Lost During Delivery,Ciudad Nudo del Norte (C1),Near Ciudad Nudo del Norte (C1),L×6,verified
+102416,201,Standard,,Recover a Large Cache of Contraband Weapons Stolen by Bandits,Ciudad Nudo del Norte (C1),Bandit Base at the Old Border,M×4,verified
+102221,202,Standard,,[Elimination] Neutralize Bandits Armed with Stolen UCA Technology,Ciudad Nudo del Norte (C1),Bandit Base Northwest of C1,None,verified
+102430,203,Standard,,[Breakable Cargo] Recover Mini Water Purifiers Stolen During Delivery,Ciudad Nudo del Norte (C1),Bandit Base Northwest of C1,L×4,verified
+102429,204,Standard,,[Breakable Cargo] Recover Compact Medical Kits Lost in a BT Area,Ciudad Nudo del Norte (C1),BT Area South of C1,S×6,verified
+102011,205,Standard,,Deliver Paraphernalia Used During Day of the Dead Festivities,Ciudad Nudo del Norte (C1),Villa Libre,M×3,verified
+102003,206,Standard,,Deliver a Large Volume of High-Energy Emergency Rations,Ciudad Nudo del Norte (C1),Former Geophysics Research Lab,L×8,verified
+102005,207,Standard,,[Breakable Cargo/Express] Deliver Precision Medical Equipment for Emergencies,Ciudad Nudo del Norte (C1),Former Geophysics Research Lab,L×18,verified
+102009,208,Standard,,Deliver High-Protein Quesadillas Made with Artificial Eggs and Maize,Ciudad Nudo del Norte (C1),The Bokka,S×3,verified
+102033,209,Standard,,Deliver Ceramics,Ciudad Nudo del Norte (C1),The Bokka,XL×5,verified
+102006,210,Standard,,Deliver Edible Plants Which Imitate the Flavor of Fresh Vegetables,Ciudad Nudo del Norte (C1),The Artist,M×5,verified
+103011,211,Standard,,[Breakable Cargo] Deliver Mask Supposedly Excavated from Ancient Ruins,Villa Libre,Ciudad Nudo del Norte (C1),L×1,verified
+103423,212,Standard,,[Hazardous] Recover Stolen Alkali Metals,Villa Libre,Bandit Base North of the C1 South Distribution Center,L×3,verified
+103422,213,Standard,,Recover Vital Aid Packages Lost During Delivery,Villa Libre,Chiral Creature Habitat (Near Villa Libre),L×4,verified
+103317,214,Standard,,[Hazardous] Dispose of Large Stockpile of Bandit Explosives,Villa Libre,Bandit Base at the Old Border,L×8,verified
+103120,215,Standard,,[Elimination] Seize the Bandit Base at the Old Border,Villa Libre,Bandit Base at the Old Border,None,verified
+103002,216,Standard,,Deliver Tar-Like Substance Samples Containing Chiral Creature Parts,Villa Libre,C1 South Distribution Center,L×3,verified
+103424,217,Standard,,[Breakable Cargo] Recover Emergency Medical Devices Stolen by Bandits,Villa Libre,Bandit Base Northwest of C1,M×4,verified
+103004,218,Standard,,[Express] Deliver Rare Freshwater Fish,Villa Libre,Former Geophysics Research Lab,M×2,verified
+103013,219,Standard,,"[Breakable Cargo] Deliver Rare Feathers from a Quetzal, Bird of Freedom",Villa Libre,Former Geophysics Research Lab,M×3,verified
+103007,220,Standard,,Deliver Handmade Tortillas Made with All-Natural Maize,Villa Libre,The Bokka,M×6,verified
+103009,221,Standard,,"Deliver a Cinema Classic - ""The Wandering Porter 2: Ragin' Cactus""",Villa Libre,The Artist,S×1,verified
+103015,222,Standard,,Deliver Precious Natural Copal Incense,Villa Libre,The Artist,M×2,verified
+104008,223,Standard,,"Deliver the Classic TV Series - ""The Wandering Porter and the Black Rat""",C1 South Distribution Center,Ciudad Nudo del Norte (C1),M×3,verified
+104009,224,Standard,,"Deliver the Long-Lost Movie - ""The Wandering Porter: The Years of Innocence""",C1 South Distribution Center,Ciudad Nudo del Norte (C1),M×5,verified
+104061,225,Standard,,Recover Debris from an Unidentified Flying Object,C1 South Distribution Center,Near C1 South Distribution Center,L×6,verified
+104007,226,Standard,,[Express] Deliver Seafood Quesadillas Made with Stranded Fish,C1 South Distribution Center,Villa Libre,S×2,verified
+104215,227,Standard,,Subdue Former C1 Staffer Turned Bandit,C1 South Distribution Center,Bandit Base North of the C1 South Distribution Center,None,verified
+104412,228,Standard,,Recover a Large Stockpile of Ammo Stolen by Bandits,C1 South Distribution Center,Bandit Base Northwest of C1,L×6,verified
+104001,229,Standard,,[Breakable Cargo] Deliver Large Optical Lenses Used to Observe the Plate Gate,C1 South Distribution Center,Former Geophysics Research Lab,XL×4,verified
+104003,230,Standard,,Deliver Hard-Wearing Undergarments for Outdoor Use,C1 South Distribution Center,The Bokka,M×3,verified
+104002,231,Standard,,[Breakable Cargo] Deliver the Backup Generator Units,C1 South Distribution Center,The Artist,L×3,verified
+104010,232,Standard,,Deliver the Hummingbird Sculptures,C1 South Distribution Center,The Artist,L×4,verified
+105009,233,Standard,,Deliver the Mummified Mythical Creatures,Former Geophysics Research Lab,Ciudad Nudo del Norte (C1),L×5,verified
+105031,234,Standard,,Deliver Metals,Former Geophysics Research Lab,Ciudad Nudo del Norte (C1),L×2,verified
+105007,235,Standard,,[Express] Deliver Unidentified Samples of Stranded Fish,Former Geophysics Research Lab,Villa Libre,M×34,verified
+105010,236,Standard,,Deliver Chili Oil That Recreates a Long-Lost Chipotle Flavor,Former Geophysics Research Lab,Villa Libre,M×3,verified
+105011,237,Standard,,Deliver Samples of Subterranean Water from Near the Plate Gate,Former Geophysics Research Lab,C1 South Distribution Center,XL×3,verified
+105062,238,Standard,,Recover Toys Collected by Deadman,Former Geophysics Research Lab,Near Former Geophysics Research Lab,M×4,verified
+105416,239,Standard,,Recover a Large Quantity of Anesthetic Agents and Sedatives Stolen During Delivery,Former Geophysics Research Lab,Bandit Base North of the C1 South Distribution Center,S×12,verified
+105001,240,Standard,,Deliver Enhanced Edible Cacti,Former Geophysics Research Lab,The Bokka,L×5,verified
+107000,241,Standard,,[Breakable Cargo] Deliver Beloved Worn-Out Trekking Boots,The Bokka,Ciudad Nudo del Norte (C1),S×1,verified
+107003,242,Standard,,Deliver Rare Mineral Samples from the Mountains,The Bokka,Ciudad Nudo del Norte (C1),L×4,verified
+107006,243,Standard,,Deliver Selectively Bred Fruiting Cacti for Fruit Production,The Bokka,Villa Libre,M×4,verified
+107001,244,Standard,,Deliver Old US Army Survival Kits,The Bokka,C1 South Distribution Center,M×4,verified
+107052,245,Standard,,[Breakable Cargo] Recover Vintage Binoculars Sent for Repair,The Bokka,Near C1 South Distribution Center,S×1,verified
+107004,246,Standard,,Deliver Meteorite Fragments Found in Eastern Mexico,The Bokka,The Artist,L×3,verified
+108003,247,Standard,,Deliver Illustration Books Depicting Hawaiian Beaches,The Artist,Villa Libre,M×4,verified
+108001,248,Standard,,Deliver Special Roomwear Made Using Plant-Based Materials,The Artist,C1 South Distribution Center,M×4,verified
+108006,249,Standard,,[Breakable Cargo] Deliver Dramatically Colored Beach Paintings Created Using Cryptobiote Dyes,The Artist,C1 South Distribution Center,M×5,verified
+108005,250,Standard,,"Deliver the Handmade Picture Book Series ""Cryptobiotes at the Seaside""",The Artist,Former Geophysics Research Lab,S×2,verified
+108004,251,Standard,,Deliver Surrealist Paintings of the Beach and BTs,The Artist,Former Geophysics Research Lab,M×4,verified
+108052,252,Standard,,Recover Cactus-Themed Massage Boards,The Artist,Near The Artist,M×4,verified
+202200,253,Standard,,Defeat the Black-Clad Brigands Targeting the Lone Commander,The Government's Base,Brigand Base North of the Government's Base,None,verified
+202401,254,Standard,,[Breakable Cargo] Recover Precious Camera Lost in a BT Area,The Government's Base,BT Area North of the Plate Gate,S×1,verified
+202002,255,Standard,,"Deliver a Series of ""Outback Sniper"" Adventure Novels",The Government's Base,The Lone Commander,M×6,verified
+202031,256,Standard,,Deliver Metals,The Government's Base,The Lone Commander,"L×2, M×2",verified
+202004,257,Standard,,[Breakable Cargo] Deliver Paintings of Australia Before the Death Stranding,The Government's Base,Western Environmental Observatory,L×1,verified
+202001,258,Standard,,[Breakable Cargo] Deliver Compact Surveillance Cameras for Brigand Observation,The Government's Base,The Musician,S×3,verified
+202003,259,Standard,,Deliver Classified Documents of an Old British Intelligence Agency,The Government's Base,West Fort Knot (F1),S×1,verified
+202006,260,Standard,,[Breakable Cargo] Deliver Models of 20th-Century Cars,The Government's Base,West Fort Knot (F1),S×2,verified
+204004,261,Standard,,[Breakable Cargo] Deliver Highly Prized Vintage Wine,The Lone Commander,The Government's Base,S×3,verified
+204050,262,Standard,,Recover Survival Kit Lost During Preservation Activities,The Lone Commander,Near Smoke Hill Mine,M×1,verified
+204400,263,Standard,,Recover Timefall-Resistant Tents Lost in a BT Area,The Lone Commander,BT Area West of the Lone Commander,L×4,verified
+204410,264,Standard,,Recover Equipment Used by Commandos from the Old Australian Army,The Lone Commander,Brigand Base North of the Government's Base,M×2,verified
+204011,265,Standard,,Deliver Processed Tar Obsidian,The Lone Commander,The Musician,M×4,verified
+204017,266,Standard,,Deliver Rock Samples Believed to be Ancient Chiral Cinders,The Lone Commander,West Fort Knot (F1),XL×3,verified
+204005,267,Standard,,Deliver Stone Samples from a Volcano That Resumed Activity after the Death Stranding,The Lone Commander,Eastern Environmental Observatory,L×6,verified
+204018,268,Standard,,[Express/Breakable Cargo] Deliver Highly Prized Vintage Whisky,The Lone Commander,Mr. Impossible,S×15,verified
+203001,269,Standard,,[Breakable Cargo] Deliver an Encryption Device Used by the Brigands,Western Environmental Observatory,The Government's Base,L×1,verified
+203010,270,Standard,,Deliver High-Grade Chiral Decontamination Filters,Western Environmental Observatory,The Government's Base,M×6,verified
+203007,271,Standard,,Deliver Weapon Maintenance Tools,Western Environmental Observatory,The Lone Commander,M×2,verified
+203020,272,Standard,,Deliver Tar Obsidian Made in Mexico,Western Environmental Observatory,The Lone Commander,M×4,verified
+203418,273,Standard,,[Hazardous] Recover Stolen Alkali Metals,Western Environmental Observatory,Brigand Base North of the Government's Base,L×2,verified
+203417,274,Standard,,Recover Toxic Chiralium Stockpiled by the Brigands,Western Environmental Observatory,Brigand Base Southeast of F1,L×4,verified
+203031,275,Standard,,Deliver Metals,Western Environmental Observatory,The Musician,L×2,verified
+203006,276,Standard,,Deliver Samples of a Rare Dung Beetle Found in the Desert,Western Environmental Observatory,West Fort Knot (F1),M×1,verified
+203422,277,Standard,,[Breakable Cargo] Recover a Cache of Stolen mRNA Vaccines,Western Environmental Observatory,Brigand Base Southeast of F1,S×3,verified
+203008,278,Standard,,Deliver Desert Sand for Research,Western Environmental Observatory,Rainbow Valley,L×6,verified
+203032,279,Standard,,Deliver Resins,Western Environmental Observatory,Rainbow Valley,M×3,verified
+205015,280,Standard,,Deliver Music Record Containing Original Works,The Musician,The Lone Commander,M×1,verified
+205018,281,Standard,,"Deliver Record Containing ""Weekend Zombies,"" SST's Greatest Hit",The Musician,Western Environmental Observatory,M×1,verified
+205413,282,Standard,,Recover a Cache of High-Output Transformers,The Musician,Brigand Base Southeast of F1,L×3,verified
+205064,283,Standard,,Retrieve Sheet Music from Classic 20th-Century Film Lost During Delivery,The Musician,Near The Musician,S×7,verified
+205012,284,Standard,,[Breakable Cargo] Deliver Lithophone Made from Tar Obsidian,The Musician,West Fort Knot (F1),M×1,verified
+205017,285,Standard,,"Deliver Legendary Album Containing Hit Song ""Death Stranding""",The Musician,West Fort Knot (F1),S×1,verified
+205019,286,Standard,,[Breakable Cargo] Deliver Repaired High-End Audio Devices,The Musician,West Fort Knot (F1),M×4,verified
+205211,287,Standard,,Eliminate Brigands Equipped with Experimental Armor,The Musician,Brigand Base Southeast of F1,None,verified
+205020,288,Standard,,[Breakable Cargo] Deliver Restored Pre-Stranding Violins,The Musician,Rainbow Valley,M×3,verified
+206031,289,Standard,,Deliver Ceramics,West Fort Knot (F1),The Government's Base,M×3,verified
+206005,290,Standard,,Deliver Timefall-Resistant Raincoats,West Fort Knot (F1),The Lone Commander,M×4,verified
+206065,291,Standard,,Recover Mystery Cargo From Near the Plate Gate,West Fort Knot (F1),Near Plate Gate,M×4,verified
+206002,292,Standard,,Deliver Newly Developed Complete Food Samples,West Fort Knot (F1),The Musician,M×4,verified
+206310,293,Standard,,Dispose of Tar Drugs Supplied by Brigands,West Fort Knot (F1),Brigand Base Southeast of F1,L×8,verified
+206413,294,Standard,,Recover Unusual Animal Remains Lost During Delivery,West Fort Knot (F1),Chiral Creature Habitat (Near Mine North of F1),L×4,verified
+206064,295,Standard,,Recover Vehicle Paints Lost During Delivery,West Fort Knot (F1),Near The Inventor,XL×4,verified
+206032,296,Standard,,Deliver Chemicals,West Fort Knot (F1),Animal Shelter,XL×6,verified
+206016,297,Standard,,Deliver an Improved Timefall Monitoring Device,West Fort Knot (F1),F2 South Distribution Center,L×1,verified
+206001,298,Standard,,Deliver Specially Ordered Construction Materials for Facility Repair,West Fort Knot (F1),F2 South Distribution Center,M×7,verified
+206008,299,Standard,,Deliver Custom Vehicle Repair Parts,West Fort Knot (F1),The Inventor,L×2,verified
+206030,300,Standard,,Deliver Metals and Special Alloys,West Fort Knot (F1),The Inventor,L×8,verified
+206004,301,Standard,,Deliver Experimental Tranquilizers,West Fort Knot (F1),South Fort Knot (F6),S×4,verified
+209010,302,Standard,,[Express] Deliver Assortment of Fresh Seafood,Rainbow Valley,The Government's Base,M×1,verified
+209011,303,Standard,,[Express] Deliver Assortment of Organic Vegetables Grown Using Timefall,Rainbow Valley,The Musician,L×4,verified
+209400,304,Standard,,Recover Top-Quality Sugarcane Seedlings From a BT Area,Rainbow Valley,BT Area East of F1,M×4,verified
+209057,305,Standard,,Recover Agricultural Pesticides Washed Away During Delivery,Rainbow Valley,Near Mine North of F1,XL×4,verified
+209004,306,Standard,,Deliver Newly Developed Revitalizers for Dying Plants,Rainbow Valley,The Inventor,S×4,verified
+209001,307,Standard,,Return Plant Growth Accelerator Prototypes,Rainbow Valley,The Inventor,L×3,verified
+209002,308,Standard,,Deliver Houseplants Suitable for Dry Climates,Rainbow Valley,The Architect,L×2,verified
+209003,309,Standard,,Deliver Freshly Picked Organic Vegetables,Rainbow Valley,The Fisherman,L×3,verified
+210008,310,Standard,,Deliver Soil Samples from Bushfire Zone,Animal Shelter,West Fort Knot (F1),L×6,verified
+210002,311,Standard,,Deliver Prototype Fuel Made from Fermented Excrement,Animal Shelter,West Fort Knot (F1),XL×1,verified
+210001,312,Standard,,Deliver Homemade Organic Fertilizers,Animal Shelter,Rainbow Valley,L×2,verified
+210013,313,Standard,,Deliver Top-Grade Bird Feed,Animal Shelter,Rainy's Shelter,S×3,verified
+210064,314,Standard,,[Do Not Submerge] Recover Chlorobiote Collection Boxes,Animal Shelter,Near Animal Shelter,L×4,verified
+210415,315,Standard,,Recover Animal First Aid Kits Lost During Delivery,Animal Shelter,Chiral Creature Habitat (Near Animal Shelter),M×4,verified
+210416,316,Standard,,Recover Blood Products Stolen During Delivery,Animal Shelter,Brigand Base West of the Northern Environmental Observatory,M×3,verified
+210411,317,Standard,,[Breakable Cargo] Recover a Cache of Stolen mRNA Vaccines,Animal Shelter,Brigand Base West of the Northern Environmental Observatory,S×3,verified
+210007,318,Standard,,Deliver Aged Excrement Extract,Animal Shelter,Northern Environmental Observatory,XL×2,verified
+210003,319,Standard,,Deliver Plant Samples from the Bush,Animal Shelter,The Architect,L×2,verified
+210009,320,Standard,,[Breakable Cargo/Express] Deliver Cell Sample from Animal Tumor Biopsy,Animal Shelter,The Metagenomicist,S×1,verified
+213000,321,Standard,,Deliver River Water Samples for Analysis,Northern Environmental Observatory,Rainbow Valley,XL×2,verified
+213031,322,Standard,,Deliver Resins,Northern Environmental Observatory,Rainbow Valley,L×4,verified
+213003,323,Standard,,Deliver Flower Assortments Collected Near a Large Waterfall,Northern Environmental Observatory,Animal Shelter,M×2,verified
+213411,324,Standard,,[Breakable Cargo] Recover Stolen High-Precision Gate Quake Resonance Wave Measuring Instruments,Northern Environmental Observatory,Brigand Base West of the Northern Environmental Observatory,M×5,verified
+213412,325,Standard,,Recover Large Amounts of Base Expansion Materials,Northern Environmental Observatory,Armed Survivalist Base East of the F2 South Distribution Center,L×6,verified
+213007,326,Standard,,"Deliver the Cult Classic Book Series - ""Environmental Observation Battle 2511""",Northern Environmental Observatory,The Inventor,M×1,verified
+213033,327,Standard,,Deliver Metals and Resins,Northern Environmental Observatory,The Inventor,L×6,verified
+213006,328,Standard,,Deliver Special Soil Mixed with Excrement Extract,Northern Environmental Observatory,The Dowser,L×3,verified
+213032,329,Standard,,Deliver Metals,Northern Environmental Observatory,The Dowser,L×6,verified
+213005,330,Standard,,"Deliver the Pre-Death Stranding Report - ""At the Vanguard of Environmental Observation""",Northern Environmental Observatory,The Architect,S×2,verified
+213001,331,Standard,,Deliver Atmospheric Samples Extracted from a BT Area,Northern Environmental Observatory,F5 East Distribution Center,L×3,verified
+213002,332,Standard,,[Breakable Cargo] Deliver Ancient Bone Fragments from an Extinct Creature Found in the Tar,Northern Environmental Observatory,The Fisherman,M×2,verified
+215032,333,Standard,,Deliver Metals and Chemicals,F2 South Distribution Center,West Fort Knot (F1),"L×3, M×2",verified
+215013,334,Standard,,Deliver Large Assortment of Bird Feed for Small Birds,F2 South Distribution Center,Rainy's Shelter,S×3,verified
+215002,335,Standard,,Deliver Nutrient-Rich Feed for Herbivores,F2 South Distribution Center,Animal Shelter,L×5,verified
+215001,336,Standard,,Deliver Large Quantity of High-Energy Emergency Rations,F2 South Distribution Center,Northern Environmental Observatory,L×5,verified
+215409,337,Standard,,[Vog Warning] Recover Volatile Toxic Chemicals for Research Purposes,F2 South Distribution Center,Brigand Base West of the Northern Environmental Observatory,XL×6,verified
+215066,338,Standard,,Recover Aid Packages Lost During Delivery to Cities,F2 South Distribution Center,Near Animal Shelter,L×4,verified
+215417,339,Standard,,Recover a Large Quantity of High-Energy Emergency Rations Stolen During Delivery,F2 South Distribution Center,Brigand Base West of the Northern Environmental Observatory,L×3,verified
+215212,340,Standard,,Defeat the Former F2 Guard Conspiring with the Armed Survivalists,F2 South Distribution Center,Armed Survivalist Base East of the F2 South Distribution Center,None,verified
+215411,341,Standard,,Recover Blood Products for Transfusion Lost in BT Area,F2 South Distribution Center,BT Area Northwest of the Northern Environmental Observatory,S×4,verified
+215004,342,Standard,,Deliver Timefall-Resistant Clothes,F2 South Distribution Center,The Dowser,M×1,verified
+215007,343,Standard,,Deliver Hyperfood Made Using an Ancient Fruit,F2 South Distribution Center,Heartman's Lab,S×6,verified
+215031,344,Standard,,Deliver Ceramics,F2 South Distribution Center,The Architect,XL×4,verified
+215000,345,Standard,,Deliver a Set of Performance-Enhancing Nutritional Drinks,F2 South Distribution Center,The Data Scientist,XL×1,verified
+215015,346,Standard,,[Express] Deliver a Large Quantity of Assorted Fresh Seafood,F2 South Distribution Center,Terminal Fort Knot (F8),M×40,verified
+207023,347,Standard,,Deliver Prototype Training Suits,The Inventor,Western Environmental Observatory,M×4,verified
+207003,348,Standard,,Deliver Special Tools for Monorail Maintenance,The Inventor,West Fort Knot (F1),M×1,verified
+207017,349,Standard,,[Breakable Cargo] Deliver Samples of a Supple Metal Developed as a Result of Flexible Thinking,The Inventor,West Fort Knot (F1),XL×4,verified
+207020,350,Standard,,[Chilled] Deliver an All-New Liquid Superfood That Babies Find Perplexing,The Inventor,Rainbow Valley,M×2,verified
+207022,351,Standard,,Deliver Robot Kangaroos Fitted with an Automatic Feeding Function,The Inventor,Rainy's Shelter,L×3,verified
+207053,352,Standard,,Recover an Ultra-Lightweight Fishing Net Made Using Carbon Nanotubes,The Inventor,Near Mine North of F1,L×4,verified
+207124,353,Standard,,[Elimination] Seize Brigand Base West of the Northern Environmental Observatory,The Inventor,Brigand Base West of the Northern Environmental Observatory,None,verified
+207061,354,Standard,,[Hazardous] Recover Emergency Fuel Cell Batteries Lost During Delivery,The Inventor,Near Mine North of F1,L×4,verified
+207013,355,Standard,,Deliver a Tremendously Uninspired Invention Used to Take Photos of Oneself,The Inventor,The Dowser,M×1,verified
+207002,356,Standard,,[Breakable Cargo] Deliver a Repaired Chiral Densitometer,The Inventor,The Mechanic,L×1,verified
+216002,357,Standard,,Deliver Rock Samples from a Coastal Region,The Dowser,Northern Environmental Observatory,L×4,verified
+216011,358,Standard,,Deliver Valuable Antiques Dug Up near the Ruins of F3,The Dowser,Northern Environmental Observatory,L×1,verified
+216007,359,Standard,,Deliver Regrown Ancient Plants,The Dowser,F2 South Distribution Center,S×4,verified
+216118,360,Standard,,[Elimination] Defeat all Floating BTs in the BT Area,The Dowser,BT Area (Near F2 South Distribution Center),None,verified
+216059,361,Standard,,Recover High-Precision Metal Dowsing Instruments Lost During Delivery,The Dowser,Near Twin Valley Mine,L×4,verified
+216013,362,Standard,,Deliver a Large Volume of Excavated Machine Components from the Late 20th Century,The Dowser,The Inventor,XL×4,verified
+216015,363,Standard,,[Hazardous] Deliver a Large Volume of Excavated EV Batteries from the Early 21st Century,The Dowser,The Mechanic,L×6,verified
+217002,364,Standard,,Deliver Aging Barrels Made from Ancient Wood,Heartman's Lab,Animal Shelter,L×2,verified
+217000,365,Standard,,Deliver Water From Heartman's Hot Spring,Heartman's Lab,F2 South Distribution Center,XL×2,verified
+217217,366,Standard,,Neutralize A Veteran Survivor from the Old City Guard,Heartman's Lab,Armed Survivalist Base South of Heartman's Lab,None,verified
+217014,367,Standard,,Deliver Seawater Samples Taken Near the Crater,Heartman's Lab,The Dowser,XL×4,verified
+217066,368,Standard,,[Breakable Cargo] Recover Ornaments Believed to Have Been Owned by British Royalty,Heartman's Lab,Near Heartman's Lab,M×4,verified
+217424,369,Standard,,"[Breakable Cargo] Recover Prototypes of Cutting-Edge ""Minimal Fab"" Technology",Heartman's Lab,Armed Survivalist Base East of the F2 South Distribution Center,L×4,verified
+217408,370,Standard,,[Breakable Cargo] Recover Stolen RNA Virus Samples,Heartman's Lab,Armed Survivalist Base East of the F2 South Distribution Center,S×4,verified
+217022,371,Standard,,"[Express] Deliver Octopi, a Delicacy Believed to Have Been Extinct",Heartman's Lab,The Pizza Chef,L×2,verified
+217018,372,Standard,,[Express] Deliver Ancient Pizza Ingredients,Heartman's Lab,The Pizza Chef,L×4,verified
+217013,373,Standard,,Deliver Assortments of Homemade Pickles Preserved in Beach Water,Heartman's Lab,The Architect,S×6,verified
+217006,374,Standard,,[Breakable Cargo] Deliver Precious Paintings of Scenes From the Beach,Heartman's Lab,The Data Scientist,M×2,verified
+217031,375,Standard,,Deliver Chemicals,Heartman's Lab,The Motherhood,XL×3,verified
+217009,376,Standard,,[Breakable Cargo] Deliver Classic Record Sets by one of the Greatest 20th Century Jazz Pianists,Heartman's Lab,The Mechanic,L×6,verified
+217021,377,Standard,,[Breakable Cargo] Deliver Broken Precision Medical Equipment,Heartman's Lab,The Mechanic,L×6,verified
+217020,378,Standard,,Deliver Surrealist Painting Created During an Out-of-Body Experience,Heartman's Lab,The Ghost Hunter,M×1,verified
+217023,379,Standard,,Deliver Timefall-Resistant Suits,Heartman's Lab,The Metagenomicist,M×2,verified
+217003,380,Standard,,[Express] Deliver Fresh Beach Water Within the Time Limit,Heartman's Lab,Mr. Impossible,XL×4,verified
+218021,381,Standard,,[Keep Flat/Express] Deliver Special Rainbow Fruit Pizzas,The Pizza Chef,Rainy's Shelter,M×2,verified
+218001,382,Standard,,[Express/Breakable Cargo] Deliver Carbonated Beverages Made Using Beach Yeast,The Pizza Chef,Northern Environmental Observatory,M×8,verified
+218015,383,Standard,,[Express] Deliver Bread Baked Using Yeast from the Beach,The Pizza Chef,Heartman's Lab,L×6,verified
+218010,384,Standard,,[Keep Flat/Express] Deliver Beach-Style Pizzas Topped with Anchovies from a BT Area,The Pizza Chef,F2 South Distribution Center,L×20,verified
+218067,385,Standard,,Recover a Carefully Curated Selection of Sci-Fi Anime Films,The Pizza Chef,Near Mine North of Tar Lake,M×4,verified
+218030,386,Standard,,Deliver Ceramics and Special Alloys,The Pizza Chef,The Architect,XL×8,verified
+218002,387,Standard,,[Keep Flat/Express] Deliver a Pizza Topped with Chlorobiotes and Vegetables,The Pizza Chef,The Data Scientist,L×1,verified
+218020,388,Standard,,[Keep Flat/Express] Deliver the Ancient Babylonian Pizzas,The Pizza Chef,East Fort Knot (F4),M×6,verified
+218000,389,Standard,,Deliver Spices Made From Rare Pre-Death Stranding Plants,The Pizza Chef,The Chronobiologist,M×6,verified
+218422,390,Standard,,Recover Vital Medical Aid Packages Reported Stolen,The Pizza Chef,Armed Survivalist Base South of Heartman's Lab,S×4,verified
+214000,391,Standard,,[Breakable Cargo] Deliver Detailed Architect's Models of Fort Knot Cities,The Architect,Northern Environmental Observatory,S×6,verified
+214008,392,Standard,,"Deliver the Cult Classic Manga Series ""Musclebound Porter J: Porter Wars""",The Architect,F2 South Distribution Center,L×2,verified
+214003,393,Standard,,Deliver Special Chemicals Used to Repair External Plaster Walls,The Architect,The Dowser,XL×4,verified
+214052,394,Standard,,Recover High-Quality Timefall-Resistant Wood Lost in a BT Area,The Architect,Near Mine North of Tar Lake,L×4,verified
+214030,395,Standard,,Deliver Metals,The Architect,The Data Scientist,XL×5,verified
+214001,396,Standard,,[Breakable Cargo] Deliver Detailed Concept Models for Mining Facilities,The Architect,The Mechanic,S×4,verified
+220026,397,Standard,,Deliver Barstools Hewn from a Rainbow Eucalyptus Tree,The Data Scientist,Rainy's Shelter,M×3,verified
+220004,398,Standard,,Deliver Samples Including Rock Salt Collected Among Some Strange Stones,The Data Scientist,F2 South Distribution Center,L×3,verified
+220001,399,Standard,,Deliver Chiral Hot Spring Salts,The Data Scientist,Heartman's Lab,M×4,verified
+220005,400,Standard,,[Breakable Cargo] Deliver a Prototype Security Camera That Uses Chiral Particle Imagery,The Data Scientist,The Architect,S×1,verified
+220021,401,Standard,,"[Hazardous/Chilled] Deliver Quantum-Powered Homemade ""Q-Boy"" Game Consoles and Liquid Helium",The Data Scientist,The Architect,L×6,verified
+220070,402,Standard,,[Breakable Cargo] Recover Custom Capture Boards for Broadcasting 4D Live Streams Lost During Delivery,The Data Scientist,Near The Data Scientist,M×3,verified
+220115,403,Standard,,[Elimination] Seize Armed Survivalist Base Southwest of the Motherhood,The Data Scientist,Armed Survivalist Base Southwest of the Motherhood,None,verified
+220416,404,Standard,,Recover Stolen Wide-Area Surveillance Radar Units,The Data Scientist,Armed Survivalist Base South of Heartman's Lab,L×3,verified
+220030,405,Standard,,Deliver Special Alloys,The Data Scientist,The Pioneer,L×3,verified
+220023,406,Standard,,[Express] Deliver Piping Hot Homemade Gamer's Stew,The Data Scientist,The Mechanic,L×3,verified
+220003,407,Standard,,Deliver Tar-Like Substance Samples Containing Chiral Creature Parts,The Data Scientist,The Tar Therapist,M×4,verified
+219021,408,Standard,,[Vog Warning] Deliver a Special Solvent for Tar Dissolution,The Motherhood,F2 South Distribution Center,XL×4,verified
+219030,409,Standard,,Deliver Metals,The Motherhood,Heartman's Lab,L×4,verified
+219007,410,Standard,,[Breakable Cargo] Deliver Telesurgery Devices,The Motherhood,The Architect,XL×3,verified
+219005,411,Standard,,[Breakable Cargo] Deliver Small Wearable Devices Used for Monitoring Health Status,The Motherhood,The Data Scientist,S×2,verified
+219066,412,Standard,,Recover Aid Packages Lost During Delivery to Cities,The Motherhood,Near The Motherhood,L×4,verified
+219001,413,Standard,,Deliver a Stock of First Aid Kits to Treat Chiral Contamination,The Motherhood,The Pioneer,M×3,verified
+219013,414,Standard,,Deliver Nutritional Drinks Containing Specially Synthesized Protein,The Motherhood,The Mechanic,L×4,verified
+219420,415,Standard,,[Breakable Cargo] Recover Stolen Novel Cytomegalovirus Samples,The Motherhood,Armed Survivalist Base Southwest of the Motherhood,S×4,verified
+219002,416,Standard,,Deliver Smart Drugs that Improve the Gut Microbiome,The Motherhood,East Fort Knot (F4),S×2,verified
+219069,417,Standard,,Recover Precious High-Energy Emergency Rations Lost During Delivery,The Motherhood,Near Eastern Environmental Observatory,L×3,verified
+219008,418,Standard,,[Breakable Cargo] Deliver Telesurgery Devices for Radiotherapy,The Motherhood,The Tar Therapist,XL×6,verified
+219017,419,Standard,,Deliver a Large Quantity of Anesthetic Agents and Sedatives,The Motherhood,Terminal Fort Knot (F8),S×30,verified
+208007,420,Standard,,"[Breakable Cargo] Deliver Legendary Fine Wine ""Bâtard-Montrachet""",The Pioneer,Heartman's Lab,M×4,verified
+208008,421,Standard,,"[Breakable Cargo] Deliver Semi-Mythical Rare Whisky ""Aqua Vitae""",The Pioneer,The Pizza Chef,S×3,verified
+208001,422,Standard,,"Deliver the Legendary Strategy RPG Series ""Porter Battle Lines 2066""",The Pioneer,The Motherhood,S×4,verified
+208009,423,Standard,,[Breakable Cargo] Deliver Chiral Crystal Ornaments Made in Mexico,The Pioneer,The Motherhood,M×5,verified
+208004,424,Standard,,"Deliver Tusks of the Mythical Giant Creature Known as the ""Elephant""",The Pioneer,The Ghost Hunter,XL×5,verified
+208010,425,Standard,,Deliver Meteorite Fragments Believed to Date from the Late Cretaceous Period,The Pioneer,The Ghost Hunter,L×6,verified
+208000,426,Standard,,"Deliver the Classic Drama Series ""Greatest Koalas 2: Eucalyptus Eulogy""",The Pioneer,Southern Environmental Observatory,S×1,verified
+221013,427,Standard,,[Breakable Cargo] Deliver Ancient Fossilized Pizzas,The Mechanic,Heartman's Lab,L×4,verified
+221003,428,Standard,,[Breakable Cargo] Deliver Super-Sensitive Movement Scanners that Connect Directly to APAS,The Mechanic,The Architect,S×2,verified
+221002,429,Standard,,Deliver Archival Footage of an Off-Road Endurance Race From Before the Death Stranding,The Mechanic,The Pioneer,S×4,verified
+221006,430,Standard,,Deliver Special Tools Used to Inspect Containers,The Mechanic,East Fort Knot (F4),XL×8,verified
+221064,431,Standard,,Recover High-Grade Springs Forged from Rare Metals,The Mechanic,Near Savanna Mine,M×4,verified
+221411,432,Standard,,Recover Ramjet Engines Stolen by the Armed Survivalists,The Mechanic,Armed Survivalist Base Southwest of the Motherhood,L×6,verified
+221007,433,Standard,,[Breakable Cargo] Deliver Microfiber High-Resolution Imaging Devices,The Mechanic,The Chronobiologist,L×3,verified
+221015,434,Standard,,[Breakable Cargo] Deliver High-End Audio Devices With Special Custom Tuning,The Mechanic,The Ghost Hunter,M×4,verified
+221004,435,Standard,,[Breakable Cargo] Deliver Super-Sensitive Accelerometers for Detecting Minute Vibrations,The Mechanic,The Fisherman,S×2,verified
+221016,436,Standard,,[Breakable Cargo] Deliver Classic Video Game Soundtracks,The Mechanic,Terminal Fort Knot (F8),M×5,verified
+222015,437,Standard,,[Express] Deliver a Large Quantity of Rare Freshwater Fish,East Fort Knot (F4),Western Environmental Observatory,M×25,verified
+222014,438,Standard,,[Express] Deliver Ancient Fish Samples That Drifted Ashore in Large Quantities,East Fort Knot (F4),West Fort Knot (F1),M×18,verified
+222001,439,Standard,,[Express] Deliver Fresh Seafood Caught in a BT Area,East Fort Knot (F4),The Pizza Chef,M×10,verified
+222034,440,Standard,,Deliver Metals and Special Alloys,East Fort Knot (F4),The Pizza Chef,"XL×2, L×2",verified
+222002,441,Standard,,Deliver Extremely Pure Water for Drug Production,East Fort Knot (F4),The Motherhood,XL×6,verified
+222016,442,Standard,,Deliver an Assortment of Rare Flowers Only Found in Australia,East Fort Knot (F4),The Pioneer,M×5,verified
+222012,443,Standard,,Deliver Recently Excavated Mysterious Stone Tablets,East Fort Knot (F4),The Mechanic,XL×2,verified
+222000,444,Standard,,Deliver Fatigue-Reducing High-Quality Vitamin Supplements,East Fort Knot (F4),The Mechanic,S×6,verified
+222413,445,Standard,,Recover Components for a Gene Therapy Device Lost in a BT Area,East Fort Knot (F4),BT Area Northwest of F4,L×4,verified
+222417,446,Standard,,Recover Stolen Radar Units Used in an Earthquake Warning System,East Fort Knot (F4),Armed Survivalist Base Southwest of the Motherhood,L×4,verified
+222031,447,Standard,,Deliver Ceramics,East Fort Knot (F4),The Chronobiologist,M×4,verified
+222006,448,Standard,,Deliver High-Energy Emergency Rations Chock Full of Protein,East Fort Knot (F4),The Aeronautical Engineer,L×12,verified
+222032,449,Standard,,Deliver Special Alloys,East Fort Knot (F4),South Fort Knot (F6),"M×4, S×4",verified
+223010,450,Standard,,[Express] Deliver Piping Hot Cryptobiote Pot-au-Feu,The Chronobiologist,The Pizza Chef,M×4,verified
+223002,451,Standard,,[Breakable Cargo] Deliver Archaea Samples Discovered in a Geological Stratum Dating to a Mass Extinction,The Chronobiologist,The Motherhood,M×4,verified
+223053,452,Standard,,Recover Fluid for Growing Artificial Organs Washed Away in a River,The Chronobiologist,Near The Ghost Hunter,XL×6,verified
+223411,453,Standard,,Recover Precious Tar Obsidian Samples Lost in a BT Area,The Chronobiologist,BT Area Southeast of the Chronobiologist,L×6,verified
+223412,454,Standard,,[Breakable Cargo] Recover Precision Medical Equipment for Treatment of Infectious Diseases,The Chronobiologist,Armed Survivalist Base East of the F2 South Distribution Center,L×4,verified
+223005,455,Standard,,Deliver Gel Containing Chiral Microbe Samples,The Chronobiologist,The Metagenomicist,M×4,verified
+223004,456,Standard,,[Breakable Cargo] Deliver DNA Samples from a New Cytomegalovirus Strain,The Chronobiologist,The Metagenomicist,S×4,verified
+223112,457,Standard,,Defeat the Large BT in the BT Area Southwest of the Pizza Chef,The Chronobiologist,BT Area Southwest of the Pizza Chef,None,verified
+223008,458,Standard,,Deliver Miniature Dinosaurs Made Using Artificially Recreated Dinosaur Skin,The Chronobiologist,F5 East Distribution Center,M×4,verified
+223000,459,Standard,,[Breakable Cargo] Deliver a Cryptobiote Breeding Kit,The Chronobiologist,Eastern Environmental Observatory,M×1,verified
+224000,460,Standard,,Deliver Back Issues of a Legendary Occult Magazine,The Ghost Hunter,The Pizza Chef,S×6,verified
+224001,461,Standard,,Deliver a Video Disc Containing Footage of the Mythical Yowie,The Ghost Hunter,The Architect,S×1,verified
+224002,462,Standard,,Deliver a Spirit Photograph Featuring a Koala's Guardian Spirit,The Ghost Hunter,The Pioneer,S×1,verified
+224014,463,Standard,,Deliver Old Recorded Media Containing Footage of the Mysterious Min Min Light Phenomenon,The Ghost Hunter,East Fort Knot (F4),S×1,verified
+224015,464,Standard,,Deliver Rock Samples Procured from Dolphin-Shaped Chiral Cinder,The Ghost Hunter,The Chronobiologist,XL×5,verified
+224403,465,Standard,,Recover Highly Poisonous Insect Sample Stolen by the Armed Survivalists,The Ghost Hunter,Armed Survivalist Base Southwest of the Motherhood,S×1,verified
+224012,466,Standard,,[Express] Deliver Incense for an Express Exorcism,The Ghost Hunter,F5 East Distribution Center,L×3,verified
+225000,467,Standard,,[Breakable Cargo] Deliver Chiral Creature Bodily Fluid Sample,The Metagenomicist,Rainbow Valley,S×1,verified
+225011,468,Standard,,[Express] Deliver Chiral Gratins Made with Synthetic Golden Cheese and Tar Sauce,The Metagenomicist,The Pizza Chef,M×4,verified
+225006,469,Standard,,[Do Not Submerge] Deliver Samples of Genetically Edited Edible Cryptobiotes,The Metagenomicist,The Motherhood,L×2,verified
+225008,470,Standard,,[Express] Deliver Living Samples of Newly Discovered Mutated Organisms,The Metagenomicist,East Fort Knot (F4),XL×15,verified
+225112,471,Standard,,[Elimination] Defeat the Large BTs in the BT Area North of the F5 East Distribution Center,The Metagenomicist,BT Area North of the F5 East Distribution Center,None,verified
+225402,472,Standard,,[Breakable Cargo] Recover Delicate Measuring Instruments for Genome Analysis Lost in a BT Area,The Metagenomicist,BT Area Southwest of the Pizza Chef,L×3,verified
+225413,473,Standard,,Recover Backup Generator Units Lost During Delivery,The Metagenomicist,Chiral Creature Habitat (Near The Data Scientist),L×4,verified
+225007,474,Standard,,[Do Not Submerge] Deliver Samples of Genetically Edited Chlorobiotes with Painkilling Properties,The Metagenomicist,F5 East Distribution Center,L×4,verified
+225009,475,Standard,,[Express] Deliver a Mysterious New Species of Soft-Bodied Organism Found in a BT Area,The Metagenomicist,Eastern Environmental Observatory,L×16,verified
+226010,476,Standard,,[Breakable Cargo] Deliver Delicate Measuring Instruments Equipped with Compact Weather Radars,F5 East Distribution Center,The Lone Commander,L×4,verified
+226004,477,Standard,,[Breakable Cargo] Deliver Specially Made Coral Dinnerware,F5 East Distribution Center,The Pioneer,M×3,verified
+226007,478,Standard,,[Express] Deliver Unidentified Mollusks Washed Up on the Shores of the Tar Lake,F5 East Distribution Center,The Chronobiologist,L×2,verified
+226006,479,Standard,,[Express] Deliver Chiral Mammal Fragments Washed Up on the Shores of the Tar Lake,F5 East Distribution Center,The Metagenomicist,L×2,verified
+226032,480,Standard,,Deliver Ceramics,F5 East Distribution Center,The Metagenomicist,"L×2, M×3",verified
+226033,481,Standard,,Deliver Resins and Ceramics,F5 East Distribution Center,The Metagenomicist,M×8,verified
+226113,482,Standard,,Destroy the Large BT in the BT Area South of the Metagenomicist,F5 East Distribution Center,BT Area South of the Metagenomicist,None,verified
+226412,483,Standard,,Recover Emergency Medical Supplies Lost in a BT Area,F5 East Distribution Center,BT Area North of the F5 East Distribution Center,M×4,verified
+226031,484,Standard,,Deliver Metals and Ceramics,F5 East Distribution Center,The Fisherman,"L×3, M×3",verified
+226011,485,Standard,,[Hazardous] Deliver Tar Fuel Highly Concentrated for Portability,F5 East Distribution Center,The Adventurer,S×2,verified
+226003,486,Standard,,[Hazardous] Deliver Condensed Fuel Distilled from Lake Tar,F5 East Distribution Center,Eastern Environmental Observatory,L×6,verified
+226000,487,Standard,,Deliver High-Calorie Food Rations for Cold Climates,F5 East Distribution Center,The Aeronautical Engineer,S×6,verified
+226030,488,Standard,,Deliver Resins and Chemicals,F5 East Distribution Center,Mr. Impossible,XL×4,verified
+212000,489,Standard,,Deliver a Tar Fishing Set,The Fisherman,Animal Shelter,"L×1, M×1, S×1",verified
+212010,490,Standard,,Deliver Snake-Shaped Chiral Creature Samples,The Fisherman,Northern Environmental Observatory,M×4,verified
+212017,491,Standard,,[Express] Deliver an Assortment of Fresh Tar Organisms,The Fisherman,F2 South Distribution Center,L×2,verified
+212021,492,Standard,,Deliver a Supposedly Clairvoyant Octopus Rumored to be able to Predict the Future,The Fisherman,The Pioneer,L×1,verified
+212001,493,Standard,,Deliver Stranded Creature Samples that Appear to be Ancient Fish,The Fisherman,F5 East Distribution Center,M×3,verified
+212122,494,Standard,,[Elimination] Defeat all Floating BTs in the BT Area,The Fisherman,BT Area (Near The Fisherman),None,verified
+227001,495,Standard,,Return Tar-Powered Oil Heaters,The Adventurer,F5 East Distribution Center,L×2,verified
+227002,496,Standard,,Deliver a Collection of Old Photos Depicting the Mighty Mount Everest,The Adventurer,Eastern Environmental Observatory,M×2,verified
+227010,497,Standard,,"Deliver Titles from the Indie Adventure Movie Series ""The Indus Tiger Roams Alone""",The Adventurer,The Aeronautical Engineer,S×2,verified
+227030,498,Standard,,Deliver Chemicals,The Adventurer,The Aeronautical Engineer,L×6,verified
+227004,499,Standard,,[Chilled] Deliver Timefall Snow Samples from the Top of a Mountain,The Adventurer,Southern Environmental Observatory,XL×2,verified
+227007,500,Standard,,Deliver a Selection of Bollywood Classics from the Early 21st Century,The Adventurer,F7 North Distribution Center,M×6,verified
+227009,501,Standard,,"Deliver Discs of the Experimental Musical Movie ""Let Naatu Roar!""",The Adventurer,Terminal Fort Knot (F8),S×2,verified
+228006,502,Standard,,Deliver Spring Water from the Australian Alps,Eastern Environmental Observatory,The Pizza Chef,XL×4,verified
+228032,503,Standard,,Deliver Metals and Special Alloys,Eastern Environmental Observatory,The Chronobiologist,"XL×2, L×2",verified
+228009,504,Standard,,[Express] Return Accidentally Borrowed Pulp Romance Novels from the Early 21st Century,Eastern Environmental Observatory,The Chronobiologist,M×34,verified
+228000,505,Standard,,Deliver Cryptobiote Samples Found Near the Top of a Mountain,Eastern Environmental Observatory,The Chronobiologist,L×4,verified
+228031,506,Standard,,Deliver Special Alloys,Eastern Environmental Observatory,The Ghost Hunter,M×5,verified
+228001,507,Standard,,[Chilled] Deliver Timefall Snow Samples Taken from the Snowy Mountains,Eastern Environmental Observatory,F5 East Distribution Center,L×3,verified
+228012,508,Standard,,Deliver Hard-Wearing Undergarments Designed for Sub-Zero Temperatures,Eastern Environmental Observatory,The Adventurer,M×2,verified
+228016,509,Standard,,Deliver Specially Blended Coffee Beans,Eastern Environmental Observatory,The Adventurer,S×4,verified
+228052,510,Standard,,Recover Oxytocin Lost in a Rockfall During Delivery,Eastern Environmental Observatory,Near The Aeronautical Engineer,S×6,verified
+228415,511,Standard,,Recover Hoard of Stolen Chiralium-Rich Chemical,Eastern Environmental Observatory,Armed Survivalist Base Southeast of the Phantom Smith,L×4,verified
+228414,512,Standard,,Recover Extremophile Microorganism Samples Lost in a BT Area,Eastern Environmental Observatory,BT Area South of the Metagenomicist,S×10,verified
+228030,513,Standard,,Deliver Metals and Chemicals,Eastern Environmental Observatory,The Aeronautical Engineer,"L×2, M×3",verified
+228008,514,Standard,,[Breakable Cargo] Deliver Chiral Antennas from a Broken Ghost Field Measuring Device,Eastern Environmental Observatory,The Phantom Smith,L×4,verified
+228005,515,Standard,,Deliver Aerosol Samples from a Chiral Cloud,Eastern Environmental Observatory,F7 North Distribution Center,L×4,verified
+230011,516,Standard,,[Breakable Cargo] Deliver Emergency Medical Kits for Use in the Field,The Aeronautical Engineer,The Adventurer,M×3,verified
+230005,517,Standard,,[Breakable Cargo] Deliver Chiralsonde Prototypes for High-Altitude Investigations,The Aeronautical Engineer,Eastern Environmental Observatory,L×3,verified
+230050,518,Standard,,Recover a Large Volume of Special Alloys Abandoned During Delivery,The Aeronautical Engineer,Near The Aeronautical Engineer,"L×3, S×3",verified
+230001,519,Standard,,[Breakable Cargo] Deliver Specially Made Components for Thrust Vectoring Devices,The Aeronautical Engineer,The Phantom Smith,M×1,verified
+230030,520,Standard,,Deliver Ceramics and Chemicals,The Aeronautical Engineer,The Phantom Smith,XL×4,verified
+230010,521,Standard,,[Breakable Cargo] Deliver Newly Designed Rocket Engine,The Aeronautical Engineer,South Fort Knot (F6),XL×1,verified
+230006,522,Standard,,[Hazardous/Chilled] Deliver Liquid Helium,The Aeronautical Engineer,F7 North Distribution Center,L×6,verified
+230008,523,Standard,,[Chilled] Deliver Ancient Fish Found Frozen in the Tundra,The Aeronautical Engineer,BPAS,M×2,verified
+230007,524,Standard,,[Hazardous/Chilled] Deliver Liquid Oxygen,The Aeronautical Engineer,Mr. Impossible,L×3,verified
+229005,525,Standard,,[Hazardous] Deliver Phantom Speakers That Produces BT Sounds,The Phantom Smith,The Ghost Hunter,L×2,verified
+229001,526,Standard,,[Breakable Cargo] Deliver Synthesized Alcoholic Beverages That Recreate the Taste of Fine Japanese Sake,The Phantom Smith,The Metagenomicist,S×4,verified
+229004,527,Standard,,[Breakable Cargo] Deliver Prototype Chiralsonde for Investigating the Depths of the Tar Current,The Phantom Smith,F5 East Distribution Center,L×3,verified
+229009,528,Standard,,Deliver Performance-Enhancing Nutritional Drinks Containing Quandong Extract,The Phantom Smith,The Adventurer,M×4,verified
+229003,529,Standard,,[Breakable Cargo] Deliver Chiral Antennas from a Ghost Field Measuring Device,The Phantom Smith,Eastern Environmental Observatory,L×4,verified
+229012,530,Standard,,Deliver Precision Components for a New Rocket Engine,The Phantom Smith,The Aeronautical Engineer,M×6,verified
+229058,531,Standard,,Recover a Valuable Timefall-Resistant Paint Lost During Delivery,The Phantom Smith,Near Eastern Environmental Observatory,XL×4,verified
+229110,532,Standard,,[Elimination] Seize Armed Survivalist Base Southeast of the Phantom Smith's Shelter,The Phantom Smith,Armed Survivalist Base Southeast of the Phantom Smith,None,verified
+229000,533,Standard,,[Chilled] Deliver Special Volatile Chemicals,The Phantom Smith,The Tar Therapist,L×4,verified
+229006,534,Standard,,[Hazardous] Deliver Phantom Recorders That Detect the Movement of Souls to and from the Seam,The Phantom Smith,BPAS,L×4,verified
+229013,535,Standard,,Deliver Stuffed Cryptobiote Toys,The Phantom Smith,Mr. Impossible,L×6,verified
+232004,536,Standard,,[Vog Warning] Deliver Specially Blended Tar Medicine to Regulate the Soul and the Nervous System,The Tar Therapist,F2 South Distribution Center,XL×3,verified
+232008,537,Standard,,[Breakable Cargo] Deliver Highly Prized Tar-Distilled Liquor,The Tar Therapist,The Motherhood,M×4,verified
+232002,538,Standard,,Deliver Houseplants Used for Tar Therapy,The Tar Therapist,East Fort Knot (F4),L×2,verified
+232010,539,Standard,,[Express] Deliver Chiral Gratin Made with Stranded Sardines and Tar Sauce,The Tar Therapist,The Phantom Smith,M×1,verified
+232401,540,Standard,,[Breakable Cargo] Recover Remotely Operated Precision Medical Instruments Lost in a BT Area,The Tar Therapist,BT Area North of F6,L×6,verified
+232007,541,Standard,,Deliver High-Quality Tar Coffee,The Tar Therapist,F7 North Distribution Center,S×2,verified
+231021,542,Standard,,[Express] Deliver an Assortment of Fresh Tar Organisms,South Fort Knot (F6),Western Environmental Observatory,L×20,verified
+231035,543,Standard,,Deliver Chemicals and Special Alloys,South Fort Knot (F6),East Fort Knot (F4),XL×24,verified
+231015,544,Standard,,Deliver a Large Volume of Transportable Emergency Food Rations,South Fort Knot (F6),The Adventurer,M×8,verified
+231012,545,Standard,,Deliver Nutritional Drinks Made Using Eucalyptus Oil,South Fort Knot (F6),Eastern Environmental Observatory,M×4,verified
+231019,546,Standard,,"[Hazardous/Chilled] Deliver ""Beach-IIC"" Miniature Rockets and Propellant",South Fort Knot (F6),Eastern Environmental Observatory,"XL×3, L×4",verified
+231018,547,Standard,,Deliver New Material for Rocket Components,South Fort Knot (F6),The Phantom Smith,L×6,verified
+231004,548,Standard,,Deliver Special Precision Tools for Grinding and Polishing,South Fort Knot (F6),The Phantom Smith,M×4,verified
+231031,549,Standard,,Deliver Metals and Resins,South Fort Knot (F6),The Phantom Smith,L×8,verified
+231056,550,Standard,,Recover Precious Jewelry Lost in Ruins of Town,South Fort Knot (F6),Near South Fort Knot (F6),M×4,verified
+231422,551,Standard,,[Breakable Cargo] Recover Stolen Quantum Calculation Devices,South Fort Knot (F6),Armed Survivalist Base Southeast of the Phantom Smith,M×3,verified
+231032,552,Standard,,Deliver Chemicals,South Fort Knot (F6),The Tar Therapist,L×5,verified
+231033,553,Standard,,Deliver Metals and Chemicals,South Fort Knot (F6),Southern Environmental Observatory,L×5,verified
+231010,554,Standard,,[Do Not Submerge] Deliver Asian Weaver Ants to be Eaten Alive,South Fort Knot (F6),F7 North Distribution Center,L×4,verified
+231034,555,Standard,,Deliver Metals and Ceramics,South Fort Knot (F6),Terminal Fort Knot (F8),"L×16, M×4",verified
+233003,556,Standard,,Deliver the Bones of a Bird Believed to Have Drifted Ashore from New Zealand,Southern Environmental Observatory,Heartman's Lab,L×2,verified
+233013,557,Standard,,Deliver Oil Used for High-Quality Tar Refining Machines,Southern Environmental Observatory,The Chronobiologist,XL×6,verified
+233009,558,Standard,,[Vog Warning] Deliver Highly Volatile Condensed Tar,Southern Environmental Observatory,F5 East Distribution Center,XL×5,verified
+233002,559,Standard,,Deliver Broken Backup Generator Units,Southern Environmental Observatory,The Aeronautical Engineer,L×4,verified
+233010,560,Standard,,Deliver Recently Excavated Figurines Depicting Giant Kaiju,Southern Environmental Observatory,The Phantom Smith,M×2,verified
+233030,561,Standard,,Deliver Chemicals,Southern Environmental Observatory,The Tar Therapist,L×3,verified
+233054,562,Standard,,[Breakable Cargo] Recover Jewelry Left Behind in F7 and Lost in a BT Area,Southern Environmental Observatory,Near South Edge Mine,M×4,verified
+233061,563,Standard,,"Deliver Classic Drama Series ""Greatest Koalas: The Price of Betrayal""",Southern Environmental Observatory,Near The Phantom Smith,S×2,verified
+233407,564,Standard,,Recover Poisonous Plant Samples Stolen by the Armed Survivalists,Southern Environmental Observatory,Armed Survivalist Base Southeast of the Phantom Smith,M×6,verified
+233031,565,Standard,,Deliver Ceramics,Southern Environmental Observatory,BPAS,L×6,verified
+233005,566,Standard,,[Hazardous] Deliver Maximally Condensed Tar Fuel,Southern Environmental Observatory,Mr. Impossible,L×3,verified
+234006,567,Standard,,Deliver History Books Concerning Pre-Stranding Eurasia,F7 North Distribution Center,The Government's Base,M×4,verified
+234031,568,Standard,,Deliver Metals and Ceramics,F7 North Distribution Center,The Lone Commander,XL×16,verified
+234032,569,Standard,,Deliver Chemicals and Special Alloys,F7 North Distribution Center,The Adventurer,XL×6,verified
+234010,570,Standard,,Deliver Recently Excavated Set of Old Board Games,F7 North Distribution Center,Eastern Environmental Observatory,M×2,verified
+234030,571,Standard,,Deliver Ceramics and Special Alloys,F7 North Distribution Center,The Aeronautical Engineer,M×4,verified
+234000,572,Standard,,[Express] Deliver New and Improved Smart Drugs,F7 North Distribution Center,The Tar Therapist,S×8,verified
+234008,573,Standard,,[Breakable Cargo] Deliver Fossils of Unidentified Cretaceous Creatures With Umbilical Cords,F7 North Distribution Center,Southern Environmental Observatory,S×3,verified
+234051,574,Standard,,[Breakable Cargo] Recover Misplaced Precision Instruments for Intricate Crafting,F7 North Distribution Center,Near Waystation 1,L×4,verified
+234311,575,Standard,,[Hazardous] Dispose of Concentrated Tar Fuel Stockpiled by the Armed Survivalists,F7 North Distribution Center,Armed Survivalist Base Southeast of the Phantom Smith,L×12,verified
+234403,576,Standard,,Recover Emergency First Aid Kits from a BT Area,F7 North Distribution Center,BT Area North of F6,M×6,verified
+234011,577,Standard,,[Breakable Cargo] Deliver Custom-Made Server Units,F7 North Distribution Center,BPAS,L×4,verified
+234033,578,Standard,,Deliver Resins and Chemicals,F7 North Distribution Center,Mr. Impossible,XL×12,verified
+235030,579,Standard,,Deliver Resins and Special Alloys,Terminal Fort Knot (F8),The Adventurer,XL×6,verified
+235031,580,Standard,,Deliver Special Alloys,Terminal Fort Knot (F8),Eastern Environmental Observatory,XL×8,verified
+235032,581,Standard,,Deliver Chemicals,Terminal Fort Knot (F8),Eastern Environmental Observatory,L×6,verified
+235000,582,Standard,,Deliver a Large Volume of High-Energy Food Rations,Terminal Fort Knot (F8),South Fort Knot (F6),L×18,verified
+235006,583,Standard,,[Express] Deliver Blood Products for Transfusion,Terminal Fort Knot (F8),South Fort Knot (F6),M×40,verified
+235013,584,Standard,,"Deliver the Classic Drama Series ""Greatest Koalas 3: Love in the Treetops""",Terminal Fort Knot (F8),Southern Environmental Observatory,S×1,verified
+235002,585,Standard,,Deliver Food Rations and Drinking Water for Emergencies,Terminal Fort Knot (F8),F7 North Distribution Center,XL×6,verified
+235061,586,Standard,,Recover Bones of a Mammal Believed to Have Drifted Ashore from Tasmania,Terminal Fort Knot (F8),Near South Edge Mine,M×4,verified
+235004,587,Standard,,[Hazardous] Deliver High-Pressure Fuel Cells for Use in Emergencies,Terminal Fort Knot (F8),BPAS,L×2,verified
+235008,588,Standard,,[Chilled] Deliver Organic Vegetables Grown in a City Garden,Terminal Fort Knot (F8),Mr. Impossible,L×4,verified
+236008,589,Standard,,[Keep Flat/Express] Deliver Prototype AI Pizzas Based on an Auto-Generated Recipe,BPAS,The Data Scientist,M×2,verified
+236003,590,Standard,,Deliver Experimentally Developed Metamaterials for Suppressing Ghost Field Interference,BPAS,The Phantom Smith,XL×6,verified
+236002,591,Standard,,[Breakable Cargo] Deliver Next-Gen Wide-Area Chiral Antenna Prototypes,BPAS,F7 North Distribution Center,L×3,verified
+236004,592,Standard,,[Breakable Cargo] Deliver Compact Quantum Servers for Use with Experimental AI,BPAS,Terminal Fort Knot (F8),M×4,verified
+236050,593,Standard,,Recover Food Rations and Drinking Water Lost During Delivery,BPAS,Near BPAS,"XL×4, L×4",verified
+236061,594,Standard,,[Express] Recover Blood Products Lost During Delivery,BPAS,Near The Phantom Smith,S×2,verified
+237001,595,Standard,,[Express] Deliver Collector's Edition Box Sets of Independent Horror-Comedy Films,Mr. Impossible,The Musician,S×2,verified
+237006,596,Standard,,[Extremely Hazardous] Deliver Samples of Antimatter Collected on the Beach,Mr. Impossible,Southern Environmental Observatory,S×4,verified
+237007,597,Standard,,[Extremely Chilled] Deliver Original Ice Art Created at Near Absolute Zero (-270℃),Mr. Impossible,F7 North Distribution Center,L×5,verified
+237004,598,Standard,,[Hazardous] Deliver Set of Handmade Multidimensional Board Games Concerning Humanity's Incompetence,Mr. Impossible,BPAS,S×3,verified
+237050,599,Standard,,Recover Misplaced Masterpieces of Pre-Stranding Australian Cinema,Mr. Impossible,Near Mr. Impossible,M×4,verified

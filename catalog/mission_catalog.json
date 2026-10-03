@@ -1,0 +1,4717 @@
+{
+ "10": {
+  "no": 1,
+  "section": "Main",
+  "Episode": "1",
+  "Order": "Return Home",
+  "From": "N/A",
+  "To": "Sam's Shelter",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "20": {
+  "no": 2,
+  "section": "Main",
+  "Episode": "1",
+  "Order": "Deliver the Chiral Network Gateway to C1",
+  "From": "Sam's Shelter",
+  "To": "Ciudad Nudo del Norte (C1)",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "30": {
+  "no": 3,
+  "section": "Main",
+  "Episode": "1",
+  "Order": "Deliver One or More Remote Medical Units to Villa Libre",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "Villa Libre",
+  "Cargo": "XL×2",
+  "confidence": "verified"
+ },
+ "40": {
+  "no": 4,
+  "section": "Main",
+  "Episode": "1",
+  "Order": "Recover All Chiral Density Gauges Stolen by Bandits",
+  "From": "Villa Libre",
+  "To": "C1 South Distribution Center",
+  "Cargo": "M×2",
+  "confidence": "verified"
+ },
+ "50": {
+  "no": 5,
+  "section": "Main",
+  "Episode": "1",
+  "Order": "Defeat the BTs Near the Former Geophysics Research Lab and Deliver the Prototype MP Bullets",
+  "From": "C1 South Distribution Center",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "S×1",
+  "confidence": "verified"
+ },
+ "60": {
+  "no": 6,
+  "section": "Main",
+  "Episode": "1",
+  "Order": "Defeat the Giant BT",
+  "From": "Alex Weatherstone",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "70": {
+  "no": 7,
+  "section": "Main",
+  "Episode": "1",
+  "Order": "Deliver the Present for Lou",
+  "From": "Former Geophysics Research Lab",
+  "To": "Near Sam's Shelter",
+  "Cargo": "S×1",
+  "confidence": "verified"
+ },
+ "80": {
+  "no": 8,
+  "section": "Main",
+  "Episode": "3",
+  "Order": "Connect the Australian Plate Gate Terminal to the Chiral Network",
+  "From": "Drawbridge",
+  "To": "Plate Gate",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "90": {
+  "no": 9,
+  "section": "Main",
+  "Episode": "3",
+  "Order": "Deliver the Chiral Decontaminator to the Government's Base",
+  "From": "DHV Magellan",
+  "To": "The Government's Base",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "100": {
+  "no": 10,
+  "section": "Main",
+  "Episode": "3",
+  "Order": "[Elimination] Liberate the Western Environmental Observatory from the Brigands",
+  "From": "The Government's Base",
+  "To": "Western Environmental Observatory",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "110": {
+  "no": 100,
+  "section": "Sub",
+  "Order": "[Breakable Cargo] Deliver the Dismantled Rifle to the Lone Commander",
+  "From": "The Government's Base",
+  "To": "The Lone Commander",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "115": {
+  "no": 101,
+  "section": "Sub",
+  "Order": "Recover the Mementos from the BT Area",
+  "From": "The Lone Commander",
+  "To": "The Lone Commander",
+  "Cargo": "M×1",
+  "confidence": "verified"
+ },
+ "120": {
+  "no": 102,
+  "section": "Sub",
+  "Order": "Recover All Brigands' Reconnaissance Equipment",
+  "From": "The Lone Commander",
+  "To": "The Government's Base",
+  "Cargo": "M×4",
+  "confidence": "verified"
+ },
+ "130": {
+  "no": 11,
+  "section": "Main",
+  "Episode": "3",
+  "Order": "Destroy the Communications Disruptor and Deliver the Mysterious Recording to the Musician",
+  "From": "DHV Magellan",
+  "To": "The Musician",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "135": {
+  "no": 12,
+  "section": "Main",
+  "Episode": "3",
+  "Order": "Investigate the Unusual Tar Currents near F1",
+  "From": "The Musician",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "140": {
+  "no": 103,
+  "section": "Sub",
+  "Order": "[Breakable Cargo] Recover the Stolen Record Collection",
+  "From": "The Musician",
+  "To": "The Musician",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "150": {
+  "no": 104,
+  "section": "Sub",
+  "Order": "Restore Smoke Hill Mine",
+  "From": "Western Environmental Observatory",
+  "To": "Western Environmental Observatory",
+  "Cargo": "XL×1",
+  "confidence": "verified"
+ },
+ "160": {
+  "no": 13,
+  "section": "Main",
+  "Episode": "3",
+  "Order": "Restore the Monorail and Deliver Special Alloys [4800] to F1",
+  "From": "DHV Magellan",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "XL×2, L×1",
+  "confidence": "verified"
+ },
+ "170": {
+  "no": 14,
+  "section": "Main",
+  "Episode": "3",
+  "Order": "Deliver All Terraforming Equipment to Rainbow Valley",
+  "From": "West Fort Knot (F1)",
+  "To": "Rainbow Valley",
+  "Cargo": "L×6",
+  "confidence": "verified"
+ },
+ "180": {
+  "no": 15,
+  "section": "Main",
+  "Episode": "4",
+  "Order": "Deliver the Test Subject Kangaroo to the Animal Shelter",
+  "From": "Rainbow Valley",
+  "To": "Animal Shelter",
+  "Cargo": "Test Subject Kangaroo×1",
+  "confidence": "verified"
+ },
+ "190": {
+  "no": 16,
+  "section": "Main",
+  "Episode": "4",
+  "Order": "Deliver All Aid Packages to the Northern Environmental Observatory",
+  "From": "West Fort Knot (F1)",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "L×14",
+  "confidence": "verified"
+ },
+ "220": {
+  "no": 17,
+  "section": "Main",
+  "Episode": "5",
+  "Order": "Escape the Strange Realm",
+  "From": "Drawbridge",
+  "To": "N/A",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "230": {
+  "no": 18,
+  "section": "Main",
+  "Episode": "6",
+  "Order": "[Hazardous] Recover All Weapon Sets and Burrowing Bombs Stolen by the Brigands",
+  "From": "DHV Magellan",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "L×3",
+  "confidence": "verified"
+ },
+ "240": {
+  "no": 19,
+  "section": "Main",
+  "Episode": "6",
+  "Order": "[Do Not Submerge] Deliver Necrobiotes to the F2 South Distribution Center",
+  "From": "Northern Environmental Observatory",
+  "To": "F2 South Distribution Center",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "245": {
+  "no": 20,
+  "section": "Main",
+  "Episode": "6",
+  "Order": "Deliver All Aid Packages and Chiral Printer Parts to F1",
+  "From": "F2 South Distribution Center",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "L×17",
+  "confidence": "verified"
+ },
+ "250": {
+  "no": 21,
+  "section": "Main",
+  "Episode": "6",
+  "Order": "Rescue the Dowser's Friend from the Armed Survivalists",
+  "From": "F2 South Distribution Center",
+  "To": "The Dowser",
+  "Cargo": "The Dowser's Friend×1",
+  "confidence": "verified"
+ },
+ "260": {
+  "no": 22,
+  "section": "Main",
+  "Episode": "6",
+  "Order": "Search for Tomorrow",
+  "From": "DHV Magellan",
+  "To": "Near Northern Environmental Observatory",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "270": {
+  "no": 23,
+  "section": "Main",
+  "Episode": "6",
+  "Order": "[Breakable Cargo] Deliver Tar Magnetite to Heartman's Lab",
+  "From": "The Dowser",
+  "To": "Heartman's Lab",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "280": {
+  "no": 24,
+  "section": "Main",
+  "Episode": "7",
+  "Order": "[Chilled] Deliver the Beach Yeast to the Pizza Chef",
+  "From": "Heartman's Lab",
+  "To": "The Pizza Chef",
+  "Cargo": "XL×1",
+  "confidence": "verified"
+ },
+ "290": {
+  "no": 25,
+  "section": "Main",
+  "Episode": "7",
+  "Order": "[Keep Flat/Express] Deliver a Piping Hot Pizza to the Data Scientist",
+  "From": "The Pizza Chef",
+  "To": "The Data Scientist",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "295": {
+  "no": 105,
+  "section": "Sub",
+  "Order": "[Keep Flat/Express] Deliver a Piping Hot Pepperoni Pizza to the Architect",
+  "From": "The Pizza Chef",
+  "To": "The Architect",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "300": {
+  "no": 26,
+  "section": "Main",
+  "Episode": "7",
+  "Order": "Recover Old BB Pod from the Armed Survivalists' Base",
+  "From": "The Data Scientist",
+  "To": "The Motherhood",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "305": {
+  "no": 27,
+  "section": "Main",
+  "Episode": "7",
+  "Order": "Deliver All Tar Dissolvent to the DHV Magellan",
+  "From": "F2 South Distribution Center",
+  "To": "DHV Magellan",
+  "Cargo": "XL×4",
+  "confidence": "verified"
+ },
+ "310": {
+  "no": 28,
+  "section": "Main",
+  "Episode": "7",
+  "Order": "Extract Data from the Weapons Fabricators and Destroy Them, Then Bring the Data Back to the DHV Magellan in the Ring Terminal Expansion Device",
+  "From": "DHV Magellan",
+  "To": "DHV Magellan",
+  "Cargo": "S×1",
+  "confidence": "verified"
+ },
+ "320": {
+  "no": 29,
+  "section": "Main",
+  "Episode": "7",
+  "Order": "Recover the Coffin from the Armed Survivalists' Base",
+  "From": "The Motherhood",
+  "To": "The Mechanic",
+  "Cargo": "Coffin×1",
+  "confidence": "verified"
+ },
+ "330": {
+  "no": 106,
+  "section": "Sub",
+  "Order": "Recover the Ghost Mech Cargo from the Weapons Factory",
+  "From": "The Mechanic",
+  "To": "The Data Scientist",
+  "Cargo": "M×1",
+  "confidence": "verified"
+ },
+ "335": {
+  "no": 107,
+  "section": "Sub",
+  "Order": "Recover One or More Empty Pizza Containers from the Armed Survivalists' Base",
+  "From": "The Data Scientist",
+  "To": "The Pizza Chef",
+  "Cargo": "L×3",
+  "confidence": "verified"
+ },
+ "337": {
+  "no": 108,
+  "section": "Sub",
+  "Order": "Deliver Dog Mech Sam Rescued to the Animal Shelter",
+  "From": "The Data Scientist",
+  "To": "Animal Shelter",
+  "Cargo": "M×1",
+  "confidence": "verified"
+ },
+ "340": {
+  "no": 30,
+  "section": "Main",
+  "Episode": "7",
+  "Order": "Deliver All Prototype Life Support Systems to F4",
+  "From": "West Fort Knot (F1)",
+  "To": "East Fort Knot (F4)",
+  "Cargo": "XL×3",
+  "confidence": "verified"
+ },
+ "350": {
+  "no": 31,
+  "section": "Main",
+  "Episode": "8",
+  "Order": "Escape from the Strange Realm",
+  "From": "Drawbridge",
+  "To": "N/A",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "360": {
+  "no": 32,
+  "section": "Main",
+  "Episode": "8",
+  "Order": "[Do Not Submerge] Deliver the Cryptobiote Variants to the Chronobiologist",
+  "From": "East Fort Knot (F4)",
+  "To": "The Chronobiologist",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "370": {
+  "no": 33,
+  "section": "Main",
+  "Episode": "8",
+  "Order": "Deliver Timefall-Resistant Emu to the Metagenomicist",
+  "From": "The Chronobiologist",
+  "To": "The Metagenomicist",
+  "Cargo": "Timefall-Resistant Emu×1",
+  "confidence": "verified"
+ },
+ "380": {
+  "no": 109,
+  "section": "Sub",
+  "Order": "[Breakable Cargo] Deliver Proof of an Attack to the Ghost Hunter",
+  "From": "The Chronobiologist",
+  "To": "The Ghost Hunter",
+  "Cargo": "XL×1",
+  "confidence": "verified"
+ },
+ "381": {
+  "no": 110,
+  "section": "Sub",
+  "Order": "[Elimination] Uncover the Identity of the Headless Riders and Remove the Threat",
+  "From": "The Ghost Hunter",
+  "To": "The Ghost Hunter",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "383": {
+  "no": 111,
+  "section": "Sub",
+  "Order": "Rescue the Child Crying in the Bushfire Zone",
+  "From": "The Ghost Hunter",
+  "To": "The Ghost Hunter",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "384": {
+  "no": 112,
+  "section": "Sub",
+  "Order": "Deliver the Lyrebird Sam Rescued to the Animal Shelter",
+  "From": "The Ghost Hunter",
+  "To": "Animal Shelter",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "385": {
+  "no": 113,
+  "section": "Sub",
+  "Order": "[Breakable Cargo] Uncover the Mystery of the Moving House and Recover the Rusty Chiral Crystals",
+  "From": "The Ghost Hunter",
+  "To": "The Ghost Hunter",
+  "Cargo": "L×3",
+  "confidence": "verified"
+ },
+ "389": {
+  "no": 114,
+  "section": "Sub",
+  "Order": "Save F8 from a Voidout",
+  "From": "The Ghost Hunter",
+  "To": "The Ghost Hunter",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "390": {
+  "no": 34,
+  "section": "Main",
+  "Episode": "8",
+  "Order": "Deliver All Chiral Microbes to the F5 East Distribution Center",
+  "From": "The Metagenomicist",
+  "To": "F5 East Distribution Center",
+  "Cargo": "XL×4",
+  "confidence": "verified"
+ },
+ "395": {
+  "no": 115,
+  "section": "Sub",
+  "Order": "Deliver the Emu Sam Rescued to the Animal Shelter",
+  "From": "The Metagenomicist",
+  "To": "Animal Shelter",
+  "Cargo": "Emu Sam Rescued×1",
+  "confidence": "verified"
+ },
+ "400": {
+  "no": 116,
+  "section": "Sub",
+  "Order": "Deliver All Stranded Ship's Cargo to the Fisherman",
+  "From": "F5 East Distribution Center",
+  "To": "The Fisherman",
+  "Cargo": "L×6",
+  "confidence": "verified"
+ },
+ "405": {
+  "no": 117,
+  "section": "Sub",
+  "Order": "Defeat the Lord of the Tar Lake",
+  "From": "The Fisherman",
+  "To": "The Fisherman",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "410": {
+  "no": 35,
+  "section": "Main",
+  "Episode": "8",
+  "Order": "[Elimination] Extract Data from the Ghost Mech Fabricators and Destroy Them Along with Any Guards, Then Bring the Data Back to the DHV Magellan in the Ring Terminal Expansion Device",
+  "From": "DHV Magellan",
+  "To": "DHV Magellan",
+  "Cargo": "S×1",
+  "confidence": "verified"
+ },
+ "415": {
+  "no": 36,
+  "section": "Main",
+  "Episode": "8",
+  "Order": "[Hazardous] Cross Treacherous Snowy Peaks to Deliver a Meteorite to the Adventurer",
+  "From": "F5 East Distribution Center",
+  "To": "The Adventurer",
+  "Cargo": "XL×1",
+  "confidence": "verified"
+ },
+ "420": {
+  "no": 37,
+  "section": "Main",
+  "Episode": "8",
+  "Order": "Rescue the Adventurer from the Snowy Mountains",
+  "From": "The Adventurer",
+  "To": "The Adventurer",
+  "Cargo": "The Adventurer×1",
+  "confidence": "verified"
+ },
+ "422": {
+  "no": 118,
+  "section": "Sub",
+  "Order": "Rescue the Adventurer from the BT Area",
+  "From": "The Adventurer",
+  "To": "The Adventurer",
+  "Cargo": "The Adventurer×1",
+  "confidence": "verified"
+ },
+ "424": {
+  "no": 119,
+  "section": "Sub",
+  "Order": "Rescue the Adventurer from a Chiral Creature-Infested Region",
+  "From": "The Adventurer",
+  "To": "The Adventurer",
+  "Cargo": "The Adventurer×1",
+  "confidence": "verified"
+ },
+ "426": {
+  "no": 121,
+  "section": "Sub",
+  "Order": "Rescue the Adventurer Who Vanished into Thin Air",
+  "From": "The Adventurer",
+  "To": "The Adventurer",
+  "Cargo": "The Adventurer×1",
+  "confidence": "verified"
+ },
+ "428": {
+  "no": 120,
+  "section": "Sub",
+  "Order": "Rescue the Adventurer from the Highest Reaches of the Snowy Mountains",
+  "From": "The Adventurer",
+  "To": "The Adventurer",
+  "Cargo": "The Adventurer×1",
+  "confidence": "verified"
+ },
+ "430": {
+  "no": 38,
+  "section": "Main",
+  "Episode": "9",
+  "Order": "Deliver the Chiral Decontaminators and Sedatives to the Eastern Environmental Observatory",
+  "From": "The Adventurer",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "L×2, S×4",
+  "confidence": "verified"
+ },
+ "440": {
+  "no": 39,
+  "section": "Main",
+  "Episode": "9",
+  "Order": "Destroy the Giant Ghost Mech",
+  "From": "Drawbridge",
+  "To": "N/A",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "450": {
+  "no": 40,
+  "section": "Main",
+  "Episode": "9",
+  "Order": "[Breakable Cargo] Recover All Stranded Cargo",
+  "From": "DHV Magellan",
+  "To": "The Phantom Smith",
+  "Cargo": "S×3",
+  "confidence": "verified"
+ },
+ "460": {
+  "no": 41,
+  "section": "Main",
+  "Episode": "9",
+  "Order": "[Hazardous] Deliver the Chiral Field Controller Prototypes to F6",
+  "From": "The Phantom Smith",
+  "To": "South Fort Knot (F6)",
+  "Cargo": "L×5",
+  "confidence": "verified"
+ },
+ "470": {
+  "no": 122,
+  "section": "Sub",
+  "Order": "Deliver Ghost Mech Factory Cargo to the Aeronautical Engineer",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "M×1",
+  "confidence": "verified"
+ },
+ "500": {
+  "no": 42,
+  "section": "Main",
+  "Episode": "9",
+  "Order": "Deliver Chiral Cyclotron Parts and All Special Materials to the DHV Magellan",
+  "From": "South Fort Knot (F6)",
+  "To": "DHV Magellan",
+  "Cargo": "L×10, S×10",
+  "confidence": "verified"
+ },
+ "510": {
+  "no": 43,
+  "section": "Main",
+  "Episode": "9",
+  "Order": "Destroy All Chiral Jammers and Eliminate the Threat to the Southern Environmental Observatory",
+  "From": "DHV Magellan",
+  "To": "Southern Environmental Observatory",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "520": {
+  "no": 44,
+  "section": "Main",
+  "Episode": "10",
+  "Order": "Deliver the Network Stabilizer to the F7 North Distribution Center",
+  "From": "Heartman's Lab",
+  "To": "F7 North Distribution Center",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "530": {
+  "no": 45,
+  "section": "Main",
+  "Episode": "11",
+  "Order": "Return from the Strange Realm",
+  "From": "Drawbridge",
+  "To": "N/A",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "540": {
+  "no": 46,
+  "section": "Main",
+  "Episode": "12",
+  "Order": "Deliver the Drawbridge Terminal Unit to F8",
+  "From": "DHV Magellan",
+  "To": "Terminal Fort Knot (F8)",
+  "Cargo": "L×1",
+  "confidence": "verified"
+ },
+ "550": {
+  "no": 47,
+  "section": "Main",
+  "Episode": "14",
+  "Order": "Find an Item with a Deep Connection to Higgs",
+  "From": "Drawbridge",
+  "To": "Near Sam's Shelter",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "560": {
+  "no": 48,
+  "section": "Main",
+  "Episode": "15",
+  "Order": "Defeat Higgs and Save Tomorrow",
+  "From": "Drawbridge",
+  "To": "Sam's Shelter",
+  "Cargo": "None",
+  "confidence": "verified"
+ },
+ "570": {
+  "no": 49,
+  "section": "Main",
+  "Episode": "16",
+  "Order": "Deliver the Present for Lou",
+  "From": "Former Geophysics Research Lab",
+  "To": "Sam's Shelter",
+  "Cargo": "S×1",
+  "confidence": "high"
+ },
+ "580": {
+  "no": 123,
+  "section": "Sub",
+  "Order": "[Breakable Cargo] Recover All the Chiral Sculptures from Their Inaccessible Locations",
+  "From": "Mr. Impossible",
+  "To": "Mr. Impossible",
+  "Cargo": "XL×3",
+  "confidence": "verified"
+ },
+ "620": {
+  "no": 124,
+  "section": "Sub",
+  "Order": "[Express/Hazardous] Recover All the Hazardous Chiral Sculptures from the Armed Hostiles",
+  "From": "Mr. Impossible",
+  "To": "Mr. Impossible",
+  "Cargo": "XL×7",
+  "confidence": "verified"
+ },
+ "102003": {
+  "no": 206,
+  "section": "Standard",
+  "Order": "Deliver a Large Volume of High-Energy Emergency Rations",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "L×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "102005": {
+  "no": 207,
+  "section": "Standard",
+  "Order": "[Breakable Cargo/Express] Deliver Precision Medical Equipment for Emergencies",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "L×18",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "102006": {
+  "no": 210,
+  "section": "Standard",
+  "Order": "Deliver Edible Plants Which Imitate the Flavor of Fresh Vegetables",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "The Artist",
+  "Cargo": "M×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "102009": {
+  "no": 208,
+  "section": "Standard",
+  "Order": "Deliver High-Protein Quesadillas Made with Artificial Eggs and Maize",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "The Bokka",
+  "Cargo": "S×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "102011": {
+  "no": 205,
+  "section": "Standard",
+  "Order": "Deliver Paraphernalia Used During Day of the Dead Festivities",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "Villa Libre",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "102033": {
+  "no": 209,
+  "section": "Standard",
+  "Order": "Deliver Ceramics",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "The Bokka",
+  "Cargo": "XL×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "102050": {
+  "no": 200,
+  "section": "Standard",
+  "Order": "Recover Anti-Chiralium Drugs Lost During Delivery",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "Near Ciudad Nudo del Norte (C1)",
+  "Cargo": "L×6",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "102221": {
+  "no": 202,
+  "section": "Standard",
+  "Order": "[Elimination] Neutralize Bandits Armed with Stolen UCA Technology",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "Bandit Base Northwest of C1",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "102416": {
+  "no": 201,
+  "section": "Standard",
+  "Order": "Recover a Large Cache of Contraband Weapons Stolen by Bandits",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "Bandit Base at the Old Border",
+  "Cargo": "M×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "102429": {
+  "no": 204,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Compact Medical Kits Lost in a BT Area",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "BT Area South of C1",
+  "Cargo": "S×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "102430": {
+  "no": 203,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Mini Water Purifiers Stolen During Delivery",
+  "From": "Ciudad Nudo del Norte (C1)",
+  "To": "Bandit Base Northwest of C1",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "103002": {
+  "no": 216,
+  "section": "Standard",
+  "Order": "Deliver Tar-Like Substance Samples Containing Chiral Creature Parts",
+  "From": "Villa Libre",
+  "To": "C1 South Distribution Center",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "103004": {
+  "no": 218,
+  "section": "Standard",
+  "Order": "[Express] Deliver Rare Freshwater Fish",
+  "From": "Villa Libre",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "103007": {
+  "no": 220,
+  "section": "Standard",
+  "Order": "Deliver Handmade Tortillas Made with All-Natural Maize",
+  "From": "Villa Libre",
+  "To": "The Bokka",
+  "Cargo": "M×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "103009": {
+  "no": 221,
+  "section": "Standard",
+  "Order": "Deliver a Cinema Classic - \"The Wandering Porter 2: Ragin' Cactus\"",
+  "From": "Villa Libre",
+  "To": "The Artist",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "103011": {
+  "no": 211,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Mask Supposedly Excavated from Ancient Ruins",
+  "From": "Villa Libre",
+  "To": "Ciudad Nudo del Norte (C1)",
+  "Cargo": "L×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "103013": {
+  "no": 219,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Rare Feathers from a Quetzal, Bird of Freedom",
+  "From": "Villa Libre",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "103015": {
+  "no": 222,
+  "section": "Standard",
+  "Order": "Deliver Precious Natural Copal Incense",
+  "From": "Villa Libre",
+  "To": "The Artist",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "103120": {
+  "no": 215,
+  "section": "Standard",
+  "Order": "[Elimination] Seize the Bandit Base at the Old Border",
+  "From": "Villa Libre",
+  "To": "Bandit Base at the Old Border",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "103317": {
+  "no": 214,
+  "section": "Standard",
+  "Order": "[Hazardous] Dispose of Large Stockpile of Bandit Explosives",
+  "From": "Villa Libre",
+  "To": "Bandit Base at the Old Border",
+  "Cargo": "L×8",
+  "gtype": 19,
+  "confidence": "verified"
+ },
+ "103422": {
+  "no": 213,
+  "section": "Standard",
+  "Order": "Recover Vital Aid Packages Lost During Delivery",
+  "From": "Villa Libre",
+  "To": "Chiral Creature Habitat (Near Villa Libre)",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "103423": {
+  "no": 212,
+  "section": "Standard",
+  "Order": "[Hazardous] Recover Stolen Alkali Metals",
+  "From": "Villa Libre",
+  "To": "Bandit Base North of the C1 South Distribution Center",
+  "Cargo": "L×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "103424": {
+  "no": 217,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Emergency Medical Devices Stolen by Bandits",
+  "From": "Villa Libre",
+  "To": "Bandit Base Northwest of C1",
+  "Cargo": "M×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "104001": {
+  "no": 229,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Large Optical Lenses Used to Observe the Plate Gate",
+  "From": "C1 South Distribution Center",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "104002": {
+  "no": 231,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver the Backup Generator Units",
+  "From": "C1 South Distribution Center",
+  "To": "The Artist",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "104003": {
+  "no": 230,
+  "section": "Standard",
+  "Order": "Deliver Hard-Wearing Undergarments for Outdoor Use",
+  "From": "C1 South Distribution Center",
+  "To": "The Bokka",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "104007": {
+  "no": 226,
+  "section": "Standard",
+  "Order": "[Express] Deliver Seafood Quesadillas Made with Stranded Fish",
+  "From": "C1 South Distribution Center",
+  "To": "Villa Libre",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "104008": {
+  "no": 223,
+  "section": "Standard",
+  "Order": "Deliver the Classic TV Series - \"The Wandering Porter and the Black Rat\"",
+  "From": "C1 South Distribution Center",
+  "To": "Ciudad Nudo del Norte (C1)",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "104009": {
+  "no": 224,
+  "section": "Standard",
+  "Order": "Deliver the Long-Lost Movie - \"The Wandering Porter: The Years of Innocence\"",
+  "From": "C1 South Distribution Center",
+  "To": "Ciudad Nudo del Norte (C1)",
+  "Cargo": "M×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "104010": {
+  "no": 232,
+  "section": "Standard",
+  "Order": "Deliver the Hummingbird Sculptures",
+  "From": "C1 South Distribution Center",
+  "To": "The Artist",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "104061": {
+  "no": 225,
+  "section": "Standard",
+  "Order": "Recover Debris from an Unidentified Flying Object",
+  "From": "C1 South Distribution Center",
+  "To": "Near C1 South Distribution Center",
+  "Cargo": "L×6",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "104215": {
+  "no": 227,
+  "section": "Standard",
+  "Order": "Subdue Former C1 Staffer Turned Bandit",
+  "From": "C1 South Distribution Center",
+  "To": "Bandit Base North of the C1 South Distribution Center",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "104412": {
+  "no": 228,
+  "section": "Standard",
+  "Order": "Recover a Large Stockpile of Ammo Stolen by Bandits",
+  "From": "C1 South Distribution Center",
+  "To": "Bandit Base Northwest of C1",
+  "Cargo": "L×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "105001": {
+  "no": 240,
+  "section": "Standard",
+  "Order": "Deliver Enhanced Edible Cacti",
+  "From": "Former Geophysics Research Lab",
+  "To": "The Bokka",
+  "Cargo": "L×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "105007": {
+  "no": 235,
+  "section": "Standard",
+  "Order": "[Express] Deliver Unidentified Samples of Stranded Fish",
+  "From": "Former Geophysics Research Lab",
+  "To": "Villa Libre",
+  "Cargo": "M×34",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "105009": {
+  "no": 233,
+  "section": "Standard",
+  "Order": "Deliver the Mummified Mythical Creatures",
+  "From": "Former Geophysics Research Lab",
+  "To": "Ciudad Nudo del Norte (C1)",
+  "Cargo": "L×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "105010": {
+  "no": 236,
+  "section": "Standard",
+  "Order": "Deliver Chili Oil That Recreates a Long-Lost Chipotle Flavor",
+  "From": "Former Geophysics Research Lab",
+  "To": "Villa Libre",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "105011": {
+  "no": 237,
+  "section": "Standard",
+  "Order": "Deliver Samples of Subterranean Water from Near the Plate Gate",
+  "From": "Former Geophysics Research Lab",
+  "To": "C1 South Distribution Center",
+  "Cargo": "XL×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "105031": {
+  "no": 234,
+  "section": "Standard",
+  "Order": "Deliver Metals",
+  "From": "Former Geophysics Research Lab",
+  "To": "Ciudad Nudo del Norte (C1)",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "105062": {
+  "no": 238,
+  "section": "Standard",
+  "Order": "Recover Toys Collected by Deadman",
+  "From": "Former Geophysics Research Lab",
+  "To": "Near Former Geophysics Research Lab",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "105416": {
+  "no": 239,
+  "section": "Standard",
+  "Order": "Recover a Large Quantity of Anesthetic Agents and Sedatives Stolen During Delivery",
+  "From": "Former Geophysics Research Lab",
+  "To": "Bandit Base North of the C1 South Distribution Center",
+  "Cargo": "S×12",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "107000": {
+  "no": 241,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Beloved Worn-Out Trekking Boots",
+  "From": "The Bokka",
+  "To": "Ciudad Nudo del Norte (C1)",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "107001": {
+  "no": 244,
+  "section": "Standard",
+  "Order": "Deliver Old US Army Survival Kits",
+  "From": "The Bokka",
+  "To": "C1 South Distribution Center",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "107003": {
+  "no": 242,
+  "section": "Standard",
+  "Order": "Deliver Rare Mineral Samples from the Mountains",
+  "From": "The Bokka",
+  "To": "Ciudad Nudo del Norte (C1)",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "107004": {
+  "no": 246,
+  "section": "Standard",
+  "Order": "Deliver Meteorite Fragments Found in Eastern Mexico",
+  "From": "The Bokka",
+  "To": "The Artist",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "107006": {
+  "no": 243,
+  "section": "Standard",
+  "Order": "Deliver Selectively Bred Fruiting Cacti for Fruit Production",
+  "From": "The Bokka",
+  "To": "Villa Libre",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "107052": {
+  "no": 245,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Vintage Binoculars Sent for Repair",
+  "From": "The Bokka",
+  "To": "Near C1 South Distribution Center",
+  "Cargo": "S×1",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "108001": {
+  "no": 248,
+  "section": "Standard",
+  "Order": "Deliver Special Roomwear Made Using Plant-Based Materials",
+  "From": "The Artist",
+  "To": "C1 South Distribution Center",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "108003": {
+  "no": 247,
+  "section": "Standard",
+  "Order": "Deliver Illustration Books Depicting Hawaiian Beaches",
+  "From": "The Artist",
+  "To": "Villa Libre",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "108004": {
+  "no": 251,
+  "section": "Standard",
+  "Order": "Deliver Surrealist Paintings of the Beach and BTs",
+  "From": "The Artist",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "108005": {
+  "no": 250,
+  "section": "Standard",
+  "Order": "Deliver the Handmade Picture Book Series \"Cryptobiotes at the Seaside\"",
+  "From": "The Artist",
+  "To": "Former Geophysics Research Lab",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "108006": {
+  "no": 249,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Dramatically Colored Beach Paintings Created Using Cryptobiote Dyes",
+  "From": "The Artist",
+  "To": "C1 South Distribution Center",
+  "Cargo": "M×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "108052": {
+  "no": 252,
+  "section": "Standard",
+  "Order": "Recover Cactus-Themed Massage Boards",
+  "From": "The Artist",
+  "To": "Near The Artist",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "202001": {
+  "no": 258,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Compact Surveillance Cameras for Brigand Observation",
+  "From": "The Government's Base",
+  "To": "The Musician",
+  "Cargo": "S×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "202002": {
+  "no": 255,
+  "section": "Standard",
+  "Order": "Deliver a Series of \"Outback Sniper\" Adventure Novels",
+  "From": "The Government's Base",
+  "To": "The Lone Commander",
+  "Cargo": "M×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "202003": {
+  "no": 259,
+  "section": "Standard",
+  "Order": "Deliver Classified Documents of an Old British Intelligence Agency",
+  "From": "The Government's Base",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "202004": {
+  "no": 257,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Paintings of Australia Before the Death Stranding",
+  "From": "The Government's Base",
+  "To": "Western Environmental Observatory",
+  "Cargo": "L×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "202006": {
+  "no": 260,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Models of 20th-Century Cars",
+  "From": "The Government's Base",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "202031": {
+  "no": 256,
+  "section": "Standard",
+  "Order": "Deliver Metals",
+  "From": "The Government's Base",
+  "To": "The Lone Commander",
+  "Cargo": "L×2, M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "202200": {
+  "no": 253,
+  "section": "Standard",
+  "Order": "Defeat the Black-Clad Brigands Targeting the Lone Commander",
+  "From": "The Government's Base",
+  "To": "Brigand Base North of the Government's Base",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "202401": {
+  "no": 254,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Precious Camera Lost in a BT Area",
+  "From": "The Government's Base",
+  "To": "BT Area North of the Plate Gate",
+  "Cargo": "S×1",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "203001": {
+  "no": 269,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver an Encryption Device Used by the Brigands",
+  "From": "Western Environmental Observatory",
+  "To": "The Government's Base",
+  "Cargo": "L×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "203006": {
+  "no": 276,
+  "section": "Standard",
+  "Order": "Deliver Samples of a Rare Dung Beetle Found in the Desert",
+  "From": "Western Environmental Observatory",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "203007": {
+  "no": 271,
+  "section": "Standard",
+  "Order": "Deliver Weapon Maintenance Tools",
+  "From": "Western Environmental Observatory",
+  "To": "The Lone Commander",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "203008": {
+  "no": 278,
+  "section": "Standard",
+  "Order": "Deliver Desert Sand for Research",
+  "From": "Western Environmental Observatory",
+  "To": "Rainbow Valley",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "203010": {
+  "no": 270,
+  "section": "Standard",
+  "Order": "Deliver High-Grade Chiral Decontamination Filters",
+  "From": "Western Environmental Observatory",
+  "To": "The Government's Base",
+  "Cargo": "M×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "203020": {
+  "no": 272,
+  "section": "Standard",
+  "Order": "Deliver Tar Obsidian Made in Mexico",
+  "From": "Western Environmental Observatory",
+  "To": "The Lone Commander",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "203031": {
+  "no": 275,
+  "section": "Standard",
+  "Order": "Deliver Metals",
+  "From": "Western Environmental Observatory",
+  "To": "The Musician",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "203032": {
+  "no": 279,
+  "section": "Standard",
+  "Order": "Deliver Resins",
+  "From": "Western Environmental Observatory",
+  "To": "Rainbow Valley",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "203417": {
+  "no": 274,
+  "section": "Standard",
+  "Order": "Recover Toxic Chiralium Stockpiled by the Brigands",
+  "From": "Western Environmental Observatory",
+  "To": "Brigand Base Southeast of F1",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "203418": {
+  "no": 273,
+  "section": "Standard",
+  "Order": "[Hazardous] Recover Stolen Alkali Metals",
+  "From": "Western Environmental Observatory",
+  "To": "Brigand Base North of the Government's Base",
+  "Cargo": "L×2",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "203422": {
+  "no": 277,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover a Cache of Stolen mRNA Vaccines",
+  "From": "Western Environmental Observatory",
+  "To": "Brigand Base Southeast of F1",
+  "Cargo": "S×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "204004": {
+  "no": 261,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Highly Prized Vintage Wine",
+  "From": "The Lone Commander",
+  "To": "The Government's Base",
+  "Cargo": "S×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "204005": {
+  "no": 267,
+  "section": "Standard",
+  "Order": "Deliver Stone Samples from a Volcano That Resumed Activity after the Death Stranding",
+  "From": "The Lone Commander",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "204011": {
+  "no": 265,
+  "section": "Standard",
+  "Order": "Deliver Processed Tar Obsidian",
+  "From": "The Lone Commander",
+  "To": "The Musician",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "204017": {
+  "no": 266,
+  "section": "Standard",
+  "Order": "Deliver Rock Samples Believed to be Ancient Chiral Cinders",
+  "From": "The Lone Commander",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "XL×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "204018": {
+  "no": 268,
+  "section": "Standard",
+  "Order": "[Express/Breakable Cargo] Deliver Highly Prized Vintage Whisky",
+  "From": "The Lone Commander",
+  "To": "Mr. Impossible",
+  "Cargo": "S×15",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "204050": {
+  "no": 262,
+  "section": "Standard",
+  "Order": "Recover Survival Kit Lost During Preservation Activities",
+  "From": "The Lone Commander",
+  "To": "Near Smoke Hill Mine",
+  "Cargo": "M×1",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "204400": {
+  "no": 263,
+  "section": "Standard",
+  "Order": "Recover Timefall-Resistant Tents Lost in a BT Area",
+  "From": "The Lone Commander",
+  "To": "BT Area West of the Lone Commander",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "204410": {
+  "no": 264,
+  "section": "Standard",
+  "Order": "Recover Equipment Used by Commandos from the Old Australian Army",
+  "From": "The Lone Commander",
+  "To": "Brigand Base North of the Government's Base",
+  "Cargo": "M×2",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "205012": {
+  "no": 284,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Lithophone Made from Tar Obsidian",
+  "From": "The Musician",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "205015": {
+  "no": 280,
+  "section": "Standard",
+  "Order": "Deliver Music Record Containing Original Works",
+  "From": "The Musician",
+  "To": "The Lone Commander",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "205017": {
+  "no": 285,
+  "section": "Standard",
+  "Order": "Deliver Legendary Album Containing Hit Song \"Death Stranding\"",
+  "From": "The Musician",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "205018": {
+  "no": 281,
+  "section": "Standard",
+  "Order": "Deliver Record Containing \"Weekend Zombies,\" SST's Greatest Hit",
+  "From": "The Musician",
+  "To": "Western Environmental Observatory",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "205019": {
+  "no": 286,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Repaired High-End Audio Devices",
+  "From": "The Musician",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "205020": {
+  "no": 288,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Restored Pre-Stranding Violins",
+  "From": "The Musician",
+  "To": "Rainbow Valley",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "205064": {
+  "no": 283,
+  "section": "Standard",
+  "Order": "Retrieve Sheet Music from Classic 20th-Century Film Lost During Delivery",
+  "From": "The Musician",
+  "To": "Near The Musician",
+  "Cargo": "S×7",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "205211": {
+  "no": 287,
+  "section": "Standard",
+  "Order": "Eliminate Brigands Equipped with Experimental Armor",
+  "From": "The Musician",
+  "To": "Brigand Base Southeast of F1",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "205413": {
+  "no": 282,
+  "section": "Standard",
+  "Order": "Recover a Cache of High-Output Transformers",
+  "From": "The Musician",
+  "To": "Brigand Base Southeast of F1",
+  "Cargo": "L×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "206001": {
+  "no": 298,
+  "section": "Standard",
+  "Order": "Deliver Specially Ordered Construction Materials for Facility Repair",
+  "From": "West Fort Knot (F1)",
+  "To": "F2 South Distribution Center",
+  "Cargo": "M×7",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206002": {
+  "no": 292,
+  "section": "Standard",
+  "Order": "Deliver Newly Developed Complete Food Samples",
+  "From": "West Fort Knot (F1)",
+  "To": "The Musician",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206004": {
+  "no": 301,
+  "section": "Standard",
+  "Order": "Deliver Experimental Tranquilizers",
+  "From": "West Fort Knot (F1)",
+  "To": "South Fort Knot (F6)",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206005": {
+  "no": 290,
+  "section": "Standard",
+  "Order": "Deliver Timefall-Resistant Raincoats",
+  "From": "West Fort Knot (F1)",
+  "To": "The Lone Commander",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206008": {
+  "no": 299,
+  "section": "Standard",
+  "Order": "Deliver Custom Vehicle Repair Parts",
+  "From": "West Fort Knot (F1)",
+  "To": "The Inventor",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206016": {
+  "no": 297,
+  "section": "Standard",
+  "Order": "Deliver an Improved Timefall Monitoring Device",
+  "From": "West Fort Knot (F1)",
+  "To": "F2 South Distribution Center",
+  "Cargo": "L×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206030": {
+  "no": 300,
+  "section": "Standard",
+  "Order": "Deliver Metals and Special Alloys",
+  "From": "West Fort Knot (F1)",
+  "To": "The Inventor",
+  "Cargo": "L×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206031": {
+  "no": 289,
+  "section": "Standard",
+  "Order": "Deliver Ceramics",
+  "From": "West Fort Knot (F1)",
+  "To": "The Government's Base",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206032": {
+  "no": 296,
+  "section": "Standard",
+  "Order": "Deliver Chemicals",
+  "From": "West Fort Knot (F1)",
+  "To": "Animal Shelter",
+  "Cargo": "XL×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "206064": {
+  "no": 295,
+  "section": "Standard",
+  "Order": "Recover Vehicle Paints Lost During Delivery",
+  "From": "West Fort Knot (F1)",
+  "To": "Near The Inventor",
+  "Cargo": "XL×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "206065": {
+  "no": 291,
+  "section": "Standard",
+  "Order": "Recover Mystery Cargo From Near the Plate Gate",
+  "From": "West Fort Knot (F1)",
+  "To": "Near Plate Gate",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "206310": {
+  "no": 293,
+  "section": "Standard",
+  "Order": "Dispose of Tar Drugs Supplied by Brigands",
+  "From": "West Fort Knot (F1)",
+  "To": "Brigand Base Southeast of F1",
+  "Cargo": "L×8",
+  "gtype": 19,
+  "confidence": "verified"
+ },
+ "206413": {
+  "no": 294,
+  "section": "Standard",
+  "Order": "Recover Unusual Animal Remains Lost During Delivery",
+  "From": "West Fort Knot (F1)",
+  "To": "Chiral Creature Habitat (Near Mine North of F1)",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "207002": {
+  "no": 356,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver a Repaired Chiral Densitometer",
+  "From": "The Inventor",
+  "To": "The Mechanic",
+  "Cargo": "L×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "207003": {
+  "no": 348,
+  "section": "Standard",
+  "Order": "Deliver Special Tools for Monorail Maintenance",
+  "From": "The Inventor",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "207013": {
+  "no": 355,
+  "section": "Standard",
+  "Order": "Deliver a Tremendously Uninspired Invention Used to Take Photos of Oneself",
+  "From": "The Inventor",
+  "To": "The Dowser",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "207017": {
+  "no": 349,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Samples of a Supple Metal Developed as a Result of Flexible Thinking",
+  "From": "The Inventor",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "207020": {
+  "no": 350,
+  "section": "Standard",
+  "Order": "[Chilled] Deliver an All-New Liquid Superfood That Babies Find Perplexing",
+  "From": "The Inventor",
+  "To": "Rainbow Valley",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "207022": {
+  "no": 351,
+  "section": "Standard",
+  "Order": "Deliver Robot Kangaroos Fitted with an Automatic Feeding Function",
+  "From": "The Inventor",
+  "To": "Rainy's Shelter",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "207023": {
+  "no": 347,
+  "section": "Standard",
+  "Order": "Deliver Prototype Training Suits",
+  "From": "The Inventor",
+  "To": "Western Environmental Observatory",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "207053": {
+  "no": 352,
+  "section": "Standard",
+  "Order": "Recover an Ultra-Lightweight Fishing Net Made Using Carbon Nanotubes",
+  "From": "The Inventor",
+  "To": "Near Mine North of F1",
+  "Cargo": "L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "207061": {
+  "no": 354,
+  "section": "Standard",
+  "Order": "[Hazardous] Recover Emergency Fuel Cell Batteries Lost During Delivery",
+  "From": "The Inventor",
+  "To": "Near Mine North of F1",
+  "Cargo": "L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "207124": {
+  "no": 353,
+  "section": "Standard",
+  "Order": "[Elimination] Seize Brigand Base West of the Northern Environmental Observatory",
+  "From": "The Inventor",
+  "To": "Brigand Base West of the Northern Environmental Observatory",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "208000": {
+  "no": 426,
+  "section": "Standard",
+  "Order": "Deliver the Classic Drama Series \"Greatest Koalas 2: Eucalyptus Eulogy\"",
+  "From": "The Pioneer",
+  "To": "Southern Environmental Observatory",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "208001": {
+  "no": 422,
+  "section": "Standard",
+  "Order": "Deliver the Legendary Strategy RPG Series \"Porter Battle Lines 2066\"",
+  "From": "The Pioneer",
+  "To": "The Motherhood",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "208004": {
+  "no": 424,
+  "section": "Standard",
+  "Order": "Deliver Tusks of the Mythical Giant Creature Known as the \"Elephant\"",
+  "From": "The Pioneer",
+  "To": "The Ghost Hunter",
+  "Cargo": "XL×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "208007": {
+  "no": 420,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Legendary Fine Wine \"Bâtard-Montrachet\"",
+  "From": "The Pioneer",
+  "To": "Heartman's Lab",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "208008": {
+  "no": 421,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Semi-Mythical Rare Whisky \"Aqua Vitae\"",
+  "From": "The Pioneer",
+  "To": "The Pizza Chef",
+  "Cargo": "S×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "208009": {
+  "no": 423,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Chiral Crystal Ornaments Made in Mexico",
+  "From": "The Pioneer",
+  "To": "The Motherhood",
+  "Cargo": "M×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "208010": {
+  "no": 425,
+  "section": "Standard",
+  "Order": "Deliver Meteorite Fragments Believed to Date from the Late Cretaceous Period",
+  "From": "The Pioneer",
+  "To": "The Ghost Hunter",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "209001": {
+  "no": 307,
+  "section": "Standard",
+  "Order": "Return Plant Growth Accelerator Prototypes",
+  "From": "Rainbow Valley",
+  "To": "The Inventor",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "209002": {
+  "no": 308,
+  "section": "Standard",
+  "Order": "Deliver Houseplants Suitable for Dry Climates",
+  "From": "Rainbow Valley",
+  "To": "The Architect",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "209003": {
+  "no": 309,
+  "section": "Standard",
+  "Order": "Deliver Freshly Picked Organic Vegetables",
+  "From": "Rainbow Valley",
+  "To": "The Fisherman",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "209004": {
+  "no": 306,
+  "section": "Standard",
+  "Order": "Deliver Newly Developed Revitalizers for Dying Plants",
+  "From": "Rainbow Valley",
+  "To": "The Inventor",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "209010": {
+  "no": 302,
+  "section": "Standard",
+  "Order": "[Express] Deliver Assortment of Fresh Seafood",
+  "From": "Rainbow Valley",
+  "To": "The Government's Base",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "209011": {
+  "no": 303,
+  "section": "Standard",
+  "Order": "[Express] Deliver Assortment of Organic Vegetables Grown Using Timefall",
+  "From": "Rainbow Valley",
+  "To": "The Musician",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "209057": {
+  "no": 305,
+  "section": "Standard",
+  "Order": "Recover Agricultural Pesticides Washed Away During Delivery",
+  "From": "Rainbow Valley",
+  "To": "Near Mine North of F1",
+  "Cargo": "XL×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "209400": {
+  "no": 304,
+  "section": "Standard",
+  "Order": "Recover Top-Quality Sugarcane Seedlings From a BT Area",
+  "From": "Rainbow Valley",
+  "To": "BT Area East of F1",
+  "Cargo": "M×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "210001": {
+  "no": 312,
+  "section": "Standard",
+  "Order": "Deliver Homemade Organic Fertilizers",
+  "From": "Animal Shelter",
+  "To": "Rainbow Valley",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "210002": {
+  "no": 311,
+  "section": "Standard",
+  "Order": "Deliver Prototype Fuel Made from Fermented Excrement",
+  "From": "Animal Shelter",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "XL×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "210003": {
+  "no": 319,
+  "section": "Standard",
+  "Order": "Deliver Plant Samples from the Bush",
+  "From": "Animal Shelter",
+  "To": "The Architect",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "210007": {
+  "no": 318,
+  "section": "Standard",
+  "Order": "Deliver Aged Excrement Extract",
+  "From": "Animal Shelter",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "XL×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "210008": {
+  "no": 310,
+  "section": "Standard",
+  "Order": "Deliver Soil Samples from Bushfire Zone",
+  "From": "Animal Shelter",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "210009": {
+  "no": 320,
+  "section": "Standard",
+  "Order": "[Breakable Cargo/Express] Deliver Cell Sample from Animal Tumor Biopsy",
+  "From": "Animal Shelter",
+  "To": "The Metagenomicist",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "210013": {
+  "no": 313,
+  "section": "Standard",
+  "Order": "Deliver Top-Grade Bird Feed",
+  "From": "Animal Shelter",
+  "To": "Rainy's Shelter",
+  "Cargo": "S×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "210064": {
+  "no": 314,
+  "section": "Standard",
+  "Order": "[Do Not Submerge] Recover Chlorobiote Collection Boxes",
+  "From": "Animal Shelter",
+  "To": "Near Animal Shelter",
+  "Cargo": "L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "210411": {
+  "no": 317,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover a Cache of Stolen mRNA Vaccines",
+  "From": "Animal Shelter",
+  "To": "Brigand Base West of the Northern Environmental Observatory",
+  "Cargo": "S×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "210415": {
+  "no": 315,
+  "section": "Standard",
+  "Order": "Recover Animal First Aid Kits Lost During Delivery",
+  "From": "Animal Shelter",
+  "To": "Chiral Creature Habitat (Near Animal Shelter)",
+  "Cargo": "M×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "210416": {
+  "no": 316,
+  "section": "Standard",
+  "Order": "Recover Blood Products Stolen During Delivery",
+  "From": "Animal Shelter",
+  "To": "Brigand Base West of the Northern Environmental Observatory",
+  "Cargo": "M×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "212000": {
+  "no": 489,
+  "section": "Standard",
+  "Order": "Deliver a Tar Fishing Set",
+  "From": "The Fisherman",
+  "To": "Animal Shelter",
+  "Cargo": "L×1, M×1, S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "212001": {
+  "no": 493,
+  "section": "Standard",
+  "Order": "Deliver Stranded Creature Samples that Appear to be Ancient Fish",
+  "From": "The Fisherman",
+  "To": "F5 East Distribution Center",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "212010": {
+  "no": 490,
+  "section": "Standard",
+  "Order": "Deliver Snake-Shaped Chiral Creature Samples",
+  "From": "The Fisherman",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "212017": {
+  "no": 491,
+  "section": "Standard",
+  "Order": "[Express] Deliver an Assortment of Fresh Tar Organisms",
+  "From": "The Fisherman",
+  "To": "F2 South Distribution Center",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "212021": {
+  "no": 492,
+  "section": "Standard",
+  "Order": "Deliver a Supposedly Clairvoyant Octopus Rumored to be able to Predict the Future",
+  "From": "The Fisherman",
+  "To": "The Pioneer",
+  "Cargo": "L×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "212122": {
+  "no": 494,
+  "section": "Standard",
+  "Order": "[Elimination] Defeat all Floating BTs in the BT Area",
+  "From": "The Fisherman",
+  "To": "BT Area (Near The Fisherman)",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "213000": {
+  "no": 321,
+  "section": "Standard",
+  "Order": "Deliver River Water Samples for Analysis",
+  "From": "Northern Environmental Observatory",
+  "To": "Rainbow Valley",
+  "Cargo": "XL×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213001": {
+  "no": 331,
+  "section": "Standard",
+  "Order": "Deliver Atmospheric Samples Extracted from a BT Area",
+  "From": "Northern Environmental Observatory",
+  "To": "F5 East Distribution Center",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213002": {
+  "no": 332,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Ancient Bone Fragments from an Extinct Creature Found in the Tar",
+  "From": "Northern Environmental Observatory",
+  "To": "The Fisherman",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213003": {
+  "no": 323,
+  "section": "Standard",
+  "Order": "Deliver Flower Assortments Collected Near a Large Waterfall",
+  "From": "Northern Environmental Observatory",
+  "To": "Animal Shelter",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213005": {
+  "no": 330,
+  "section": "Standard",
+  "Order": "Deliver the Pre-Death Stranding Report - \"At the Vanguard of Environmental Observation\"",
+  "From": "Northern Environmental Observatory",
+  "To": "The Architect",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213006": {
+  "no": 328,
+  "section": "Standard",
+  "Order": "Deliver Special Soil Mixed with Excrement Extract",
+  "From": "Northern Environmental Observatory",
+  "To": "The Dowser",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213007": {
+  "no": 326,
+  "section": "Standard",
+  "Order": "Deliver the Cult Classic Book Series - \"Environmental Observation Battle 2511\"",
+  "From": "Northern Environmental Observatory",
+  "To": "The Inventor",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213031": {
+  "no": 322,
+  "section": "Standard",
+  "Order": "Deliver Resins",
+  "From": "Northern Environmental Observatory",
+  "To": "Rainbow Valley",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213032": {
+  "no": 329,
+  "section": "Standard",
+  "Order": "Deliver Metals",
+  "From": "Northern Environmental Observatory",
+  "To": "The Dowser",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213033": {
+  "no": 327,
+  "section": "Standard",
+  "Order": "Deliver Metals and Resins",
+  "From": "Northern Environmental Observatory",
+  "To": "The Inventor",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "213411": {
+  "no": 324,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Stolen High-Precision Gate Quake Resonance Wave Measuring Instruments",
+  "From": "Northern Environmental Observatory",
+  "To": "Brigand Base West of the Northern Environmental Observatory",
+  "Cargo": "M×5",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "213412": {
+  "no": 325,
+  "section": "Standard",
+  "Order": "Recover Large Amounts of Base Expansion Materials",
+  "From": "Northern Environmental Observatory",
+  "To": "Armed Survivalist Base East of the F2 South Distribution Center",
+  "Cargo": "L×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "214000": {
+  "no": 391,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Detailed Architect's Models of Fort Knot Cities",
+  "From": "The Architect",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "S×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "214001": {
+  "no": 396,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Detailed Concept Models for Mining Facilities",
+  "From": "The Architect",
+  "To": "The Mechanic",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "214003": {
+  "no": 393,
+  "section": "Standard",
+  "Order": "Deliver Special Chemicals Used to Repair External Plaster Walls",
+  "From": "The Architect",
+  "To": "The Dowser",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "214008": {
+  "no": 392,
+  "section": "Standard",
+  "Order": "Deliver the Cult Classic Manga Series \"Musclebound Porter J: Porter Wars\"",
+  "From": "The Architect",
+  "To": "F2 South Distribution Center",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "214030": {
+  "no": 395,
+  "section": "Standard",
+  "Order": "Deliver Metals",
+  "From": "The Architect",
+  "To": "The Data Scientist",
+  "Cargo": "XL×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "214052": {
+  "no": 394,
+  "section": "Standard",
+  "Order": "Recover High-Quality Timefall-Resistant Wood Lost in a BT Area",
+  "From": "The Architect",
+  "To": "Near Mine North of Tar Lake",
+  "Cargo": "L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "215000": {
+  "no": 345,
+  "section": "Standard",
+  "Order": "Deliver a Set of Performance-Enhancing Nutritional Drinks",
+  "From": "F2 South Distribution Center",
+  "To": "The Data Scientist",
+  "Cargo": "XL×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215001": {
+  "no": 336,
+  "section": "Standard",
+  "Order": "Deliver Large Quantity of High-Energy Emergency Rations",
+  "From": "F2 South Distribution Center",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "L×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215002": {
+  "no": 335,
+  "section": "Standard",
+  "Order": "Deliver Nutrient-Rich Feed for Herbivores",
+  "From": "F2 South Distribution Center",
+  "To": "Animal Shelter",
+  "Cargo": "L×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215004": {
+  "no": 342,
+  "section": "Standard",
+  "Order": "Deliver Timefall-Resistant Clothes",
+  "From": "F2 South Distribution Center",
+  "To": "The Dowser",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215007": {
+  "no": 343,
+  "section": "Standard",
+  "Order": "Deliver Hyperfood Made Using an Ancient Fruit",
+  "From": "F2 South Distribution Center",
+  "To": "Heartman's Lab",
+  "Cargo": "S×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215013": {
+  "no": 334,
+  "section": "Standard",
+  "Order": "Deliver Large Assortment of Bird Feed for Small Birds",
+  "From": "F2 South Distribution Center",
+  "To": "Rainy's Shelter",
+  "Cargo": "S×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215015": {
+  "no": 346,
+  "section": "Standard",
+  "Order": "[Express] Deliver a Large Quantity of Assorted Fresh Seafood",
+  "From": "F2 South Distribution Center",
+  "To": "Terminal Fort Knot (F8)",
+  "Cargo": "M×40",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215031": {
+  "no": 344,
+  "section": "Standard",
+  "Order": "Deliver Ceramics",
+  "From": "F2 South Distribution Center",
+  "To": "The Architect",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215032": {
+  "no": 333,
+  "section": "Standard",
+  "Order": "Deliver Metals and Chemicals",
+  "From": "F2 South Distribution Center",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "L×3, M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "215066": {
+  "no": 338,
+  "section": "Standard",
+  "Order": "Recover Aid Packages Lost During Delivery to Cities",
+  "From": "F2 South Distribution Center",
+  "To": "Near Animal Shelter",
+  "Cargo": "L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "215212": {
+  "no": 340,
+  "section": "Standard",
+  "Order": "Defeat the Former F2 Guard Conspiring with the Armed Survivalists",
+  "From": "F2 South Distribution Center",
+  "To": "Armed Survivalist Base East of the F2 South Distribution Center",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "215409": {
+  "no": 337,
+  "section": "Standard",
+  "Order": "[Vog Warning] Recover Volatile Toxic Chemicals for Research Purposes",
+  "From": "F2 South Distribution Center",
+  "To": "Brigand Base West of the Northern Environmental Observatory",
+  "Cargo": "XL×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "215411": {
+  "no": 341,
+  "section": "Standard",
+  "Order": "Recover Blood Products for Transfusion Lost in BT Area",
+  "From": "F2 South Distribution Center",
+  "To": "BT Area Northwest of the Northern Environmental Observatory",
+  "Cargo": "S×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "215417": {
+  "no": 339,
+  "section": "Standard",
+  "Order": "Recover a Large Quantity of High-Energy Emergency Rations Stolen During Delivery",
+  "From": "F2 South Distribution Center",
+  "To": "Brigand Base West of the Northern Environmental Observatory",
+  "Cargo": "L×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "216002": {
+  "no": 357,
+  "section": "Standard",
+  "Order": "Deliver Rock Samples from a Coastal Region",
+  "From": "The Dowser",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "216007": {
+  "no": 359,
+  "section": "Standard",
+  "Order": "Deliver Regrown Ancient Plants",
+  "From": "The Dowser",
+  "To": "F2 South Distribution Center",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "216011": {
+  "no": 358,
+  "section": "Standard",
+  "Order": "Deliver Valuable Antiques Dug Up near the Ruins of F3",
+  "From": "The Dowser",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "L×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "216013": {
+  "no": 362,
+  "section": "Standard",
+  "Order": "Deliver a Large Volume of Excavated Machine Components from the Late 20th Century",
+  "From": "The Dowser",
+  "To": "The Inventor",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "216015": {
+  "no": 363,
+  "section": "Standard",
+  "Order": "[Hazardous] Deliver a Large Volume of Excavated EV Batteries from the Early 21st Century",
+  "From": "The Dowser",
+  "To": "The Mechanic",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "216059": {
+  "no": 361,
+  "section": "Standard",
+  "Order": "Recover High-Precision Metal Dowsing Instruments Lost During Delivery",
+  "From": "The Dowser",
+  "To": "Near Twin Valley Mine",
+  "Cargo": "L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "216118": {
+  "no": 360,
+  "section": "Standard",
+  "Order": "[Elimination] Defeat all Floating BTs in the BT Area",
+  "From": "The Dowser",
+  "To": "BT Area (Near F2 South Distribution Center)",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "217000": {
+  "no": 365,
+  "section": "Standard",
+  "Order": "Deliver Water From Heartman's Hot Spring",
+  "From": "Heartman's Lab",
+  "To": "F2 South Distribution Center",
+  "Cargo": "XL×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217002": {
+  "no": 364,
+  "section": "Standard",
+  "Order": "Deliver Aging Barrels Made from Ancient Wood",
+  "From": "Heartman's Lab",
+  "To": "Animal Shelter",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217003": {
+  "no": 380,
+  "section": "Standard",
+  "Order": "[Express] Deliver Fresh Beach Water Within the Time Limit",
+  "From": "Heartman's Lab",
+  "To": "Mr. Impossible",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217006": {
+  "no": 374,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Precious Paintings of Scenes From the Beach",
+  "From": "Heartman's Lab",
+  "To": "The Data Scientist",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217009": {
+  "no": 376,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Classic Record Sets by one of the Greatest 20th Century Jazz Pianists",
+  "From": "Heartman's Lab",
+  "To": "The Mechanic",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217013": {
+  "no": 373,
+  "section": "Standard",
+  "Order": "Deliver Assortments of Homemade Pickles Preserved in Beach Water",
+  "From": "Heartman's Lab",
+  "To": "The Architect",
+  "Cargo": "S×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217014": {
+  "no": 367,
+  "section": "Standard",
+  "Order": "Deliver Seawater Samples Taken Near the Crater",
+  "From": "Heartman's Lab",
+  "To": "The Dowser",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217018": {
+  "no": 372,
+  "section": "Standard",
+  "Order": "[Express] Deliver Ancient Pizza Ingredients",
+  "From": "Heartman's Lab",
+  "To": "The Pizza Chef",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217020": {
+  "no": 378,
+  "section": "Standard",
+  "Order": "Deliver Surrealist Painting Created During an Out-of-Body Experience",
+  "From": "Heartman's Lab",
+  "To": "The Ghost Hunter",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217021": {
+  "no": 377,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Broken Precision Medical Equipment",
+  "From": "Heartman's Lab",
+  "To": "The Mechanic",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217022": {
+  "no": 371,
+  "section": "Standard",
+  "Order": "[Express] Deliver Octopi, a Delicacy Believed to Have Been Extinct",
+  "From": "Heartman's Lab",
+  "To": "The Pizza Chef",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217023": {
+  "no": 379,
+  "section": "Standard",
+  "Order": "Deliver Timefall-Resistant Suits",
+  "From": "Heartman's Lab",
+  "To": "The Metagenomicist",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217031": {
+  "no": 375,
+  "section": "Standard",
+  "Order": "Deliver Chemicals",
+  "From": "Heartman's Lab",
+  "To": "The Motherhood",
+  "Cargo": "XL×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "217066": {
+  "no": 368,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Ornaments Believed to Have Been Owned by British Royalty",
+  "From": "Heartman's Lab",
+  "To": "Near Heartman's Lab",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "217217": {
+  "no": 366,
+  "section": "Standard",
+  "Order": "Neutralize A Veteran Survivor from the Old City Guard",
+  "From": "Heartman's Lab",
+  "To": "Armed Survivalist Base South of Heartman's Lab",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "217408": {
+  "no": 370,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Stolen RNA Virus Samples",
+  "From": "Heartman's Lab",
+  "To": "Armed Survivalist Base East of the F2 South Distribution Center",
+  "Cargo": "S×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "217424": {
+  "no": 369,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Prototypes of Cutting-Edge \"Minimal Fab\" Technology",
+  "From": "Heartman's Lab",
+  "To": "Armed Survivalist Base East of the F2 South Distribution Center",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "218000": {
+  "no": 389,
+  "section": "Standard",
+  "Order": "Deliver Spices Made From Rare Pre-Death Stranding Plants",
+  "From": "The Pizza Chef",
+  "To": "The Chronobiologist",
+  "Cargo": "M×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "218001": {
+  "no": 382,
+  "section": "Standard",
+  "Order": "[Express/Breakable Cargo] Deliver Carbonated Beverages Made Using Beach Yeast",
+  "From": "The Pizza Chef",
+  "To": "Northern Environmental Observatory",
+  "Cargo": "M×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "218002": {
+  "no": 387,
+  "section": "Standard",
+  "Order": "[Keep Flat/Express] Deliver a Pizza Topped with Chlorobiotes and Vegetables",
+  "From": "The Pizza Chef",
+  "To": "The Data Scientist",
+  "Cargo": "L×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "218010": {
+  "no": 384,
+  "section": "Standard",
+  "Order": "[Keep Flat/Express] Deliver Beach-Style Pizzas Topped with Anchovies from a BT Area",
+  "From": "The Pizza Chef",
+  "To": "F2 South Distribution Center",
+  "Cargo": "L×20",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "218015": {
+  "no": 383,
+  "section": "Standard",
+  "Order": "[Express] Deliver Bread Baked Using Yeast from the Beach",
+  "From": "The Pizza Chef",
+  "To": "Heartman's Lab",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "218020": {
+  "no": 388,
+  "section": "Standard",
+  "Order": "[Keep Flat/Express] Deliver the Ancient Babylonian Pizzas",
+  "From": "The Pizza Chef",
+  "To": "East Fort Knot (F4)",
+  "Cargo": "M×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "218021": {
+  "no": 381,
+  "section": "Standard",
+  "Order": "[Keep Flat/Express] Deliver Special Rainbow Fruit Pizzas",
+  "From": "The Pizza Chef",
+  "To": "Rainy's Shelter",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "218030": {
+  "no": 386,
+  "section": "Standard",
+  "Order": "Deliver Ceramics and Special Alloys",
+  "From": "The Pizza Chef",
+  "To": "The Architect",
+  "Cargo": "XL×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "218067": {
+  "no": 385,
+  "section": "Standard",
+  "Order": "Recover a Carefully Curated Selection of Sci-Fi Anime Films",
+  "From": "The Pizza Chef",
+  "To": "Near Mine North of Tar Lake",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "218422": {
+  "no": 390,
+  "section": "Standard",
+  "Order": "Recover Vital Medical Aid Packages Reported Stolen",
+  "From": "The Pizza Chef",
+  "To": "Armed Survivalist Base South of Heartman's Lab",
+  "Cargo": "S×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "219001": {
+  "no": 413,
+  "section": "Standard",
+  "Order": "Deliver a Stock of First Aid Kits to Treat Chiral Contamination",
+  "From": "The Motherhood",
+  "To": "The Pioneer",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219002": {
+  "no": 416,
+  "section": "Standard",
+  "Order": "Deliver Smart Drugs that Improve the Gut Microbiome",
+  "From": "The Motherhood",
+  "To": "East Fort Knot (F4)",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219005": {
+  "no": 411,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Small Wearable Devices Used for Monitoring Health Status",
+  "From": "The Motherhood",
+  "To": "The Data Scientist",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219007": {
+  "no": 410,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Telesurgery Devices",
+  "From": "The Motherhood",
+  "To": "The Architect",
+  "Cargo": "XL×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219008": {
+  "no": 418,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Telesurgery Devices for Radiotherapy",
+  "From": "The Motherhood",
+  "To": "The Tar Therapist",
+  "Cargo": "XL×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219013": {
+  "no": 414,
+  "section": "Standard",
+  "Order": "Deliver Nutritional Drinks Containing Specially Synthesized Protein",
+  "From": "The Motherhood",
+  "To": "The Mechanic",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219017": {
+  "no": 419,
+  "section": "Standard",
+  "Order": "Deliver a Large Quantity of Anesthetic Agents and Sedatives",
+  "From": "The Motherhood",
+  "To": "Terminal Fort Knot (F8)",
+  "Cargo": "S×30",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219021": {
+  "no": 408,
+  "section": "Standard",
+  "Order": "[Vog Warning] Deliver a Special Solvent for Tar Dissolution",
+  "From": "The Motherhood",
+  "To": "F2 South Distribution Center",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219030": {
+  "no": 409,
+  "section": "Standard",
+  "Order": "Deliver Metals",
+  "From": "The Motherhood",
+  "To": "Heartman's Lab",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "219066": {
+  "no": 412,
+  "section": "Standard",
+  "Order": "Recover Aid Packages Lost During Delivery to Cities",
+  "From": "The Motherhood",
+  "To": "Near The Motherhood",
+  "Cargo": "L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "219069": {
+  "no": 417,
+  "section": "Standard",
+  "Order": "Recover Precious High-Energy Emergency Rations Lost During Delivery",
+  "From": "The Motherhood",
+  "To": "Near Eastern Environmental Observatory",
+  "Cargo": "L×3",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "219420": {
+  "no": 415,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Stolen Novel Cytomegalovirus Samples",
+  "From": "The Motherhood",
+  "To": "Armed Survivalist Base Southwest of the Motherhood",
+  "Cargo": "S×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "220001": {
+  "no": 399,
+  "section": "Standard",
+  "Order": "Deliver Chiral Hot Spring Salts",
+  "From": "The Data Scientist",
+  "To": "Heartman's Lab",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "220003": {
+  "no": 407,
+  "section": "Standard",
+  "Order": "Deliver Tar-Like Substance Samples Containing Chiral Creature Parts",
+  "From": "The Data Scientist",
+  "To": "The Tar Therapist",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "220004": {
+  "no": 398,
+  "section": "Standard",
+  "Order": "Deliver Samples Including Rock Salt Collected Among Some Strange Stones",
+  "From": "The Data Scientist",
+  "To": "F2 South Distribution Center",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "220005": {
+  "no": 400,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver a Prototype Security Camera That Uses Chiral Particle Imagery",
+  "From": "The Data Scientist",
+  "To": "The Architect",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "220021": {
+  "no": 401,
+  "section": "Standard",
+  "Order": "[Hazardous/Chilled] Deliver Quantum-Powered Homemade \"Q-Boy\" Game Consoles and Liquid Helium",
+  "From": "The Data Scientist",
+  "To": "The Architect",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "220023": {
+  "no": 406,
+  "section": "Standard",
+  "Order": "[Express] Deliver Piping Hot Homemade Gamer's Stew",
+  "From": "The Data Scientist",
+  "To": "The Mechanic",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "220026": {
+  "no": 397,
+  "section": "Standard",
+  "Order": "Deliver Barstools Hewn from a Rainbow Eucalyptus Tree",
+  "From": "The Data Scientist",
+  "To": "Rainy's Shelter",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "220030": {
+  "no": 405,
+  "section": "Standard",
+  "Order": "Deliver Special Alloys",
+  "From": "The Data Scientist",
+  "To": "The Pioneer",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "220070": {
+  "no": 402,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Custom Capture Boards for Broadcasting 4D Live Streams Lost During Delivery",
+  "From": "The Data Scientist",
+  "To": "Near The Data Scientist",
+  "Cargo": "M×3",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "220115": {
+  "no": 403,
+  "section": "Standard",
+  "Order": "[Elimination] Seize Armed Survivalist Base Southwest of the Motherhood",
+  "From": "The Data Scientist",
+  "To": "Armed Survivalist Base Southwest of the Motherhood",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "220416": {
+  "no": 404,
+  "section": "Standard",
+  "Order": "Recover Stolen Wide-Area Surveillance Radar Units",
+  "From": "The Data Scientist",
+  "To": "Armed Survivalist Base South of Heartman's Lab",
+  "Cargo": "L×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "221002": {
+  "no": 429,
+  "section": "Standard",
+  "Order": "Deliver Archival Footage of an Off-Road Endurance Race From Before the Death Stranding",
+  "From": "The Mechanic",
+  "To": "The Pioneer",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "221003": {
+  "no": 428,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Super-Sensitive Movement Scanners that Connect Directly to APAS",
+  "From": "The Mechanic",
+  "To": "The Architect",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "221004": {
+  "no": 435,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Super-Sensitive Accelerometers for Detecting Minute Vibrations",
+  "From": "The Mechanic",
+  "To": "The Fisherman",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "221006": {
+  "no": 430,
+  "section": "Standard",
+  "Order": "Deliver Special Tools Used to Inspect Containers",
+  "From": "The Mechanic",
+  "To": "East Fort Knot (F4)",
+  "Cargo": "XL×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "221007": {
+  "no": 433,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Microfiber High-Resolution Imaging Devices",
+  "From": "The Mechanic",
+  "To": "The Chronobiologist",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "221013": {
+  "no": 427,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Ancient Fossilized Pizzas",
+  "From": "The Mechanic",
+  "To": "Heartman's Lab",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "221015": {
+  "no": 434,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver High-End Audio Devices With Special Custom Tuning",
+  "From": "The Mechanic",
+  "To": "The Ghost Hunter",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "221016": {
+  "no": 436,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Classic Video Game Soundtracks",
+  "From": "The Mechanic",
+  "To": "Terminal Fort Knot (F8)",
+  "Cargo": "M×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "221064": {
+  "no": 431,
+  "section": "Standard",
+  "Order": "Recover High-Grade Springs Forged from Rare Metals",
+  "From": "The Mechanic",
+  "To": "Near Savanna Mine",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "221411": {
+  "no": 432,
+  "section": "Standard",
+  "Order": "Recover Ramjet Engines Stolen by the Armed Survivalists",
+  "From": "The Mechanic",
+  "To": "Armed Survivalist Base Southwest of the Motherhood",
+  "Cargo": "L×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "222000": {
+  "no": 444,
+  "section": "Standard",
+  "Order": "Deliver Fatigue-Reducing High-Quality Vitamin Supplements",
+  "From": "East Fort Knot (F4)",
+  "To": "The Mechanic",
+  "Cargo": "S×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222001": {
+  "no": 439,
+  "section": "Standard",
+  "Order": "[Express] Deliver Fresh Seafood Caught in a BT Area",
+  "From": "East Fort Knot (F4)",
+  "To": "The Pizza Chef",
+  "Cargo": "M×10",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222002": {
+  "no": 441,
+  "section": "Standard",
+  "Order": "Deliver Extremely Pure Water for Drug Production",
+  "From": "East Fort Knot (F4)",
+  "To": "The Motherhood",
+  "Cargo": "XL×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222006": {
+  "no": 448,
+  "section": "Standard",
+  "Order": "Deliver High-Energy Emergency Rations Chock Full of Protein",
+  "From": "East Fort Knot (F4)",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "L×12",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222012": {
+  "no": 443,
+  "section": "Standard",
+  "Order": "Deliver Recently Excavated Mysterious Stone Tablets",
+  "From": "East Fort Knot (F4)",
+  "To": "The Mechanic",
+  "Cargo": "XL×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222014": {
+  "no": 438,
+  "section": "Standard",
+  "Order": "[Express] Deliver Ancient Fish Samples That Drifted Ashore in Large Quantities",
+  "From": "East Fort Knot (F4)",
+  "To": "West Fort Knot (F1)",
+  "Cargo": "M×18",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222015": {
+  "no": 437,
+  "section": "Standard",
+  "Order": "[Express] Deliver a Large Quantity of Rare Freshwater Fish",
+  "From": "East Fort Knot (F4)",
+  "To": "Western Environmental Observatory",
+  "Cargo": "M×25",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222016": {
+  "no": 442,
+  "section": "Standard",
+  "Order": "Deliver an Assortment of Rare Flowers Only Found in Australia",
+  "From": "East Fort Knot (F4)",
+  "To": "The Pioneer",
+  "Cargo": "M×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222031": {
+  "no": 447,
+  "section": "Standard",
+  "Order": "Deliver Ceramics",
+  "From": "East Fort Knot (F4)",
+  "To": "The Chronobiologist",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222032": {
+  "no": 449,
+  "section": "Standard",
+  "Order": "Deliver Special Alloys",
+  "From": "East Fort Knot (F4)",
+  "To": "South Fort Knot (F6)",
+  "Cargo": "M×4, S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222034": {
+  "no": 440,
+  "section": "Standard",
+  "Order": "Deliver Metals and Special Alloys",
+  "From": "East Fort Knot (F4)",
+  "To": "The Pizza Chef",
+  "Cargo": "XL×2, L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "222413": {
+  "no": 445,
+  "section": "Standard",
+  "Order": "Recover Components for a Gene Therapy Device Lost in a BT Area",
+  "From": "East Fort Knot (F4)",
+  "To": "BT Area Northwest of F4",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "222417": {
+  "no": 446,
+  "section": "Standard",
+  "Order": "Recover Stolen Radar Units Used in an Earthquake Warning System",
+  "From": "East Fort Knot (F4)",
+  "To": "Armed Survivalist Base Southwest of the Motherhood",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "223000": {
+  "no": 459,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver a Cryptobiote Breeding Kit",
+  "From": "The Chronobiologist",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "223002": {
+  "no": 451,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Archaea Samples Discovered in a Geological Stratum Dating to a Mass Extinction",
+  "From": "The Chronobiologist",
+  "To": "The Motherhood",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "223004": {
+  "no": 456,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver DNA Samples from a New Cytomegalovirus Strain",
+  "From": "The Chronobiologist",
+  "To": "The Metagenomicist",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "223005": {
+  "no": 455,
+  "section": "Standard",
+  "Order": "Deliver Gel Containing Chiral Microbe Samples",
+  "From": "The Chronobiologist",
+  "To": "The Metagenomicist",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "223008": {
+  "no": 458,
+  "section": "Standard",
+  "Order": "Deliver Miniature Dinosaurs Made Using Artificially Recreated Dinosaur Skin",
+  "From": "The Chronobiologist",
+  "To": "F5 East Distribution Center",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "223010": {
+  "no": 450,
+  "section": "Standard",
+  "Order": "[Express] Deliver Piping Hot Cryptobiote Pot-au-Feu",
+  "From": "The Chronobiologist",
+  "To": "The Pizza Chef",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "223053": {
+  "no": 452,
+  "section": "Standard",
+  "Order": "Recover Fluid for Growing Artificial Organs Washed Away in a River",
+  "From": "The Chronobiologist",
+  "To": "Near The Ghost Hunter",
+  "Cargo": "XL×6",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "223112": {
+  "no": 457,
+  "section": "Standard",
+  "Order": "Defeat the Large BT in the BT Area Southwest of the Pizza Chef",
+  "From": "The Chronobiologist",
+  "To": "BT Area Southwest of the Pizza Chef",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "223411": {
+  "no": 453,
+  "section": "Standard",
+  "Order": "Recover Precious Tar Obsidian Samples Lost in a BT Area",
+  "From": "The Chronobiologist",
+  "To": "BT Area Southeast of the Chronobiologist",
+  "Cargo": "L×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "223412": {
+  "no": 454,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Precision Medical Equipment for Treatment of Infectious Diseases",
+  "From": "The Chronobiologist",
+  "To": "Armed Survivalist Base East of the F2 South Distribution Center",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "224000": {
+  "no": 460,
+  "section": "Standard",
+  "Order": "Deliver Back Issues of a Legendary Occult Magazine",
+  "From": "The Ghost Hunter",
+  "To": "The Pizza Chef",
+  "Cargo": "S×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "224001": {
+  "no": 461,
+  "section": "Standard",
+  "Order": "Deliver a Video Disc Containing Footage of the Mythical Yowie",
+  "From": "The Ghost Hunter",
+  "To": "The Architect",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "224002": {
+  "no": 462,
+  "section": "Standard",
+  "Order": "Deliver a Spirit Photograph Featuring a Koala's Guardian Spirit",
+  "From": "The Ghost Hunter",
+  "To": "The Pioneer",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "224012": {
+  "no": 466,
+  "section": "Standard",
+  "Order": "[Express] Deliver Incense for an Express Exorcism",
+  "From": "The Ghost Hunter",
+  "To": "F5 East Distribution Center",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "224014": {
+  "no": 463,
+  "section": "Standard",
+  "Order": "Deliver Old Recorded Media Containing Footage of the Mysterious Min Min Light Phenomenon",
+  "From": "The Ghost Hunter",
+  "To": "East Fort Knot (F4)",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "224015": {
+  "no": 464,
+  "section": "Standard",
+  "Order": "Deliver Rock Samples Procured from Dolphin-Shaped Chiral Cinder",
+  "From": "The Ghost Hunter",
+  "To": "The Chronobiologist",
+  "Cargo": "XL×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "224403": {
+  "no": 465,
+  "section": "Standard",
+  "Order": "Recover Highly Poisonous Insect Sample Stolen by the Armed Survivalists",
+  "From": "The Ghost Hunter",
+  "To": "Armed Survivalist Base Southwest of the Motherhood",
+  "Cargo": "S×1",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "225000": {
+  "no": 467,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Chiral Creature Bodily Fluid Sample",
+  "From": "The Metagenomicist",
+  "To": "Rainbow Valley",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "225006": {
+  "no": 469,
+  "section": "Standard",
+  "Order": "[Do Not Submerge] Deliver Samples of Genetically Edited Edible Cryptobiotes",
+  "From": "The Metagenomicist",
+  "To": "The Motherhood",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "225007": {
+  "no": 474,
+  "section": "Standard",
+  "Order": "[Do Not Submerge] Deliver Samples of Genetically Edited Chlorobiotes with Painkilling Properties",
+  "From": "The Metagenomicist",
+  "To": "F5 East Distribution Center",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "225008": {
+  "no": 470,
+  "section": "Standard",
+  "Order": "[Express] Deliver Living Samples of Newly Discovered Mutated Organisms",
+  "From": "The Metagenomicist",
+  "To": "East Fort Knot (F4)",
+  "Cargo": "XL×15",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "225009": {
+  "no": 475,
+  "section": "Standard",
+  "Order": "[Express] Deliver a Mysterious New Species of Soft-Bodied Organism Found in a BT Area",
+  "From": "The Metagenomicist",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "L×16",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "225011": {
+  "no": 468,
+  "section": "Standard",
+  "Order": "[Express] Deliver Chiral Gratins Made with Synthetic Golden Cheese and Tar Sauce",
+  "From": "The Metagenomicist",
+  "To": "The Pizza Chef",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "225112": {
+  "no": 471,
+  "section": "Standard",
+  "Order": "[Elimination] Defeat the Large BTs in the BT Area North of the F5 East Distribution Center",
+  "From": "The Metagenomicist",
+  "To": "BT Area North of the F5 East Distribution Center",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "225402": {
+  "no": 472,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Delicate Measuring Instruments for Genome Analysis Lost in a BT Area",
+  "From": "The Metagenomicist",
+  "To": "BT Area Southwest of the Pizza Chef",
+  "Cargo": "L×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "225413": {
+  "no": 473,
+  "section": "Standard",
+  "Order": "Recover Backup Generator Units Lost During Delivery",
+  "From": "The Metagenomicist",
+  "To": "Chiral Creature Habitat (Near The Data Scientist)",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "226000": {
+  "no": 487,
+  "section": "Standard",
+  "Order": "Deliver High-Calorie Food Rations for Cold Climates",
+  "From": "F5 East Distribution Center",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "S×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226003": {
+  "no": 486,
+  "section": "Standard",
+  "Order": "[Hazardous] Deliver Condensed Fuel Distilled from Lake Tar",
+  "From": "F5 East Distribution Center",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226004": {
+  "no": 477,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Specially Made Coral Dinnerware",
+  "From": "F5 East Distribution Center",
+  "To": "The Pioneer",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226006": {
+  "no": 479,
+  "section": "Standard",
+  "Order": "[Express] Deliver Chiral Mammal Fragments Washed Up on the Shores of the Tar Lake",
+  "From": "F5 East Distribution Center",
+  "To": "The Metagenomicist",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226007": {
+  "no": 478,
+  "section": "Standard",
+  "Order": "[Express] Deliver Unidentified Mollusks Washed Up on the Shores of the Tar Lake",
+  "From": "F5 East Distribution Center",
+  "To": "The Chronobiologist",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226010": {
+  "no": 476,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Delicate Measuring Instruments Equipped with Compact Weather Radars",
+  "From": "F5 East Distribution Center",
+  "To": "The Lone Commander",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226011": {
+  "no": 485,
+  "section": "Standard",
+  "Order": "[Hazardous] Deliver Tar Fuel Highly Concentrated for Portability",
+  "From": "F5 East Distribution Center",
+  "To": "The Adventurer",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226030": {
+  "no": 488,
+  "section": "Standard",
+  "Order": "Deliver Resins and Chemicals",
+  "From": "F5 East Distribution Center",
+  "To": "Mr. Impossible",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226031": {
+  "no": 484,
+  "section": "Standard",
+  "Order": "Deliver Metals and Ceramics",
+  "From": "F5 East Distribution Center",
+  "To": "The Fisherman",
+  "Cargo": "L×3, M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226032": {
+  "no": 480,
+  "section": "Standard",
+  "Order": "Deliver Ceramics",
+  "From": "F5 East Distribution Center",
+  "To": "The Metagenomicist",
+  "Cargo": "L×2, M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226033": {
+  "no": 481,
+  "section": "Standard",
+  "Order": "Deliver Resins and Ceramics",
+  "From": "F5 East Distribution Center",
+  "To": "The Metagenomicist",
+  "Cargo": "M×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "226113": {
+  "no": 482,
+  "section": "Standard",
+  "Order": "Destroy the Large BT in the BT Area South of the Metagenomicist",
+  "From": "F5 East Distribution Center",
+  "To": "BT Area South of the Metagenomicist",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "226412": {
+  "no": 483,
+  "section": "Standard",
+  "Order": "Recover Emergency Medical Supplies Lost in a BT Area",
+  "From": "F5 East Distribution Center",
+  "To": "BT Area North of the F5 East Distribution Center",
+  "Cargo": "M×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "227001": {
+  "no": 495,
+  "section": "Standard",
+  "Order": "Return Tar-Powered Oil Heaters",
+  "From": "The Adventurer",
+  "To": "F5 East Distribution Center",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "227002": {
+  "no": 496,
+  "section": "Standard",
+  "Order": "Deliver a Collection of Old Photos Depicting the Mighty Mount Everest",
+  "From": "The Adventurer",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "227004": {
+  "no": 499,
+  "section": "Standard",
+  "Order": "[Chilled] Deliver Timefall Snow Samples from the Top of a Mountain",
+  "From": "The Adventurer",
+  "To": "Southern Environmental Observatory",
+  "Cargo": "XL×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "227007": {
+  "no": 500,
+  "section": "Standard",
+  "Order": "Deliver a Selection of Bollywood Classics from the Early 21st Century",
+  "From": "The Adventurer",
+  "To": "F7 North Distribution Center",
+  "Cargo": "M×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "227009": {
+  "no": 501,
+  "section": "Standard",
+  "Order": "Deliver Discs of the Experimental Musical Movie \"Let Naatu Roar!\"",
+  "From": "The Adventurer",
+  "To": "Terminal Fort Knot (F8)",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "227010": {
+  "no": 497,
+  "section": "Standard",
+  "Order": "Deliver Titles from the Indie Adventure Movie Series \"The Indus Tiger Roams Alone\"",
+  "From": "The Adventurer",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "227030": {
+  "no": 498,
+  "section": "Standard",
+  "Order": "Deliver Chemicals",
+  "From": "The Adventurer",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228000": {
+  "no": 505,
+  "section": "Standard",
+  "Order": "Deliver Cryptobiote Samples Found Near the Top of a Mountain",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Chronobiologist",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228001": {
+  "no": 507,
+  "section": "Standard",
+  "Order": "[Chilled] Deliver Timefall Snow Samples Taken from the Snowy Mountains",
+  "From": "Eastern Environmental Observatory",
+  "To": "F5 East Distribution Center",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228005": {
+  "no": 515,
+  "section": "Standard",
+  "Order": "Deliver Aerosol Samples from a Chiral Cloud",
+  "From": "Eastern Environmental Observatory",
+  "To": "F7 North Distribution Center",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228006": {
+  "no": 502,
+  "section": "Standard",
+  "Order": "Deliver Spring Water from the Australian Alps",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Pizza Chef",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228008": {
+  "no": 514,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Chiral Antennas from a Broken Ghost Field Measuring Device",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Phantom Smith",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228009": {
+  "no": 504,
+  "section": "Standard",
+  "Order": "[Express] Return Accidentally Borrowed Pulp Romance Novels from the Early 21st Century",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Chronobiologist",
+  "Cargo": "M×34",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228012": {
+  "no": 508,
+  "section": "Standard",
+  "Order": "Deliver Hard-Wearing Undergarments Designed for Sub-Zero Temperatures",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Adventurer",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228016": {
+  "no": 509,
+  "section": "Standard",
+  "Order": "Deliver Specially Blended Coffee Beans",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Adventurer",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228030": {
+  "no": 513,
+  "section": "Standard",
+  "Order": "Deliver Metals and Chemicals",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "L×2, M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228031": {
+  "no": 506,
+  "section": "Standard",
+  "Order": "Deliver Special Alloys",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Ghost Hunter",
+  "Cargo": "M×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228032": {
+  "no": 503,
+  "section": "Standard",
+  "Order": "Deliver Metals and Special Alloys",
+  "From": "Eastern Environmental Observatory",
+  "To": "The Chronobiologist",
+  "Cargo": "XL×2, L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "228052": {
+  "no": 510,
+  "section": "Standard",
+  "Order": "Recover Oxytocin Lost in a Rockfall During Delivery",
+  "From": "Eastern Environmental Observatory",
+  "To": "Near The Aeronautical Engineer",
+  "Cargo": "S×6",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "228414": {
+  "no": 512,
+  "section": "Standard",
+  "Order": "Recover Extremophile Microorganism Samples Lost in a BT Area",
+  "From": "Eastern Environmental Observatory",
+  "To": "BT Area South of the Metagenomicist",
+  "Cargo": "S×10",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "228415": {
+  "no": 511,
+  "section": "Standard",
+  "Order": "Recover Hoard of Stolen Chiralium-Rich Chemical",
+  "From": "Eastern Environmental Observatory",
+  "To": "Armed Survivalist Base Southeast of the Phantom Smith",
+  "Cargo": "L×4",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "229000": {
+  "no": 533,
+  "section": "Standard",
+  "Order": "[Chilled] Deliver Special Volatile Chemicals",
+  "From": "The Phantom Smith",
+  "To": "The Tar Therapist",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229001": {
+  "no": 526,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Synthesized Alcoholic Beverages That Recreate the Taste of Fine Japanese Sake",
+  "From": "The Phantom Smith",
+  "To": "The Metagenomicist",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229003": {
+  "no": 529,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Chiral Antennas from a Ghost Field Measuring Device",
+  "From": "The Phantom Smith",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229004": {
+  "no": 527,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Prototype Chiralsonde for Investigating the Depths of the Tar Current",
+  "From": "The Phantom Smith",
+  "To": "F5 East Distribution Center",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229005": {
+  "no": 525,
+  "section": "Standard",
+  "Order": "[Hazardous] Deliver Phantom Speakers That Produces BT Sounds",
+  "From": "The Phantom Smith",
+  "To": "The Ghost Hunter",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229006": {
+  "no": 534,
+  "section": "Standard",
+  "Order": "[Hazardous] Deliver Phantom Recorders That Detect the Movement of Souls to and from the Seam",
+  "From": "The Phantom Smith",
+  "To": "BPAS",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229009": {
+  "no": 528,
+  "section": "Standard",
+  "Order": "Deliver Performance-Enhancing Nutritional Drinks Containing Quandong Extract",
+  "From": "The Phantom Smith",
+  "To": "The Adventurer",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229012": {
+  "no": 530,
+  "section": "Standard",
+  "Order": "Deliver Precision Components for a New Rocket Engine",
+  "From": "The Phantom Smith",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "M×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229013": {
+  "no": 535,
+  "section": "Standard",
+  "Order": "Deliver Stuffed Cryptobiote Toys",
+  "From": "The Phantom Smith",
+  "To": "Mr. Impossible",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "229058": {
+  "no": 531,
+  "section": "Standard",
+  "Order": "Recover a Valuable Timefall-Resistant Paint Lost During Delivery",
+  "From": "The Phantom Smith",
+  "To": "Near Eastern Environmental Observatory",
+  "Cargo": "XL×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "229110": {
+  "no": 532,
+  "section": "Standard",
+  "Order": "[Elimination] Seize Armed Survivalist Base Southeast of the Phantom Smith's Shelter",
+  "From": "The Phantom Smith",
+  "To": "Armed Survivalist Base Southeast of the Phantom Smith",
+  "Cargo": "None",
+  "gtype": 17,
+  "confidence": "verified"
+ },
+ "230001": {
+  "no": 519,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Specially Made Components for Thrust Vectoring Devices",
+  "From": "The Aeronautical Engineer",
+  "To": "The Phantom Smith",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "230005": {
+  "no": 517,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Chiralsonde Prototypes for High-Altitude Investigations",
+  "From": "The Aeronautical Engineer",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "230006": {
+  "no": 522,
+  "section": "Standard",
+  "Order": "[Hazardous/Chilled] Deliver Liquid Helium",
+  "From": "The Aeronautical Engineer",
+  "To": "F7 North Distribution Center",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "230007": {
+  "no": 524,
+  "section": "Standard",
+  "Order": "[Hazardous/Chilled] Deliver Liquid Oxygen",
+  "From": "The Aeronautical Engineer",
+  "To": "Mr. Impossible",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "230008": {
+  "no": 523,
+  "section": "Standard",
+  "Order": "[Chilled] Deliver Ancient Fish Found Frozen in the Tundra",
+  "From": "The Aeronautical Engineer",
+  "To": "BPAS",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "230010": {
+  "no": 521,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Newly Designed Rocket Engine",
+  "From": "The Aeronautical Engineer",
+  "To": "South Fort Knot (F6)",
+  "Cargo": "XL×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "230011": {
+  "no": 516,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Emergency Medical Kits for Use in the Field",
+  "From": "The Aeronautical Engineer",
+  "To": "The Adventurer",
+  "Cargo": "M×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "230030": {
+  "no": 520,
+  "section": "Standard",
+  "Order": "Deliver Ceramics and Chemicals",
+  "From": "The Aeronautical Engineer",
+  "To": "The Phantom Smith",
+  "Cargo": "XL×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "230050": {
+  "no": 518,
+  "section": "Standard",
+  "Order": "Recover a Large Volume of Special Alloys Abandoned During Delivery",
+  "From": "The Aeronautical Engineer",
+  "To": "Near The Aeronautical Engineer",
+  "Cargo": "L×3, S×3",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "231004": {
+  "no": 548,
+  "section": "Standard",
+  "Order": "Deliver Special Precision Tools for Grinding and Polishing",
+  "From": "South Fort Knot (F6)",
+  "To": "The Phantom Smith",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231010": {
+  "no": 554,
+  "section": "Standard",
+  "Order": "[Do Not Submerge] Deliver Asian Weaver Ants to be Eaten Alive",
+  "From": "South Fort Knot (F6)",
+  "To": "F7 North Distribution Center",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231012": {
+  "no": 545,
+  "section": "Standard",
+  "Order": "Deliver Nutritional Drinks Made Using Eucalyptus Oil",
+  "From": "South Fort Knot (F6)",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231015": {
+  "no": 544,
+  "section": "Standard",
+  "Order": "Deliver a Large Volume of Transportable Emergency Food Rations",
+  "From": "South Fort Knot (F6)",
+  "To": "The Adventurer",
+  "Cargo": "M×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231018": {
+  "no": 547,
+  "section": "Standard",
+  "Order": "Deliver New Material for Rocket Components",
+  "From": "South Fort Knot (F6)",
+  "To": "The Phantom Smith",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231019": {
+  "no": 546,
+  "section": "Standard",
+  "Order": "[Hazardous/Chilled] Deliver \"Beach-IIC\" Miniature Rockets and Propellant",
+  "From": "South Fort Knot (F6)",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "XL×3, L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231021": {
+  "no": 542,
+  "section": "Standard",
+  "Order": "[Express] Deliver an Assortment of Fresh Tar Organisms",
+  "From": "South Fort Knot (F6)",
+  "To": "Western Environmental Observatory",
+  "Cargo": "L×20",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231031": {
+  "no": 549,
+  "section": "Standard",
+  "Order": "Deliver Metals and Resins",
+  "From": "South Fort Knot (F6)",
+  "To": "The Phantom Smith",
+  "Cargo": "L×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231032": {
+  "no": 552,
+  "section": "Standard",
+  "Order": "Deliver Chemicals",
+  "From": "South Fort Knot (F6)",
+  "To": "The Tar Therapist",
+  "Cargo": "L×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231033": {
+  "no": 553,
+  "section": "Standard",
+  "Order": "Deliver Metals and Chemicals",
+  "From": "South Fort Knot (F6)",
+  "To": "Southern Environmental Observatory",
+  "Cargo": "L×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231034": {
+  "no": 555,
+  "section": "Standard",
+  "Order": "Deliver Metals and Ceramics",
+  "From": "South Fort Knot (F6)",
+  "To": "Terminal Fort Knot (F8)",
+  "Cargo": "L×16, M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231035": {
+  "no": 543,
+  "section": "Standard",
+  "Order": "Deliver Chemicals and Special Alloys",
+  "From": "South Fort Knot (F6)",
+  "To": "East Fort Knot (F4)",
+  "Cargo": "XL×24",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "231056": {
+  "no": 550,
+  "section": "Standard",
+  "Order": "Recover Precious Jewelry Lost in Ruins of Town",
+  "From": "South Fort Knot (F6)",
+  "To": "Near South Fort Knot (F6)",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "231422": {
+  "no": 551,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Stolen Quantum Calculation Devices",
+  "From": "South Fort Knot (F6)",
+  "To": "Armed Survivalist Base Southeast of the Phantom Smith",
+  "Cargo": "M×3",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "232002": {
+  "no": 538,
+  "section": "Standard",
+  "Order": "Deliver Houseplants Used for Tar Therapy",
+  "From": "The Tar Therapist",
+  "To": "East Fort Knot (F4)",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "232004": {
+  "no": 536,
+  "section": "Standard",
+  "Order": "[Vog Warning] Deliver Specially Blended Tar Medicine to Regulate the Soul and the Nervous System",
+  "From": "The Tar Therapist",
+  "To": "F2 South Distribution Center",
+  "Cargo": "XL×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "232007": {
+  "no": 541,
+  "section": "Standard",
+  "Order": "Deliver High-Quality Tar Coffee",
+  "From": "The Tar Therapist",
+  "To": "F7 North Distribution Center",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "232008": {
+  "no": 537,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Highly Prized Tar-Distilled Liquor",
+  "From": "The Tar Therapist",
+  "To": "The Motherhood",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "232010": {
+  "no": 539,
+  "section": "Standard",
+  "Order": "[Express] Deliver Chiral Gratin Made with Stranded Sardines and Tar Sauce",
+  "From": "The Tar Therapist",
+  "To": "The Phantom Smith",
+  "Cargo": "M×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "232401": {
+  "no": 540,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Remotely Operated Precision Medical Instruments Lost in a BT Area",
+  "From": "The Tar Therapist",
+  "To": "BT Area North of F6",
+  "Cargo": "L×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "233002": {
+  "no": 559,
+  "section": "Standard",
+  "Order": "Deliver Broken Backup Generator Units",
+  "From": "Southern Environmental Observatory",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "233003": {
+  "no": 556,
+  "section": "Standard",
+  "Order": "Deliver the Bones of a Bird Believed to Have Drifted Ashore from New Zealand",
+  "From": "Southern Environmental Observatory",
+  "To": "Heartman's Lab",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "233005": {
+  "no": 566,
+  "section": "Standard",
+  "Order": "[Hazardous] Deliver Maximally Condensed Tar Fuel",
+  "From": "Southern Environmental Observatory",
+  "To": "Mr. Impossible",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "233009": {
+  "no": 558,
+  "section": "Standard",
+  "Order": "[Vog Warning] Deliver Highly Volatile Condensed Tar",
+  "From": "Southern Environmental Observatory",
+  "To": "F5 East Distribution Center",
+  "Cargo": "XL×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "233010": {
+  "no": 560,
+  "section": "Standard",
+  "Order": "Deliver Recently Excavated Figurines Depicting Giant Kaiju",
+  "From": "Southern Environmental Observatory",
+  "To": "The Phantom Smith",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "233013": {
+  "no": 557,
+  "section": "Standard",
+  "Order": "Deliver Oil Used for High-Quality Tar Refining Machines",
+  "From": "Southern Environmental Observatory",
+  "To": "The Chronobiologist",
+  "Cargo": "XL×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "233030": {
+  "no": 561,
+  "section": "Standard",
+  "Order": "Deliver Chemicals",
+  "From": "Southern Environmental Observatory",
+  "To": "The Tar Therapist",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "233031": {
+  "no": 565,
+  "section": "Standard",
+  "Order": "Deliver Ceramics",
+  "From": "Southern Environmental Observatory",
+  "To": "BPAS",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "233054": {
+  "no": 562,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Jewelry Left Behind in F7 and Lost in a BT Area",
+  "From": "Southern Environmental Observatory",
+  "To": "Near South Edge Mine",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "233061": {
+  "no": 563,
+  "section": "Standard",
+  "Order": "Deliver Classic Drama Series \"Greatest Koalas: The Price of Betrayal\"",
+  "From": "Southern Environmental Observatory",
+  "To": "Near The Phantom Smith",
+  "Cargo": "S×2",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "233407": {
+  "no": 564,
+  "section": "Standard",
+  "Order": "Recover Poisonous Plant Samples Stolen by the Armed Survivalists",
+  "From": "Southern Environmental Observatory",
+  "To": "Armed Survivalist Base Southeast of the Phantom Smith",
+  "Cargo": "M×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "234000": {
+  "no": 572,
+  "section": "Standard",
+  "Order": "[Express] Deliver New and Improved Smart Drugs",
+  "From": "F7 North Distribution Center",
+  "To": "The Tar Therapist",
+  "Cargo": "S×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234006": {
+  "no": 567,
+  "section": "Standard",
+  "Order": "Deliver History Books Concerning Pre-Stranding Eurasia",
+  "From": "F7 North Distribution Center",
+  "To": "The Government's Base",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234008": {
+  "no": 573,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Fossils of Unidentified Cretaceous Creatures With Umbilical Cords",
+  "From": "F7 North Distribution Center",
+  "To": "Southern Environmental Observatory",
+  "Cargo": "S×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234010": {
+  "no": 570,
+  "section": "Standard",
+  "Order": "Deliver Recently Excavated Set of Old Board Games",
+  "From": "F7 North Distribution Center",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234011": {
+  "no": 577,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Custom-Made Server Units",
+  "From": "F7 North Distribution Center",
+  "To": "BPAS",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234030": {
+  "no": 571,
+  "section": "Standard",
+  "Order": "Deliver Ceramics and Special Alloys",
+  "From": "F7 North Distribution Center",
+  "To": "The Aeronautical Engineer",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234031": {
+  "no": 568,
+  "section": "Standard",
+  "Order": "Deliver Metals and Ceramics",
+  "From": "F7 North Distribution Center",
+  "To": "The Lone Commander",
+  "Cargo": "XL×16",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234032": {
+  "no": 569,
+  "section": "Standard",
+  "Order": "Deliver Chemicals and Special Alloys",
+  "From": "F7 North Distribution Center",
+  "To": "The Adventurer",
+  "Cargo": "XL×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234033": {
+  "no": 578,
+  "section": "Standard",
+  "Order": "Deliver Resins and Chemicals",
+  "From": "F7 North Distribution Center",
+  "To": "Mr. Impossible",
+  "Cargo": "XL×12",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "234051": {
+  "no": 574,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Recover Misplaced Precision Instruments for Intricate Crafting",
+  "From": "F7 North Distribution Center",
+  "To": "Near Waystation 1",
+  "Cargo": "L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "234311": {
+  "no": 575,
+  "section": "Standard",
+  "Order": "[Hazardous] Dispose of Concentrated Tar Fuel Stockpiled by the Armed Survivalists",
+  "From": "F7 North Distribution Center",
+  "To": "Armed Survivalist Base Southeast of the Phantom Smith",
+  "Cargo": "L×12",
+  "gtype": 19,
+  "confidence": "verified"
+ },
+ "234403": {
+  "no": 576,
+  "section": "Standard",
+  "Order": "Recover Emergency First Aid Kits from a BT Area",
+  "From": "F7 North Distribution Center",
+  "To": "BT Area North of F6",
+  "Cargo": "M×6",
+  "gtype": 18,
+  "confidence": "verified"
+ },
+ "235000": {
+  "no": 582,
+  "section": "Standard",
+  "Order": "Deliver a Large Volume of High-Energy Food Rations",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "South Fort Knot (F6)",
+  "Cargo": "L×18",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235002": {
+  "no": 585,
+  "section": "Standard",
+  "Order": "Deliver Food Rations and Drinking Water for Emergencies",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "F7 North Distribution Center",
+  "Cargo": "XL×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235004": {
+  "no": 587,
+  "section": "Standard",
+  "Order": "[Hazardous] Deliver High-Pressure Fuel Cells for Use in Emergencies",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "BPAS",
+  "Cargo": "L×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235006": {
+  "no": 583,
+  "section": "Standard",
+  "Order": "[Express] Deliver Blood Products for Transfusion",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "South Fort Knot (F6)",
+  "Cargo": "M×40",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235008": {
+  "no": 588,
+  "section": "Standard",
+  "Order": "[Chilled] Deliver Organic Vegetables Grown in a City Garden",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "Mr. Impossible",
+  "Cargo": "L×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235013": {
+  "no": 584,
+  "section": "Standard",
+  "Order": "Deliver the Classic Drama Series \"Greatest Koalas 3: Love in the Treetops\"",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "Southern Environmental Observatory",
+  "Cargo": "S×1",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235030": {
+  "no": 579,
+  "section": "Standard",
+  "Order": "Deliver Resins and Special Alloys",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "The Adventurer",
+  "Cargo": "XL×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235031": {
+  "no": 580,
+  "section": "Standard",
+  "Order": "Deliver Special Alloys",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "XL×8",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235032": {
+  "no": 581,
+  "section": "Standard",
+  "Order": "Deliver Chemicals",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "Eastern Environmental Observatory",
+  "Cargo": "L×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "235061": {
+  "no": 586,
+  "section": "Standard",
+  "Order": "Recover Bones of a Mammal Believed to Have Drifted Ashore from Tasmania",
+  "From": "Terminal Fort Knot (F8)",
+  "To": "Near South Edge Mine",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "236002": {
+  "no": 591,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Next-Gen Wide-Area Chiral Antenna Prototypes",
+  "From": "BPAS",
+  "To": "F7 North Distribution Center",
+  "Cargo": "L×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "236003": {
+  "no": 590,
+  "section": "Standard",
+  "Order": "Deliver Experimentally Developed Metamaterials for Suppressing Ghost Field Interference",
+  "From": "BPAS",
+  "To": "The Phantom Smith",
+  "Cargo": "XL×6",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "236004": {
+  "no": 592,
+  "section": "Standard",
+  "Order": "[Breakable Cargo] Deliver Compact Quantum Servers for Use with Experimental AI",
+  "From": "BPAS",
+  "To": "Terminal Fort Knot (F8)",
+  "Cargo": "M×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "236008": {
+  "no": 589,
+  "section": "Standard",
+  "Order": "[Keep Flat/Express] Deliver Prototype AI Pizzas Based on an Auto-Generated Recipe",
+  "From": "BPAS",
+  "To": "The Data Scientist",
+  "Cargo": "M×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "236050": {
+  "no": 593,
+  "section": "Standard",
+  "Order": "Recover Food Rations and Drinking Water Lost During Delivery",
+  "From": "BPAS",
+  "To": "Near BPAS",
+  "Cargo": "XL×4, L×4",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "236061": {
+  "no": 594,
+  "section": "Standard",
+  "Order": "[Express] Recover Blood Products Lost During Delivery",
+  "From": "BPAS",
+  "To": "Near The Phantom Smith",
+  "Cargo": "S×2",
+  "gtype": 4,
+  "confidence": "verified"
+ },
+ "237001": {
+  "no": 595,
+  "section": "Standard",
+  "Order": "[Express] Deliver Collector's Edition Box Sets of Independent Horror-Comedy Films",
+  "From": "Mr. Impossible",
+  "To": "The Musician",
+  "Cargo": "S×2",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "237004": {
+  "no": 598,
+  "section": "Standard",
+  "Order": "[Hazardous] Deliver Set of Handmade Multidimensional Board Games Concerning Humanity's Incompetence",
+  "From": "Mr. Impossible",
+  "To": "BPAS",
+  "Cargo": "S×3",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "237006": {
+  "no": 596,
+  "section": "Standard",
+  "Order": "[Extremely Hazardous] Deliver Samples of Antimatter Collected on the Beach",
+  "From": "Mr. Impossible",
+  "To": "Southern Environmental Observatory",
+  "Cargo": "S×4",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "237007": {
+  "no": 597,
+  "section": "Standard",
+  "Order": "[Extremely Chilled] Deliver Original Ice Art Created at Near Absolute Zero (-270℃)",
+  "From": "Mr. Impossible",
+  "To": "F7 North Distribution Center",
+  "Cargo": "L×5",
+  "gtype": 3,
+  "confidence": "verified"
+ },
+ "237050": {
+  "no": 599,
+  "section": "Standard",
+  "Order": "Recover Misplaced Masterpieces of Pre-Stranding Australian Cinema",
+  "From": "Mr. Impossible",
+  "To": "Near Mr. Impossible",
+  "Cargo": "M×4",
+  "gtype": 4,
+  "confidence": "verified"
+ }
+}

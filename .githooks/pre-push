@@ -1,0 +1,3 @@
+#!/bin/sh
+# Re-check every commit being pushed: files, messages and author/committer e-mail (see tools/public_check.py).
+exec python tools/public_check.py --pre-push

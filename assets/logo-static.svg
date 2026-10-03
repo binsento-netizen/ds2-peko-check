@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="7 1 114 114" width="128" height="128"><title>Peko-Check</title><defs>
+        <clipPath id="sc15"><g transform="rotate(-9 45 46)">
+      <rect x="35" y="6" width="20" height="50" rx="10" fill="#f6f9fb" stroke="#13222b" style="stroke-width:var(--ow)"/>
+      <rect x="40.5" y="14" width="9" height="30" rx="4.5" fill="#e9eff2"/>
+    </g><g transform="rotate(9 83 46)">
+      <rect x="73" y="6" width="20" height="50" rx="10" fill="#f6f9fb" stroke="#13222b" style="stroke-width:var(--ow)"/>
+      <rect x="78.5" y="14" width="9" height="30" rx="4.5" fill="#e9eff2"/>
+    </g><path d="M16 94 C16 60 36 40 64 40 C92 40 112 60 112 94 C112 102 106 106 98 106 L30 106 C22 106 16 102 16 94 Z" fill="#f6f9fb" stroke="#13222b" style="stroke-width:var(--ow)"/></clipPath>
+        <linearGradient id="sg15" x1="0" y1="0" x2="0" y2="128" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffb24a"/><stop offset=".36" stop-color="#f08a2c"/><stop offset=".5" stop-color="#7fd6f5"/><stop offset="1" stop-color="#3fb4e6"/></linearGradient>
+        <linearGradient id="sw15" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fc9f2" stop-opacity="0"/><stop offset=".85" stop-color="#bfefff" stop-opacity=".55"/><stop offset="1" stop-color="#ffffff" stop-opacity=".95"/></linearGradient>
+        <mask id="em15" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128"><rect width="128" height="128" fill="#fff"/><path d="M16 94 C16 60 36 40 64 40 C92 40 112 60 112 94 C112 102 106 106 98 106 L30 106 C22 106 16 102 16 94 Z" fill="#000" /></mask>
+        <filter id="gl15" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      
+      
+      <g clip-path="url(#sc15)">
+        <rect width="128" height="128" fill="#0a2233"/>
+        <g stroke="url(#sg15)" stroke-width="1.1" fill="none" opacity=".9"><path d="M0 4.0 Q64 -3.0 128 4.0"/><path d="M0 8.4 Q64 1.4 128 8.4"/><path d="M0 12.8 Q64 5.8 128 12.8"/><path d="M0 17.2 Q64 10.2 128 17.2"/><path d="M0 21.6 Q64 14.6 128 21.6"/><path d="M0 26.0 Q64 19.0 128 26.0"/><path d="M0 30.4 Q64 23.4 128 30.4"/><path d="M0 34.8 Q64 27.8 128 34.8"/><path d="M0 39.2 Q64 32.2 128 39.2"/><path d="M0 43.6 Q64 36.6 128 43.6"/><path d="M0 48.0 Q64 41.0 128 48.0"/><path d="M0 52.4 Q64 45.4 128 52.4"/><path d="M0 56.8 Q64 49.8 128 56.8"/><path d="M0 61.2 Q64 54.2 128 61.2"/><path d="M0 65.6 Q64 58.6 128 65.6"/><path d="M0 70.0 Q64 63.0 128 70.0"/><path d="M0 74.4 Q64 67.4 128 74.4"/><path d="M0 78.8 Q64 71.8 128 78.8"/><path d="M0 83.2 Q64 76.2 128 83.2"/><path d="M0 87.6 Q64 80.6 128 87.6"/><path d="M0 92.0 Q64 85.0 128 92.0"/><path d="M0 96.4 Q64 89.4 128 96.4"/><path d="M0 100.8 Q64 93.8 128 100.8"/><path d="M0 105.2 Q64 98.2 128 105.2"/></g>
+        
+      </g>
+      <g fill="none" stroke="url(#sg15)" stroke-width="2.2" filter="url(#gl15)"><g mask="url(#em15)"><g transform="rotate(-9 45 46)">
+      <rect x="35" y="6" width="20" height="50" rx="10" fill="none" />
+      <rect x="40.5" y="14" width="9" height="30" rx="4.5" fill="none"/>
+    </g><g transform="rotate(9 83 46)">
+      <rect x="73" y="6" width="20" height="50" rx="10" fill="none" />
+      <rect x="78.5" y="14" width="9" height="30" rx="4.5" fill="none"/>
+    </g></g><path d="M16 94 C16 60 36 40 64 40 C92 40 112 60 112 94 C112 102 106 106 98 106 L30 106 C22 106 16 102 16 94 Z" fill="none" /></g>
+      <g filter="url(#gl15)">
+        <ellipse cx="47" cy="71" rx="3.8" ry="5.8" fill="#ffb24a"/><ellipse cx="81" cy="71" rx="3.8" ry="5.8" fill="#ffb24a"/>
+        <path d="M56 85.5 L62 91 L72.5 80.5" stroke="#e9fbff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></svg>
