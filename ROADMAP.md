@@ -9,11 +9,11 @@ The work happened over one week in late September and early October 2026, on a s
 one game action at a time.
 
 ### 1. Opening the file (late September)
-- Worked out the save container: an XOR layer with a key derived as in Death Stranding 1 (MurmurHash3 over a seed
-  and fixed key material), a chunk table, LZ4 compression and a thumbnail image.
-- Parsed the Decima save framework (header, MD5 integrity check, string and GUID pools, a directory of 222 sections),
+- Unlocked the save file itself: it is scrambled and compressed the same way as Death Stranding 1's saves
+  (an XOR key derived with MurmurHash3, LZ4-compressed chunks, plus a thumbnail picture).
+- Read its inner structure, the save format of the game's Decima engine (a checksum and 222 numbered sections),
   building on HZDCoreEditor's work for Horizon Zero Dawn.
-- Found the order records and the unlock catalogue, and built a first viewer that decodes saves in the browser.
+- Found where orders and unlocks are stored, and built a first viewer that reads saves in the browser.
 
 ### 2. Names from the game itself (30 September – 1 October)
 - Matched all 474 orders to their in-game numbers and names using the game's own mission lists, read with the Odradek

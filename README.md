@@ -2,12 +2,11 @@
 
 <h1 align="center">Peko-Check <sup>Lv1</sup></h1>
 
-<p align="center"><b>See your Death Stranding 2 progress straight from your save: every order, every unlock, every route.</b><br>
+<p align="center"><b>See your Death Stranding 2 progress straight from your save: every order, every unlock, every locker.</b><br>
 <i>"Commencing peko-check at once!"</i></p>
 
 <p align="center">
-  <a href="https://github.com/binsento-netizen/ds2-peko-check/actions/workflows/check.yml"><img src="https://github.com/binsento-netizen/ds2-peko-check/actions/workflows/check.yml/badge.svg" alt="publication check"></a>
-  <img src="https://img.shields.io/badge/Death%20Stranding%202-PC%201.10.89-f08a2c" alt="Death Stranding 2 PC 1.10.89">
+  <img src="https://img.shields.io/badge/Death%20Stranding%202-PC%20(Steam)%201.10.89-f08a2c" alt="Death Stranding 2, PC (Steam), game version 1.10.89">
   <img src="https://img.shields.io/badge/runs%20in-your%20browser-1f7a55" alt="runs in your browser">
   <img src="https://img.shields.io/badge/your%20save-never%20uploaded-1f7a55" alt="your save is never uploaded">
   <img src="https://img.shields.io/badge/saves-read--only-5fc9f2" alt="read-only">
@@ -22,138 +21,130 @@
   </picture>
 </p>
 
-Open a save and Peko-Check shows which orders are done, in progress, available or still locked; how far each
-facility's connection level has come and what each level unlocks; which weapons, gear and vehicle parts you have;
-and the routes you travelled. Compare two saves to see exactly what changed in between.
+Open your save and Peko-Check shows which orders you've done and which are still open, how far each facility's
+connection has come and what the next level gives you, which weapons and gear you have, what is in your private
+locker at every facility, and where you travelled. Compare two saves to see exactly what one play session changed.
 
-**Your save never leaves your computer.** The page decodes it in your browser and uploads nothing. The tools only
-read saves; they never write to them.
+**Your save never leaves your computer.** The page reads it in your browser and uploads nothing, and it never
+changes your save.
 
 ## Quick start
 
-1. Open the viewer: **[binsento-netizen.github.io/ds2-peko-check](https://binsento-netizen.github.io/ds2-peko-check/)**
-   (or download the repository and open `viewer/index.html`; it works offline).
-2. Click **Open save** and pick a file from
+1. Open **[binsento-netizen.github.io/ds2-peko-check](https://binsento-netizen.github.io/ds2-peko-check/)**.
+   No install needed. (You can also download this repository and open `viewer/index.html`; it works offline.)
+2. Click **Open save** and pick a save file. They are in
    ```
-   Documents\DEATH STRANDING 2 - ON THE BEACH\<your Steam ID>\
+   Documents\DEATH STRANDING 2 - ON THE BEACH\<a long number>\
    ```
-   Any `autosave`, `checkpointsave` or `manualsave` works; `profile.dat` only holds settings.
-3. Browse the tabs. To see what one play session changed, open the later save, then **Compare with…** the earlier
-   one (or drop both files at once).
+   If Windows syncs your Documents folder to Microsoft's cloud storage, the folder is in that synced Documents
+   folder instead. The long number is your Steam ID. Any `manualsave`, `autosave` or `checkpointsave` file works.
+3. Browse the tabs. To see what a play session changed, open your newest save, click **Compare with…** and pick an
+   older one.
 
-## Features
+Works with the PC (Steam) version of Death Stranding 2. Console saves are not supported.
 
-- **Main orders as a story timeline**, episode by episode: which order you are on, what is done and what is still
+## What you can see
+
+- **Main orders as a story timeline**, episode by episode: where you are in the story, what's done and what's still
   locked, and what each order unlocks.
-- **Standard orders per facility**, with the facility's connection level (stars), its material stock and the rewards
-  of every level, ticked once you have them.
-- **Unlocks** (weapons, gear, outfits, vehicles and vehicle parts) by category, with "unlocked by" links that jump
-  to the order or facility level that gives them, and back. Collab and event items and firmware updates are tagged.
-- **Routes**: the map's "previous routes", split into on foot and by vehicle (see [Map](#map)).
+- **Standard orders per facility**, with the facility's connection level (stars), its material stock and what every
+  level unlocks, ticked once you have it.
+- **Unlocks**: weapons, gear, outfits, vehicles and more, by category. Each one links to the order or facility level
+  that unlocks it. Collab items, event items and firmware updates are marked.
 - **Cargo**: what Sam has equipped and in the backpack, and what is in your **private locker at each facility**,
-  with material totals (partly used stacks included).
-- **APAS**: every enhancement, marked developed, available or not yet available.
-- **Likes**: from NPCs, from other porters, and given. The save card also shows the **in-game day and time**.
-- **Save check**: every save is verified against its own built-in checksum, so a damaged or wrong file is caught.
-- **Compare two saves**: orders that changed state, new unlocks, new route segments and a byte diff of every save
-  section, with a copyable text report.
-- **Light and dark look**, following your system setting.
-- Order numbers and names come from the **game's own mission data**, so they match what you see in-game.
-- Guide links per order: Game8 walkthroughs for main orders, otherwise Game8 or the Death Stranding Wiki.
+  including how much of each material.
+- **APAS**: every enhancement, marked developed, available to develop, or not available yet.
+- **Routes**: the routes the in-game map shows as "previous routes", split into on foot and by vehicle.
+- **Likes** from NPCs, from other porters and given, and the **in-game day and time** of the save.
+- **Save check**: each save is checked against its own built-in checksum, so a damaged file is spotted.
+- **Compare two saves**: which orders changed, what got unlocked and where you travelled in between, with a report
+  you can copy (useful for [helping out](#how-you-can-help)).
+- Order names and numbers come from the **game's own data**, so they match what you see in the game.
+- Guide links for every order (Game8 or the Death Stranding Wiki), and a **light and dark look**.
 
 <p align="center">
   <img src="assets/screenshots/weapons.png" width="49%" alt="Weapon unlocks with item pictures, unlocked and locked state, and the order or facility level that unlocks each">
   <img src="assets/screenshots/standard-orders.png" width="49%" alt="Standard orders for Ciudad Nudo del Norte: connection level, material stock, level rewards and each order's state">
 </p>
-<p align="center"><sub>Shown with the item pictures and mini-maps of the private build. The public version shows the same lists without game art.</sub></p>
 
-## Map
+### About the pictures and the map
 
-The save keeps the routes you travelled since your last main order (the map's "previous routes"), one point roughly
-every 10 metres, marked as on foot or by vehicle. Peko-Check draws them as lines on a plain background, with the
-oldest and latest point marked.
-
-The game's own map image, facility icons and item pictures are copyrighted game assets, so they are not part of this
-repository and the viewer here shows none of them. Order and facility names are text from the game's data.
+The screenshots above and below come from the developer's own copy, which also shows the game's item pictures, a
+small map per facility, and a full map. Those images are copyrighted game assets, so they are **not** included here.
+The viewer you can open from this page shows the same lists without the pictures, and draws your routes on a plain
+background instead of the game's map.
 
 <p align="center"><img src="assets/screenshots/map.png" width="820" alt="The Australia map with facility icons ringed by order progress, routes by vehicle and the layers box"><br>
-<sub>The map view of the private build, drawn from the game's own 3D map data with facility icons and your routes. The public version draws the same routes on a plain background.</sub></p>
+<sub>The developer's copy: the game's map with facility icons and your routes. The viewer here draws the same routes without the map image.</sub></p>
 
 ## What it can read
 
-| Area | State |
+| Part of the save | Status |
 |---|---|
-| File container (XOR key, chunk table, LZ4, metadata, thumbnail) | Solved |
-| Save framework (header, MD5, string/GUID pools, 222-section directory) | Solved |
-| Orders: done / in progress / available / locked | Solved; all 474 orders matched to their number from the game's mission lists |
-| Unlocks: weapons, gear, outfits, vehicle parts | Solved; what unlocks each item (order or facility level) from the game's catalogue |
-| Facility connection levels, material stock, chiral bandwidth | Solved |
-| Likes (from NPCs, from other porters, given) | Solved |
-| Route history (the map's "previous routes") | Solved; fast travel starts a new segment |
-| Cargo: equipped, backpack, private lockers per facility, material amounts | Solved; locker-to-facility link confirmed in game for 3 facilities, the rest inferred |
-| APAS enhancements (developed / available) | Solved |
-| In-game day and time of day | Solved |
-| Signs placed in the world | Partly (positions and types; whose sign is open) |
-| Partial stars (connection points toward the next level) | Open (thresholds known, counter not found) |
-| Music, hologram, structure and colour unlock state | Open (not in the unlock catalogue; leads) |
-| Built structures, route planner, auto-paver progress | Open (paver progress seems to live on the server) |
+| Orders: done, in progress, available, locked | ✅ All 474 orders, with their in-game numbers |
+| Unlocks: weapons, gear, outfits, vehicles and vehicle parts | ✅ Including what unlocks each one |
+| Facilities: connection level, material stock | ✅ |
+| Cargo: equipped, backpack, private lockers, material amounts | ✅ Which facility a locker belongs to is confirmed in game for 3 facilities so far |
+| APAS enhancements | ✅ |
+| Route history | ✅ |
+| Likes, chiral bandwidth, in-game day and time | ✅ |
+| Signs placed in the world | 🟡 Where and which type; not yet whose |
+| Progress toward the next star | ❌ Not found yet |
+| Music, holograms, structures and colour schemes | ❌ Not found yet |
+| Built structures, route planner, auto-paver progress | ❌ Not found yet |
 
-The file format is documented in [docs/FORMAT.md](docs/FORMAT.md).
+How the file works, for the curious: [docs/FORMAT.md](docs/FORMAT.md).
 
 ## How you can help
 
-Most of what Peko-Check knows came from **save pairs**: save, do exactly one thing in the game, save again, and
-compare. The pieces still missing need more of those, ideally from players other than the original tester. You
-don't need to share your save file: the **Compare with…** report contains no personal data and is enough for most
-questions.
+Everything above was worked out with **save pairs**: save, do exactly one thing in the game, save again, and look
+at what changed. The ❌ rows need more of those, and so far all of them came from one player's saves. You don't
+need to share your save file for this.
 
 **How to send a result**
-1. Make a manual save, do the one action below and nothing else, make another manual save.
-2. Open the later save in Peko-Check, click **Compare with…** and pick the earlier one.
-3. Click **Copy report** and paste it into a [new issue](../../issues/new/choose), with what you did and what the game
-   showed (a photo of the screen helps).
+1. Make a manual save, do the one thing from the table below and nothing else, then make another manual save.
+2. Open the newer save in Peko-Check, click **Compare with…** and pick the older one.
+3. In the **Changes** tab, click **Copy report**. Paste it into a [new issue](../../issues/new/choose) together with
+   what you did and what the game showed (a photo of the screen helps).
 
-Please don't attach `.dat` files to public issues: a save contains your Steam ID and other players' names.
+The report contains no personal data. Please don't attach the save files themselves: they contain your Steam ID and
+other players' names.
 
 **Wanted**
 
-| Test | What to do | Why |
+| Test | What to do | What it solves |
 |---|---|---|
-| Music or hologram | Save right before and after a reward that gives one song or hologram, with nothing else happening | Find where music and hologram unlocks are stored |
-| Structure unlock | Save before and after a connection level that unlocks a new structure type | Same, for structures |
-| Star fill | Note how full a facility's next star is, make one delivery there without levelling up, note it again | Find the connection points behind the partial stars |
-| Collectible | Save before and after picking up a memory chip or another collectible | Collectibles for the map |
-| Your own sign | Place one sign, save, then check the report | Tell your own signs apart from other players' |
-| Private lockers | Open the Cargo tab and compare one locker with the game's locker screen | Confirm which facility each locker belongs to, especially in eastern Australia |
-| Mexico map | Compare the Map tab's Mexico with the in-game map | Only the central strip has colour data; is the rest grey in the game too? |
-| Other game versions | Open a save from a newer patch | Check nothing moved |
+| Music or hologram | Save just before and just after a reward that gives one song or hologram, with nothing else happening | Showing which songs and holograms you have |
+| New structure | Save before and after reaching a connection level that unlocks a new structure | Same, for structures |
+| Star progress | Note how full a facility's next star is, make one delivery there without levelling up, note it again | Showing progress toward the next star |
+| Collectible | Save before and after picking up a memory chip or another collectible | Showing collectibles |
+| Your own sign | Save, place one sign, save again | Telling your signs apart from other players' |
+| Locker check | Compare a locker in the **Cargo** tab with the game's own locker screen at that facility | Confirming which facility each locker belongs to |
+| Newer game version | Open a save from a newer patch and tell us if something looks wrong | Keeping it working after updates |
 
-Bug reports and ideas are welcome as issues too. See [ROADMAP.md](ROADMAP.md) for where the project came from and
-what is next.
+Bug reports and ideas are welcome as [issues](../../issues/new/choose) too. [ROADMAP.md](ROADMAP.md) tells how the
+project got here and what's next.
 
-## Build it yourself
+## For developers
 
 ```bash
 pip install lz4
 ./setup.sh                                        # enables the publication check hooks
-python catalog/build_catalog.py                   # mission id -> order number/name catalogue (from the repo root)
-python viewer/build_viewer_data.py --no-sample    # catalogue + labels -> viewer/viewer_data.json
+python catalog/build_catalog.py                   # order catalogue from the game data in catalog/
+python viewer/build_viewer_data.py --no-sample    # -> viewer/viewer_data.json
 python viewer/build_page.py                       # -> viewer/index.html, one self-contained page
-python tools/ds2_savestate.py path/to/manualsave0.dat   # print a save's sections
+python tools/ds2_savestate.py path/to/manualsave0.dat   # list a save's sections
 ```
 
-## Privacy and publication check
-
-The repository never contains save files, personal data, game assets or copied third-party text.
-`tools/public_check.py` enforces that as a pre-commit and pre-push hook (`setup.sh` enables them, or
-`git config core.hooksPath .githooks`) and in CI on every push and pull request. The only images allowed are this
-project's own logo and screenshots of its own interface.
+The repository never contains save files, personal data, game asset files (map images, icons, item pictures) or
+copied third-party text. `tools/public_check.py` enforces that before every commit and push (`setup.sh` turns the
+hooks on) and again on GitHub. The only images in the repository are the logo and screenshots of the app.
 
 ## Credits
 
 - Game data (orders, unlocks, names): read from the game itself with [ShadelessFox/odradek](https://github.com/ShadelessFox/odradek).
 - Decima save framework: [Nukem9/HZDCoreEditor](https://github.com/Nukem9/HZDCoreEditor).
-- Container key derivation: [mi5hmash/DeathStrandingSaveDataResigner](https://github.com/mi5hmash/DeathStrandingSaveDataResigner).
+- Save encryption key: [mi5hmash/DeathStrandingSaveDataResigner](https://github.com/mi5hmash/DeathStrandingSaveDataResigner).
 - Guide links: [Game8](https://game8.co/games/Death-Stranding-2-On-the-Beach) and the [Death Stranding Wiki](https://deathstranding.fandom.com/).
 
 Details and licences: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Code: MIT, see [LICENSE](LICENSE).
