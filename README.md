@@ -57,7 +57,7 @@ Steam Deck are untested, so reports are welcome. Console saves are not supported
   level unlocks, ticked once you have it.
 - **Unlocks**: weapons, gear, outfits, vehicles and more, by category. Each one links to the order or facility level
   that unlocks it. Collab items, event items and firmware updates are marked.
-- **Cargo**: what Sam has equipped and in the backpack, and what is in your **private locker at each facility**,
+- **Cargo & lockers**: what Sam has equipped and in the backpack, and what is in your **private locker at each facility**,
   including how much of each material.
 - **APAS** (in the Unlocks tab): every enhancement, marked developed, available to develop, or not available yet.
 - **Map**: every facility with its order progress, and your routes, on our own blocky map (see [The map](#the-map)).
@@ -128,7 +128,7 @@ other players' names.
 | Star progress | Note how full a facility's next star is, make one delivery there without levelling up, note it again | Showing progress toward the next star |
 | Collectible | Save before and after picking up a memory chip or another collectible | Showing collectibles |
 | Your own sign | Save, place one sign, save again | Telling your signs apart from other players' |
-| Locker check | Compare a locker in the **Cargo** tab with the game's own locker screen at that facility | Confirming which facility each locker belongs to |
+| Locker check | Compare a locker in the **Cargo & lockers** tab with the game's own locker screen at that facility | Confirming which facility each locker belongs to |
 | Newer game version | Open a save from a newer patch and tell us if something looks wrong | Keeping it working after updates |
 
 Bug reports and ideas are welcome as [issues](../../issues/new/choose) too. [ROADMAP.md](ROADMAP.md) tells how the

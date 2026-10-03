@@ -468,7 +468,7 @@ footer b{color:var(--ink)}
     <button class="tab" role="tab" id="tab-main" data-tab="main" aria-selected="false">Main orders</button>
     <button class="tab" role="tab" id="tab-sub" data-tab="sub" aria-selected="false">Sub orders</button>
     <button class="tab" role="tab" id="tab-craft" data-tab="craft" aria-selected="false">Unlocks</button>
-    <button class="tab" role="tab" id="tab-cargo" data-tab="cargo" aria-selected="false">Cargo</button>
+    <button class="tab" role="tab" id="tab-cargo" data-tab="cargo" aria-selected="false">Cargo &amp; lockers</button>
     <button class="tab" role="tab" id="tab-routes" data-tab="routes" aria-selected="false">Map</button>
   </nav>
 
@@ -949,7 +949,7 @@ footer b{color:var(--ink)}
       main: [`${count(main, "done")} / ${main.length}`, pct(count(main, "done"), main.length), `${count(main, "prog")} in progress`],
       sub: [`${count(sub, "done")} / ${sub.length}`, pct(count(sub, "done"), sub.length), `${count(sub, "avail")} available now`],
       craft: [`${unl} / ${tracked.length}`, pct(unl, tracked.length), "unlocked"],
-      cargo: [`${(state.cargo || []).length} items`, null, "gear, backpack and lockers"],
+      cargo: [`${(state.cargo || []).length} items`, null, "what you carry and your private lockers"],
       routes: r && hwN ? [`${r.hw.length} / ${hwN} roads`, pct(r.hw.length, hwN), "highway built"] : ["", null, "facilities and routes"],
       changes: ["", null, "between two saves"],
     };
