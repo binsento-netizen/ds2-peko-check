@@ -55,7 +55,7 @@ Works with the PC (Steam) version of Death Stranding 2. Console saves are not su
 - **Cargo**: what Sam has equipped and in the backpack, and what is in your **private locker at each facility**,
   including how much of each material.
 - **APAS**: every enhancement, marked developed, available to develop, or not available yet.
-- **Routes**: the routes the in-game map shows as "previous routes", split into on foot and by vehicle.
+- **Map**: every facility with its order progress, and your routes, on our own blocky map (see [The map](#the-map)).
 - **Likes** from NPCs, from other porters and given, and the **in-game day and time** of the save.
 - **Save check**: each save is checked against its own built-in checksum, so a damaged file is spotted.
 - **Compare two saves**: which orders changed, what got unlocked and where you travelled in between, with a report
@@ -68,15 +68,17 @@ Works with the PC (Steam) version of Death Stranding 2. Console saves are not su
   <img src="assets/screenshots/standard-orders.png" width="49%" alt="Standard orders for Ciudad Nudo del Norte: connection level, material stock, level rewards and each order's state">
 </p>
 
-### About the pictures and the map
+### The map
 
-The screenshots above and below come from the developer's own copy, which also shows the game's item pictures, a
-small map per facility, and a full map. Those images are copyrighted game assets, so they are **not** included here.
-The viewer you can open from this page shows the same lists without the pictures, and draws your routes on a plain
-background instead of the game's map.
+The **Map** tab shows your progress on a blocky map of Australia or Mexico: every facility, ringed by how many of its
+standard orders you've done, and the routes you travelled since your last main order (on foot or by vehicle). Click
+a facility to jump to its orders.
 
-<p align="center"><img src="assets/screenshots/map.png" width="820" alt="The Australia map with facility icons ringed by order progress, routes by vehicle and the layers box"><br>
-<sub>The developer's copy: the game's map with facility icons and your routes. The viewer here draws the same routes without the map image.</sub></p>
+<p align="center"><img src="assets/screenshots/map.png" width="820" alt="Blocky map of Australia with surface types, facilities ringed by order progress and routes by vehicle"></p>
+
+The map and the item icons are our own drawings: the terrain is simplified from the game's map into blocks and
+surface types in our own colours, and every item gets a generic icon for its kind. The game's own map image and item
+pictures are copyrighted, so they aren't included.
 
 ## What it can read
 
