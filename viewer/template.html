@@ -184,6 +184,9 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .group>summary:focus-visible{outline-offset:-3px}
 .vmap{background:var(--map-bg);border:1px solid var(--line-strong);margin-top:10px;overflow:hidden} .vmap svg{display:block;width:100%;height:auto}
 .vm-casing{fill:none;stroke:rgba(0,0,0,.85);stroke-width:6;stroke-linejoin:round;stroke-linecap:round} .vm-veh,.vm-foot{fill:none;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round} .vm-veh{stroke:#ff9b2f} .vm-foot{stroke:#5cc8ff}
+.vm-hw{fill:none;stroke:#cfd6dc;stroke-width:2.2;stroke-dasharray:5 4;opacity:.75} .vm-hw.built{stroke:#ffffff;stroke-width:3.2;stroke-dasharray:none;opacity:1;filter:drop-shadow(0 0 1.5px rgba(0,0,0,.9))}
+.vm-mono{fill:none;stroke:#c58bff;stroke-width:2.6;stroke-linejoin:round;filter:drop-shadow(0 0 1.5px rgba(0,0,0,.9))} .vm-st{fill:#0e1420;stroke:#c58bff;stroke-width:1.6} .vm-rb{fill:#0e1420;stroke:#c58bff;stroke-width:1.6} .vm-rb.built{fill:#c58bff}
+.vmap.no-hw .lay-hw,.vmap.no-mono .lay-mono,.vmap.no-routes .vm-routes{display:none} .vm-toggles{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .vm-pier{stroke:#9aa4ad;stroke-width:3.5;stroke-linecap:round} .vm-fac{cursor:pointer} .vm-fac text{font:600 13px var(--body);fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.85);stroke-width:3.5px} .vm-fac.off>g{stroke-dasharray:3 2} .vm-fac:focus{outline:none} .vm-fac:focus-visible>g{stroke:#fff}
 .vm-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:8px} .vm-legend i{display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-2px} .vm-legend i.sq{background:none;border:2.5px solid;border-radius:50%} .vm-legend i.ln{height:3px;vertical-align:3px;width:16px}
 @media (max-width:700px){.vm-fac text{display:none}}
@@ -666,6 +669,43 @@ footer b{color:var(--ink)}
     return h >= 0 && h < 24.01 && d < 100000 ? [d, h] : null;
   }
   const clockText = (c) => c ? `Day ${c[0]}, ${String(Math.floor(c[1]) % 24).padStart(2, "0")}:${String(Math.floor((c[1] % 1) * 60)).padStart(2, "0")}` : "";
+
+  // highway and monorail built state (FINDINGS "Highway and monorail"): section 7fe13267 holds a table of 28-byte
+  // records sorted by road id (+0 i32 id, +8 f32 1.0 = built); section 1953aea5 holds each monorail rebuilder's
+  // locator GUID followed by an f32 durability (0 = not built; exactly 360000 in early saves = unknown).
+  const ROADS = DATA.roads || null;
+  function parseRoads(sec) {
+    if (!ROADS) return null;
+    const hwIds = new Set(ROADS.highway.map((h) => h[0])), ids = new Set(ROADS.ids || hwIds), out = { hw: [], rails: [] };
+    const b = sec.get(0x7fe13267);
+    if (b) {
+      const dv = new DataView(b.buffer, b.byteOffset, b.byteLength), n = ids.size;
+      for (let i = 0; i + 28 * n <= b.length; i++) {
+        if (!ids.has(dv.getInt32(i, true))) continue;
+        let ok = true; for (let k = 1; k < n / 2 && ok; k++) ok = ids.has(dv.getInt32(i + 28 * k, true));
+        if (!ok) continue;
+        for (let k = 0; i + 28 * k + 28 <= b.length && ids.has(dv.getInt32(i + 28 * k, true)); k++)
+          if (dv.getFloat32(i + 28 * k + 8, true) === 1 && hwIds.has(dv.getInt32(i + 28 * k, true))) out.hw.push(dv.getInt32(i + 28 * k, true));   // paver segments only
+        break;
+      }
+    }
+    const e = sec.get(0x1953aea5);
+    if (e) {
+      const dv = new DataView(e.buffer, e.byteOffset, e.byteLength);
+      for (const [name, , , g] of ROADS.rails) {
+        const pat = g.match(/../g).map((h) => parseInt(h, 16));
+        let at = -1;
+        for (let i = 0; i + 20 <= e.length && at < 0; i++) {
+          if (e[i] !== pat[0] || e[i + 1] !== pat[1]) continue;
+          let m = true; for (let k = 2; k < 16 && m; k++) m = e[i + k] === pat[k];
+          if (m) at = i;
+        }
+        const v = at >= 0 ? dv.getFloat32(at + 16, true) : 0;
+        if (v > 0 && v !== 360000) out.rails.push(name);
+      }
+    }
+    return out;
+  }
 
   function parseLikes(s) {
     if (!s || s.length < 48) return null;
@@ -1222,6 +1262,18 @@ footer b{color:var(--ink)}
   /* ---------- public map: voxel terrain (our own simplified drawing, catalog/voxel_map.json) + facilities + routes ---------- */
   const VMAP = DATA.vmap || null, VFAC = DATA.vfac || [];
   const VREG = { aus: "Australia", mex: "Mexico" };
+  const hiddenLayers = new Set();
+  // highway (built solid, not built dashed) and monorail (line; rebuilder markers filled when built) for the voxel map
+  function roadLayer(region, U, V) {
+    if (!ROADS || region !== "aus") return "";
+    const r = (state && state.roads) || { hw: [], rails: [] }, hw = new Set(r.hw), rails = new Set(r.rails);
+    const path = (p) => { let d = ""; for (let i = 0; i < p.length; i += 2) d += `${i ? "L" : "M"}${U(p[i]).toFixed(1)} ${V(p[i + 1]).toFixed(1)}`; return d; };
+    const hwy = ROADS.highway.map(([id, p]) => `<path d="${path(p)}" class="vm-hw${hw.has(id) ? " built" : ""}"/>`).join("");
+    const mono = ROADS.monorail.map((p) => `<path d="${path(p)}" class="vm-mono"/>`).join("");
+    const st = ROADS.stations.map(([n, x, y]) => `<circle cx="${U(x).toFixed(1)}" cy="${V(y).toFixed(1)}" r="2.6" class="vm-st"><title>Monorail station ${esc(n)}</title></circle>`).join("");
+    const rb = ROADS.rails.map(([n, x, y]) => `<rect x="${(U(x) - 4).toFixed(1)}" y="${(V(y) - 4).toFixed(1)}" width="8" height="8" class="vm-rb${rails.has(n) ? " built" : ""}"><title>${esc(n)}: ${rails.has(n) ? "track rebuilt" : "not rebuilt yet"}</title></rect>`).join("");
+    return `<g class="vm-roads"><g class="lay-hw">${hwy}</g><g class="lay-mono">${mono}${st}${rb}</g></g>`;
+  }
   function renderVoxelMap() {
     if (!mapRegion) mapRegion = defaultRegion();
     const R = VMAP[mapRegion]; if (!R) return `<p class="note">No map for this region.</p>`;
@@ -1261,8 +1313,9 @@ footer b{color:var(--ink)}
     const note = mapRegion !== defaultRegion() ? `Your routes are on the ${VREG[defaultRegion()]} map (where this save is)` : segs.length ? `${segs.length} route segments · about ${routeLen(segs).km.toFixed(1)} km since your last main order` : "No route history in this save";
     const legend = (R.legend || []).map(([n, c]) => `<span><i style="background:${c}"></i>${esc(n)}</span>`).join("");
     return `<div class="group routes"><div class="map-bar"><div class="catbar" style="margin:0">${btns}</div><div class="note">${note}</div></div>
-      <div class="vmap"><svg viewBox="0 0 1000 1000" role="img" aria-label="${VREG[mapRegion]} map with facilities and your routes">${R.svg}${piers}<g class="vm-routes">${lines}${end}</g><g class="vm-facs">${marks}</g></svg></div>
-      <div class="vm-legend">${legend}<span><i class="sq" style="border-color:#3fb27f"></i>All orders done</span><span><i class="sq" style="border-color:#e0b44c"></i>Some done</span><span><i class="sq" style="border-color:#8a94a3"></i>None yet</span><span><i class="sq" style="border-color:#9fb3c8"></i>No standard orders</span><span><i class="sq" style="border-color:#8a94a3;border-style:dashed"></i>Not connected</span><span><i class="ln" style="background:#ff9b2f"></i>By vehicle</span><span><i class="ln" style="background:#5cc8ff"></i>On foot</span></div>
+      ${mapRegion === "aus" && ROADS ? `<div class="vm-toggles" role="group" aria-label="Map layers">${[["hw", "Highway"], ["mono", "Monorail"], ["routes", "Your routes"]].map(([k, l]) => `<button type="button" class="chip-btn" data-layer="${k}" aria-pressed="${!hiddenLayers.has(k)}">${l}</button>`).join("")}</div>` : ""}
+      <div class="vmap${[...hiddenLayers].map((k) => " no-" + k).join("")}"><svg viewBox="0 0 1000 1000" role="img" aria-label="${VREG[mapRegion]} map with facilities and your routes">${R.svg}${piers}${roadLayer(mapRegion, U, V)}<g class="vm-routes">${lines}${end}</g><g class="vm-facs">${marks}</g></svg></div>
+      <div class="vm-legend">${legend}<span><i class="sq" style="border-color:#3fb27f"></i>All orders done</span><span><i class="sq" style="border-color:#e0b44c"></i>Some done</span><span><i class="sq" style="border-color:#8a94a3"></i>None yet</span><span><i class="sq" style="border-color:#9fb3c8"></i>No standard orders</span><span><i class="sq" style="border-color:#8a94a3;border-style:dashed"></i>Not connected</span>${mapRegion === "aus" && ROADS ? `<span><i class="ln" style="background:#fff"></i>Highway, built (${((state && state.roads) || { hw: [] }).hw.length} / ${ROADS.highway.length})</span><span><i class="ln" style="background:repeating-linear-gradient(90deg,#cfd6dc 0 5px,transparent 5px 9px)"></i>Highway, not built</span><span><i class="ln" style="background:#c58bff"></i>Monorail (filled square = track rebuilt, ${((state && state.roads) || { rails: [] }).rails.length} / ${ROADS.rails.length})</span>` : ""}<span><i class="ln" style="background:#ff9b2f"></i>By vehicle</span><span><i class="ln" style="background:#5cc8ff"></i>On foot</span></div>
       <p class="about">${esc(R.label || "Terrain simplified from the game map")}: our own blocky drawing in our own colours, not the game's map image. Diamonds are distribution centers and knots, circles preppers; the ring shows how many of their standard orders you've done, and a dashed ring means not connected yet. Click a facility to see its standard orders. Routes are the in-game “previous routes” since your last main order.</p></div>`;
   }
 
@@ -1404,6 +1457,8 @@ footer b{color:var(--ink)}
       else { tab = "standard"; $("q").value = FAC_NAME.get(Number(gf.dataset.gotoFac)) || ""; }
       status = "all"; render(); $("tabs").scrollIntoView && $("tabs").scrollIntoView({ block: "start" }); return;
     }
+    const ly = e.target.closest("[data-layer]");
+    if (ly) { const k = ly.dataset.layer; hiddenLayers.has(k) ? hiddenLayers.delete(k) : hiddenLayers.add(k); $("view").innerHTML = renderView(); return; }
     const rg = e.target.closest("[data-region]");
     if (rg) { mapRegion = rg.dataset.region; $("view").innerHTML = renderView(); if (DATA.map) initMap(); return; }
     const l = e.target.closest("[data-loc]");
@@ -1427,7 +1482,7 @@ footer b{color:var(--ink)}
     if (!mis) throw new Error("This save has no order list, so it can't be shown. Try another save file.");
     const url = thumb && typeof Blob !== "undefined" && URL.createObjectURL ? URL.createObjectURL(new Blob([thumb], { type: "image/png" })) : null;
     return { name: fileName.split("_").pop(), version: p.version, playtime: p.playtime, meta: metaLines(meta || new Uint8Array()),
-      missions: parseMissions(mis), recipes: rec ? parseRecipes(rec) : [], routes: p.sec.get(0x48ea52a4) ? parseRoutes(p.sec.get(0x48ea52a4)) : [], verified: verifySave(payload), levels: parseLevels(p.sec.get(0x73dacf23)), likes: parseLikes(p.sec.get(0x202659d5)), apas: parseApas(p.sec.get(0x69049449)), clock: parseClock(p.sec.get(0x3926c2c4)), cargo: parseCargo(p.sec.get(0x0aa0d44e)),
+      missions: parseMissions(mis), recipes: rec ? parseRecipes(rec) : [], routes: p.sec.get(0x48ea52a4) ? parseRoutes(p.sec.get(0x48ea52a4)) : [], verified: verifySave(payload), levels: parseLevels(p.sec.get(0x73dacf23)), likes: parseLikes(p.sec.get(0x202659d5)), apas: parseApas(p.sec.get(0x69049449)), clock: parseClock(p.sec.get(0x3926c2c4)), roads: parseRoads(p.sec), cargo: parseCargo(p.sec.get(0x0aa0d44e)),
       thumb: url, sec: p.sec, sample: false };
   }
   async function readSave(file) {

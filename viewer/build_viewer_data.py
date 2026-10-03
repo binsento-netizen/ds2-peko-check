@@ -54,6 +54,48 @@ _facn[300] = "DHV Magellan"
 lockers = {w0: [code, _facn.get(code, f"Facility {code}")] for w0, code in review_cargo.FACILITY_LOCKERS.items()}
 
 
+# highway and monorail (catalog/roads_game.json from tools/build_roads.py; Australia only): geometry in world metres.
+# highway: [road id, [x0, y0, x1, y1, ...]] per auto-paver segment; rails: [name, x, y, locator GUID bytes (hex, GUID order)]
+import uuid as _uuid
+def _flat(pts): return [round(c) for p in pts for c in p[:2]]
+_rd = json.load(open(ROOT / "catalog/roads_game.json", encoding="utf-8")).get("aus") if (ROOT / "catalog/roads_game.json").exists() else None
+roads = dict(
+    highway=[[s["road_id"], _flat(pts)] for s, pts in zip(_rd["highway_segments"], _rd["highway"])],
+    ids=[s["road_id"] for s in _rd["highway_segments"] + _rd.get("other_roads", [])],   # every id in the save's road table
+    monorail=[_flat(pts) for pts in _rd["monorail"]],
+    # real stations only (names NW01, TC02, EC03…; "…G…" names belong to the unused ghost lines), one dot per station
+    stations=[[n, round(sum(p[0] for p in g) / len(g)), round(sum(p[1] for p in g) / len(g))]
+              for n, g in __import__("itertools").groupby(sorted((st["name"], (st["x"], st["y"])) for st in _rd["monorail_stations"]
+                                                               if __import__("re").fullmatch(r"(NW|TC|EC)\d+", st["name"])), key=lambda t: t[0])
+              for g in [[p for _, p in g]]],
+    rails=[[r["name"], round(r["x"]), round(r["y"]), _uuid.UUID(r["locator_uuid"]).bytes_le.hex()] for r in _rd["rail_rebuilders"]],
+) if _rd else None
+
+
+def roads_of(sb):
+    """Built highway segments (road ids) and monorail sections (names), same rules as the viewer's parseRoads."""
+    if not roads:
+        return None
+    ids = set(roads["ids"])
+    b = sb.get(0x7FE13267, b"")
+    built = []
+    for i in range(len(b) - 28 * len(ids)):
+        if struct.unpack_from("<i", b, i)[0] in ids and all(struct.unpack_from("<i", b, i + 28 * k)[0] in ids for k in range(len(ids) // 2)):
+            k = 0
+            while i + 28 * k + 28 <= len(b) and struct.unpack_from("<i", b, i + 28 * k)[0] in ids:
+                rid, _, done = struct.unpack_from("<iff", b, i + 28 * k)
+                if done == 1.0 and rid in {h[0] for h in roads["highway"]}: built.append(rid)   # paver segments only (not the loop circuit)
+                k += 1
+            break
+    e = sb.get(0x1953AEA5, b"")
+    rails = []
+    for name, _, _, g in roads["rails"]:
+        j = e.find(bytes.fromhex(g))
+        v = struct.unpack_from("<f", e, j + 16)[0] if j >= 0 else 0.0
+        if v > 0 and v != 360000.0: rails.append(name)
+    return dict(hw=built, rails=rails)
+
+
 def cargo_of(path):
     """[where, baggage key, material amount] per item: "eq" = Sam equipped, "bp" = backpack, "L:<w0>" = a private locker (same rules as the viewer)."""
     out = []
@@ -105,7 +147,7 @@ def read_sample(path):
     ck = sb.get(0x3926C2C4, b"")   # in-game clock: +4 f32 hour of day, +8 u32 day (same rule as the viewer)
     clock = [struct.unpack_from("<I", ck, 8)[0], struct.unpack_from("<f", ck, 4)[0]] if len(ck) >= 12 else None
     sample = dict(name=Path(path).name.split("_")[-1], version=s.version, playtime=s.playtime, meta=text[:6],
-                  missions=missions, recipes=flags, routes=routes, levels=levels, likes=likes, apas=apas, clock=clock, cargo=cargo_of(path), verified=verified, thumb="data:image/png;base64," + base64.b64encode(thumb).decode())
+                  missions=missions, recipes=flags, routes=routes, levels=levels, likes=likes, apas=apas, clock=clock, roads=roads_of(sb), cargo=cargo_of(path), verified=verified, thumb="data:image/png;base64," + base64.b64encode(thumb).decode())
     return sample, missions
 
 
@@ -191,7 +233,7 @@ if ICONS:
             im = Image.open(ROOT / r["icon"]).convert("RGBA"); im.thumbnail((80, 80))
             b = BytesIO(); im.save(b, "WEBP", quality=80)
             apas_icons[int(r["hash"], 16)] = "data:image/webp;base64," + base64.b64encode(b.getvalue()).decode()
-out = json.dumps(dict(orders=orders, recipes=recipes, about=ABOUT, tracked=tracked, g8fac=g8fac, wiki=wiki, sample=sample, example=example, map=map_data, links=links, icons=icons, vmap=vmap, vfac=vfac, generic=json.load(open(ROOT / "catalog/generic_icons.json", encoding="utf-8")), apas=apas_cat, apas_icons=apas_icons, bags=bags, lockers=lockers), ensure_ascii=False, separators=(",", ":"))
+out = json.dumps(dict(orders=orders, recipes=recipes, about=ABOUT, tracked=tracked, g8fac=g8fac, wiki=wiki, sample=sample, example=example, map=map_data, links=links, icons=icons, vmap=vmap, vfac=vfac, roads=roads, generic=json.load(open(ROOT / "catalog/generic_icons.json", encoding="utf-8")), apas=apas_cat, apas_icons=apas_icons, bags=bags, lockers=lockers), ensure_ascii=False, separators=(",", ":"))
 OUT.write_text(out, encoding="utf-8")
 print(f"orders {len(orders)}, recipes {len(recipes)} (" + ", ".join(f"{k}={sum(x[4].startswith(k) for x in recipes)}" for k in ("e", "x")) + "), "
       f"sample missions {len(missions)}, bytes {len(out):,}")
