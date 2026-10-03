@@ -185,7 +185,7 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .group>summary:focus-visible{outline-offset:-3px}
 .vmap{background:var(--map-bg);border:1px solid var(--line-strong);margin-top:10px;overflow:hidden} .vmap svg{display:block;width:100%;height:auto}
 .vm-casing{fill:none;stroke:rgba(0,0,0,.85);stroke-width:6;stroke-linejoin:round;stroke-linecap:round} .vm-veh,.vm-foot{fill:none;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round} .vm-veh{stroke:#ff9b2f} .vm-foot{stroke:#5cc8ff}
-.vm-fac{cursor:pointer} .vm-fac text{font:600 13px var(--body);fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.85);stroke-width:3.5px} .vm-fac.off>g{stroke-dasharray:3 2} .vm-fac:focus{outline:none} .vm-fac:focus-visible>g{stroke:#fff}
+.vm-pier{stroke:#9aa4ad;stroke-width:3.5;stroke-linecap:round} .vm-fac{cursor:pointer} .vm-fac text{font:600 13px var(--body);fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.85);stroke-width:3.5px} .vm-fac.off>g{stroke-dasharray:3 2} .vm-fac:focus{outline:none} .vm-fac:focus-visible>g{stroke:#fff}
 .vm-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:8px} .vm-legend i{display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-2px} .vm-legend i.sq{background:none;border:2.5px solid;border-radius:50%} .vm-legend i.ln{height:3px;vertical-align:3px;width:16px}
 @media (max-width:700px){.vm-fac text{display:none}}
 @media (max-width:700px){.tabs{flex-wrap:wrap;overflow-x:visible} .group>summary h3{min-width:0;overflow-wrap:anywhere} .group>summary .count{grid-column:1/-1;grid-row:2;color:var(--muted);padding:0 14px} .group>summary::before{grid-row:1}}
@@ -266,7 +266,8 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .rec .by{font-size:13px;color:var(--muted);margin-top:2px}
 .rec-main{display:flex;gap:12px;align-items:center;min-width:0}
 .rec-main>div{min-width:0}
-.rec-gen{display:flex;align-items:center;justify-content:center;color:var(--map-ink)} .rec-gen svg{width:38px;height:38px}
+.rec-gen{position:relative;display:flex;align-items:center;justify-content:center;color:var(--map-ink)} .rec-gen svg{width:38px;height:38px}
+.bdg{position:absolute;font:600 10px/1 var(--mono);padding:2px 4px;letter-spacing:.02em} .bdg-lv{right:2px;bottom:2px;background:var(--orange);color:#fff} .bdg-tag{left:2px;top:2px;background:#5cc8ff;color:#06121b}
 .rec-img{width:96px;height:60px;object-fit:cover;flex:none;padding:3px;border:1px solid var(--line-strong);background:linear-gradient(160deg,var(--map-solid),var(--map-bg));   /* dark in both themes: some game pictures are white glyphs */
   clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
 .rows:has(.rec-img) .rec-main:not(:has(.rec-img))::before{content:"";flex:none;width:96px;height:60px;border:1px solid var(--line);background:repeating-linear-gradient(135deg,var(--line) 0 1px,transparent 1px 7px);
@@ -1051,7 +1052,9 @@ footer b{color:var(--ink)}
     const k = m.keys.find((x) => ICONS[x]);
     if (k) return `<img class="rec-img" src="${ICONS[k]}" alt="" loading="lazy">`;
     const g = m.keys.map((x) => GEN.map[(x >>> 0).toString(16).padStart(8, "0")]).find(Boolean);
-    return g && GEN.icons[g] ? `<span class="rec-img rec-gen" aria-hidden="true">${GEN.icons[g]}</span>` : "";
+    if (!g || !GEN.icons[g]) return "";
+    const lv = (m.label.match(/\bLv\s*(\d+)/i) || [])[1], tag = (m.label.match(/\[([A-Z]{1,3})\]/) || [])[1];
+    return `<span class="rec-img rec-gen" aria-hidden="true">${GEN.icons[g]}${tag ? `<b class="bdg bdg-tag">${tag}</b>` : ""}${lv ? `<b class="bdg bdg-lv">Lv${lv}</b>` : ""}</span>`;
   };
   function unlockedBy(m) {
     const parts = new Set();
@@ -1272,11 +1275,15 @@ footer b{color:var(--ink)}
       last = prev;
       return `<path d="${d}" class="vm-casing"/><path d="${d}" class="${mode === 200 ? "vm-veh" : "vm-foot"}"/>`;
     }).join("");
+    // piers too thin for the block grid: facility code -> [x, y] of the shore end (traced from the game map's pier)
+    const PIERS = { 235: [1104, -3404] };
+    const piers = VFAC.filter((f) => f[3] === area && PIERS[f[0]]).map(([code, , , , x, y]) =>
+      `<line x1="${U(x).toFixed(1)}" y1="${V(y).toFixed(1)}" x2="${U(PIERS[code][0]).toFixed(1)}" y2="${V(PIERS[code][1]).toFixed(1)}" class="vm-pier"/>`).join("");
     const end = last ? `<circle cx="${U(last[0]).toFixed(1)}" cy="${V(last[1]).toFixed(1)}" r="6" fill="#3fb27f" stroke="#fff" stroke-width="2"><title>Latest route point</title></circle>` : "";
     const note = mapRegion !== defaultRegion() ? `Your routes are on the ${VREG[defaultRegion()]} map (where this save is)` : segs.length ? `${segs.length} route segments · about ${routeLen(segs).km.toFixed(1)} km since the last clear` : "No route history in this save";
     const legend = (R.legend || []).map(([n, c]) => `<span><i style="background:${c}"></i>${esc(n)}</span>`).join("");
     return `<div class="group routes"><div class="map-bar"><div class="catbar" style="margin:0">${btns}</div><div class="note">${note}</div></div>
-      <div class="vmap"><svg viewBox="0 0 1000 1000" role="img" aria-label="${VREG[mapRegion]} map with facilities and your routes">${R.svg}<g class="vm-routes">${lines}${end}</g><g class="vm-facs">${marks}</g></svg></div>
+      <div class="vmap"><svg viewBox="0 0 1000 1000" role="img" aria-label="${VREG[mapRegion]} map with facilities and your routes">${R.svg}${piers}<g class="vm-routes">${lines}${end}</g><g class="vm-facs">${marks}</g></svg></div>
       <div class="vm-legend">${legend}<span><i class="sq" style="border-color:#3fb27f"></i>All orders done</span><span><i class="sq" style="border-color:#e0b44c"></i>Some done</span><span><i class="sq" style="border-color:#8a94a3"></i>None yet</span><span><i class="ln" style="background:#ff9b2f"></i>By vehicle</span><span><i class="ln" style="background:#5cc8ff"></i>On foot</span></div>
       <p class="about">${esc(R.label || "Terrain simplified from the game map")}: our own blocky drawing in our own colours, not the game's map image. Diamonds are distribution centers and knots, circles preppers; the ring shows how many of their standard orders you've done. Click a facility to see its orders. Routes are the in-game “previous routes” since your last main order.</p></div>`;
   }
