@@ -182,6 +182,11 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .group>summary .count{grid-column:2;grid-row:1;position:relative;font:400 13px var(--mono);color:var(--on-banner);font-variant-numeric:tabular-nums;padding-right:40px;white-space:nowrap;opacity:.95}
 .group>summary .bar{grid-column:1/-1;margin:0 14px}
 .group>summary:focus-visible{outline-offset:-3px}
+.vmap{background:var(--map-bg);border:1px solid var(--line-strong);margin-top:10px;overflow:hidden} .vmap svg{display:block;width:100%;height:auto}
+.vm-casing{fill:none;stroke:rgba(0,0,0,.85);stroke-width:6;stroke-linejoin:round;stroke-linecap:round} .vm-veh,.vm-foot{fill:none;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round} .vm-veh{stroke:#ff9b2f} .vm-foot{stroke:#5cc8ff}
+.vm-fac{cursor:pointer} .vm-fac text{font:600 13px var(--body);fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.85);stroke-width:3.5px} .vm-fac.off>g{stroke-dasharray:3 2} .vm-fac:focus{outline:none} .vm-fac:focus-visible>g{stroke:#fff}
+.vm-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:8px} .vm-legend i{display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-2px} .vm-legend i.sq{background:none;border:2.5px solid;border-radius:50%} .vm-legend i.ln{height:3px;vertical-align:3px;width:16px}
+@media (max-width:700px){.vm-fac text{display:none}}
 @media (max-width:700px){.tabs{flex-wrap:wrap;overflow-x:visible} .group>summary h3{min-width:0;overflow-wrap:anywhere} .group>summary .count{grid-column:1/-1;grid-row:2;color:var(--muted);padding:0 14px} .group>summary::before{grid-row:1}}
 /* facilities: teal banner, entity name in Barlow Condensed (long names) */
 .group.fac>summary::before{background:var(--teal-banner)}
@@ -715,7 +720,7 @@ footer b{color:var(--ink)}
 
   let state = null, prev = null, diff = null, tab = "standard", status = "all";
   try { tab = localStorage.getItem("pl-tab") || tab; } catch (e) {}
-  if (DATA.map) $("tab-routes").textContent = "Map";
+  if (DATA.map || DATA.vmap) $("tab-routes").textContent = "Map";
   if (tab === "changes") tab = "standard";
 
   // status of one mission record [id, type, open, order, state]
@@ -1198,6 +1203,49 @@ footer b{color:var(--ink)}
     const ms = (state && state.missions) || [];
     return !ms.length || ms.some((m) => { const c = Math.floor(m[0] / 1000); return c >= 201 && c <= 240; }) ? "aus" : "mex";
   }
+  /* ---------- public map: voxel terrain (our own simplified drawing, catalog/voxel_map.json) + facilities + routes ---------- */
+  const VMAP = DATA.vmap || null, VFAC = DATA.vfac || [];
+  const VREG = { aus: "Australia", mex: "Mexico" };
+  function renderVoxelMap() {
+    if (!mapRegion) mapRegion = defaultRegion();
+    const R = VMAP[mapRegion]; if (!R) return `<p class="note">No map for this region.</p>`;
+    const U = (x) => ((x - R.x0) / R.size * 1000), V = (y) => ((1 - (y - R.y0) / R.size) * 1000);
+    const area = mapRegion === "aus" ? "l200_aus" : "l100_mex";
+    const btns = Object.keys(VMAP).map((id) => `<button type="button" class="chip-btn" data-region="${id}" aria-pressed="${id === mapRegion}">${VREG[id] || id}</button>`).join("");
+    // facility progress: standard orders done per facility, connection level
+    const st = new Map(((state && state.missions) || []).map((m) => [m[0], m[3]]));
+    const byCode = new Map();
+    for (const o of DATA.orders) { if (o[2] !== "S") continue; const c = Math.floor(o[0] / 1000); if (!byCode.has(c)) byCode.set(c, []); byCode.get(c).push(o); }
+    const marks = VFAC.filter((f) => f[3] === area).map(([code, name, type, , x, y]) => {
+      const os = byCode.get(code) || [], done = os.filter((o) => st.get(o[0]) === 4).length, lvl = levelOf(code);
+      const col = !os.length ? "#9fb3c8" : done === os.length ? "#3fb27f" : done ? "#e0b44c" : "#8a94a3";
+      const u = U(x).toFixed(1), v = V(y).toFixed(1), big = type === "DeliveryBase";
+      const shape = big ? `<rect x="-7" y="-7" width="14" height="14" transform="rotate(45)" />` : `<circle r="6.5" />`;
+      const tip = `${name}${lvl !== null ? ` · ${lvl ? "connection level " + lvl : "not connected"}` : ""}${os.length ? ` · standard orders ${done} / ${os.length}` : ""}`;
+      return `<g class="vm-fac${lvl ? "" : " off"}" transform="translate(${u} ${v})" data-loc="${esc(name)}" tabindex="0" role="button" aria-label="${esc(tip)}"><title>${esc(tip)}</title>
+        <g fill="#0e1420" stroke="${col}" stroke-width="3">${shape}</g>${big ? (U(x) > 760 ? `<text x="-11" y="4" text-anchor="end">${esc(name)}</text>` : `<text x="11" y="4">${esc(name)}</text>`) : ""}</g>`;
+    }).join("");
+    // routes (route units = world metres x 2), only on the region the save is in; split where the line jumps
+    const segs = mapRegion === defaultRegion() ? ((state && state.routes) || []).filter((s) => s[1].length >= 4) : [];
+    let last = null;
+    const lines = segs.map(([mode, p]) => {
+      let d = "", prev = null;
+      for (let i = 0; i < p.length; i += 2) {
+        const x = p[i] / 2, y = p[i + 1] / 2, jump = prev && Math.hypot(x - prev[0], y - prev[1]) > 100;
+        d += `${!prev || jump ? "M" : "L"}${U(x).toFixed(1)} ${V(y).toFixed(1)}`; prev = [x, y];
+      }
+      last = prev;
+      return `<path d="${d}" class="vm-casing"/><path d="${d}" class="${mode === 200 ? "vm-veh" : "vm-foot"}"/>`;
+    }).join("");
+    const end = last ? `<circle cx="${U(last[0]).toFixed(1)}" cy="${V(last[1]).toFixed(1)}" r="6" fill="#3fb27f" stroke="#fff" stroke-width="2"><title>Latest route point</title></circle>` : "";
+    const note = mapRegion !== defaultRegion() ? `Your routes are on the ${VREG[defaultRegion()]} map (where this save is)` : segs.length ? `${segs.length} route segments · about ${routeLen(segs).km.toFixed(1)} km since the last clear` : "No route history in this save";
+    const legend = (R.legend || []).map(([n, c]) => `<span><i style="background:${c}"></i>${esc(n)}</span>`).join("");
+    return `<div class="group routes"><div class="map-bar"><div class="catbar" style="margin:0">${btns}</div><div class="note">${note}</div></div>
+      <div class="vmap"><svg viewBox="0 0 1000 1000" role="img" aria-label="${VREG[mapRegion]} map with facilities and your routes">${R.svg}<g class="vm-routes">${lines}${end}</g><g class="vm-facs">${marks}</g></svg></div>
+      <div class="vm-legend">${legend}<span><i class="sq" style="border-color:#3fb27f"></i>All orders done</span><span><i class="sq" style="border-color:#e0b44c"></i>Some done</span><span><i class="sq" style="border-color:#8a94a3"></i>None yet</span><span><i class="ln" style="background:#ff9b2f"></i>By vehicle</span><span><i class="ln" style="background:#5cc8ff"></i>On foot</span></div>
+      <p class="about">${esc(R.label || "Terrain simplified from the game map")}: our own blocky drawing in our own colours, not the game's map image. Diamonds are distribution centers and knots, circles preppers; the ring shows how many of their standard orders you've done. Click a facility to see its orders. Routes are the in-game “previous routes” since your last main order.</p></div>`;
+  }
+
   function renderMapView() {
     if (!mapRegion) mapRegion = defaultRegion();
     const btns = Object.entries(DATA.map.regions).map(([id, r]) => `<button type="button" class="chip-btn" data-region="${id}" aria-pressed="${id === mapRegion}">${esc(r.name)}</button>`).join("");
@@ -1265,6 +1313,7 @@ footer b{color:var(--ink)}
 
   function renderRoutes() {
     if (DATA.map) return renderMapView();
+    if (DATA.vmap) return renderVoxelMap();
     const segs = (state.routes || []).filter((s) => s[1].length >= 4);
     if (!segs.length) return `<p class="note">This save has no route history. The game clears it when you complete a main order (and on some other events), so open a save from a while after your last main order.</p>`;
     const { km, pts } = routeLen(segs);
@@ -1334,7 +1383,7 @@ footer b{color:var(--ink)}
       status = "all"; render(); $("tabs").scrollIntoView && $("tabs").scrollIntoView({ block: "start" }); return;
     }
     const rg = e.target.closest("[data-region]");
-    if (rg) { mapRegion = rg.dataset.region; $("view").innerHTML = renderView(); initMap(); return; }
+    if (rg) { mapRegion = rg.dataset.region; $("view").innerHTML = renderView(); if (DATA.map) initMap(); return; }
     const l = e.target.closest("[data-loc]");
     if (l) {
       if (tab === "changes" || tab === "routes") tab = "standard";

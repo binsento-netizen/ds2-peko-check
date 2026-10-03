@@ -141,6 +141,9 @@ def read_map(d):
 
 
 map_data = read_map(MAP) if MAP else None
+# without the game's map images (public build): our own simplified voxel terrain + facility positions (facts)
+vmap = json.load(open(ROOT / "catalog/voxel_map.json", encoding="utf-8")) if not MAP and (ROOT / "catalog/voxel_map.json").exists() else None
+vfac = json.load(open(ROOT / "catalog/facility_positions.json", encoding="utf-8")) if vmap else []
 
 
 def read_links():
@@ -185,7 +188,7 @@ if ICONS:
             im = Image.open(ROOT / r["icon"]).convert("RGBA"); im.thumbnail((80, 80))
             b = BytesIO(); im.save(b, "WEBP", quality=80)
             apas_icons[int(r["hash"], 16)] = "data:image/webp;base64," + base64.b64encode(b.getvalue()).decode()
-out = json.dumps(dict(orders=orders, recipes=recipes, about=ABOUT, tracked=tracked, g8fac=g8fac, wiki=wiki, sample=sample, example=example, map=map_data, links=links, icons=icons, generic=json.load(open(ROOT / "catalog/generic_icons.json", encoding="utf-8")), apas=apas_cat, apas_icons=apas_icons, bags=bags, lockers=lockers), ensure_ascii=False, separators=(",", ":"))
+out = json.dumps(dict(orders=orders, recipes=recipes, about=ABOUT, tracked=tracked, g8fac=g8fac, wiki=wiki, sample=sample, example=example, map=map_data, links=links, icons=icons, vmap=vmap, vfac=vfac, generic=json.load(open(ROOT / "catalog/generic_icons.json", encoding="utf-8")), apas=apas_cat, apas_icons=apas_icons, bags=bags, lockers=lockers), ensure_ascii=False, separators=(",", ":"))
 OUT.write_text(out, encoding="utf-8")
 print(f"orders {len(orders)}, recipes {len(recipes)} (" + ", ".join(f"{k}={sum(x[4].startswith(k) for x in recipes)}" for k in ("e", "g", "x")) + "), "
       f"sample missions {len(missions)}, bytes {len(out):,}")
