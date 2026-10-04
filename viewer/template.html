@@ -1503,10 +1503,19 @@ footer b{color:var(--ink)}
   }
 
   /* ---------- events ---------- */
+  // redraw in place: keep open/closed groups (matched by their heading) and the scroll position
+  function rerenderKeep() {
+    const key = (d) => (d.querySelector(":scope > summary") || {}).textContent || "";
+    const state0 = new Map([...$("view").querySelectorAll("details")].map((d) => [key(d), d.open]));
+    const y = window.scrollY;
+    $("view").innerHTML = renderView();
+    $("view").querySelectorAll("details").forEach((d) => { const k = key(d); if (state0.has(k)) d.open = state0.get(k); });
+    window.scrollTo(0, y);
+  }
   $("view").addEventListener("change", (e) => {
     if (e.target.id !== "spoilToggle") return;
     showSpoilers = e.target.checked; try { localStorage.setItem("pl-spoilers", showSpoilers ? "1" : "0"); } catch (err) {}
-    $("view").innerHTML = renderView();
+    rerenderKeep();
   });
   $("tabs").addEventListener("click", (e) => {
     const b = e.target.closest("[data-tab]"); if (!b) return;
@@ -1516,7 +1525,7 @@ footer b{color:var(--ink)}
   $("view").addEventListener("click", (e) => {
     // anything blurred: the first click only reveals it; a second click follows the link
     const spr = e.target.closest(".spoil[data-reveal]");
-    if (spr) { e.preventDefault(); e.stopPropagation(); revealed.add(spr.dataset.reveal); $("view").innerHTML = renderView(); return; }
+    if (spr) { e.preventDefault(); e.stopPropagation(); revealed.add(spr.dataset.reveal); rerenderKeep(); return; }
     if (e.target.id === "copyReport") {
       const t = $("report"); t.select();
       const ok = () => { e.target.textContent = "Copied"; setTimeout(() => (e.target.textContent = "Copy report"), 1500); };
@@ -1533,7 +1542,7 @@ footer b{color:var(--ink)}
       status = "all"; render(); $("tabs").scrollIntoView && $("tabs").scrollIntoView({ block: "start" }); return;
     }
     const ly = e.target.closest("[data-layer]");
-    if (ly) { const k = ly.dataset.layer; hiddenLayers.has(k) ? hiddenLayers.delete(k) : hiddenLayers.add(k); $("view").innerHTML = renderView(); return; }
+    if (ly) { const k = ly.dataset.layer; hiddenLayers.has(k) ? hiddenLayers.delete(k) : hiddenLayers.add(k); rerenderKeep(); return; }
     const rg = e.target.closest("[data-region]");
     if (rg) { mapRegion = rg.dataset.region; $("view").innerHTML = renderView(); if (DATA.map) initMap(); return; }
     const l = e.target.closest("[data-loc]");
