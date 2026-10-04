@@ -199,6 +199,7 @@ h1 small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-
 .vmap{background:var(--map-bg);border:1px solid var(--line-strong);margin-top:10px;overflow:hidden} .vmap svg{display:block;width:100%;height:auto}
 .vm-casing{fill:none;stroke:rgba(0,0,0,.85);stroke-width:6;stroke-linejoin:round;stroke-linecap:round} .vm-veh,.vm-foot{fill:none;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round} .vm-veh{stroke:#ff9b2f} .vm-foot{stroke:#5cc8ff}
 .vm-hw{fill:none;stroke:#cfd6dc;stroke-width:2.2;stroke-dasharray:5 4;opacity:.75} .vm-hw.built{stroke:#ffffff;stroke-width:3.2;stroke-dasharray:none;opacity:1;filter:drop-shadow(0 0 1.5px rgba(0,0,0,.9))}
+.vm-track{fill:none;stroke:#ffd166;stroke-width:2.4;stroke-dasharray:2 3;filter:drop-shadow(0 0 1.5px rgba(0,0,0,.9))} .vm-track-l{font:600 12px var(--body);fill:#ffd166;paint-order:stroke;stroke:rgba(0,0,0,.85);stroke-width:3px}
 .vm-mono{fill:none;stroke:#c58bff;stroke-width:2.6;stroke-linejoin:round;filter:drop-shadow(0 0 1.5px rgba(0,0,0,.9))} .vm-st{fill:#0e1420;stroke:#c58bff;stroke-width:1.6} .vm-rb{fill:#0e1420;stroke:#c58bff;stroke-width:1.6} .vm-rb.built{fill:#c58bff}
 .vmap.no-hw .lay-hw,.vmap.no-mono .lay-mono,.vmap.no-routes .vm-routes{display:none} .vm-toggles{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .vm-pier{stroke:#9aa4ad;stroke-width:3.5;stroke-linecap:round} .vm-fac{cursor:pointer} .vm-fac text{font:600 13px var(--body);fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.85);stroke-width:3.5px} .vm-fac.off>g{stroke-dasharray:3 2} .vm-fac:focus{outline:none} .vm-fac:focus-visible>g{stroke:#fff}
@@ -995,7 +996,11 @@ footer b{color:var(--ink)}
     if (fac && lvl) { if (!ITEMS_BY_FAC.has(fac)) ITEMS_BY_FAC.set(fac, new Map()); const f = ITEMS_BY_FAC.get(fac); if (!f.has(lvl)) f.set(lvl, new Set()); f.get(lvl).add(label); }
   }
   const FAC_NAME = new Map(); ORD.forEach((o) => { if (o.sec === "S" && o.id) FAC_NAME.set(Math.floor(o.id / 1000), o.from); });
-  const rewardChip = (label, got) => `<button type="button" class="chip-rw${got ? " got" : ""}" data-goto-item="${esc(label)}">${!got && !showSpoilers ? `<span class="blur" title="Spoiler">${esc(label)}</span>` : esc(label)}</button>`;
+  const rewardChip = (label, got) => {
+    const hide = !got && !showSpoilers && !revealed.has("c:" + label);
+    return hide ? `<button type="button" class="chip-rw spoil" data-reveal="c:${esc(label)}" title="Spoiler: click to reveal"><span class="blur">${esc(label)}</span></button>`
+      : `<button type="button" class="chip-rw${got ? " got" : ""}" data-goto-item="${esc(label)}">${esc(label)}</button>`;
+  };
   const MATERIALS = ["Chiral Crystals", "Resins", "Metals", "Ceramics", "Chemicals", "Special Alloys"], MAT_AB = ["CC", "Re", "Me", "Ce", "Ch", "SA"];
   const stockOf = (code) => { const l = ((state && state.levels) || []).find((x) => x[0] === code); return l && l[2] && l[2].some((v) => v) ? l[2] : null; };
   const stockLine = (code) => { const st = code ? stockOf(code) : null; if (!st) return ""; const mx = Math.max(...st) || 1;
@@ -1128,7 +1133,8 @@ footer b{color:var(--ink)}
     const parts = new Set(), facs = new Map();   // facility code -> connection level
     for (const k of m.keys) {
       const l = LINKS[k]; if (!l) continue;
-      for (const mid of l[0]) { const o = ORD_BY_ID.get(mid); if (o) parts.add(`<button type="button" class="loc" data-goto-order="${o.id}">No. ${o.no} ${isSpoiler(o) ? `<span class="blur" title="Spoiler">${esc(o.name)}</span>` : esc(o.name)}</button>`); }
+      for (const mid of l[0]) { const o = ORD_BY_ID.get(mid); if (o) parts.add(isSpoiler(o) ? `<button type="button" class="loc spoil" data-reveal="${esc(String(o.id || o.no))}" title="Spoiler: click to reveal">No. ${o.no} <span class="blur">${esc(o.name)}</span></button>`
+        : `<button type="button" class="loc" data-goto-order="${o.id}">No. ${o.no} ${esc(o.name)}</button>`); }
       if (l[1] && l[2]) facs.set(l[1], l[2]);
     }
     if (facs.size > 3) {   // one entry per facility (e.g. resting at a facility): one line instead of a wall of links
@@ -1327,7 +1333,10 @@ footer b{color:var(--ink)}
     const mono = ROADS.monorail.map((p) => `<path d="${path(p)}" class="vm-mono"/>`).join("");
     const st = ROADS.stations.map(([n, x, y]) => `<circle cx="${U(x).toFixed(1)}" cy="${V(y).toFixed(1)}" r="2.6" class="vm-st"><title>Monorail station ${esc(n)}</title></circle>`).join("");
     const rb = ROADS.rails.map(([n, x, y]) => `<rect x="${(U(x) - 4).toFixed(1)}" y="${(V(y) - 4).toFixed(1)}" width="8" height="8" class="vm-rb${rails.has(n) ? " built" : ""}"><title>${esc(n)}: ${rails.has(n) ? "track rebuilt" : "not rebuilt yet"}</title></rect>`).join("");
-    return `<g class="vm-roads"><g class="lay-hw">${hwy}</g><g class="lay-mono">${mono}${st}${rb}</g></g>`;
+    const trk = (ROADS.track || []).map((p) => {   // label centred above the loop's top
+      let ty = 1e9, sx = 0, n = 0; for (let i = 0; i < p.length; i += 2) { ty = Math.min(ty, V(p[i + 1])); sx += U(p[i]); n++; }
+      return `<path d="${path(p)}" class="vm-track"><title>Headless Riders track (order No. 110)</title></path><text x="${(sx / n).toFixed(1)}" y="${(ty - 8).toFixed(1)}" text-anchor="middle" class="vm-track-l">Headless Riders track</text>`; }).join("");
+    return `<g class="vm-roads"><g class="lay-hw">${hwy}${trk}</g><g class="lay-mono">${mono}${st}${rb}</g></g>`;
   }
   function renderVoxelMap() {
     if (!mapRegion) mapRegion = defaultRegion();
@@ -1370,7 +1379,7 @@ footer b{color:var(--ink)}
     return `<div class="group routes"><div class="map-bar"><div class="catbar" style="margin:0">${btns}</div><div class="note">${note}</div></div>
       ${mapRegion === "aus" && ROADS ? `<div class="vm-toggles" role="group" aria-label="Map layers">${[["hw", "Highway"], ["mono", "Monorail"], ["routes", "Your routes"]].map(([k, l]) => `<button type="button" class="chip-btn" data-layer="${k}" aria-pressed="${!hiddenLayers.has(k)}">${l}</button>`).join("")}</div>` : ""}
       <div class="vmap${[...hiddenLayers].map((k) => " no-" + k).join("")}"><svg viewBox="0 0 1000 1000" role="img" aria-label="${VREG[mapRegion]} map with facilities and your routes">${R.svg}${piers}${roadLayer(mapRegion, U, V)}<g class="vm-routes">${lines}${end}</g><g class="vm-facs">${marks}</g></svg></div>
-      <div class="vm-legend">${legend}<span><i class="sq" style="border-color:#3fb27f"></i>All orders done</span><span><i class="sq" style="border-color:#e0b44c"></i>Some done</span><span><i class="sq" style="border-color:#8a94a3"></i>None yet</span><span><i class="sq" style="border-color:#9fb3c8"></i>No standard orders</span><span><i class="sq" style="border-color:#8a94a3;border-style:dashed"></i>Not connected</span>${mapRegion === "aus" && ROADS ? `<span><i class="ln" style="background:#fff"></i>Highway, built (${((state && state.roads) || { hw: [] }).hw.length} / ${ROADS.highway.length})</span><span><i class="ln" style="background:repeating-linear-gradient(90deg,#cfd6dc 0 5px,transparent 5px 9px)"></i>Highway, not built</span><span><i class="ln" style="background:#c58bff"></i>Monorail (filled square = track rebuilt, ${((state && state.roads) || { rails: [] }).rails.length} / ${ROADS.rails.length})</span>` : ""}<span><i class="ln" style="background:#ff9b2f"></i>By vehicle</span><span><i class="ln" style="background:#5cc8ff"></i>On foot</span></div>
+      <div class="vm-legend">${legend}<span><i class="sq" style="border-color:#3fb27f"></i>All orders done</span><span><i class="sq" style="border-color:#e0b44c"></i>Some done</span><span><i class="sq" style="border-color:#8a94a3"></i>None yet</span><span><i class="sq" style="border-color:#9fb3c8"></i>No standard orders</span><span><i class="sq" style="border-color:#8a94a3;border-style:dashed"></i>Not connected</span>${mapRegion === "aus" && ROADS ? `<span><i class="ln" style="background:#fff"></i>Highway, built (${((state && state.roads) || { hw: [] }).hw.length} / ${ROADS.highway.length})</span><span><i class="ln" style="background:repeating-linear-gradient(90deg,#cfd6dc 0 5px,transparent 5px 9px)"></i>Highway, not built</span><span><i class="ln" style="background:repeating-linear-gradient(90deg,#ffd166 0 2px,transparent 2px 5px)"></i>Headless Riders track</span><span><i class="ln" style="background:#c58bff"></i>Monorail (filled square = track rebuilt, ${((state && state.roads) || { rails: [] }).rails.length} / ${ROADS.rails.length})</span>` : ""}<span><i class="ln" style="background:#ff9b2f"></i>By vehicle</span><span><i class="ln" style="background:#5cc8ff"></i>On foot</span></div>
       <p class="about">${esc(R.label || "Terrain simplified from the game map")}: our own blocky drawing in our own colours, not the game's map image. Diamonds are distribution centers and knots, circles preppers; the ring shows how many of their standard orders you've done, and a dashed ring means not connected yet. Click a facility to see its standard orders. Routes are the in-game “previous routes” since your last main order.</p></div>`;
   }
 
@@ -1502,6 +1511,9 @@ footer b{color:var(--ink)}
     render();
   });
   $("view").addEventListener("click", (e) => {
+    // anything blurred: the first click only reveals it; a second click follows the link
+    const spr = e.target.closest(".spoil[data-reveal]");
+    if (spr) { e.preventDefault(); e.stopPropagation(); revealed.add(spr.dataset.reveal); $("view").innerHTML = renderView(); return; }
     if (e.target.id === "copyReport") {
       const t = $("report"); t.select();
       const ok = () => { e.target.textContent = "Copied"; setTimeout(() => (e.target.textContent = "Copy report"), 1500); };
@@ -1517,8 +1529,6 @@ footer b{color:var(--ink)}
       else { tab = "standard"; $("q").value = FAC_NAME.get(Number(gf.dataset.gotoFac)) || ""; }
       status = "all"; render(); $("tabs").scrollIntoView && $("tabs").scrollIntoView({ block: "start" }); return;
     }
-    const spr = e.target.closest(".spoil[data-reveal]");
-    if (spr) { e.preventDefault(); revealed.add(spr.dataset.reveal); $("view").innerHTML = renderView(); return; }
     const ly = e.target.closest("[data-layer]");
     if (ly) { const k = ly.dataset.layer; hiddenLayers.has(k) ? hiddenLayers.delete(k) : hiddenLayers.add(k); $("view").innerHTML = renderView(); return; }
     const rg = e.target.closest("[data-region]");

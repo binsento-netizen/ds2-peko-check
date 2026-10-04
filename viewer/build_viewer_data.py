@@ -62,6 +62,8 @@ _rd = json.load(open(ROOT / "catalog/roads_game.json", encoding="utf-8")).get("a
 roads = dict(
     highway=[[s["road_id"], _flat(pts)] for s, pts in zip(_rd["highway_segments"], _rd["highway"])],
     ids=[s["road_id"] for s in _rd["highway_segments"] + _rd.get("other_roads", [])],   # every id in the save's road table
+    # the closed loop east of F4 is the Headless Riders race track (order No. 110; FINDINGS "Round-2 quick looks")
+    track=[_flat(r["points"] + r["points"][:1]) for r in _rd.get("other_roads", [])] if "--track" in args else [],   # shown only with --track (awaiting go)
     monorail=[_flat(pts) for pts in _rd["monorail"]],
     # real stations only (names NW01, TC02, EC03…; "…G…" names belong to the unused ghost lines), one dot per station
     stations=[[n, round(sum(p[0] for p in g) / len(g)), round(sum(p[1] for p in g) / len(g))]
