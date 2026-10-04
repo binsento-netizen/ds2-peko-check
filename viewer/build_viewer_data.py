@@ -58,6 +58,40 @@ lockers = {w0: [code, _facn.get(code, f"Facility {code}")] for w0, code in revie
 # highway: [road id, [x0, y0, x1, y1, ...]] per auto-paver segment; rails: [name, x, y, locator GUID bytes (hex, GUID order)]
 import uuid as _uuid
 def _flat(pts): return [round(c) for p in pts for c in p[:2]]
+def _rail_sections(rd):
+    """Split each monorail line into one piece per AUS-RAIL rebuilder (NW/TC/EC prefix = line), cutting halfway
+    between neighbouring rebuilders along the track. The game data doesn't say which stretch a rebuilder repairs,
+    so this is an approximation: each rebuilder owns the track around it."""
+    import math
+    out = []
+    pre = {"NorthWestLine": "NW", "TransCraterLine": "TC", "EastCoastLine": "EC"}
+    for meta, pts in zip(rd["monorail_lines"], rd["monorail"]):
+        pts = [(p[0], p[1]) for p in pts]
+        cum = [0.0]
+        for a, b in zip(pts, pts[1:]): cum.append(cum[-1] + math.dist(a, b))
+        def proj(x, y):   # arc length of the closest point on the polyline
+            best = (1e18, 0.0)
+            for i, (a, b) in enumerate(zip(pts, pts[1:])):
+                dx, dy = b[0] - a[0], b[1] - a[1]; L2 = dx * dx + dy * dy or 1
+                t = max(0, min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / L2))
+                d = math.hypot(x - a[0] - t * dx, y - a[1] - t * dy)
+                if d < best[0]: best = (d, cum[i] + t * math.sqrt(L2))
+            return best[1]
+        def at(s):   # point at arc length s
+            for i in range(len(pts) - 1):
+                if cum[i + 1] >= s:
+                    t = (s - cum[i]) / ((cum[i + 1] - cum[i]) or 1)
+                    return (pts[i][0] + t * (pts[i + 1][0] - pts[i][0]), pts[i][1] + t * (pts[i + 1][1] - pts[i][1]))
+            return pts[-1]
+        rbs = sorted((proj(r["x"], r["y"]), r["name"]) for r in rd["rail_rebuilders"] if r["name"].split("-")[2].startswith(pre.get(meta["line"], "??")))
+        if not rbs: continue
+        cuts = [0.0] + [(rbs[i][0] + rbs[i + 1][0]) / 2 for i in range(len(rbs) - 1)] + [cum[-1]]
+        for (_, name), s0, s1 in zip(rbs, cuts, cuts[1:]):
+            piece = [at(s0)] + [p for p, c in zip(pts, cum) if s0 < c < s1] + [at(s1)]
+            out.append([name, [round(c) for p in piece for c in p]])
+    return out
+
+
 _rd = json.load(open(ROOT / "catalog/roads_game.json", encoding="utf-8")).get("aus") if (ROOT / "catalog/roads_game.json").exists() else None
 roads = dict(
     highway=[[s["road_id"], _flat(pts)] for s, pts in zip(_rd["highway_segments"], _rd["highway"])],
@@ -65,6 +99,7 @@ roads = dict(
     # the closed loop east of F4 is the Headless Riders race track (order No. 110; FINDINGS "Round-2 quick looks")
     track=[_flat(r["points"] + r["points"][:1]) for r in _rd.get("other_roads", [])] if "--track" in args else [],   # shown only with --track (awaiting go)
     monorail=[_flat(pts) for pts in _rd["monorail"]],
+    monosec=_rail_sections(_rd),   # [rebuilder name, track piece] for built / not built
     # real stations only (names NW01, TC02, EC03…; "…G…" names belong to the unused ghost lines), one dot per station
     stations=[[n, round(sum(p[0] for p in g) / len(g)), round(sum(p[1] for p in g) / len(g))]
               for n, g in __import__("itertools").groupby(sorted((st["name"], (st["x"], st["y"])) for st in _rd["monorail_stations"]
