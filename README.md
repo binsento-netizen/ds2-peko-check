@@ -46,7 +46,7 @@ changes your save.
 Works with the PC version of Death Stranding 2. Tested with the Steam version on Windows; the Epic version and
 Steam Deck are untested, so reports are welcome. Console saves are not supported.
 
-**Spoilers:** orders you haven't reached, items you don't have yet and rewards still ahead of you are blurred. Click **Show spoiler** on one to reveal it, or tick **Show spoilers** to see everything.
+**Spoilers:** orders you haven't reached, items you don't have yet and rewards still ahead of you are blurred. Click **Show spoiler** (or the blurred item itself) to reveal one, or tick **Show spoilers** to see everything.
 
 ## What you can see
 
@@ -79,13 +79,13 @@ Steam Deck are untested, so reports are welcome. Console saves are not supported
 
 The **Map** tab shows your progress on a blocky map of Australia or Mexico:
 - every facility, ringed by how many of its standard orders you've done (click one to jump to its orders);
-- the **highway**: sections you've built are solid, the rest dashed, with a count (for example 19 / 57);
-- the **monorail** lines and stations, with a filled marker for each track section you've rebuilt;
+- the **highway**: sections you've built are solid, the rest dashed, with a count (for example 15 / 57);
+- the **monorail** lines and stations: track sections you've rebuilt are solid, the rest dotted, with a count (for example 8 / 33);
 - the routes you travelled since your last main order, on foot or by vehicle.
 
 Each layer can be switched on and off.
 
-<p align="center"><img src="assets/screenshots/map.png" width="820" alt="Blocky map of Australia with surface types, facilities ringed by order progress, the highway (built sections solid), the monorail and routes by vehicle"></p>
+<p align="center"><img src="assets/screenshots/map.png" width="820" alt="Blocky map of Australia with surface types, facilities ringed by order progress, the highway and the monorail (built sections solid, the rest dashed or dotted) and routes by vehicle"></p>
 
 The map and the item icons are our own drawings: the terrain is simplified from the game's map into blocks and
 surface types in our own colours, and every item gets a generic icon for its kind. The game's own map image and item

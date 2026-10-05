@@ -59,6 +59,9 @@ one game action at a time.
 - [ ] **Lockers:** confirm the facility of each private locker (three are confirmed in game), and map the lockers of
       facilities that weren't visited in the test saves.
 - [ ] **Built structures** and the **route planner:** leads only.
+- [ ] **Order unlock rules and likes:** the game files store what opens each order (AND/OR conditions, facts such as a
+      connection level) and the like thresholds per order. Exporting those would let the viewer say "opens when ..."
+      for every locked order.
 - [ ] **Collectibles** (memory chips and the like).
 - [ ] **Auto-pavers:** finished sections are read from the save; donations to an unfinished paver only show up as
       facility stock going down, and the paver's own progress seems to be kept on the server.
