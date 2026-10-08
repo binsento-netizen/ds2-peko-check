@@ -771,6 +771,15 @@ footer b{color:var(--ink)}
     const t = new TextDecoder("utf-8", { fatal: false }).decode(meta);
     return (t.match(/[^\u0000-\u001f\uFFFD]{4,}/g) || []).map((x) => x.trim()).filter(Boolean);
   }
+  // the save's metadata text carries the game's text markup: <slttr case=..> around a sentence, <letter case=..>
+  // variants (keep the default one) and <icon name=..> glyphs (the fragile care mark = the game's "Breakable")
+  const META_ICONS = { gaiji_caremark_fragile: "[Breakable] " };
+  const cleanMeta = (line) => String(line)
+    .replace(/<letter case=default>([\s\S]*?)<\/letter>/g, "$1")
+    .replace(/<letter case=[^>]*>[\s\S]*?<\/letter>/g, "")
+    .replace(/<icon name=([^>\s]+)>/g, (m, n) => META_ICONS[n] || "")
+    .replace(/<\/?[a-z]+(?:\s[^<>]*)?>/gi, "")
+    .replace(/\s{2,}/g, " ").trim();
 
   /* ---------- model ---------- */
   const ORD = DATA.orders.map(([id, no, sec, name, from, to, cargo, conf, ep, kind, g8]) => ({ id, no, sec, name, from, to, cargo, conf, ep, kind, g8 }));
@@ -804,6 +813,7 @@ footer b{color:var(--ink)}
 
   // after = the save shown everywhere; before (optional) = the save it is compared with
   function load(save, before) {
+    for (const x of [save, before]) if (x && x.meta) x.meta = x.meta.map(cleanMeta);   // files and the example save alike
     const mis = new Map(save.missions.map((m) => [m[0], m]));
     const flags = new Map(save.recipes.map(([k, f]) => [k >>> 0, f]));
     ORD.forEach((o) => (o.st = o.id ? missionSt(mis.get(o.id)) : "none"));
