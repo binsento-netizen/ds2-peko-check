@@ -1089,8 +1089,15 @@ footer b{color:var(--ink)}
     for (const r of REC) {
       if (!r.cat) continue;
       const k = `${r.cat}|${r.sub || ""}|${r.label}`;
-      if (!map.has(k)) map.set(k, { cat: r.cat, sub: r.sub || "", label: r.label, src: r.src, tag: r.tag, n: 0, k: 0, inSave: 0, keys: [] });
-      const m = map.get(k); m.keys.push(r.key >>> 0); m.n++; if (r.st !== "none") m.inSave++; if (r.st === "done") m.k++;
+      if (!map.has(k)) map.set(k, { cat: r.cat, sub: r.sub || "", label: r.label, src: r.src, tag: r.tag, n: 0, k: 0, inSave: 0, keys: [], entries: [] });
+      const m = map.get(k); m.keys.push(r.key >>> 0); m.entries.push(r);
+    }
+    // the game's catalogue repeats some items as internal copies (usage "None"); in 236 saves, up to a finished story,
+    // those copies are never unlocked, so they would show "1 of 3 unlocked" for an item the player has.
+    // Count only the real entries when the item has one.
+    for (const m of map.values()) {
+      const real = m.entries.filter((e) => e.use !== "None"), use = real.length ? real : m.entries;
+      m.n = use.length; m.inSave = use.filter((e) => e.st !== "none").length; m.k = use.filter((e) => e.st === "done").length;
     }
     // APAS catalogue entries: unlocked = the matching enhancement is in the save's APAS list (available or developed)
     const apasHave = new Set(((state && state.apas) || []).map((x) => x[0])), apasOf = new Map();
